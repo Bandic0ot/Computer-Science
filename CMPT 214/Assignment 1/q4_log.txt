@@ -1,0 +1,9 @@
+Matthew Mulenga
+mam558
+11144528
+
+mam558@tux7:~> echo 0 | egrep '\<[0-9]{1,2}\>' 
+0
+mam558@tux7:~> echo 199 | egrep -v '\<[0-9]{1,2}\>' 
+199
+

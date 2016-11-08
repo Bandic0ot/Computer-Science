@@ -1,0 +1,12 @@
+Matthew Mulenga
+mam558
+11144528
+
+The only thing needed to compile the classes are the .class and .java files.
+Each class contains it's own main method for testing the functions of the class.
+The classes were created and tested in Eclipse Neon.
+
+Every method is working. Each method has been tested for thoroughly and assuming 
+the proper input is entered each method performs as per the specifications of 
+the assignment outline. This is with the exception of the FlightReservationSystem class,
+which was not completed. It is a skeleton of the complete class.

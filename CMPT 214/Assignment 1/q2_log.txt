@@ -1,0 +1,9 @@
+Matthew Mulenga
+mam558
+11144528
+
+bash-3.2$ ls -l | tr -s ' ' | cut -f 9 -d ' ' | rs -t
+214bin        Applications  Documents     Movies        Public
+214lab1       Desktop       Downloads     Music         cmpt115
+260           DirName       Library       Pictures      editor.txt
+

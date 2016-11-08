@@ -1,0 +1,10 @@
+Matthew Mulenga
+mam558
+11144528
+
+
+ ------ Test toString() Function ------
+Name: Matthew Mulenga Telephone Number: 555-1234
+
+ ------ Test getTelephoneNumber() Function ------
+Matthew Mulenga 555-5678

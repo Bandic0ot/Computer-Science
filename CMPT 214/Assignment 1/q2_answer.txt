@@ -1,0 +1,6 @@
+Matthew Mulenga
+mam558
+11144528
+
+ls -l | tr -s ' ' | cut -f 9 -d ' ' | rs -t
+

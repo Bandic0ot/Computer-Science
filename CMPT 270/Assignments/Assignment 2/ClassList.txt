@@ -1,0 +1,9 @@
+Matthew Mulenga
+mam558
+11144528
+
+BasicFlight
+Booking
+Person
+
+There are only 3 classes.

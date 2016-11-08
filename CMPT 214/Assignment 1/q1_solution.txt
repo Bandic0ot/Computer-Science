@@ -1,0 +1,8 @@
+Matthew Mulenga
+mam558
+11144528
+
+less myfile
+less myfile | head
+less < myfile
+

@@ -1,0 +1,114 @@
+Matthew Mulenga
+mam558
+11144528
+
+
+------- Question 1 -------
+
+a)
+mam558@tux6:~> g++ -Wall -Wextra -pedantic -o datatype datatype_sizes.cc 
+datatype_sizes.cc: In function 'int main(int, char**)':
+datatype_sizes.cc:10:53: warning: ISO C++98 does not support the 'z' gnu_printf length modifier [-Wformat=]
+  printf( "sizeof long int = %zu\n", sizeof(long int));
+                                                     ^
+datatype_sizes.cc:11:47: warning: ISO C++98 does not support the 'z' gnu_printf length modifier [-Wformat=]
+  printf( "sizeof float = %zu\n", sizeof(float));
+                                               ^
+datatype_sizes.cc:12:49: warning: ISO C++98 does not support the 'z' gnu_printf length modifier [-Wformat=]
+  printf( "sizeof double = %zu\n", sizeof(double));
+                                                 ^
+datatype_sizes.cc:13:51: warning: ISO C++98 does not support the 'z' gnu_printf length modifier [-Wformat=]
+  printf( "sizeof float * = %zu\n", sizeof(float *)); 
+                                                   ^
+datatype_sizes.cc: At global scope:
+datatype_sizes.cc:9:14: warning: unused parameter 'argc' [-Wunused-parameter]
+ int main(int argc, char *argv[]) {
+              ^
+datatype_sizes.cc:9:31: warning: unused parameter 'argv' [-Wunused-parameter]
+ int main(int argc, char *argv[]) {
+                               ^
+mam558@tux6:~> datatype
+sizeof long int = 8
+sizeof float = 4
+sizeof double = 8
+sizeof float * = 8
+
+mam558@tux6:~> g++ -Wall -Wextra -pedantic -o datatype datatype_sizes.cc 
+datatype_sizes.cc: In function 'int main(int, char**)':
+datatype_sizes.cc:10:53: warning: ISO C++98 does not support the 'z' gnu_printf length modifier [-Wformat=]
+  printf( "sizeof long int = %zd\n", sizeof(long int));
+                                                     ^
+datatype_sizes.cc:11:47: warning: ISO C++98 does not support the 'z' gnu_printf length modifier [-Wformat=]
+  printf( "sizeof float = %zd\n", sizeof(float));
+                                               ^
+datatype_sizes.cc:12:49: warning: ISO C++98 does not support the 'z' gnu_printf length modifier [-Wformat=]
+  printf( "sizeof double = %zd\n", sizeof(double));
+                                                 ^
+datatype_sizes.cc:13:51: warning: ISO C++98 does not support the 'z' gnu_printf length modifier [-Wformat=]
+  printf( "sizeof float * = %zd\n", sizeof(float *)); 
+                                                   ^
+datatype_sizes.cc: At global scope:
+datatype_sizes.cc:9:14: warning: unused parameter 'argc' [-Wunused-parameter]
+ int main(int argc, char *argv[]) {
+              ^
+datatype_sizes.cc:9:31: warning: unused parameter 'argv' [-Wunused-parameter]
+ int main(int argc, char *argv[]) {
+                               ^
+mam558@tux6:~> datatype
+sizeof long int = 8
+sizeof float = 4
+sizeof double = 8
+sizeof float * = 8
+mam558@tux6:~> g++ -m32 -Wall -Wextra -pedantic -o datatype datatype_sizes.cc 
+datatype_sizes.cc: In function 'int main(int, char**)':
+datatype_sizes.cc:10:53: warning: ISO C++98 does not support the 'z' gnu_printf length modifier [-Wformat=]
+  printf( "sizeof long int = %zd\n", sizeof(long int));
+                                                     ^
+datatype_sizes.cc:11:47: warning: ISO C++98 does not support the 'z' gnu_printf length modifier [-Wformat=]
+  printf( "sizeof float = %zd\n", sizeof(float));
+                                               ^
+datatype_sizes.cc:12:49: warning: ISO C++98 does not support the 'z' gnu_printf length modifier [-Wformat=]
+  printf( "sizeof double = %zd\n", sizeof(double));
+                                                 ^
+datatype_sizes.cc:13:51: warning: ISO C++98 does not support the 'z' gnu_printf length modifier [-Wformat=]
+  printf( "sizeof float * = %zd\n", sizeof(float *)); 
+                                                   ^
+datatype_sizes.cc: At global scope:
+datatype_sizes.cc:9:14: warning: unused parameter 'argc' [-Wunused-parameter]
+ int main(int argc, char *argv[]) {
+              ^
+datatype_sizes.cc:9:31: warning: unused parameter 'argv' [-Wunused-parameter]
+ int main(int argc, char *argv[]) {
+                               ^
+mam558@tux6:~> datatype
+sizeof long int = 4
+sizeof float = 4
+sizeof double = 8
+sizeof float * = 4
+mam558@tux6:~> g++ -m64 -Wall -Wextra -pedantic -o datatype datatype_sizes.cc 
+datatype_sizes.cc: In function 'int main(int, char**)':
+datatype_sizes.cc:10:53: warning: ISO C++98 does not support the 'z' gnu_printf length modifier [-Wformat=]
+  printf( "sizeof long int = %zd\n", sizeof(long int));
+                                                     ^
+datatype_sizes.cc:11:47: warning: ISO C++98 does not support the 'z' gnu_printf length modifier [-Wformat=]
+  printf( "sizeof float = %zd\n", sizeof(float));
+                                               ^
+datatype_sizes.cc:12:49: warning: ISO C++98 does not support the 'z' gnu_printf length modifier [-Wformat=]
+  printf( "sizeof double = %zd\n", sizeof(double));
+                                                 ^
+datatype_sizes.cc:13:51: warning: ISO C++98 does not support the 'z' gnu_printf length modifier [-Wformat=]
+  printf( "sizeof float * = %zd\n", sizeof(float *)); 
+                                                   ^
+datatype_sizes.cc: At global scope:
+datatype_sizes.cc:9:14: warning: unused parameter 'argc' [-Wunused-parameter]
+ int main(int argc, char *argv[]) {
+              ^
+datatype_sizes.cc:9:31: warning: unused parameter 'argv' [-Wunused-parameter]
+ int main(int argc, char *argv[]) {
+                               ^
+mam558@tux6:~> datatype
+sizeof long int = 8
+sizeof float = 4
+sizeof double = 8
+sizeof float * = 8
+

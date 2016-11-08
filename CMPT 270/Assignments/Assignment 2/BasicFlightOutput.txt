@@ -1,0 +1,60 @@
+Matthew Mulenga
+mam558
+11144528
+
+
+ ------ Test toString() ------
+Flight 320 Capacity: 30 Width: 3
+Seat: 1A Matthew Mulenga
+Seat: 2A
+Seat: 3A
+Seat: 4A
+Seat: 5A
+Seat: 6A
+Seat: 7A
+Seat: 8A
+Seat: 9A
+Seat: 10A
+Seat: 1B
+Seat: 2B
+Seat: 3B
+Seat: 4B
+Seat: 5B John Doe
+Seat: 6B
+Seat: 7B
+Seat: 8B
+Seat: 9B
+Seat: 10B
+Seat: 1C
+Seat: 2C
+Seat: 3C
+Seat: 4C
+Seat: 5C
+Seat: 6C
+Seat: 7C
+Seat: 8C
+Seat: 9C
+Seat: 10C Jane Doe
+
+ ------ Test indexFromSeat() ------
+27
+2
+16
+
+ ------ Test seatFromIndex() ------
+10C
+1A
+6B
+
+ ------ Test getNumber() ------
+320
+
+ ------ Test isSeatAvailable() ------
+False
+True
+
+ ------ Test getPerson() ------
+Name: Matthew Mulenga Telephone Number: 555-1234
+Name: John Doe Telephone Number: 555-4321
+Name: Jane Doe Telephone Number: 555-6789
+

@@ -1,0 +1,24 @@
+Matthew Mulenga
+mam558
+11144528
+
+
+ ------ Test toString() ------
+Name: Matthew Mulenga Telephone Number: 555-1234 Flight Number: 320 Seat Number: 8A
+Name: John Doe Telephone Number: 555-4321 Flight Number: 320 Seat Number: 10B
+Name: Jane Doe Telephone Number: 555-6789 Flight Number: 320 Seat Number: 2C
+
+ ------ Test getPerson() ------
+Matthew Mulenga
+John Doe
+Jane Doe
+
+ ------ Test getFlight() ------
+320
+320
+320
+
+ ------ Test getSeat() ------
+8A
+10B
+2C

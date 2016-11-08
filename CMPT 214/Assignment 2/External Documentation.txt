@@ -1,0 +1,9 @@
+Matthew Mulenga
+mam558
+11144528
+
+The vecalc.cc is completely functional within the guidelines of the assignment 
+outline. All tests are completed. All testing is done within the
+#ifdef TESTING block. The only errors that should be output when compiled are
+errors about unused parameters from the stub routines of scalar_minus(),
+scalar_mult() and scalar_div().

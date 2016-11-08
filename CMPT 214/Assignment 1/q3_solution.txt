@@ -1,0 +1,22 @@
+Matthew Mulenga
+mam558
+11144528
+
+Style Violations
+
+1.	Inconsistent use of whitespacing, throughout the entire file. Mainly within/between
+	brackets. Eg. Lines 17 and 20. There is a space in between the two closing brackets
+	on line 17, but not on 20.
+
+2.	Inconsistent placement of brackets. The same style is not followed throughout the 
+	file.
+
+3.	Obscure variable names of the two integers on lines 4 and 5.
+
+4.	Redundant comment on line 13.
+
+5.	Inaccurate comment on line 8.
+
+6.	Comment starting on line 26 could perhaps be cleaned up and reordered.
+
+7. 	Comment is not descriptive enough on line 31.

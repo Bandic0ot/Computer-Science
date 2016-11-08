@@ -1,0 +1,119 @@
+Matthew Mulenga
+mam558
+11144528
+
+------- Application 1 -------
+
+Passenger Class
+
+	Instance Variables
+		-First name (String)
+		-Last name (String)
+		-List of flights (List -- contains a list of flight numbers)
+		-Seat Number (Integer)
+		-Ticket Number (Integer)		
+	
+	Methods
+		-setFirstName
+		-getFirstName
+		-setLastName
+		-getLastName
+		-addFlight
+		-removeFlight
+		-setSeatNumber
+		-getSeatNumber
+		-setTicketNumber
+		-getTicketNumber
+
+Flight Class
+
+	Instance Variables
+		-Flight Number (Integer)
+		-Destination (String)
+		-Current Location (String)
+		-Gate Number (String)
+		-Passenger Manifest (List -- contains list of passenger names)
+		-Luggage Manifest (List -- contains list of all luggage)
+
+	Methods
+		-setFlightNumber
+		-getFlightNumber
+		-setDestination
+		-getDestination
+		-setCurrentLocation
+		-getCurrentLocation
+		-setGateNumber
+		-getGateNumber
+		-addLuggage
+		-removeLuggage
+		-addPassenger
+		-removePassenger
+
+
+------- Application 2 -------
+
+Person Class
+	
+	Instance Variables
+		-First Name (String)
+		-Last Name (String)
+		-Assigned Ward (Integer)
+
+	Methods
+		-setFirstName
+		-getFirstName
+		-setLastName
+		-getLastName
+		-setWard
+		-getWard
+
+	Doctor Class (Person Sub-Class)
+		
+		Instance Variables
+			-List of Patients Under Care (List -- contains a list of patients under care)
+			-Type of Doctor (String)
+
+		Methods
+			-performSurgery
+			-checkPatient
+			-checkIn
+			-checkOut
+
+	Patient Class (Person Sub-Class)
+		
+		Instance Variables
+			-Bed Number (Integer)
+			-Injury Type (String)
+			-Allergies (List -- contains a list of allergies)
+
+		Methods
+			-getBedNumber
+			-setBedNumber
+			-setInjury
+			-getInjury
+			-readAllergies
+			-askForAssistance
+			-useWashroom
+			-sleep
+
+Ward Class
+
+	Instance Variables
+		-Ward Number (Integer)
+		-Number of Beds (Integer)
+		-List of Doctors (List -- contains list of doctor names)
+		-List of Patients (List -- contains list of patient names)
+
+	Methods
+		-assignDoctor
+		-assignPatient
+		-isBedEmpty
+		-getWardNumber
+		-setWardNumber
+		-getNumberOfBeds
+		-setNumberOfBeds
+		-addPatient
+		-removePatient
+			
+
+
