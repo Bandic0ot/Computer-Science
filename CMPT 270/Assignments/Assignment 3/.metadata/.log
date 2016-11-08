@@ -1,0 +1,32 @@
+!SESSION 2016-11-07 20:05:34.900 -----------------------------------------------
+eclipse.buildId=4.6.1.M20160907-1200
+java.version=1.8.0_112
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_CA
+Framework arguments:  -product org.eclipse.epp.package.java.product
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.java.product
+
+!ENTRY org.eclipse.egit.ui 2 0 2016-11-07 20:06:12.916
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\Matt'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+
+!ENTRY org.eclipse.mylyn.tasks.core 4 0 2016-11-07 20:06:34.135
+!MESSAGE Notification failed for: org.eclipse.mylyn.internal.tasks.core.TaskActivityManager$1@2cb1a245
+!STACK 0
+java.util.ConcurrentModificationException
+	at java.util.ArrayList$Itr.checkForComodification(Unknown Source)
+	at java.util.ArrayList$Itr.next(Unknown Source)
+	at org.eclipse.mylyn.internal.tasks.core.TaskActivityManager.reloadPlanningData(TaskActivityManager.java:210)
+	at org.eclipse.mylyn.internal.tasks.core.TaskActivityManager$1.containersChanged(TaskActivityManager.java:95)
+	at org.eclipse.mylyn.internal.tasks.core.TaskList.fireDelta(TaskList.java:273)
+	at org.eclipse.mylyn.internal.tasks.core.TaskList.notifyElementsChanged(TaskList.java:495)
+	at org.eclipse.mylyn.internal.tasks.core.TaskJobFactory$1.done(TaskJobFactory.java:140)
+	at org.eclipse.core.internal.jobs.JobListeners$3.notify(JobListeners.java:42)
+	at org.eclipse.core.internal.jobs.JobListeners.doNotify(JobListeners.java:106)
+	at org.eclipse.core.internal.jobs.JobListeners.done(JobListeners.java:144)
+	at org.eclipse.core.internal.jobs.JobManager.endJob(JobManager.java:694)
+	at org.eclipse.core.internal.jobs.WorkerPool.endJob(WorkerPool.java:105)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:72)
