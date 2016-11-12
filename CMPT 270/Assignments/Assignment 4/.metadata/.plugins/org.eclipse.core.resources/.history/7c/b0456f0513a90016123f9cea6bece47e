@@ -1,0 +1,9 @@
+package containers;
+
+public class PassengerContainer {
+
+	public PassengerContainer() {
+		// TODO Auto-generated constructor stub
+	}
+
+}

@@ -1,0 +1,9 @@
+package commands;
+
+public class AddPassengerCommand extends CommandStatus {
+
+	public AddPassengerCommand() {
+		// TODO Auto-generated constructor stub
+	}
+
+}
