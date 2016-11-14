@@ -19,6 +19,16 @@ import java.util.Scanner;
 public class FlightReservationSystem 
 {
 	/**
+	 * The dictionary of all flights.
+	 */
+	//private TreeMap<Integer, Flight> flights;
+	
+	/** 
+	 * The dictionary of all passengers.
+	 */
+	//private TreeMap<String, Passenger> passengers;
+	
+	/**
 	 * The scanner used to read input from the user.
 	 */
 
@@ -29,6 +39,8 @@ public class FlightReservationSystem
 	 */
 	public FlightReservationSystem(Scanner in)
 	{
+		//flights = new TreeMap<Integer, Flight>();
+		//passengers = new TreeMap<String, Passenger>();
 		consoleIn = in;
 	}
 	

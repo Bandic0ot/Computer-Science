@@ -1,9 +1,9 @@
 package startup;
 
 import java.util.InputMismatchException;
+import java.util.TreeMap;
 
 import containers.PassengerDictionary;
-import containers.FlightDictionary;
 
 import entities.Flight;
 import entities.Passenger;
@@ -19,6 +19,16 @@ import java.util.Scanner;
 public class FlightReservationSystem 
 {
 	/**
+	 * The dictionary of all flights.
+	 */
+	private TreeMap<Integer, Flight> flights;
+	
+	/** 
+	 * The dictionary of all passengers.
+	 */
+	private TreeMap<String, Passenger> passengers;
+	
+	/**
 	 * The scanner used to read input from the user.
 	 */
 
@@ -29,6 +39,8 @@ public class FlightReservationSystem
 	 */
 	public FlightReservationSystem(Scanner in)
 	{
+		flights = new TreeMap<Integer, Flight>();
+		passengers = new TreeMap<String, Passenger>();
 		consoleIn = in;
 	}
 	
@@ -64,10 +76,10 @@ public class FlightReservationSystem
 					assignSeatForPassenger();
 					break;
 				case 7:
-					System.out.println("\nThe passengers in the system are \n" + PassengerDictionary.dictionary());
+					System.out.println("\nThe passengers in the system are \n" + passengers);
 					break;
 				case 8:
-					System.out.println("\nThe flights in the system are \n" + FlightDictionary.dictionary());
+					System.out.println("\nThe flights in the system are \n" + flights);
 					break;
 				default:
 					System.out.println("Invalid int value; try again");
@@ -144,7 +156,7 @@ public class FlightReservationSystem
 		String name = consoleIn.nextLine();
 		System.out.print("Enter the telephone number of the passenger: ");
 		String telNumber = consoleIn.nextLine();
-		if (PassengerDictionary.dictionary().containsKey(name))
+		if (passengers.containsKey(name))
 		{
 			throw new RuntimeException("Person not added as there already "
 								+ "is a person by the name " + name);
@@ -152,10 +164,10 @@ public class FlightReservationSystem
 		else
 		{
 			Passenger p = new Passenger(name, telNumber);
-			Passenger sameNamePerson = PassengerDictionary.dictionary().put(name, p);
+			Passenger sameNamePerson = passengers.put(name, p);
 			if (sameNamePerson != null)
 			{
-				PassengerDictionary.dictionary().put(name, sameNamePerson);  // put the original person back
+				passengers.put(name, sameNamePerson);  // put the original person back
 				throw new RuntimeException("Name in the dictionary even though " +
 						"containsKey failed.  Passenger " + name + " not entered.");
 			}
@@ -170,7 +182,7 @@ public class FlightReservationSystem
 	{
 		System.out.print("Enter the number of the flight: ");
 		int number = readInt();
-		if (FlightDictionary.dictionary().containsKey(number))
+		if (flights.containsKey(number))
 			throw new RuntimeException("Flight not added as there already "
 					+ "is a flight with the number " + number);
 		System.out.print("Enter the width of the flight: ");
@@ -178,10 +190,10 @@ public class FlightReservationSystem
 		System.out.print("Enter the capacity of the flight: ");
 		int capacity = readInt();
 		Flight f = new Flight(number, width, capacity);
-		Flight sameNumberFlight = FlightDictionary.dictionary().put(number, f);
+		Flight sameNumberFlight = flights.put(number, f);
 		if (sameNumberFlight != null)
 		{
-			FlightDictionary.dictionary().put(number, sameNumberFlight); // put the original flight back
+			flights.put(number, sameNumberFlight); // put the original flight back
 			throw new RuntimeException("Number in the dictionary even though " +
 					"containsKey failed.  Flight "  + number + " not entered.");
 		}
@@ -194,7 +206,7 @@ public class FlightReservationSystem
 	{
 		System.out.print("Enter the number of the flight: ");
 		int number = readInt();
-		Flight f = FlightDictionary.dictionary().get(number);
+		Flight f = flights.get(number);
 		if (f == null)
 			throw new RuntimeException("There is no flight with number " + number);
 		else 
@@ -209,12 +221,12 @@ public class FlightReservationSystem
 	{
 		System.out.print("Enter the name of the passenger: ");
 		String name = consoleIn.nextLine();
-		Passenger p = PassengerDictionary.dictionary().get(name);
+		Passenger p = passengers.get(name);
 		if (p == null)
 			throw new RuntimeException("There is no passenger with name " + name);
 		System.out.print("Enter the number of the flight: ");
 		int number = readInt();
-		Flight f = FlightDictionary.dictionary().get(number);
+		Flight f = flights.get(number);
 		if (f == null)
 			throw new RuntimeException("There is no flight with number " + number);
 		else f.makeBooking(p);
@@ -229,12 +241,12 @@ public class FlightReservationSystem
 	{
 		System.out.print("Enter the name of the passenger: ");
 		String name = consoleIn.nextLine();
-		Passenger p = PassengerDictionary.dictionary().get(name);
+		Passenger p = passengers.get(name);
 		if (p == null)
 			throw new RuntimeException("There is no passenger with name " + name);
 		System.out.print("Enter the number of the flight: ");
 		int number = readInt();
-		Flight f = FlightDictionary.dictionary().get(number);
+		Flight f = flights.get(number);
 		if (f == null)
 			throw new RuntimeException("There is no flight with number " + number);
 		System.out.print("Enter the seat for the passenger: ");
@@ -252,12 +264,12 @@ public class FlightReservationSystem
 	{
 		System.out.print("Enter the name of the passenger: ");
 		String name = consoleIn.nextLine();
-		Passenger p = PassengerDictionary.dictionary().get(name);
+		Passenger p = passengers.get(name);
 		if (p == null)
 			throw new RuntimeException("There is no passenger with name " + name);
 		System.out.print("Enter the number of the flight: ");
 		int number = readInt();
-		Flight f = FlightDictionary.dictionary().get(number);
+		Flight f = flights.get(number);
 		if (f == null)
 			throw new RuntimeException("There is no flight with number " + number);
 		System.out.print("Enter the seat for the passenger: ");
@@ -272,8 +284,8 @@ public class FlightReservationSystem
 	{
 		/* The output should be formatted much better, 
 		 * but show the format from a Map. */
-		String result = "\nThe passengers in the system are \n" + PassengerDictionary.dictionary();
-		result = result + "\n\nThe flights in the system are \n" + FlightDictionary.dictionary();
+		String result = "\nThe passengers in the system are \n" + passengers;
+		result = result + "\n\nThe flights in the system are \n" + flights;
 
 		
 
