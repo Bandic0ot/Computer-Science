@@ -1,0 +1,17 @@
+package containers;
+
+import java.util.TreeMap;
+import entities.Flight;
+
+public class FlightDictionary {
+
+	private FlightDictionary() {}
+	
+	private static TreeMap<Integer, Flight> dictionary;
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

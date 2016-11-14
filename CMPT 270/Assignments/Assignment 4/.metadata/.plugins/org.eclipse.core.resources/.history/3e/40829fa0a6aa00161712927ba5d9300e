@@ -1,0 +1,32 @@
+package containers;
+
+import java.util.TreeMap;
+import entities.Flight;
+
+public class FlightDictionary {
+
+	// -------- Constructor --------
+	private FlightDictionary() {}
+	
+	
+	// -------- Instance Variables --------
+	private static TreeMap<Integer, Flight> dictionary;
+	
+	
+	// -------- Methods --------
+	public static TreeMap<Integer, Flight> dictionary() {
+		if(dictionary == null) {
+			dictionary = new TreeMap<Integer, Flight>();
+		}
+		
+		return dictionary;
+	}
+	
+	
+	// -------- Testing --------
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

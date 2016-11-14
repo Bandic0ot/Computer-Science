@@ -3,6 +3,8 @@ package startup;
 import java.util.InputMismatchException;
 import java.util.TreeMap;
 
+import containers.PassengerDictionary;
+
 import entities.Flight;
 import entities.Passenger;
 
@@ -29,6 +31,7 @@ public class FlightReservationSystem
 	/**
 	 * The scanner used to read input from the user.
 	 */
+
 	private Scanner consoleIn; //This is not necessary, but makes code a little cleaner
 	
 	/**

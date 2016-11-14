@@ -1,0 +1,14 @@
+package containers;
+
+public class FlightDictionary {
+
+	public FlightDictionary() {
+		// TODO Auto-generated constructor stub
+	}
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}
