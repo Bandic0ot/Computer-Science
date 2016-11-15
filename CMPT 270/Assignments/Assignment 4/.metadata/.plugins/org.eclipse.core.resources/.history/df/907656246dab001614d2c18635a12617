@@ -9,9 +9,7 @@ public class UserInterface {
 
 	
 	//-------- Instance Variables --------
-	/**
-	 * The scanner used to read input from the user.
-	 */
+	
 	private Scanner consoleIn;
 	
 	
@@ -126,14 +124,6 @@ public class UserInterface {
 	
 	public void sendMessage(String message) {
 		System.out.println(message);
-	}
-	
-	
-	public static void main(String args[]) {
-		Scanner in = new Scanner(System.in);
-		UserInterface user = new UserInterface(in);
-		
-		user.sendMessage(user.getPassName());
 	}
 
 }

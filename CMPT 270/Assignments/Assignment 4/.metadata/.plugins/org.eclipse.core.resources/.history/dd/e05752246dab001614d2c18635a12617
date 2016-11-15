@@ -22,16 +22,12 @@ import java.util.Scanner;
  */
 public class FlightReservationSystem 
 {
-	//-------- Instance Variables --------
 	/**
 	 * The scanner used to read input from the user.
 	 */
+
 	private Scanner consoleIn; //This is not necessary, but makes code a little cleaner
 	
-	private UserInterface userInterface;
-	
-	
-	//-------- Methods --------
 	/**
 	 * Initialize the system by creating the dictionaries and input scanner.
 	 */
@@ -82,7 +78,7 @@ public class FlightReservationSystem
 				}
 			} catch (RuntimeException e)
 			{
-				userInterface.sendMessage(e.getMessage());
+				System.out.println(e.getMessage());
 			}
 
 			opId = readOpId();
@@ -90,8 +86,6 @@ public class FlightReservationSystem
 		
 		System.out.println("The system at shutdown is as follows: " + toString());
 	}
-	
-	
 	
 	/**
 	 * Output the prompt to list the possible operations, 

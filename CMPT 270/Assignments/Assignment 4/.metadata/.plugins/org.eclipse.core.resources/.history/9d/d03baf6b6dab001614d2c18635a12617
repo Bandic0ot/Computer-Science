@@ -9,9 +9,7 @@ public class UserInterface {
 
 	
 	//-------- Instance Variables --------
-	/**
-	 * The scanner used to read input from the user.
-	 */
+	
 	private Scanner consoleIn;
 	
 	

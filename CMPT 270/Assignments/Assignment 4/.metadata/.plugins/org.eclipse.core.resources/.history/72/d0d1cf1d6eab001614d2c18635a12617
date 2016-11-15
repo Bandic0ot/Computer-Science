@@ -91,8 +91,6 @@ public class FlightReservationSystem
 		System.out.println("The system at shutdown is as follows: " + toString());
 	}
 	
-	
-	
 	/**
 	 * Output the prompt to list the possible operations, 
 	 * and read selection picked by the user.

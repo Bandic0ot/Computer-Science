@@ -3,15 +3,11 @@ package interfaces;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-import containers.FlightDictionary;
-
 public class UserInterface {
 
 	
 	//-------- Instance Variables --------
-	/**
-	 * The scanner used to read input from the user.
-	 */
+	
 	private Scanner consoleIn;
 	
 	
@@ -46,6 +42,8 @@ public class UserInterface {
 		return id;
 	}
 	
+	
+	
 	/**
 	 * Read in an int value.  If a non-int value is entered, then issue another request.  
 	 * @return the int value read in
@@ -72,68 +70,6 @@ public class UserInterface {
 		while (!successful);
 		consoleIn.nextLine();  // discard the remainder of the line		
 		return result;
-	}
-	
-	public String getPassName() {
-		System.out.print("Enter the name of the passenger: ");
-		
-		return consoleIn.nextLine();
-	}
-	
-	public String getTelNumber() {
-		System.out.print("Enter the telephone number of the passenger: ");
-		
-		return consoleIn.nextLine();
-	}
-	
-	public int getFlightNumber() {
-		System.out.print("Enter the number of the flight: ");
-		int number = readInt();
-		
-		if(FlightDictionary.dictionary().containsKey(number)) {
-			throw new RuntimeException("Flight not added as there already " 
-					+ "is a flight with the number " + number);
-		}
-		
-		return number;
-	}
-	
-	public int getFlightWidth() {
-		System.out.print("Enter the width of the flight: ");
-		int width = readInt();
-		
-		return width;
-	}
-	
-	public int getFLightCapacity() {
-		System.out.print("Enter the capacity of the flight: ");
-		int capacity = readInt();
-		
-		return capacity;
-	}
-	
-	public String getMealPlan() {
-		System.out.print("Enter the meal plan of the passenger: ");
-		
-		return consoleIn.nextLine();
-	}
-	
-	public String getPassengerSeat() {
-		System.out.print("Enter the seat for the passenger: ");
-		
-		return consoleIn.nextLine();
-	}
-	
-	public void sendMessage(String message) {
-		System.out.println(message);
-	}
-	
-	
-	public static void main(String args[]) {
-		Scanner in = new Scanner(System.in);
-		UserInterface user = new UserInterface(in);
-		
-		user.sendMessage(user.getPassName());
 	}
 
 }
