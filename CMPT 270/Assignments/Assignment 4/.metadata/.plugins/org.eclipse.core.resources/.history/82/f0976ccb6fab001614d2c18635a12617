@@ -1,5 +1,7 @@
 package startup;
 
+import java.util.InputMismatchException;
+
 import containers.PassengerDictionary;
 import containers.FlightDictionary;
 
@@ -10,7 +12,7 @@ import commands.AddPassengerCommand;
 
 import interfaces.UserInterface;
 
-//import java.util.Scanner;
+import java.util.Scanner;
 
 /**
  * A simple flight reservation system whereby passengers can be created, flights created,
@@ -21,6 +23,11 @@ import interfaces.UserInterface;
 public class FlightReservationSystem 
 {
 	//-------- Instance Variables --------
+	/**
+	 * The scanner used to read input from the user.
+	 */
+	private Scanner consoleIn; //This is not necessary, but makes code a little cleaner
+	
 	private UserInterface userInterface;
 	
 	
@@ -28,9 +35,9 @@ public class FlightReservationSystem
 	/**
 	 * Initialize the system by creating the dictionaries and input scanner.
 	 */
-	public FlightReservationSystem()
+	public FlightReservationSystem(Scanner in)
 	{
-		userInterface = new UserInterface();
+		consoleIn = in;
 	}
 	
 	/**
@@ -39,7 +46,7 @@ public class FlightReservationSystem
 	 */
 	public void run()
 	{
-		int opId = userInterface.readOpId();
+		int opId = readOpId();
 		while (opId != 0)
 		{
 			try
@@ -65,23 +72,76 @@ public class FlightReservationSystem
 					assignSeatForPassenger();
 					break;
 				case 7:
-					userInterface.sendMessage("\nThe passengers in the system are \n" + PassengerDictionary.dictionary());
+					System.out.println("\nThe passengers in the system are \n" + PassengerDictionary.dictionary());
 					break;
 				case 8:
-					userInterface.sendMessage("\nThe flights in the system are \n" + FlightDictionary.dictionary());
+					System.out.println("\nThe flights in the system are \n" + FlightDictionary.dictionary());
 					break;
 				default:
-					userInterface.sendMessage("Invalid int value; try again");
+					System.out.println("Invalid int value; try again");
 				}
 			} catch (RuntimeException e)
 			{
 				userInterface.sendMessage(e.getMessage());
 			}
 
-			opId = userInterface.readOpId();
+			opId = readOpId();
 		}
 		
-		userInterface.sendMessage("The system at shutdown is as follows: " + toString());
+		System.out.println("The system at shutdown is as follows: " + toString());
+	}
+	
+	
+	
+	/**
+	 * Output the prompt to list the possible operations, 
+	 * and read selection picked by the user.
+	 * @return  the int corresponding to the operation selected
+	 */
+	public int readOpId()
+	{
+		int id;
+		System.out.print("Please select an operation to do"
+				+ "\n0: quit"
+				+ "\n1: add a new passenger"
+				+ "\n2: add a new flight"
+				+ "\n3: display the empty seats of a flight"
+				+ "\n4: book a passenger on a flight"
+				+ "\n5: book a first-class passenger on a flight"
+				+ "\n6: assign a passenger a seat"
+				+ "\n7: display all the passengers"
+				+ "\n8: display all the flights"
+				+ "\nEnter the number of your selection: ");
+		id = readInt();
+		return id;
+	}
+	
+	/**
+	 * Read in an int value.  If a non-int value is entered, then issue another request.  
+	 * @return the int value read in
+	 */
+	public int readInt()
+	{
+		int result = 0;    // must be initialized
+		//Scanner consoleIn = new Scanner(System.in);
+		boolean successful ;
+		do
+		{
+			successful = true;
+			try
+			{
+				result = consoleIn.nextInt();
+			} catch (InputMismatchException e)
+			{
+				successful = false;
+				String faultyInput = consoleIn.nextLine();
+				System.out.print("You entered \"" + faultyInput + "\" which is not an int." 
+	                               + "\nPlease try again: ");
+			}
+		}
+		while (!successful);
+		consoleIn.nextLine();  // discard the remainder of the line		
+		return result;
 	}
 	
 	/**
@@ -90,8 +150,10 @@ public class FlightReservationSystem
 	 */
 	public void addPassenger()
 	{
-		String name = userInterface.getPassName();
-		String telNumber = userInterface.getTelNumber();
+		System.out.print("Enter the name of the passenger: ");
+		String name = consoleIn.nextLine();
+		System.out.print("Enter the telephone number of the passenger: ");
+		String telNumber = consoleIn.nextLine();
 		
 		AddPassengerCommand passCommand = new AddPassengerCommand();
 		passCommand.addPassToDict(name, telNumber);
@@ -107,14 +169,15 @@ public class FlightReservationSystem
 	 */
 	public void addFlight()
 	{
-		int number = userInterface.getFlightNumber();
-		if (FlightDictionary.dictionary().containsKey(number)) {
+		System.out.print("Enter the number of the flight: ");
+		int number = readInt();
+		if (FlightDictionary.dictionary().containsKey(number))
 			throw new RuntimeException("Flight not added as there already "
 					+ "is a flight with the number " + number);
-		}
-		int width = userInterface.getFlightWidth();
-		int capacity = userInterface.getFLightCapacity();
-		
+		System.out.print("Enter the width of the flight: ");
+		int width = readInt();
+		System.out.print("Enter the capacity of the flight: ");
+		int capacity = readInt();
 		Flight f = new Flight(number, width, capacity);
 		Flight sameNumberFlight = FlightDictionary.dictionary().put(number, f);
 		if (sameNumberFlight != null)
@@ -130,12 +193,13 @@ public class FlightReservationSystem
 	 */
 	public void displayEmptySeats()
 	{
-		int number = userInterface.getFlightNumber();
+		System.out.print("Enter the number of the flight: ");
+		int number = readInt();
 		Flight f = FlightDictionary.dictionary().get(number);
 		if (f == null)
 			throw new RuntimeException("There is no flight with number " + number);
 		else 
-			userInterface.sendMessage(f.availableSeats());
+			System.out.println(f.availableSeats());
 	}
 	
 	/**
@@ -144,12 +208,13 @@ public class FlightReservationSystem
 	 */
 	public void bookPassenger()
 	{
-		String name = userInterface.getPassName();
+		System.out.print("Enter the name of the passenger: ");
+		String name = consoleIn.nextLine();
 		Passenger p = PassengerDictionary.dictionary().get(name);
 		if (p == null)
 			throw new RuntimeException("There is no passenger with name " + name);
-		
-		int number = userInterface.getFlightNumber();
+		System.out.print("Enter the number of the flight: ");
+		int number = readInt();
 		Flight f = FlightDictionary.dictionary().get(number);
 		if (f == null)
 			throw new RuntimeException("There is no flight with number " + number);
@@ -163,16 +228,20 @@ public class FlightReservationSystem
 	 */
 	public void bookFirstClassPassenger()
 	{
-		String name = userInterface.getPassName();
+		System.out.print("Enter the name of the passenger: ");
+		String name = consoleIn.nextLine();
 		Passenger p = PassengerDictionary.dictionary().get(name);
 		if (p == null)
 			throw new RuntimeException("There is no passenger with name " + name);
-		int number = userInterface.getFlightNumber();
+		System.out.print("Enter the number of the flight: ");
+		int number = readInt();
 		Flight f = FlightDictionary.dictionary().get(number);
 		if (f == null)
 			throw new RuntimeException("There is no flight with number " + number);
-		String seat = userInterface.getPassSeat();
-		String meal = userInterface.getMealPlan();
+		System.out.print("Enter the seat for the passenger: ");
+		String seat = consoleIn.nextLine();
+		System.out.print("Enter the meal plan of the passenger: ");
+		String meal = consoleIn.nextLine();
 		f.makeFirstClassBooking(p, seat, meal);
 	}
 	
@@ -182,15 +251,18 @@ public class FlightReservationSystem
 	 */
 	public void assignSeatForPassenger()
 	{
-		String name = userInterface.getPassName();
+		System.out.print("Enter the name of the passenger: ");
+		String name = consoleIn.nextLine();
 		Passenger p = PassengerDictionary.dictionary().get(name);
 		if (p == null)
 			throw new RuntimeException("There is no passenger with name " + name);
-		int number = userInterface.getFlightNumber();
+		System.out.print("Enter the number of the flight: ");
+		int number = readInt();
 		Flight f = FlightDictionary.dictionary().get(number);
 		if (f == null)
 			throw new RuntimeException("There is no flight with number " + number);
-		String seat = userInterface.getPassSeat();
+		System.out.print("Enter the seat for the passenger: ");
+		String seat = consoleIn.nextLine();
 		f.assignSeat(p, seat);
 	}
 	
@@ -217,8 +289,10 @@ public class FlightReservationSystem
 	 */
 	public static void main(String[] args) 
 	{
-		FlightReservationSystem sys = new FlightReservationSystem();
+		Scanner in = new Scanner(System.in);
+		FlightReservationSystem sys = new FlightReservationSystem(in);
 		sys.run();
+		in.close();
 		
 	}
 }

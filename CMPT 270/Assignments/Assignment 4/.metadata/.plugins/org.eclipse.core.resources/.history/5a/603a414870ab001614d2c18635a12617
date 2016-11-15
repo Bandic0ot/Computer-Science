@@ -1,5 +1,7 @@
 package startup;
 
+import java.util.InputMismatchException;
+
 import containers.PassengerDictionary;
 import containers.FlightDictionary;
 
@@ -10,7 +12,7 @@ import commands.AddPassengerCommand;
 
 import interfaces.UserInterface;
 
-//import java.util.Scanner;
+import java.util.Scanner;
 
 /**
  * A simple flight reservation system whereby passengers can be created, flights created,
@@ -65,13 +67,13 @@ public class FlightReservationSystem
 					assignSeatForPassenger();
 					break;
 				case 7:
-					userInterface.sendMessage("\nThe passengers in the system are \n" + PassengerDictionary.dictionary());
+					System.out.println("\nThe passengers in the system are \n" + PassengerDictionary.dictionary());
 					break;
 				case 8:
-					userInterface.sendMessage("\nThe flights in the system are \n" + FlightDictionary.dictionary());
+					System.out.println("\nThe flights in the system are \n" + FlightDictionary.dictionary());
 					break;
 				default:
-					userInterface.sendMessage("Invalid int value; try again");
+					System.out.println("Invalid int value; try again");
 				}
 			} catch (RuntimeException e)
 			{
@@ -81,7 +83,7 @@ public class FlightReservationSystem
 			opId = userInterface.readOpId();
 		}
 		
-		userInterface.sendMessage("The system at shutdown is as follows: " + toString());
+		System.out.println("The system at shutdown is as follows: " + toString());
 	}
 	
 	/**
@@ -135,7 +137,7 @@ public class FlightReservationSystem
 		if (f == null)
 			throw new RuntimeException("There is no flight with number " + number);
 		else 
-			userInterface.sendMessage(f.availableSeats());
+			System.out.println(f.availableSeats());
 	}
 	
 	/**
@@ -217,8 +219,10 @@ public class FlightReservationSystem
 	 */
 	public static void main(String[] args) 
 	{
+		Scanner in = new Scanner(System.in);
 		FlightReservationSystem sys = new FlightReservationSystem();
 		sys.run();
+		in.close();
 		
 	}
 }

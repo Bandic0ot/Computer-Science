@@ -3,6 +3,8 @@ package interfaces;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
+import containers.FlightDictionary;
+
 public class UserInterface {
 
 	
@@ -80,6 +82,11 @@ public class UserInterface {
 	public int getFlightNumber() {
 		System.out.print("Enter the number of the flight: ");
 		int number = readInt();
+		
+		if(FlightDictionary.dictionary().containsKey(number)) {
+			throw new RuntimeException("Flight not added as there already " 
+					+ "is a flight with the number " + number);
+		}
 		
 		return number;
 	}

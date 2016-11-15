@@ -81,7 +81,7 @@ public class FlightReservationSystem
 			opId = userInterface.readOpId();
 		}
 		
-		userInterface.sendMessage("The system at shutdown is as follows: " + toString());
+		System.out.println("The system at shutdown is as follows: " + toString());
 	}
 	
 	/**
@@ -135,7 +135,7 @@ public class FlightReservationSystem
 		if (f == null)
 			throw new RuntimeException("There is no flight with number " + number);
 		else 
-			userInterface.sendMessage(f.availableSeats());
+			System.out.println(f.availableSeats());
 	}
 	
 	/**
@@ -217,8 +217,10 @@ public class FlightReservationSystem
 	 */
 	public static void main(String[] args) 
 	{
+		//Scanner in = new Scanner(System.in);
 		FlightReservationSystem sys = new FlightReservationSystem();
 		sys.run();
+		//in.close();
 		
 	}
 }
