@@ -8,6 +8,8 @@ import containers.FlightDictionary;
 import entities.Flight;
 import entities.Passenger;
 
+import commands.AddPassengerCommand;
+
 import java.util.Scanner;
 
 /**
@@ -144,22 +146,13 @@ public class FlightReservationSystem
 		String name = consoleIn.nextLine();
 		System.out.print("Enter the telephone number of the passenger: ");
 		String telNumber = consoleIn.nextLine();
-		if (PassengerDictionary.dictionary().containsKey(name))
-		{
-			throw new RuntimeException("Person not added as there already "
-								+ "is a person by the name " + name);
+		
+		AddPassengerCommand passCommand = new AddPassengerCommand();
+		passCommand.addPassToDict(name, telNumber);
+		
+		if(!passCommand.wasSuccessful()) {
+			
 		}
-		else
-		{
-			Passenger p = new Passenger(name, telNumber);
-			Passenger sameNamePerson = PassengerDictionary.dictionary().put(name, p);
-			if (sameNamePerson != null)
-			{
-				PassengerDictionary.dictionary().put(name, sameNamePerson);  // put the original person back
-				throw new RuntimeException("Name in the dictionary even though " +
-						"containsKey failed.  Passenger " + name + " not entered.");
-			}
-		}	
 	}
 
 	/**

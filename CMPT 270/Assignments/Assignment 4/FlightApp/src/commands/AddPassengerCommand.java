@@ -5,7 +5,7 @@ import entities.Passenger;
 
 public class AddPassengerCommand extends CommandStatus {
 	
-	public void addPassenger(String name, String telNumber) {
+	public void addPassToDict(String name, String telNumber) {
 		
 		if(name == null) {
 			successful = false;
@@ -21,7 +21,9 @@ public class AddPassengerCommand extends CommandStatus {
 		else {
 			try {
 				Passenger p = new Passenger(name, telNumber);
+				
 				PassengerDictionary.dictionary().put(name, p);
+				
 				successful = true;
 			}
 			catch(RuntimeException e) {
@@ -32,7 +34,7 @@ public class AddPassengerCommand extends CommandStatus {
 	}
 	
 	public static void main(String[] args) {
-		addPassenger("Matthew Mulenga", "555-1234");
+		//addPassenger("Matthew Mulenga", "555-1234");
 	}
 }
 
