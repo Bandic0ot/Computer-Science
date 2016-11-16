@@ -8,11 +8,23 @@ import entities.Passenger;
 
 public class BookPassengerCommand extends CommandStatus {
 
-	public void addPassToFlight(String name, Flight flight) {
+	public void addPassToFlight(String name, int number) {
 		Passenger p = PassengerDictionary.dictionary().get(name);
-		
-		if(p == null) {
-			throw new RuntimeException("There is no passenger with name " + name);
+		Flight f = FlightDictionary.dictionary().get(number);
+
+		try {
+			if(p == null) {
+				throw new RuntimeException("There is no passenger with name " + name);
+			} else if(f == null) {
+				throw new RuntimeException("There is no flight with number " + number);
+			} else {
+				f.makeBooking(p);
+				successful = true;
+			}
+		}
+		catch(RuntimeException e) {
+			successful = false;
+			errorMessage = e.getMessage();
 		}
 	}
 
