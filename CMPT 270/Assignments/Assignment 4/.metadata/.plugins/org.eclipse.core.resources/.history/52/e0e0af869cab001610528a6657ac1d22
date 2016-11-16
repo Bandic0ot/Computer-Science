@@ -1,0 +1,39 @@
+package commands;
+
+import containers.PassengerDictionary;
+
+public class AddPassengerCommand extends CommandStatus {
+	
+	public void addPassToDict(String name, String telNumber) {
+		
+		if(name == null) {
+			successful = false;
+			errorMessage = "Error, the name was null.";
+			return;
+		} 
+		else if(PassengerDictionary.dictionary().containsKey(name)) {
+			successful = false;
+			errorMessage = "Person not added as there already " 
+					+ "is a person by the name " + name;
+
+		}
+		else {
+			try {
+				Passenger p = new Passenger(name, telNumber);
+				
+				PassengerDictionary.dictionary().put(name, p);
+				
+				successful = true;
+			}
+			catch(RuntimeException e) {
+				successful = false;
+				errorMessage = e.getMessage();
+			}
+		}
+	}
+	
+	public static void main(String[] args) {
+		//addPassenger("Matthew Mulenga", "555-1234");
+	}
+}
+

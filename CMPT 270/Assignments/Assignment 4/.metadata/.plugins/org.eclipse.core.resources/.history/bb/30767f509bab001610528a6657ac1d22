@@ -7,7 +7,6 @@ import entities.Flight;
 import entities.Passenger;
 
 import commands.AddPassengerCommand;
-import commands.DisplayEmptySeatCommand;
 
 import interfaces.UserInterface;
 
@@ -98,7 +97,7 @@ public class FlightReservationSystem
 		passCommand.addPassToDict(name, telNumber);
 		
 		if(!passCommand.wasSuccessful()) {
-			userInterface.sendMessage(passCommand.getErrorMessage());
+			
 		}
 	}
 
@@ -132,15 +131,11 @@ public class FlightReservationSystem
 	public void displayEmptySeats()
 	{
 		int number = userInterface.getFlightNumber();
-		DisplayEmptySeatCommand seatCommand = new DisplayEmptySeatCommand();
-		seatCommand.displayEmptySeat(number);
-		
-		if(seatCommand.wasSuccessful()) {
-			userInterface.sendMessage(seatCommand.getAvailableSeatString());
-		} else {
-			userInterface.sendMessage(seatCommand.getErrorMessage());
-		}
-			
+		Flight f = FlightDictionary.dictionary().get(number);
+		if (f == null)
+			throw new RuntimeException("There is no flight with number " + number);
+		else 
+			userInterface.sendMessage(f.availableSeats());
 	}
 	
 	/**

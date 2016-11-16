@@ -136,9 +136,7 @@ public class FlightReservationSystem
 		seatCommand.displayEmptySeat(number);
 		
 		if(seatCommand.wasSuccessful()) {
-			userInterface.sendMessage(seatCommand.getAvailableSeatString());
-		} else {
-			userInterface.sendMessage(seatCommand.getErrorMessage());
+			userInterface.sendMessage(seatCommand.openSeats());
 		}
 			
 	}

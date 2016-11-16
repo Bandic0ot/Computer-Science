@@ -2,6 +2,7 @@
 <qualifiedTypeNameHistroy>
 <fullyQualifiedTypeName name="java.util.HashMap"/>
 <fullyQualifiedTypeName name="entities.Passenger"/>
-<fullyQualifiedTypeName name="containers.FlightDictionary"/>
 <fullyQualifiedTypeName name="containers.PassengerDictionary"/>
+<fullyQualifiedTypeName name="containers.FlightDictionary"/>
+<fullyQualifiedTypeName name="interfaces.UserInterface"/>
 </qualifiedTypeNameHistroy>
