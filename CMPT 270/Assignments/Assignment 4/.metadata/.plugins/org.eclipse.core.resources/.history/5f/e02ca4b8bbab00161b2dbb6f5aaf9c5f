@@ -23,15 +23,12 @@ import interfaces.UserInterface;
 public class FlightReservationSystem 
 {
 	//-------- Instance Variables --------
-	/**
-	 * The user interface, handles all I/O.
-	 */
 	private UserInterface userInterface;
 	
 	
 	//-------- Methods --------
 	/**
-	 * Constructor that initializes the userInterface.
+	 * Initialize the system by creating the dictionaries and input scanner.
 	 */
 	public FlightReservationSystem()
 	{
@@ -137,7 +134,7 @@ public class FlightReservationSystem
 	{
 		int number = userInterface.getFlightNumber();
 		DisplayEmptySeatCommand seatCommand = new DisplayEmptySeatCommand();
-		seatCommand.emptySeat(number);
+		seatCommand.displayEmptySeat(number);
 		
 		if(seatCommand.wasSuccessful()) {
 			userInterface.sendMessage(seatCommand.getAvailableSeatString());

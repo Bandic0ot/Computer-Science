@@ -16,10 +16,10 @@ public class BookPassengerCommand extends CommandStatus {
 	//-------- Methods --------
 	/**
 	 * Books the given passenger into the given flight.
-	 * @precond p != null
-	 * @precond f != null
-	 * @param name The name of the passenger.
-	 * @param number The flight number.
+	 * @param name
+	 * The name of the passenger.
+	 * @param number
+	 * The flight number.
 	 */
 	public void addPassToFlight(String name, int number) {
 		Passenger p = PassengerDictionary.dictionary().get(name);

@@ -13,9 +13,10 @@ public class AddPassengerCommand extends CommandStatus {
 	//-------- Methods --------
 	/**
 	 * A method which adds a passenger to the list of passengers.
-	 * @precond name != null
-	 * @param name The name of the passenger.
-	 * @param telNumber The telephone number of the passenger.
+	 * @param name
+	 * The name of the passenger.
+	 * @param telNumber
+	 * The telephone number of the passenger.
 	 */
 	public void addPassToDict(String name, String telNumber) {
 		

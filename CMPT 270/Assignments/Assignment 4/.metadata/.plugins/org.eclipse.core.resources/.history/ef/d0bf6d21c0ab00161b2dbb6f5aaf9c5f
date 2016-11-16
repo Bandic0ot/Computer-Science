@@ -3,27 +3,12 @@ package commands;
 import containers.FlightDictionary;
 import entities.Flight;
 
-/**
- * A class which handles the displaying of any empty
- * seats on a flight.
- * @author Matt
- *
- */
+
 public class DisplayEmptySeatCommand extends CommandStatus {
 	
-	//-------- Instance Variables --------
-	/**
-	 * A string which stores the list of given seats.
-	 */
 	private String availableSeatString;
 	
-	//-------- Methods --------
-	/**
-	 * A method which determines which seat are empty.
-	 * @precond f != null
-	 * @param number
-	 */
-	public void emptySeat(int number) {
+	public void displayEmptySeat(int number) {
 		Flight f = FlightDictionary.dictionary().get(number);
 		
 		try {

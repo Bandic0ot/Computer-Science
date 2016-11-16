@@ -17,12 +17,12 @@ public class DisplayEmptySeatCommand extends CommandStatus {
 	 */
 	private String availableSeatString;
 	
-	//-------- Methods --------
+	
 	/**
-	 * A method which determines which seat are empty.
-	 * @precond f != null
+	 * D
 	 * @param number
 	 */
+	//-------- Methods --------
 	public void emptySeat(int number) {
 		Flight f = FlightDictionary.dictionary().get(number);
 		

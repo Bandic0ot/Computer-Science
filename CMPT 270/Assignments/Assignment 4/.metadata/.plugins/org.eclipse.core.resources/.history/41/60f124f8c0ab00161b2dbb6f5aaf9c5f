@@ -30,8 +30,8 @@ public class PassengerDictionary {
 	// -------- Methods --------
 	/**
 	 * A method which is used to reference the dictionary.
-	 * @precond dictionary != null
-	 * @return Returns the dictionary.
+	 * @return
+	 * Returns the dictionary.
 	 */
 	public static TreeMap<String, Passenger> dictionary() {
 		if(dictionary == null) {

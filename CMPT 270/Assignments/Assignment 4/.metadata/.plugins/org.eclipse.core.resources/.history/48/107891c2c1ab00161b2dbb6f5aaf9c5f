@@ -137,7 +137,7 @@ public class FlightReservationSystem
 	{
 		int number = userInterface.getFlightNumber();
 		DisplayEmptySeatCommand seatCommand = new DisplayEmptySeatCommand();
-		seatCommand.emptySeat(number);
+		seatCommand.displayEmptySeat(number);
 		
 		if(seatCommand.wasSuccessful()) {
 			userInterface.sendMessage(seatCommand.getAvailableSeatString());

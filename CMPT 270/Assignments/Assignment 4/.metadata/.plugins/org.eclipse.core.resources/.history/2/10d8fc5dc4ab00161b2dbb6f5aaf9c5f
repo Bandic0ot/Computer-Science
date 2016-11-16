@@ -144,8 +144,8 @@ public class UserInterface {
 	}
 	
 	/**
-	 * Takes a string as an argument and displays it on the console.
-	 * @param message A string containing a message.
+	 * 
+	 * @param message
 	 */
 	public void sendMessage(String message) {
 		System.out.println(message);

@@ -124,8 +124,8 @@ public class UserInterface {
 	}
 	
 	/**
-	 * Reads the meal plan of the passenger in from the console.
-	 * @return The meal plan of the passenger.
+	 * 
+	 * @return consoleIn.nextLine()
 	 */
 	public String getMealPlan() {
 		System.out.print("Enter the meal plan of the passenger: ");
@@ -134,8 +134,8 @@ public class UserInterface {
 	}
 	
 	/**
-	 * Reads the seat of the passenger in from the console.
-	 * @return The seat of the passenger.
+	 * 
+	 * @return consoleIn.nextLine()
 	 */
 	public String getPassSeat() {
 		System.out.print("Enter the seat for the passenger: ");
@@ -144,8 +144,8 @@ public class UserInterface {
 	}
 	
 	/**
-	 * Takes a string as an argument and displays it on the console.
-	 * @param message A string containing a message.
+	 * 
+	 * @param message
 	 */
 	public void sendMessage(String message) {
 		System.out.println(message);

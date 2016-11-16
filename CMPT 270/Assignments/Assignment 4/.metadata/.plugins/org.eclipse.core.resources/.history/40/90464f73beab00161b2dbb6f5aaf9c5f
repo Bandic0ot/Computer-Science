@@ -3,20 +3,8 @@ package commands;
 import containers.PassengerDictionary;
 import entities.Passenger;
 
-/**
- * A class which handles the adding of a passenger to the 
- * passenger dictionary.
- * @author Matthew Mulenga
- *
- */
 public class AddPassengerCommand extends CommandStatus {
-	//-------- Methods --------
-	/**
-	 * A method which adds a passenger to the list of passengers.
-	 * @precond name != null
-	 * @param name The name of the passenger.
-	 * @param telNumber The telephone number of the passenger.
-	 */
+	
 	public void addPassToDict(String name, String telNumber) {
 		
 		if(name == null) {
