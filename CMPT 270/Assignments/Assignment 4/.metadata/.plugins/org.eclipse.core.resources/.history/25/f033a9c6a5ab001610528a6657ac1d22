@@ -1,0 +1,9 @@
+package commands;
+
+public class BookPassengerCommand extends CommandStatus {
+
+	public BookPassengerCommand() {
+		// TODO Auto-generated constructor stub
+	}
+
+}

@@ -1,0 +1,15 @@
+package commands;
+
+import containers.FlightDictionary;
+import containers.PassengerDictionary;
+
+import entities.Flight;
+import entities.Passenger;
+
+public class BookPassengerCommand extends CommandStatus {
+
+	public void addPassToFlight() {
+		Passenger p = Passenger
+	}
+
+}
