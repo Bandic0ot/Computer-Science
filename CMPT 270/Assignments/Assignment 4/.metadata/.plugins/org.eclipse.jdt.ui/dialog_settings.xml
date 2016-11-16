@@ -10,7 +10,7 @@
 		<item value="false" key="nodeprecated"/>
 		<item value="false" key="nonavbar"/>
 		<item value="" key="docletpath"/>
-		<item value="" key="javadoc_command_history"/>
+		<item value="C:\Program Files\Java\jdk1.8.0_112\bin\javadoc.exe" key="javadoc_command_history"/>
 		<item value="1.8" key="source"/>
 		<item value="true" key="version"/>
 		<item value="" key="docletname"/>
@@ -66,8 +66,8 @@
 		<item value="616" key="DIALOG_WIDTH"/>
 		<item value="1|Segoe UI|9.0|0|WINDOWS|1|-12|0|0|0|400|0|0|0|1|0|0|0|0|Segoe UI" key="DIALOG_FONT_NAME"/>
 		<item value="567" key="DIALOG_HEIGHT"/>
-		<item value="660" key="DIALOG_X_ORIGIN"/>
-		<item value="150" key="DIALOG_Y_ORIGIN"/>
+		<item value="831" key="DIALOG_X_ORIGIN"/>
+		<item value="187" key="DIALOG_Y_ORIGIN"/>
 	</section>
 	<section name="completion_proposal_size">
 	</section>
@@ -91,6 +91,7 @@
 		<item value="false" key="JarManifestWizardPage.SAVE_MANIFEST"/>
 		<item value="false" key="JarPackageWizardPage.EXPORT_OUTPUT_FOLDER"/>
 		<list key="JarPackageWizardPage.DESTINATION_NAMES_ID">
+			<item value="C:\Users\Matt\Development\FlightApp.jar"/>
 			<item value="C:\Users\Matt\Development\assignment4.jar"/>
 		</list>
 	</section>
