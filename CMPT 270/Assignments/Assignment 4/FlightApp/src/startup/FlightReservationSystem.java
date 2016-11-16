@@ -19,6 +19,7 @@ import interfaces.UserInterface;
  * and passengers booked on the flights.  First class passengers are initially given a seat
  * and a meal plan.  Regular passengers are booked on a flight with no seat and can later 
  * be given a seat.
+ * @author Matthew Mulenga
  */
 public class FlightReservationSystem 
 {
@@ -211,10 +212,6 @@ public class FlightReservationSystem
 		 * but show the format from a Map. */
 		String result = "\nThe passengers in the system are \n" + PassengerDictionary.dictionary();
 		result = result + "\n\nThe flights in the system are \n" + FlightDictionary.dictionary();
-
-		
-
-		
 		
 		return result + "\n";
 	}

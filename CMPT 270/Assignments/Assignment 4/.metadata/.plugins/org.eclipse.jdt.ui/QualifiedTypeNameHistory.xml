@@ -7,4 +7,5 @@
 <fullyQualifiedTypeName name="containers.PassengerDictionary"/>
 <fullyQualifiedTypeName name="entities.Flight"/>
 <fullyQualifiedTypeName name="entities.Passenger"/>
+<fullyQualifiedTypeName name="commands.BookPassengerCommand"/>
 </qualifiedTypeNameHistroy>

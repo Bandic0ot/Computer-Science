@@ -40,5 +40,32 @@ public class BookPassengerCommand extends CommandStatus {
 			errorMessage = e.getMessage();
 		}
 	}
+	
+	
 
+	//-------- Testing --------
+	public static void main(String[] args) {
+		System.out.println("Testing BookPassengerCommand class");
+		int testFailed = 0;
+		
+		Flight f = new Flight(320, 3, 30);
+		Passenger p = new Passenger("Matthew Mulenga", "555-1234");
+		BookPassengerCommand command = new BookPassengerCommand();
+		
+		PassengerDictionary.dictionary().put("Matthew Mulenga", p);
+		FlightDictionary.dictionary().put(320, f);
+		
+		try {
+			command.addPassToFlight("Matthew Mulenga", 320);
+			if(!p.hasBookingOn(f)) {
+				testFailed++;
+				throw new RuntimeException("Something is wrong with the addPassToFlight method.");
+			}
+
+		} catch(RuntimeException e) {
+			System.out.println(e.getMessage());
+		}
+		
+		System.out.println("Number of tests failed: " + testFailed);
+	}
 }

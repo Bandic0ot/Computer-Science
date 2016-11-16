@@ -45,8 +45,31 @@ public class AddPassengerCommand extends CommandStatus {
 		}
 	}
 	
+	
+	//-------- Testing --------
 	public static void main(String[] args) {
-		//addPassenger("Matthew Mulenga", "555-1234");
+		System.out.println("Testing AddPassengerCommand class");
+		
+		AddPassengerCommand command = new AddPassengerCommand();
+		int testFailed = 0;
+		
+		try {
+			command.addPassToDict("Matthew Mulenga", "555-1234");
+			if(PassengerDictionary.dictionary().size() != 1) {
+				testFailed++;
+				throw new RuntimeException("Something is wrong with the addPassToDict method.");
+			} 
+
+			PassengerDictionary.dictionary().remove("Matthew Mulenga");
+			if(PassengerDictionary.dictionary().size() != 0) {
+				testFailed++;
+				throw new RuntimeException("Something is wrong with the addPassToDict method.");
+			}
+		} catch(RuntimeException e) {
+			System.out.println(e.getMessage());
+		}
+		
+		System.out.println("Number of tests failed: " + testFailed);
 	}
 }
 

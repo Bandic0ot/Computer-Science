@@ -150,12 +150,4 @@ public class UserInterface {
 	public void sendMessage(String message) {
 		System.out.println(message);
 	}
-	
-	
-	public static void main(String args[]) {
-		UserInterface user = new UserInterface();
-		
-		user.sendMessage(user.getPassName());
-	}
-
 }

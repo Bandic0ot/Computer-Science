@@ -6,7 +6,7 @@ import entities.Flight;
 /**
  * A class which handles the displaying of any empty
  * seats on a flight.
- * @author Matt
+ * @author Matthew Mulenga
  *
  */
 public class DisplayEmptySeatCommand extends CommandStatus {
@@ -43,5 +43,29 @@ public class DisplayEmptySeatCommand extends CommandStatus {
 	public String getAvailableSeatString() {
 		return availableSeatString;
 	}
+	
+	
+	
+	//-------- Testing --------
+	public static void main(String[] args) {
+		System.out.println("Testing DisplayEmptySeatCommand class");
+		
+		DisplayEmptySeatCommand command = new DisplayEmptySeatCommand();
+		Flight f = new Flight(320, 3, 30);
+		FlightDictionary.dictionary().put(320, f);
+		int testFailed = 0;
+		
+		try {
+			command.emptySeat(f.getNumber());
+			if(command.availableSeatString == null) {
+				testFailed++;
+				throw new RuntimeException("Something is wrong with the emptySeat or getAvailableSeatString methods.");
+			}
 
+		} catch(RuntimeException e) {
+			System.out.println(e.getMessage());
+		}
+		
+		System.out.println("Number of tests failed: " + testFailed);
+	}
 }

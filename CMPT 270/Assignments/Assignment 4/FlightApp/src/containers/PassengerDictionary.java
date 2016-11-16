@@ -45,20 +45,27 @@ public class PassengerDictionary {
 	
 	// -------- Testing --------
 	public static void main(String args[]) {
-		System.out.println("Testing");
-		
+		System.out.println("Testing PassengerDictionary class");
+
 		Passenger p = new Passenger("Matthew Mulenga", "555-1234");
-		
-		dictionary().put("Matthew", p);
-		if(dictionary.size() != 1) {
-			System.out.println("Something is wrong with the dictionary.");
+		int testFailed = 0;
+
+		try {
+			dictionary().put("Matthew", p);
+			if(dictionary.size() != 1) {
+				testFailed++;
+				throw new RuntimeException("Something is wrong with the dictionary.");
+			}
+
+			dictionary().remove("Matthew");
+			if(dictionary.size() != 0) {
+				testFailed++;
+				throw new RuntimeException("Something is wrong with the dictionary.");
+			}
+		} catch(RuntimeException e) {
+			System.out.println(e.getMessage());
 		}
 		
-		System.out.println(dictionary().get("Matthew"));
-		
-		dictionary().remove("Matthew");
-		if(dictionary.size() != 0) {
-			System.out.println("Something is wrong with the dictionary.");
-		}
+		System.out.println("Number of tests failed: " + testFailed);
 	}
 }
