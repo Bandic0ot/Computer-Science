@@ -1,0 +1,9 @@
+package commands;
+
+public class DisplayEmptySeatCommand extends CommandStatus {
+
+	public void displayEmptySeat() {
+		
+	}
+
+}

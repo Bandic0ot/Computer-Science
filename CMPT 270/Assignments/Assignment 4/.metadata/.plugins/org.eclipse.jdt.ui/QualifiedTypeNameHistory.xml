@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+<fullyQualifiedTypeName name="java.util.HashMap"/>
+<fullyQualifiedTypeName name="interfaces.UserInterface"/>
+<fullyQualifiedTypeName name="commands.DisplayEmptySeatCommand"/>
+<fullyQualifiedTypeName name="containers.FlightDictionary"/>
+<fullyQualifiedTypeName name="containers.PassengerDictionary"/>
+<fullyQualifiedTypeName name="entities.Flight"/>
+<fullyQualifiedTypeName name="entities.Passenger"/>
+<fullyQualifiedTypeName name="commands.BookPassengerCommand"/>
+</qualifiedTypeNameHistroy>

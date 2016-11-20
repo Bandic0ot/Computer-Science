@@ -1,0 +1,64 @@
+package containers;
+
+import java.util.TreeMap;
+import entities.Flight;
+
+/**
+ * A class that follows the singleton pattern and stores the
+ * flight list for the rest of the program to access.
+ * @author Matthew Mulenga
+ *
+ */
+public class FlightDictionary {
+
+	// -------- Constructor --------
+	/**
+	 * A private constructor to ensure only one instance is created.
+	 */
+	private FlightDictionary() {}
+	
+	
+	
+	// -------- Instance Variables --------
+	/**
+	 * A dictionary which stores flights and uses their numbers as keys.
+	 */
+	private static TreeMap<Integer, Flight> dictionary;
+	
+	
+	
+	// -------- Methods --------
+	/**
+	 * A method which is used to reference the dictionary.
+	 * @precond dictionary != null
+	 * @return Returns the dictionary.
+	 */
+	public static TreeMap<Integer, Flight> dictionary() {
+		if(dictionary == null) {
+			dictionary = new TreeMap<Integer, Flight>();
+		}
+		
+		return dictionary;
+	}
+	
+	
+	// -------- Testing --------
+	public static void main(String[] args) {
+		System.out.println("Testing");
+		
+		Flight f = new Flight(325, 3, 30);
+		
+		dictionary().put(325, f);
+		if(dictionary().size() != 1) {
+			System.out.println("Something is wrong with the dictionary.");
+		}
+		
+		System.out.println(dictionary.get(325));
+
+		dictionary().remove(325);
+		if(dictionary().size() != 0) {
+			System.out.println("Something is wrong with the dictionary.");
+		}
+	}
+
+}

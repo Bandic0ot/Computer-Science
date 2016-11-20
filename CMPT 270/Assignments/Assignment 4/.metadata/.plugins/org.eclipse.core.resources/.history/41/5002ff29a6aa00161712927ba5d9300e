@@ -1,0 +1,50 @@
+package containers;
+
+import java.util.TreeMap;
+import entities.Passenger;
+
+public class PassengerDictionary {
+
+	// -------- Constructor --------
+	/**
+	 * A private constructor to ensure only one instance is created.
+	 */
+	private PassengerDictionary() {}
+
+	
+	
+	// -------- Instance Variables --------
+	private static TreeMap<String, Passenger> dictionary;
+	
+	
+	
+	// -------- Methods --------
+	public static TreeMap<String, Passenger> dictionary() {
+		if(dictionary == null) {
+			dictionary = new TreeMap<String, Passenger>();
+		}
+		
+		return dictionary;
+	}
+	
+	
+	
+	// -------- Testing --------
+	public static void main(String args[]) {
+		System.out.println("Testing");
+		
+		Passenger p = new Passenger("Matthew Mulenga", "555-1234");
+		
+		dictionary().put("Matthew", p);
+		if(dictionary.size() != 1) {
+			System.out.println("Something is wrong with the dictionary.");
+		}
+		
+		System.out.println(dictionary().get("Matthew"));
+		
+		dictionary().remove("Matthew");
+		if(dictionary.size() != 0) {
+			System.out.println("Something is wrong with the dictionary.");
+		}
+	}
+}

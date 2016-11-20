@@ -1,0 +1,44 @@
+package commands;
+
+import containers.FlightDictionary;
+import containers.PassengerDictionary;
+
+import entities.Flight;
+import entities.Passenger;
+
+/**
+ * A class which handles the booking of a passenger
+ * on a flight.
+ * @author Matthew Mulenga
+ *
+ */
+public class BookPassengerCommand extends CommandStatus {
+	//-------- Methods --------
+	/**
+	 * Books the given passenger into the given flight.
+	 * @param name
+	 * The name of the passenger.
+	 * @param number
+	 * The flight number.
+	 */
+	public void addPassToFlight(String name, int number) {
+		Passenger p = PassengerDictionary.dictionary().get(name);
+		Flight f = FlightDictionary.dictionary().get(number);
+
+		try {
+			if(p == null) {
+				throw new RuntimeException("There is no passenger with name " + name);
+			} else if(f == null) {
+				throw new RuntimeException("There is no flight with number " + number);
+			} else {
+				f.makeBooking(p);
+				successful = true;
+			}
+		}
+		catch(RuntimeException e) {
+			successful = false;
+			errorMessage = e.getMessage();
+		}
+	}
+
+}

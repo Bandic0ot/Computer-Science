@@ -1,0 +1,131 @@
+package interfaces;
+
+import java.util.InputMismatchException;
+import java.util.Scanner;
+
+import containers.FlightDictionary;
+
+public class UserInterface {
+
+	
+	//-------- Instance Variables --------
+	/**
+	 * The scanner used to read input from the user.
+	 */
+	private Scanner consoleIn = new Scanner(System.in);
+	
+	
+	
+	//-------- Methods ---------
+	/**
+	 * Output the prompt to list the possible operations, 
+	 * and read selection picked by the user.
+	 * @return  the int corresponding to the operation selected
+	 */
+	public int readOpId() {
+		int id;
+		System.out.print("Please select an operation to do"
+				+ "\n0: quit"
+				+ "\n1: add a new passenger"
+				+ "\n2: add a new flight"
+				+ "\n3: display the empty seats of a flight"
+				+ "\n4: book a passenger on a flight"
+				+ "\n5: book a first-class passenger on a flight"
+				+ "\n6: assign a passenger a seat"
+				+ "\n7: display all the passengers"
+				+ "\n8: display all the flights"
+				+ "\nEnter the number of your selection: ");
+		id = readInt();
+		return id;
+	}
+	
+	/**
+	 * Read in an int value.  If a non-int value is entered, then issue another request.  
+	 * @return the int value read in
+	 */
+	public int readInt()
+	{
+		int result = 0;    // must be initialized
+		//Scanner consoleIn = new Scanner(System.in);
+		boolean successful ;
+		do
+		{
+			successful = true;
+			try
+			{
+				result = consoleIn.nextInt();
+			} catch (InputMismatchException e)
+			{
+				successful = false;
+				String faultyInput = consoleIn.nextLine();
+				System.out.print("You entered \"" + faultyInput + "\" which is not an int." 
+	                               + "\nPlease try again: ");
+			}
+		}
+		while (!successful);
+		consoleIn.nextLine();  // discard the remainder of the line		
+		return result;
+	}
+	
+	public String getPassName() {
+		System.out.print("Enter the name of the passenger: ");
+		
+		return consoleIn.nextLine();
+	}
+	
+	public String getTelNumber() {
+		System.out.print("Enter the telephone number of the passenger: ");
+		
+		return consoleIn.nextLine();
+	}
+	
+	public int getFlightNumber() {
+		System.out.print("Enter the number of the flight: ");
+		int number = readInt();
+		
+		if(FlightDictionary.dictionary().containsKey(number)) {
+			throw new RuntimeException("Flight not added as there already " 
+					+ "is a flight with the number " + number);
+		}
+		
+		return number;
+	}
+	
+	public int getFlightWidth() {
+		System.out.print("Enter the width of the flight: ");
+		int width = readInt();
+		
+		return width;
+	}
+	
+	public int getFLightCapacity() {
+		System.out.print("Enter the capacity of the flight: ");
+		int capacity = readInt();
+		
+		return capacity;
+	}
+	
+	public String getMealPlan() {
+		System.out.print("Enter the meal plan of the passenger: ");
+		
+		return consoleIn.nextLine();
+	}
+	
+	public String getPassSeat() {
+		System.out.print("Enter the seat for the passenger: ");
+		
+		return consoleIn.nextLine();
+	}
+	
+	public void sendMessage(String message) {
+		System.out.println(message);
+	}
+	
+	
+	public static void main(String args[]) {
+		UserInterface user = new UserInterface();
+		
+		user.sendMessage(user.getPassName());
+	}
+
+}
