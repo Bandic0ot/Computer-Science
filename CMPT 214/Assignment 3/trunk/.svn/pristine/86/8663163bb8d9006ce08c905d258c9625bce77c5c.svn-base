@@ -1,0 +1,10 @@
+# Makefile for vecalc application.
+# Author: Matthew Mulenga
+
+CXXFLAGS = -Wall -Wextra
+
+.PHONY: all tests clean
+
+all: *.cc *.h
+
+VECALC_OBJECT = vecalc.o calc_state.o 
