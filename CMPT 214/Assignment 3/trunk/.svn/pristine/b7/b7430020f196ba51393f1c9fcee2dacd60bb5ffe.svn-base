@@ -2,15 +2,13 @@
 // mam558
 // 11144528
 
-// -------- Headers --------
+#include <assert.h>
+#include <stdio.h>
+#include <stdint.h>
+#include <stdlib.h>
 
-#include <inttypes.h> // For uint16
-#include <stdlib.h> // For NULL
-
-#include "scalar.h" // For definitions specific to this module.
-#include "vector.h" // For Vector
-
-// -------- Methods --------
+#include "scalar.h"
+#include "vector.h"
 
 // scalar_plus
 // Adds a given scalar to each element of the vector.
@@ -100,12 +98,10 @@ Vector *scalar_mult(Vector *v, Elem e) {
 //      - NULL if there is an error.
 Vector *scalar_div(Vector *v, Elem e) {
 
-	// Divide each element of the vector by e.
 	for (uint16_t i = 0; i < v->size; i++) {
         v->array[i] /= e;
     }
     
-    // Make sure the division worked.
     if (NULL != v) {
         return v;
     }

@@ -5,8 +5,6 @@
 #ifndef _SCALAR_H_
 #define _SCALAR_H_
 
-// -------- Headers --------
-
 #include "vector.h" // For Vector
 
 Vector *scalar_plus(Vector *v, Elem e);

@@ -10,8 +10,6 @@
 #include "scalar.h" // For definitions specific to this module.
 #include "vector.h" // For Vector
 
-// -------- Methods --------
-
 // scalar_plus
 // Adds a given scalar to each element of the vector.
 // Input:

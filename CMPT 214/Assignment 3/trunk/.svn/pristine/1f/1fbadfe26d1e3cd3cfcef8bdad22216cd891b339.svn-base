@@ -2,15 +2,13 @@
 // mam558
 // 11144528
 
-// -------- Headers --------
+#include <assert.h>
+#include <stdio.h>
+#include <stdint.h>
+#include <stdlib.h>
 
-#include <inttypes.h> // For uint16
-#include <stdlib.h> // For NULL
-
-#include "scalar.h" // For definitions specific to this module.
-#include "vector.h" // For Vector
-
-// -------- Methods --------
+#include "scalar.h"
+#include "vector.h"
 
 // scalar_plus
 // Adds a given scalar to each element of the vector.
