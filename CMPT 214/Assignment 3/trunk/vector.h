@@ -5,6 +5,8 @@
 #ifndef _VECTOR_H_
 #define _VECTOR_H_
 
+#include <stdint.h>
+
 // An Elem is a (single precision) floating-point value either stored
 // in a Vector, or else a (scalar) operand for a scalar operation on the
 // Vector
