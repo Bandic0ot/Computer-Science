@@ -1,0 +1,24 @@
+Matthew Mulenga
+mam558
+11144528
+
+// ------------------- How To Run The Program -------------------
+	Requirements: 
+		- 	All included .cc files
+		- 	All included .h files
+		- 	Included makefile
+		
+	Execution:
+			Compiling:
+		- 	Run the makefile using 'make' command or 'make all' command.
+		- 	For running just the tests use the 'make tests' command.
+			
+			After compiling:
+		-	To run the test_vector executable use the './test_vector' command.
+		- 	To run the test_scalar executable use the './test_scalar' command.
+		
+			Clean Up:
+		- 	To clean up the directory of all .o files and executables
+			run the 'make clean' command.
+			
+// ------------------- The Code -------------------

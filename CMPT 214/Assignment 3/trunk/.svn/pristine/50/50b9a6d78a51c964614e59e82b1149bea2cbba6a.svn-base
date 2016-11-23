@@ -13,9 +13,9 @@
 
 // -------- Variables --------
 
-const float TEST_FLOAT_1 = 5.00; // Used to test the scalar operations.
-const float TEST_FLOAT_2 = 8.00; // Used to test the scalar operations.
-const float TEST_FLOAT_3 = 2.50; // Used to test the scalar operations.
+const float TEST_FLOAT_1 = 5.00; 
+const float TEST_FLOAT_2 = 8.00;
+const float TEST_FLOAT_3 = 2.50;
 
 // -------- Methods --------
 
