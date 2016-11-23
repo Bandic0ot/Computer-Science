@@ -6,7 +6,7 @@
 
 #include <inttypes.h> // For uint16
 #include <stdlib.h> // For NULL
-#include <stdint.h>	// For uint16_t, UINT16_MAX on Linux
+//#include <stdint.h>	// For uint16_t, UINT16_MAX on Linux
 
 #include "scalar.h" // For definitions specific to this module.
 #include "vector.h" // For Vector

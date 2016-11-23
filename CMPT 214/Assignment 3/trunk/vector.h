@@ -5,7 +5,7 @@
 #ifndef _VECTOR_H_
 #define _VECTOR_H_
 
-#include <stdint.h>
+#include <stdint.h>	// For uint16_t, UINT16_MAX on Linux
 
 // An Elem is a (single precision) floating-point value either stored
 // in a Vector, or else a (scalar) operand for a scalar operation on the

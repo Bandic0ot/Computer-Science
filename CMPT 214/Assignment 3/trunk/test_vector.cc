@@ -6,7 +6,7 @@
 #include <assert.h> // For assert()
 #include <stdlib.h> // For EXIT_SUCCESS
 #include <float.h>	// For FLT_MAX
-#include <stdint.h>	// For uint16_t, UINT16_MAX on Linux
+//#include <stdint.h>	// For uint16_t, UINT16_MAX on Linux
 
 #include "vector.h" // For Vector, alloc_vec(), extend_vec(), print_vec()
 
