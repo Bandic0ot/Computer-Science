@@ -36,17 +36,17 @@ void test_extend() {
 	
 	// Test the extend_vec() method.
 	v1 = extend_vec(v, 5.00);
-	
+	dealloc_vec
 	assert(NULL != v1); // Check to see if the extension worked.
 	assert(1 == v1->size); // Make sure the size of the array has increased.
 	assert(5.00 == v1->array[0]); // Make sure that the correct value was
 								  // stored in the correct location.
 	
-	// Test the extend_vec() method using MAXFLOAT
+	// Test the extend_vec() method using FLT_MAX
 	v2 = extend_vec(v1, FLT_MAX); 
 	assert(NULL != v2); // Check to see if the extension worked.
 	assert(2 == v2->size); // Make sure the size of the array has increased.
-	assert(MAXFLOAT == v2->array[1]); // Make sure that the correct value was
+	assert(FLT_MAX == v2->array[1]); // Make sure that the correct value was
 								  	  // stored in the correct location.
 	
 	// Test the extend_vec() method by overloading with MAX_ELEMS
@@ -76,7 +76,7 @@ void test_extend() {
 void test_print() {
 	
 	// Check to see if the correct output is being printed.
-	// Expected outputs: 5.00, 5.00 MAXFLOAT, nothing
+	// Expected outputs: 5.00, 5.00 FLT_MAX, nothing
 	assert(true == print_vec(v1));
 	assert(true == print_vec(v2));
 	assert(false == print_vec(v5)); // Should get nothing because v5 is NULL
