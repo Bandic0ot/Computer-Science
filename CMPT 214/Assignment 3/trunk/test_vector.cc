@@ -36,7 +36,6 @@ void test_extend() {
 	
 	// Test the extend_vec() method.
 	v1 = extend_vec(v, 5.00);
-	dealloc_vec
 	assert(NULL != v1); // Check to see if the extension worked.
 	assert(1 == v1->size); // Make sure the size of the array has increased.
 	assert(5.00 == v1->array[0]); // Make sure that the correct value was
