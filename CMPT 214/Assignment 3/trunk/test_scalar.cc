@@ -6,6 +6,7 @@
 
 #include <assert.h> // For assert()
 #include <stdlib.h> // For EXIT_SUCCESS
+#include <stdint.h>
 
 #include "vector.h" // For Vector, alloc_vec(), extend_vec(), dealloc_vec()
 #include "scalar.h" // For scalar_plus(), scalar_minus(), scalar_mult, scalar_div()
