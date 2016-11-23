@@ -5,6 +5,7 @@
 // -------- Headers --------
 #include <assert.h> // For assert()
 #include <stdlib.h> // For EXIT_SUCCESS
+#include <stdint.h>
 #include <float.h> // For FLT_MAX
 
 #include "vector.h" // For Vector, alloc_vec(), extend_vec(), print_vec()

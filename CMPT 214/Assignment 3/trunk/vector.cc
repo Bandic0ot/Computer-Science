@@ -7,7 +7,7 @@
 #include <assert.h>	// For assert()
 #include <stdio.h>	// For printf()
 #include <inttypes.h>	// For uint16_t and UINT16_MAX
-#include <stdint.h>
+//#include <stdint.h>
 #include <stdlib.h> // For EXIT_SUCCESS
 
 #include "vector.h" // For Vector, Elem, and MAX_ELEMS
