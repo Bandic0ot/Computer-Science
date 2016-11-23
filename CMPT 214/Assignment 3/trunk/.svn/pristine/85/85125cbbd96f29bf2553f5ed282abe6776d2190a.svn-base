@@ -96,30 +96,25 @@ void dealloc_vec(Vector *v) {
 //      - A pointer to the new vector.
 //      - NULL if there is an error.
 Vector *extend_vec(Vector *v, Elem e) {
-	// Check to see if we have reached the integer size limit.
+	// Check to see if we have reached the integer size limit
 	if(v->size >= MAX_ELEMS) {
 		return NULL;
 	}
 	
     Vector *extVector = new Vector;
     
-    // Check to see if the new vector was allocated properly
-    // if not delete it and return NULL.
     if (NULL == extVector) {
         delete extVector;
         return NULL;
     } else {
-    // Otherwise we set the new vectors size and number of elements.
         extVector->size = v->size + 1;
         extVector->array = new Elem[extVector->size];
     }
     
-    // Populate the new array with the values from the old array.
     for (uint16_t i = 0; i < v->size; i++) {
         extVector->array[i] = v->array[i];
     }
     
-    // Set the last element in the array to e.
     extVector->array[v->size] = e;
     
     return extVector;
