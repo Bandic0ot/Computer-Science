@@ -1,0 +1,37 @@
+# Makefile for vecalc application.
+# Author: Matthew Mulenga
+
+CXXFLAGS = -Wall -Wextra
+
+.PHONY: all vector clean
+
+all: vecalc input
+
+vector: vector.o
+
+VECALC_OBJECT = vector.o calc_state.o vecalc.o scalar.o
+
+vecalc: $(VECALC_OBJECT)
+	g++ $(VECALC_OBJECT) -o vecalc
+
+input: input_state.o
+	g++ input_state.o -o input
+
+calc_state.o: calc_state.cc calc_state.h
+	g++ $(CXXFLAGS) -c calc_state.cc
+
+vecalc.o: vecalc.cc vecalc.h
+	g++ $(CXXFLAGS) -c vecalc.cc
+
+input_state.o: input_state.cc input_state.h
+	g++ $(CXXFLAGS) -c input_state.cc
+
+vector.o: vector.cc vector.h
+	g++ $(CXXFLAGS) -c vector.cc
+	
+scalar.o: scalar.cc scalar.h
+	g++ $(CXXFLAGS) -c scalar.cc
+	
+clean:
+	rm -f calc_state.o vecalc.o vector.o input_state.o scalar.o
+	rm -f vecalc input

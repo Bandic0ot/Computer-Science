@@ -1,0 +1,53 @@
+// Matthew Mulenga
+// mam558
+// 11144528
+
+#include <assert.h>
+#include <stdio.h>
+#include <stdint.h>
+#include <stdlib.h>
+
+#import "vector.h"
+
+int main(int, char **) {
+    
+    const float TEST_FLOAT_1 = 5.25;
+    const float TEST_FLOAT_2 = 8.75;
+    
+    // Test alloc_vec() method
+    Vector *v1 = alloc_vec();
+    
+    assert(NULL != v1);
+    assert(0 == v1->size);
+    assert(NULL != v1->array);
+    
+    // Test extend_vec() method
+    Vector *v2 = extend_vec(v1, TEST_FLOAT_1);
+    Vector *v3 = extend_vec(v2, TEST_FLOAT_2);
+    
+    assert(NULL != v2);
+    assert(1 == v2->size);
+    assert(NULL != v2->array);
+    
+    assert(NULL != v3);
+    assert(2 == v3->size);
+    assert(NULL != v3->array);
+    
+    assert(TEST_FLOAT_1 == v2->array[0]);
+    assert(TEST_FLOAT_2 == v3->array[1]);
+    
+    // Test print_vec() method
+    // Expected:
+    /*
+    
+    5.250000
+    
+    5.250000
+    8.750000
+    */
+    print_vec(v1);
+    print_vec(v2);
+    print_vec(v3);
+
+    return 0;
+}

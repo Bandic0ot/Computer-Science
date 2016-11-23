@@ -1,0 +1,70 @@
+// Matthew Mulenga
+// mam558
+// 11144528
+
+#include <assert.h>
+#include <stdio.h>
+#include <stdint.h>
+#include <stdlib.h>
+
+#import "vector.h"
+#import "scalar.h"
+
+const float TEST_FLOAT_1 = 5.00;
+const float TEST_FLOAT_2 = 8.00;
+const float TEST_FLOAT_3 = 2.50;
+
+
+// Unit tests for scalar_plus() method.
+void test_scalarPlus() {
+	Vector *v1 = alloc_vec();
+    Vector *v2 = extend_vec(v1, TEST_FLOAT_1);
+    
+    //Add values to the two vectors using the scalar_plus() method.
+    Vector *v2plus = scalar_plus(v2, TEST_FLOAT_3);
+	
+	// Test to see scalar_plus() by adding 2.50 to the element.
+	// Should result in 7.50.
+	assert(NULL != v2plus); // Make sure the function succeeded.
+	
+	assert(NULL != v2->array); // Make sure the vector is still valid.
+    
+    assert(1 == v2->size); // Make sure the vector structure is still the same size.
+    
+	assert(7.50 == v2plus->array[0]); // Make sure the stored value is correct.
+    
+    // Free the memory used by all the vectors.
+    dealloc_vec(v1);
+    dealloc_vec(v2);
+} 
+
+// Unit test for scalar_minus() method.
+void test_scalarMinus() {
+	Vector *v1 = alloc_vec();
+    Vector *v2 = extend_vec(v1, TEST_FLOAT_1);
+    
+    //Add values to the two vectors using the scalar_plus() method.
+    Vector *v2minus = scalar_minus(v2, TEST_FLOAT_2);
+	
+	// Test to see scalar_plus() by subtracting 2.00 from the element.
+	// Should result in -3.00
+	assert(NULL != v2minus); // Make sure the function succeeded.
+	
+	assert(NULL != v2->array); // Make sure the vector is still valid.
+    
+    assert(1 == v2->size); // Make sure the vector structure is still the same size.
+    
+	assert(-3.00 == v2minus->array[0]); // Make sure the stored value is correct.
+    
+    // Free the memory used by all the vectors.
+    dealloc_vec(v1);
+    dealloc_vec(v2);
+}
+
+
+int main(int, char **) {
+	test_scalarPlus();
+    
+    return EXIT_SUCCESS;
+}
+    

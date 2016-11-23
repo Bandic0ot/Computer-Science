@@ -1,0 +1,54 @@
+// Matthew Mulenga
+// mam558
+// 11144528
+
+#include <assert.h>
+#include <stdio.h>
+#include <stdint.h>
+#include <stdlib.h>
+
+#import "vector.h"
+#import "scalar.h"
+
+int main(int, char **) {
+	const float TEST_FLOAT_1 = 5.25;
+    const float TEST_FLOAT_2 = 8.75;
+    const float TEST_FLOAT_3 = 6.25;
+    const float TEST_FLOAT_4 = 11.00;
+    
+    Vector *v1 = alloc_vec();
+    Vector *v2 = extend_vec(v1, TEST_FLOAT_1);
+    Vector *v3 = extend_vec(v2, TEST_FLOAT_2);
+
+    // Test scalar_plus() method
+    Vector *v2plus = scalar_plus(v2, 1.0);
+    Vector *v3plus = scalar_plus(v3, 2.25);
+    
+    assert(NULL != v2plus);
+    assert(1 == v2plus->size);
+    assert(NULL != v2plus->array);
+    
+    assert(NULL != v3plus);
+    assert(2 == v3plus->size);
+    assert(NULL != v3plus->array);
+    
+    assert(TEST_FLOAT_3 == v2plus->array[0]);
+    assert(TEST_FLOAT_4 == v3plus->array[1]);
+
+    //Test scalar_minus() method
+    assert(NULL != scalar_minus(v1, 1.0));
+    
+    //Test scalar_mult() method
+    assert(NULL != scalar_mult(v1, 2.0));
+
+    //Test scalar_div() method
+    assert(NULL != scalar_div(v1, 2.0));
+
+    // Test dealloc_vec() method
+    dealloc_vec(v1);
+    dealloc_vec(v2);
+    dealloc_vec(v3);
+    
+    return 0;
+}
+    

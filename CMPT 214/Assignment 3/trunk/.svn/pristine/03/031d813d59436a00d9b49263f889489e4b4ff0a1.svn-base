@@ -1,0 +1,17 @@
+// Matthew Mulenga
+// mam558
+// 11144528
+
+#include <assert.h>
+#include <stdio.h>
+#include <stdint.h>
+#include <stdlib.h>
+
+#import "vector.h"
+
+int main(int, char **) {
+    
+    
+
+    return EXIT_SUCCESS;
+}

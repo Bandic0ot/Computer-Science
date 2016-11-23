@@ -1,0 +1,38 @@
+// Matthew Mulenga
+// mam558
+// 11144528
+
+#include <assert.h>
+#include <stdio.h>
+#include <stdint.h>
+#include <stdlib.h>
+
+#import "vector.h"
+
+const int TEST_SIZE = 3;
+
+// Unit test for test_alloc() method.
+void test_alloc() {
+	Vector *v = alloc_vec();
+	
+	assert(NULL != v);
+	assert(0 == v->size);
+	assert(NULL == v->array);
+	
+	dealloc_vec(v);
+}
+
+void test_extend() {
+	
+}
+
+void test_print() {
+	
+}
+
+int main(int, char **) {
+    
+    
+
+    return EXIT_SUCCESS;
+}

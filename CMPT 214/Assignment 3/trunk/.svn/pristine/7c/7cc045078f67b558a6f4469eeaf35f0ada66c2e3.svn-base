@@ -1,0 +1,46 @@
+// Matthew Mulenga
+// mam558
+// 11144528
+
+#include <assert.h>
+#include <stdio.h>
+#include <stdint.h>
+#include <stdlib.h>
+
+#import "vector.h"
+#import "scalar.h"
+
+const float TEST_FLOAT_1 = 5.25;
+const float TEST_FLOAT_2 = 8.75;
+const float TEST_FLOAT_3 = 6.25;
+
+void test_scalarPlus() {
+	Vector *v1 = alloc_vec();
+    Vector *v2 = extend_vec(v1, TEST_FLOAT_1);
+    Vector *v3 = extend_vec(v2, TEST_FLOAT_2);
+    
+    //Add values to the two vectors using the scalar_plus() method.
+    Vector *v2plus = scalar_plus(v2, TEST_FLOAT_3);
+    Vector *v3plus = scalar_plus(v3, TEST_FLOAT_3);
+	
+	// Test to see scalar_plus() by adding 6.25 to each element.
+	// Should result in 11.50 and 15.00.
+	assert(NULL != v2plus);
+	assert(NULL != v3plus);
+	assert(11.50 == v2plus->array[0]);
+    assert(15.00 == v3plus->array[1]);
+    
+    // Free the memory used by all the vectors
+    dealloc_vec(v1);
+    dealloc_vec(v2);
+    dealloc_vec(v3);
+    
+} 
+
+
+int main(int, char **) {
+	test_scalarPlus();
+    
+    return EXIT_SUCCESS;
+}
+    

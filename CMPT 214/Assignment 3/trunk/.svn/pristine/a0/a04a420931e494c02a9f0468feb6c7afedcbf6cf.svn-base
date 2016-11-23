@@ -1,0 +1,30 @@
+// Matthew Mulenga
+// mam558
+// 11144528
+
+#include <assert.h>
+#include <stdio.h>
+#include <stdint.h>
+#include <stdlib.h>
+
+#import "vector.h"
+
+void test_print() {
+
+}
+
+void test_alloc() {
+}
+
+void test_dealloc() {
+}
+
+void test_extend() {
+}
+
+int main(int, char **) {
+    
+    
+
+    return EXIT_SUCCESS;
+}

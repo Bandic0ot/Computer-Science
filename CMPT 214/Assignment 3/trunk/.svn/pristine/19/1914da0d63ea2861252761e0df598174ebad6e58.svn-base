@@ -1,0 +1,104 @@
+// Matthew Mulenga
+// mam558
+// 11144528
+
+#include <assert.h>
+#include <stdio.h>
+#include <stdint.h>
+#include <stdlib.h>
+
+#include "scalar.h"
+#include "vector.h"
+
+// scalar_plus
+// Adds a given scalar to each element of the vector.
+// Input:
+//      - v != NULL
+//      - v->size > 0
+//      - v->array != NULL
+//      - e is a float
+// Output:
+//      - A pointer to the modified vector.
+//      - NULL if there is an error.
+Vector *scalar_plus(Vector *v, Elem e) {
+    
+    for (uint16_t i = 0; i < v->size; i++) {
+        v->array[i] += e;
+    }
+    
+    if (NULL != v) {
+        return v;
+    }
+    
+    return NULL;
+}
+
+// scalar_minus
+// Subtracts a given scalar from each element of the vector.
+// Input:
+//      - v != NULL
+//      - v->size > 0
+//      - v->array != NULL
+//      - e is a float
+// Output:
+//      - A pointer to the modified vector.
+//      - NULL if there is an error.
+Vector *scalar_minus(Vector *v, Elem e) {
+
+	for (uint16_t i = 0; i < v->size; i++) {
+        v->array[i] -= e;
+    }
+    
+    if (NULL != v) {
+        return v;
+    }
+    
+    return NULL;
+}
+
+// scalar_mult
+// Multiplies each element of the vector by a given scalar.
+// Input:
+//      - v != NULL
+//      - v->size > 0
+//      - v->array != NULL
+//      - e is a float
+// Output:
+//      - A pointer to the modified vector.
+//      - NULL if there is an error.
+Vector *scalar_mult(Vector *v, Elem e) {
+
+	for (uint16_t i = 0; i < v->size; i++) {
+        v->array[i] *= e;
+    }
+    
+    if (NULL != v) {
+        return v;
+    }
+
+    return NULL;
+}
+
+// scalar_div
+// Divides each element of the vector by a given scalar.
+// Input:
+//      - v != NULL
+//      - v->size > 0
+//      - v->array != NULL
+//      - e is a float
+//      - e != 0
+// Output:
+//      - A pointer to the modified vector.
+//      - NULL if there is an error.
+Vector *scalar_div(Vector *v, Elem e) {
+
+	for (uint16_t i = 0; i < v->size; i++) {
+        v->array[i] /= e;
+    }
+    
+    if (NULL != v) {
+        return v;
+    }
+
+    return NULL;
+}

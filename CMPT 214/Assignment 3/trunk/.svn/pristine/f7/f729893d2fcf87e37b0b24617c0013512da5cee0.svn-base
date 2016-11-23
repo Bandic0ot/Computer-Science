@@ -1,0 +1,53 @@
+# Makefile for vecalc application.
+# Author: Matthew Mulenga
+
+CXXFLAGS = -Wall -Wextra
+
+.PHONY: all tests clean
+
+all: vecalc input tests
+
+VECALC_OBJECT = vector.o calc_state.o vecalc.o scalar.o
+
+vecalc: $(VECALC_OBJECT)
+	g++ $(VECALC_OBJECT) -o vecalc
+	
+tests: test_vector test_scalar
+
+TESTVEC_OBJECT = test_vector.o vector.o scalar.o
+
+test_vector: $(TESTVEC_OBJECT)
+	g++ $(TESTVEC_OBJECT) -o test_vector
+	
+TESTSCL_OBJECT = test_scalar.o vector.o scalar.o
+	
+test_scalar: $(TESTSCL_OBJECT)
+	g++ $(TESTSCL_OBJECT) -o test_scalar
+	
+input: input_state.o
+	g++ input_state.o -o input
+
+calc_state.o: calc_state.cc calc_state.h vector.h scalar.h
+	g++ $(CXXFLAGS) -c calc_state.cc
+
+vecalc.o: vecalc.cc vecalc.h
+	g++ $(CXXFLAGS) -c vecalc.cc
+
+input_state.o: input_state.cc input_state.h vector.h vecalc.h
+	g++ $(CXXFLAGS) -c input_state.cc
+
+vector.o: vector.cc vector.h
+	g++ $(CXXFLAGS) -c vector.cc
+	
+scalar.o: scalar.cc scalar.h vector.h
+	g++ $(CXXFLAGS) -c scalar.cc
+	
+test_scalar.o: test_scalar.cc scalar.h vector.h
+	g++ $(CXXFLAGS) -c test_scalar.cc
+
+test_vector.o: test_vector.cc vector.h
+	g++ $(CXXFLAGS) -c test_vector.cc
+	
+clean:
+	rm -f calc_state.o vecalc.o vector.o input_state.o scalar.o test_vector.o test_scalar.o
+	rm -f vecalc input test_vector test_scalar
