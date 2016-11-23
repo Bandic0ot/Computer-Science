@@ -63,6 +63,14 @@ void test_extend() {
 	v5 = extend_vec(v4, 5.00);
 	assert(NULL == v5); // Check to see if the vector failed to increase which it
 						// should.
+						
+	/* Release the memory used by all the vectors.
+	dealloc_vec(v1);
+	dealloc_vec(v2);
+	dealloc_vec(v3);
+	dealloc_vec(v4);
+	dealloc_vec(v5);*/
+	
 }
 
 // Unit test for print_vec() method
@@ -73,35 +81,14 @@ void test_print() {
 	assert(true == print_vec(v1));
 	assert(true == print_vec(v2));
 	assert(false == print_vec(v5)); // Should get nothing because v5 is NULL
+	
 }
 
-// Unit test for deall_vec() method
-void test_dealloc() {
-	// Unfortunately no proper way of testing dealloc_vec() method
-	// right now.
-
-	// Release the memory used by all the vectors.
-	dealloc_vec(v1);
-	dealloc_vec(v2);
-	dealloc_vec(v3);
-	dealloc_vec(v4);
-}
-
-// main:
-//  Program entry point
-// In:
-//  argc > 0
-//  argv[0 .. argc-1] != NULL
-// Out:
-//  return -- EXIT_SUCCESS if program terminates normally, 
-//            EXIT_FAILURE otherwise
 int main(int, char **) {
     
-    // Run the tests for all the functions.
     test_alloc();
     test_extend();
     test_print();
-    test_dealloc();
 
     return EXIT_SUCCESS;
 }

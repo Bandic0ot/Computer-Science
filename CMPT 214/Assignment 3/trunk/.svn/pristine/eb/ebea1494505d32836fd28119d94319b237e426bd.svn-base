@@ -87,17 +87,8 @@ void test_dealloc() {
 	dealloc_vec(v4);
 }
 
-// main:
-//  Program entry point
-// In:
-//  argc > 0
-//  argv[0 .. argc-1] != NULL
-// Out:
-//  return -- EXIT_SUCCESS if program terminates normally, 
-//            EXIT_FAILURE otherwise
 int main(int, char **) {
     
-    // Run the tests for all the functions.
     test_alloc();
     test_extend();
     test_print();
