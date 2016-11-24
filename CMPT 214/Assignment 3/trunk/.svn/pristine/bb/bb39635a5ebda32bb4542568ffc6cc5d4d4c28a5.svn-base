@@ -1,0 +1,52 @@
+Matthew Mulenga
+mam558
+11144528
+
+// ------------------- How To Run The Program -------------------
+	Requirements: 
+		- 	All included .cc files
+		- 	All included .h files
+		- 	Included makefile
+		
+	Execution:
+			Compiling:
+		- 	Run the makefile using 'make' command or 'make all' command.
+		- 	For running just the tests use the 'make tests' command.
+			
+			After compiling:
+		-	To run the test_vector executable use the './test_vector' command.
+		- 	To run the test_scalar executable use the './test_scalar' command.
+		-	To run the vecalc executable use the './vecalc' command.
+		
+			Clean Up:
+		- 	To clean up the directory of all .o files and executables
+			run the 'make clean' command.
+			
+// ------------------- The Code -------------------
+	vector.h
+		This file contains all the definitions needed for vector.cc and many
+		of the other .cc files. The definitions contained within are 
+		alloc_vec(), dealloc_vec(), extend_vec(), and print_vec(). The
+		definitions for Elem, Vector, and the constant MAX_ELEMS are all
+		defined here. 'stdint.h' is included at the top just so the program will 
+		compile properly on Linux systems. This line is not needed on Mac OSX.
+		
+	vector.cc
+		This file contains all the implementations for alloc_vec(),
+		dealloc_vec(), extend_vec(), and print_vec(). 
+		
+		alloc_vec()
+			Allocates a new vector.
+		dealloc_vec()
+			Deallocates the given vector.
+		extend_vec()
+			Appends a new vector to the previous one.
+		print_vec()
+			Prints the given vector out.
+			
+	scalar.h
+		This file contains the definitions for the scalar operations. The 
+		definitions contained within are scalar_plus(), scalar_minus(), 
+		scalar_mult, scalar_div(). The 'vector.h' header is included in 
+		order to use the Vector struct.
+			

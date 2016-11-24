@@ -1,0 +1,221 @@
+------------------------------------------------------------------------
+r69 | mam558@USASK.CA | 2016-11-24 00:06:14 -0600 (Thu, 24 Nov 2016) | 1 line
+
+Created a v2.0 tag of the trunk.
+------------------------------------------------------------------------
+r68 | mam558@USASK.CA | 2016-11-23 23:49:36 -0600 (Wed, 23 Nov 2016) | 1 line
+
+Created a v2.0 tag.
+------------------------------------------------------------------------
+r67 | mam558@USASK.CA | 2016-11-23 19:43:42 -0600 (Wed, 23 Nov 2016) | 1 line
+
+Added documentation on test_scalar.cc
+------------------------------------------------------------------------
+r66 | mam558@USASK.CA | 2016-11-23 19:20:49 -0600 (Wed, 23 Nov 2016) | 1 line
+
+Added documentation on test_vector.cc
+------------------------------------------------------------------------
+r65 | mam558@USASK.CA | 2016-11-23 18:37:42 -0600 (Wed, 23 Nov 2016) | 1 line
+
+Added documentation on scalar.cc
+------------------------------------------------------------------------
+r64 | mam558@USASK.CA | 2016-11-23 18:27:59 -0600 (Wed, 23 Nov 2016) | 1 line
+
+Added documentation on scalar.h
+------------------------------------------------------------------------
+r63 | mam558@USASK.CA | 2016-11-23 18:21:49 -0600 (Wed, 23 Nov 2016) | 1 line
+
+Added the second part to the External Documentation, contains vector.h and vector.cc to this part.
+------------------------------------------------------------------------
+r62 | mam558@USASK.CA | 2016-11-23 16:59:51 -0600 (Wed, 23 Nov 2016) | 1 line
+
+Created External Documentation file and added the first part on how to run the program.
+------------------------------------------------------------------------
+r61 | mam558@USASK.CA | 2016-11-23 16:20:23 -0600 (Wed, 23 Nov 2016) | 1 line
+
+Commented constants in test_scalar.cc
+------------------------------------------------------------------------
+r60 | mam558@USASK.CA | 2016-11-23 16:12:14 -0600 (Wed, 23 Nov 2016) | 1 line
+
+Changed all lines to be a maximum of 80 columns in makefile.
+------------------------------------------------------------------------
+r59 | mam558@USASK.CA | 2016-11-23 16:09:27 -0600 (Wed, 23 Nov 2016) | 1 line
+
+Changed all lines to be a maximum of 80 columns in test_vector.cc
+------------------------------------------------------------------------
+r58 | mam558@USASK.CA | 2016-11-23 16:06:27 -0600 (Wed, 23 Nov 2016) | 1 line
+
+Changed all lines to be a maximum of 80 columns in test_scalar.cc
+------------------------------------------------------------------------
+r57 | mam558@USASK.CA | 2016-11-23 15:12:17 -0600 (Wed, 23 Nov 2016) | 1 line
+
+Added #include <stdint.h> to vector.h for Linux build.
+------------------------------------------------------------------------
+r56 | mam558@USASK.CA | 2016-11-23 14:36:01 -0600 (Wed, 23 Nov 2016) | 1 line
+
+Added comments for main in both test_scalar.cc and test_vector.cc
+------------------------------------------------------------------------
+r55 | mam558@USASK.CA | 2016-11-23 14:32:29 -0600 (Wed, 23 Nov 2016) | 1 line
+
+Added header comments for test_scalar.cc
+------------------------------------------------------------------------
+r54 | mam558@USASK.CA | 2016-11-23 14:26:49 -0600 (Wed, 23 Nov 2016) | 1 line
+
+Added a test for dealloc_vec(). NOTE: Can't actually test it.
+------------------------------------------------------------------------
+r53 | mam558@USASK.CA | 2016-11-23 14:21:58 -0600 (Wed, 23 Nov 2016) | 1 line
+
+Added comments for the headers in test_vector.cc
+------------------------------------------------------------------------
+r52 | mam558@USASK.CA | 2016-11-23 14:06:06 -0600 (Wed, 23 Nov 2016) | 1 line
+
+Changed MAXFLOAT to FLT_MAX to work on Linux.
+------------------------------------------------------------------------
+r51 | mam558@USASK.CA | 2016-11-23 13:57:07 -0600 (Wed, 23 Nov 2016) | 1 line
+
+Changed all occurences of #import to #include.
+------------------------------------------------------------------------
+r50 | mam558@USASK.CA | 2016-11-23 13:51:00 -0600 (Wed, 23 Nov 2016) | 1 line
+
+Updated header comments in scalar.h
+------------------------------------------------------------------------
+r49 | mam558@USASK.CA | 2016-11-23 13:50:51 -0600 (Wed, 23 Nov 2016) | 1 line
+
+Updated header comments in scalar.h
+------------------------------------------------------------------------
+r48 | mam558@USASK.CA | 2016-11-23 13:47:37 -0600 (Wed, 23 Nov 2016) | 1 line
+
+Updated header comments in scalar.cc
+------------------------------------------------------------------------
+r47 | mam558@USASK.CA | 2016-11-23 13:42:40 -0600 (Wed, 23 Nov 2016) | 1 line
+
+Updated Elem, Vector and MAX_ELEMS comments in vector.h
+------------------------------------------------------------------------
+r46 | mam558@USASK.CA | 2016-11-23 13:38:35 -0600 (Wed, 23 Nov 2016) | 1 line
+
+Update header comments in vector.cc
+------------------------------------------------------------------------
+r45 | mam558@USASK.CA | 2016-11-23 13:29:20 -0600 (Wed, 23 Nov 2016) | 1 line
+
+Updated comments for scalar_div() method.
+------------------------------------------------------------------------
+r44 | mam558@USASK.CA | 2016-11-23 13:28:41 -0600 (Wed, 23 Nov 2016) | 1 line
+
+Updated comments for scalar_mult() method.
+------------------------------------------------------------------------
+r43 | mam558@USASK.CA | 2016-11-23 13:27:00 -0600 (Wed, 23 Nov 2016) | 1 line
+
+Updated comments for scalar_minus() method.
+------------------------------------------------------------------------
+r42 | mam558@USASK.CA | 2016-11-23 13:25:55 -0600 (Wed, 23 Nov 2016) | 1 line
+
+Updated comments for scalar_plus() method.
+------------------------------------------------------------------------
+r41 | mam558@USASK.CA | 2016-11-23 12:49:21 -0600 (Wed, 23 Nov 2016) | 1 line
+
+Updated comments for extend_vec() method.
+------------------------------------------------------------------------
+r40 | mam558@USASK.CA | 2016-11-23 12:25:56 -0600 (Wed, 23 Nov 2016) | 1 line
+
+Rewrote the dealloc_vec() method.
+------------------------------------------------------------------------
+r39 | mam558@USASK.CA | 2016-11-23 12:10:05 -0600 (Wed, 23 Nov 2016) | 1 line
+
+Added testing for print_vec() method.
+------------------------------------------------------------------------
+r38 | mam558@USASK.CA | 2016-11-23 01:46:57 -0600 (Wed, 23 Nov 2016) | 1 line
+
+Refactored makefile to use implicit rules.
+------------------------------------------------------------------------
+r37 | mam558@USASK.CA | 2016-11-23 01:20:34 -0600 (Wed, 23 Nov 2016) | 1 line
+
+Updated comments for alloc_vec() method and deallocated all vectors in test_extend() method.
+------------------------------------------------------------------------
+r36 | mam558@USASK.CA | 2016-11-23 01:07:15 -0600 (Wed, 23 Nov 2016) | 1 line
+
+Added a unit test for extend_vec().
+------------------------------------------------------------------------
+r35 | mam558@USASK.CA | 2016-11-22 20:31:50 -0600 (Tue, 22 Nov 2016) | 1 line
+
+Added a unit test for alloc_vec().
+------------------------------------------------------------------------
+r34 | mam558@USASK.CA | 2016-11-22 20:15:50 -0600 (Tue, 22 Nov 2016) | 1 line
+
+Created stubs for the vector unit tests.
+------------------------------------------------------------------------
+r33 | mam558@USASK.CA | 2016-11-22 20:05:07 -0600 (Tue, 22 Nov 2016) | 1 line
+
+Added a unit test for scalar_div() method.
+------------------------------------------------------------------------
+r32 | mam558@USASK.CA | 2016-11-22 19:59:33 -0600 (Tue, 22 Nov 2016) | 1 line
+
+Added a unit test for scalar_mult() method.
+------------------------------------------------------------------------
+r31 | mam558@USASK.CA | 2016-11-22 19:49:16 -0600 (Tue, 22 Nov 2016) | 1 line
+
+Added unit test for scalar_minus() method.
+------------------------------------------------------------------------
+r30 | mam558@USASK.CA | 2016-11-22 19:37:04 -0600 (Tue, 22 Nov 2016) | 1 line
+
+Refactored test_scalarPlus() to get rid of redundant test.
+------------------------------------------------------------------------
+r29 | mam558@USASK.CA | 2016-11-22 19:24:44 -0600 (Tue, 22 Nov 2016) | 1 line
+
+Added more tests to scalar_plus() test.
+------------------------------------------------------------------------
+r28 | mam558@USASK.CA | 2016-11-22 18:56:05 -0600 (Tue, 22 Nov 2016) | 1 line
+
+Added unit test for scalar_plus() function.
+------------------------------------------------------------------------
+r27 | mam558@USASK.CA | 2016-11-22 18:17:02 -0600 (Tue, 22 Nov 2016) | 1 line
+
+Removed warnings from running make tests.
+------------------------------------------------------------------------
+r26 | mam558@USASK.CA | 2016-11-22 18:14:01 -0600 (Tue, 22 Nov 2016) | 1 line
+
+Refactored makefile to be more legible
+------------------------------------------------------------------------
+r25 | mam558@USASK.CA | 2016-11-22 15:27:45 -0600 (Tue, 22 Nov 2016) | 1 line
+
+Updated clean rule in makefile to cleanup test_* files.
+------------------------------------------------------------------------
+r24 | mam558@USASK.CA | 2016-11-22 15:25:44 -0600 (Tue, 22 Nov 2016) | 1 line
+
+Updated makefile to handle testing.
+------------------------------------------------------------------------
+r23 | mam558@USASK.CA | 2016-11-22 13:28:52 -0600 (Tue, 22 Nov 2016) | 1 line
+
+Added test_vector.cc, test_scalar.cc, scalar.h, scalar.cc, vector.h, and vector.cc files.
+------------------------------------------------------------------------
+r22 | mam558@USASK.CA | 2016-11-22 13:27:25 -0600 (Tue, 22 Nov 2016) | 1 line
+
+Added test_vector.cc, test_scalar.cc, scalar.h, scalar.cc, vector.h, and vector.cc files.
+------------------------------------------------------------------------
+r21 | mam558@USASK.CA | 2016-11-22 12:48:53 -0600 (Tue, 22 Nov 2016) | 1 line
+
+Completed vector.h and vector.cc files.
+------------------------------------------------------------------------
+r20 | mam558@USASK.CA | 2016-11-22 00:49:49 -0600 (Tue, 22 Nov 2016) | 1 line
+
+Updated the makefile to a basic skeleton.
+------------------------------------------------------------------------
+r19 | mam558@USASK.CA | 2016-11-22 00:31:59 -0600 (Tue, 22 Nov 2016) | 1 line
+
+Created intial makefile.
+------------------------------------------------------------------------
+r18 | mam558@USASK.CA | 2016-11-21 19:27:47 -0600 (Mon, 21 Nov 2016) | 1 line
+
+Extracted and added all Assignment3Files.tar files to the trunk.
+------------------------------------------------------------------------
+r17 | mam558@USASK.CA | 2016-11-21 19:19:19 -0600 (Mon, 21 Nov 2016) | 1 line
+
+Extracted and added all Assignment3tar files to the trunk.
+------------------------------------------------------------------------
+r11 | mam558@USASK.CA | 2016-11-21 18:35:54 -0600 (Mon, 21 Nov 2016) | 1 line
+
+Added vecalc.cc to the trunk
+------------------------------------------------------------------------
+r9 | mam558@USASK.CA | 2016-11-21 15:53:21 -0600 (Mon, 21 Nov 2016) | 1 line
+
+Adding a trunk to the vecalc project.
+------------------------------------------------------------------------

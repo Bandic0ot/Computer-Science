@@ -1,0 +1,309 @@
+Matthew Mulenga
+mam558
+11144528
+
+-------- Tests --------
+
+Running test_vector executable
+Expected output is: 
+5.00
+
+5.00
+MAXFLOAT value
+
+Matt@trunk$ ./test_vector
+5.000000
+
+5.000000
+340282346638528859811704183484516925440.000000
+
+Running test_scalar executable
+Expected output is:
+Blank
+
+Matt@trunk$ ./test_scalar
+Matt@trunk$ 
+
+-------- vecalc Test --------
+
+Test 1: Input 3 vectors
+	Expected: 
+		No output. 
+	
+	Terminal Output:
+		number of vector elements: 3
+		vector element 0: 2.50
+		vector element 1: 4.35
+		vector element 2: 5.00
+
+		
+Test 2: Print the 3 vectors out
+	Expected:
+		2.500000
+		4.350000
+		5.000000
+	
+	Terminal Output:	
+		operation: p
+		2.500000
+		4.350000
+		5.000000
+
+		
+Test 3: Add an integer
+	Expected:
+		4.500000
+		6.350000
+		7.000000
+	
+	Terminal Output:
+		operation: + 2
+		operation: p
+		4.500000
+		6.350000
+		7.000000
+
+		
+Test 4: Add a float
+	Expected:
+		6.850000
+		8.700000
+		9.350000
+		
+	Terminal Output:
+		operation: + 2.35
+		operation: p
+		6.850000
+		8.700000
+		9.350000
+
+		
+Test 5: Add illegal input
+	Expected:
+		**illegal operand value specified
+	
+	Terminal Output:	
+		operation: + j
+		**illegal operand value specified
+
+		
+Test 6: Subtract an integer
+	Expected:
+		5.850000
+		7.700000
+		8.350000
+	
+	Terminal Output:	
+		operation: - 1
+		operation: p
+		5.850000
+		7.700000
+		8.350000
+
+		
+Test 7: Subtract a float
+	Expected:
+		3.350000
+		5.200000
+		5.850000
+		
+	Terminal Output:	
+		operation: - 2.50
+		operation: p
+		3.350000
+		5.200000
+		5.850000
+
+		
+Test 8: Subtract illegal input
+	Expected:
+		**illegal operand value specified
+		
+	Terminal Output:
+		operation: - l
+		**illegal operand value specified
+
+		
+Test 9: Multiply by an integer
+	Expected:
+		6.700000
+		10.40000
+		11.70000
+	
+	Terminal Output:	
+		operation: * 2
+		operation: p
+		6.700000
+		10.400000
+		11.700001
+
+		
+Test 10: Multiply by a float
+	Expected:
+		3.350000
+		5.200000
+		5.850000
+	
+	Terminal Output:	
+		operation: * 0.50
+		operation: p
+		3.350000
+		5.200000
+		5.850000
+
+		
+Test 11: Multiply by illegal
+	Expected:
+		**illegal operand value specified
+		
+	Terminal Output:
+		operation: * y
+		**illegal operand value specified
+		
+		
+Test 12: Divide by a float
+	Expected:
+		1.675000
+		2.600000
+		2.925000
+		
+	Terminal Output:
+		operation: / 2.00
+		operation: p
+		1.675000
+		2.600000
+		2.925000
+
+		
+Test 13: Divide by an integer
+	Expected:
+		1.675000
+		2.600000
+		2.925000
+		
+	Terminal Output:
+		operation: / 1
+		operation: p
+		1.675000
+		2.600000
+		2.925000
+
+		
+Test 14: Divide by zero
+	Expected:
+		**divide-by-zero not allowed
+		
+	Terminal Output:
+		operation: / 0
+		**divide-by-zero not allowed
+
+		
+Test 15: Divide by illegal input
+	Expected:
+		**illegal operand value specified
+		
+	Terminal Output:
+		operation: / x   
+		**illegal operand value specified
+
+		
+Test 16: Append a float
+	Expected:
+		1.675000
+		2.600000
+		2.925000
+		1.000000
+		
+	Terminal Output:
+		operation: a 1.00
+		operation: p
+		1.675000
+		2.600000
+		2.925000
+		1.000000
+
+		
+Test 17: Append an integer
+	Expected:
+		1.675000
+		2.600000
+		2.925000
+		1.000000
+		1.000000
+		
+	Terminal Output:
+		operation: a 1             
+		operation: p
+		1.675000
+		2.600000
+		2.925000
+		1.000000
+		1.000000
+
+		
+Test 18: Append illegal input
+	Expected:
+		**illegal value specified
+		**couldn't extend vector		
+		
+	Terminal Output:
+		operation: a x
+		**illegal value specified
+		**couldn't extend vector
+		
+		
+Test 19: Print help
+	Expected:
+		Usage:
+  		c   - clear current vector and input new one
+  		p   - print vector
+  		q,e - quit, end
+  		h   - print usage help
+  		+ <operand> - add <operand> to each element of vector
+  		- <operand> - subtract <operand> from each element of vector
+  		* <operand> - multiple each element of vector by <operand>
+ 		/ <operand> - divide each element of vector by <operand>
+  		a <value> - extend vector by additional value
+  		
+  	Terminal Output:
+		operation: h
+ 		Usage:
+  		c   - clear current vector and input new one
+  		p   - print vector
+  		q,e - quit, end
+  		h   - print usage help
+  		+ <operand> - add <operand> to each element of vector
+  		- <operand> - subtract <operand> from each element of vector
+  		* <operand> - multiple each element of vector by <operand>
+  		/ <operand> - divide each element of vector by <operand>
+  		a <value> - extend vector by additional value
+
+		
+Test 20: Clear
+	Expected:
+		Prompt user for a new vector.
+		
+	Terminal Output:
+		operation: c
+		number of vector elements: 0
+		operation: p
+		
+Test 21: Unrecognized operation
+	Expected:
+		**operation not recognized
+		
+	Terminal Output:
+		operation: t
+		**operation not recognized
+		
+Test 22: Quit
+	Expected:
+		Program terminates.
+		
+	Terminal Output:
+		operation: q
+
+		
+		
+
+

@@ -22,7 +22,7 @@ mam558
 		- 	To clean up the directory of all .o files and executables
 			run the 'make clean' command.
 			
-// -------------------------- The Code --------------------------
+// ------------------- The Code -------------------
 	vector.h
 		This file contains all the definitions needed for vector.cc and many
 		of the other .cc files. The definitions contained within are 
@@ -81,22 +81,5 @@ mam558
 			Tests the extend_vec() method.
 		test_print()
 			Tests the print_vec() method.
-			
-	test_scalar.cc
-		This file contains methods for testing the functions contained
-		within scalar.cc. The functions are test_scalarPlus(),
-		test_scalarMinus, test_scalarMult(), and test_scalarDiv(). 'assert()'
-		is used throughout the file to test whether or not the proper outputs
-		are obtained from the test functions.
 		
-		test_scalarPlus()
-			Tests the scalar_plus() method.
-		test_scalarMinus()
-			Tests the scalar_minus() method.
-		test_scalarMult()
-			Tests the scalar_mult() method.
-		test_scalarDiv()
-			Tests the scalar_div() method.
-		
-
 		
