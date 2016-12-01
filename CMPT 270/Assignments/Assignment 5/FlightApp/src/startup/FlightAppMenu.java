@@ -13,6 +13,7 @@ import java.awt.event.ActionListener;
 
 import gui.HandleAddFlightFrame;
 import gui.HandleFlightFrame;
+import gui.HandleAddPassengerFrame;
 
 public class FlightAppMenu extends JFrame {
 	
@@ -76,7 +77,7 @@ public class FlightAppMenu extends JFrame {
 	public void createButtons() {
 		button1 = new JButton("Add Flight");
 		
-		// Creating the Add Flight button
+		// Creating the Add Flight button.
 		class AddFlightItemListener implements ActionListener {
 			public void actionPerformed(ActionEvent event) {
 				HandleAddFlightFrame newFlight = new HandleAddFlightFrame();
@@ -88,6 +89,19 @@ public class FlightAppMenu extends JFrame {
 		button1.addActionListener(flightListener);
 		
 		button2 = new JButton("Add Passenger");
+		
+		// Creating the Add Passenger button.
+		class AddPassengerItemListener implements ActionListener {
+			public void actionPerformed(ActionEvent event) {
+				HandleAddPassengerFrame newPassenger = new HandleAddPassengerFrame();
+				newPassenger.setVisible(true);
+			}
+		}
+		
+		ActionListener passListener = new AddPassengerItemListener();
+		button2.addActionListener(passListener);
+		
+		
 		button3 = new JButton("Display Passengers");
 		button4 = new JButton("Display Flights");
 		
