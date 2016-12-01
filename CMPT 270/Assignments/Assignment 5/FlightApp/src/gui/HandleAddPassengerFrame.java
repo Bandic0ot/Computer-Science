@@ -136,7 +136,6 @@ public class HandleAddPassengerFrame extends JFrame {
 						mainPanel.revalidate();
 					}
 				} catch(Exception e) {
-					System.out.print("Error");
 					errorLabel.setText("Please enter a valid string in all fields.");
 
 					mainPanel.revalidate();
