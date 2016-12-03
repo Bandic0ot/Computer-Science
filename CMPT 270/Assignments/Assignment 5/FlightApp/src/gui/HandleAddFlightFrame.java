@@ -13,23 +13,60 @@ import java.awt.event.ActionListener;
 
 import commands.AddFlightCommand;
 
-
+/**
+ * A frame which allows the user to add a Flight to the
+ * Flight Dictionary using the number of the flight.
+ * @author Matthew Mulenga
+ *
+ */
 public class HandleAddFlightFrame extends JFrame {
 
 	// -------- Instance Variables --------
+	/**
+	 * The width of the frame.
+	 */
 	private static final int FRAME_WIDTH = 550;
+	
+	/**
+	 * The height of the frame.
+	 */
 	private static final int FRAME_HEIGHT = 350;
+	
+	/**
+	 * The width of the text field.
+	 */
 	private static final int FIELD_WIDTH = 10;
 
+	/**
+	 * The main panel which has a Border Layout.
+	 */
 	private JPanel mainPanel;
 
+	/**
+	 * A label used for displaying errors.
+	 */
 	private JLabel errorLabel;
 
+	/**
+	 * The number of the flight.
+	 */
 	private String number;
+	
+	/**
+	 * The width of the flight.
+	 */
 	private String width;
+	
+	/**
+	 * The capacity of the flight.
+	 */
 	private String capacity;
 
 	// -------- Constructor --------
+	/**
+	 * A constructor which creates the window which
+	 * handles the addition of a flight to the system.
+	 */
 	public HandleAddFlightFrame() {
 
 		mainPanel = new JPanel();
@@ -63,6 +100,12 @@ public class HandleAddFlightFrame extends JFrame {
 	}
 
 	// -------- Methods --------
+	/**
+	 * Creates a panel which contains a text field and
+	 * label for handling the addition of a flight's
+	 * number.
+	 * @return The initialized panel.
+	 */
 	private JPanel createNumberPanel() {
 
 		JPanel numberPanel = new JPanel();
@@ -86,7 +129,13 @@ public class HandleAddFlightFrame extends JFrame {
 
 		return numberPanel;
 	}
-
+	
+	/**
+	 * Creates a panel which contains a text field and
+	 * label for handling the addition of a flight's
+	 * width.
+	 * @return The initialized panel.
+	 */
 	private JPanel createWidthPanel() {
 
 		JPanel widthPanel = new JPanel();
@@ -111,6 +160,12 @@ public class HandleAddFlightFrame extends JFrame {
 		return widthPanel;
 	}
 
+	/**
+	 * Creates a panel which contains a text field and
+	 * label for handling the addition of a flight's
+	 * capacity.
+	 * @return The initialized panel.
+	 */
 	private JPanel createCapacityPanel() {
 
 		JPanel capacityPanel = new JPanel();
@@ -136,6 +191,10 @@ public class HandleAddFlightFrame extends JFrame {
 		return capacityPanel;
 	}
 
+	/**
+	 * Creates a button which submits the data when pressed.
+	 * @return The initialized button.
+	 */
 	private JButton createButton() {
 		JButton submitButton = new JButton("Submit");
 		ActionListener listener = new submitButtonListener();
@@ -144,7 +203,6 @@ public class HandleAddFlightFrame extends JFrame {
 
 		return submitButton;
 	}
-
 
 	class submitButtonListener implements ActionListener {
 		public void actionPerformed(ActionEvent event) {

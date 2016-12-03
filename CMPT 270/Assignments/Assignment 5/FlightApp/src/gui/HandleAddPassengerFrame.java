@@ -69,7 +69,7 @@ public class HandleAddPassengerFrame extends JFrame {
 
 	// -------- Constructor --------
 	/**
-	 * A constructor for initializing the frame which handles
+	 * A constructor which creates the window which handles
 	 * the adding of a passenger to the system.
 	 */
 	public HandleAddPassengerFrame() {
@@ -104,8 +104,10 @@ public class HandleAddPassengerFrame extends JFrame {
 
 	// -------- Methods --------
 	/**
-	 * 
-	 * @return
+	 * Creates a panel which contains a text field and
+	 * label for handling the addition of a passenger's
+	 * name.
+	 * @return The initialized panel.
 	 */
 	private JPanel createNamePanel() {
 
@@ -151,6 +153,12 @@ public class HandleAddPassengerFrame extends JFrame {
 		return namePanel;
 	}
 
+	/**
+	 * Creates a panel which contains a text field and
+	 * label for handling the addition of a passenger's
+	 * telephone number.
+	 * @return The initialized panel.
+	 */
 	private JPanel createNumberPanel() {
 
 		JPanel numberPanel = new JPanel();
@@ -196,6 +204,11 @@ public class HandleAddPassengerFrame extends JFrame {
 		return numberPanel;
 	}
 	
+	/**
+	 * Creates a button which is used to close the
+	 * window.
+	 * @return The initialized button.
+	 */
 	private JButton createButton() {
 		JButton closeButton = new JButton("Close");
 		
