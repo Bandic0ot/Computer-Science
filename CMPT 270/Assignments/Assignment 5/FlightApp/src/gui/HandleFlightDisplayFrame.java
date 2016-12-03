@@ -9,10 +9,21 @@ import commands.DisplayFlightsCommand;
 public class HandleFlightDisplayFrame extends JFrame {
 	
 	// -------- Instance Variables --------
+	/**
+	 * The width of the frame.
+	 */
 	private static final int FRAME_WIDTH = 550;
+	
+	/**
+	 * The height of the frame.
+	 */
 	private static final int FRAME_HEIGHT = 350;
 	
 	// -------- Constructor ---------
+	/**
+	 * A constructor which creates a window that handles
+	 * the displaying a list of the flights in the system.
+	 */
 	public HandleFlightDisplayFrame() {
 		DisplayFlightsCommand display = new DisplayFlightsCommand();
 		

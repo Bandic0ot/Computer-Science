@@ -20,12 +20,29 @@ import gui.HandleFlightDisplayFrame;
 public class FlightAppMenu extends JFrame {
 
 	// -------- Instance Variables --------
+	/**
+	 * The width of the frame.
+	 */
 	private static final int FRAME_WIDTH = 550;
+	
+	/**
+	 * The height of the frame.
+	 */
 	private static final int FRAME_HEIGHT = 350;
 
+	/**
+	 * The width of the text field.
+	 */
 	private static final int FIELD_WIDTH = 10;
 
+	/**
+	 * A panel containing all the buttons.
+	 */
 	private JPanel buttonPanel;
+	
+	/**
+	 * 
+	 */
 	private JButton button1, button2, button3, button4, button5;
 
 

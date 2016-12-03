@@ -8,10 +8,21 @@ import commands.DisplayPassengersCommand;
 
 public class HandlePassengerDisplayFrame extends JFrame {
 	// -------- Instance Variables --------
+	/**
+	 * The width of the frame.
+	 */
 	private static final int FRAME_WIDTH = 550;
+	
+	/**
+	 * The height of the frame.
+	 */
 	private static final int FRAME_HEIGHT = 350;
 
 	// -------- Constructor ---------
+	/**
+	 * A constructor which creates a window that handles
+	 * the displaying a list of the passengers in the system.
+	 */
 	public HandlePassengerDisplayFrame() {
 		DisplayPassengersCommand display = new DisplayPassengersCommand();
 
