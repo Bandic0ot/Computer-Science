@@ -13,24 +13,65 @@ import javax.swing.JTextField;
 
 import commands.AddPassengerCommand;
 
+/**
+ * A frame which allows the user to add a Passenger to the
+ * Passenger Dictionary using their name and telephone number.
+ * @author Matthew Mulenga
+ *
+ */
 public class HandleAddPassengerFrame extends JFrame {
 
 	// -------- Instance Variables --------
+	/**
+	 * The width of the frame.
+	 */
 	private static final int FRAME_WIDTH = 550;
+	
+	/**
+	 * The height of the frame.
+	 */
 	private static final int FRAME_HEIGHT = 350;
+	
+	/**
+	 * The width of the text field.
+	 */
 	private static final int FIELD_WIDTH = 10;
 
+	/**
+	 * The main panel which has a Border Layout.
+	 */
 	private JPanel mainPanel;
 
+	/**
+	 * A label used for displaying errors.
+	 */
 	private JLabel errorLabel;
 
+	/**
+	 * The field used for collecting the passenger's name.
+	 */
 	private JTextField nameField;
+	
+	/**
+	 * The field used for collecting the passenger's telephone number.
+	 */
 	private JTextField numberField;
 
+	/**
+	 * Stores the passenger's name.
+	 */
 	private String name;
+	
+	/**
+	 * Stores the passenger's telephone number.
+	 */
 	private String number;
 
 	// -------- Constructor --------
+	/**
+	 * A constructor for initializing the frame which handles
+	 * the adding of a passenger to the system.
+	 */
 	public HandleAddPassengerFrame() {
 		mainPanel = new JPanel();
 		mainPanel.setLayout(new BorderLayout());
@@ -62,6 +103,10 @@ public class HandleAddPassengerFrame extends JFrame {
 
 
 	// -------- Methods --------
+	/**
+	 * 
+	 * @return
+	 */
 	private JPanel createNamePanel() {
 
 		JPanel namePanel = new JPanel();
