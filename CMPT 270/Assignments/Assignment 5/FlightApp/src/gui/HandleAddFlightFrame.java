@@ -21,6 +21,12 @@ import commands.AddFlightCommand;
  */
 public class HandleAddFlightFrame extends JFrame {
 
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	// -------- Instance Variables --------
 	/**
 	 * The width of the frame.

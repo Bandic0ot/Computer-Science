@@ -19,6 +19,11 @@ import gui.HandleFlightDisplayFrame;
 
 public class FlightAppMenu extends JFrame {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	// -------- Instance Variables --------
 	/**
 	 * The width of the frame.
@@ -41,12 +46,36 @@ public class FlightAppMenu extends JFrame {
 	private JPanel buttonPanel;
 	
 	/**
-	 * 
+	 * A button that opens an add flight window.
 	 */
-	private JButton button1, button2, button3, button4, button5;
+	private JButton addFlightButton;
+	
+	/**
+	 * A button that opens an add passenger window.
+	 */
+	private JButton addPassButton;
+	
+	/**
+	 * A button that opens a display passenger window.
+	 */
+	private JButton displayPassButton;
+	
+	/**
+	 * A button that opens a display flight window.
+	 */
+	private JButton displayFlightButton;
+	
+	/**
+	 * A button that quits the application.
+	 */
+	private JButton quitButton;
 
 
 	// -------- Constructor --------
+	/**
+	 * A constructor that creates a window for
+	 * the main menu of the application.
+	 */
 	public FlightAppMenu() {
 
 		createButtons();
@@ -56,21 +85,31 @@ public class FlightAppMenu extends JFrame {
 		setSize(FRAME_WIDTH, FRAME_HEIGHT);
 	}
 
+	// -------- Methods --------
+	/**
+	 * Creates a panel with a border layout which
+	 * contains all the buttons.
+	 */
 	public void createButtonPanel() {
 
 		buttonPanel = new JPanel();
 		buttonPanel.setLayout(new GridLayout(5, 1));
 
-		buttonPanel.add(button1);
-		buttonPanel.add(button2);
-		buttonPanel.add(button3);
-		buttonPanel.add(button4);
-		buttonPanel.add(button5);
+		buttonPanel.add(addFlightButton);
+		buttonPanel.add(addPassButton);
+		buttonPanel.add(displayPassButton);
+		buttonPanel.add(displayFlightButton);
+		buttonPanel.add(quitButton);
 
 
 		add(buttonPanel, BorderLayout.CENTER);
 	}
 
+	/**
+	 * Creates a panel which contains a text field and
+	 * label for handling searching up information on
+	 * different flights.
+	 */
 	public void createSearchPanel() {
 		JPanel searchPanel = new JPanel();
 		JLabel prompt = new JLabel("Search flight #: ");
@@ -93,10 +132,14 @@ public class FlightAppMenu extends JFrame {
 		field.addActionListener(listener);
 	}
 
+	/**
+	 * Creates all the buttons which handle opening up different
+	 * windows throughout the application.
+	 */
 	public void createButtons() {
 
 		// Creating the Add Flight button.
-		button1 = new JButton("Add Flight");
+		addFlightButton = new JButton("Add Flight");
 
 		class AddFlightItemListener implements ActionListener {
 			public void actionPerformed(ActionEvent event) {
@@ -106,11 +149,11 @@ public class FlightAppMenu extends JFrame {
 		}
 
 		ActionListener flightListener = new AddFlightItemListener();
-		button1.addActionListener(flightListener);
+		addFlightButton.addActionListener(flightListener);
 
 
 		// Creating the Add Passenger button.
-		button2 = new JButton("Add Passenger");
+		addPassButton = new JButton("Add Passenger");
 
 		class AddPassengerItemListener implements ActionListener {
 			public void actionPerformed(ActionEvent event) {
@@ -120,11 +163,11 @@ public class FlightAppMenu extends JFrame {
 		}
 
 		ActionListener passListener = new AddPassengerItemListener();
-		button2.addActionListener(passListener);
+		addPassButton.addActionListener(passListener);
 
 
 		// Creating the Display Passengers button.
-		button3 = new JButton("Display Passengers");
+		displayPassButton = new JButton("Display Passengers");
 
 		class DisplayPassengerItemListener implements ActionListener {
 			public void actionPerformed(ActionEvent event) {
@@ -134,11 +177,11 @@ public class FlightAppMenu extends JFrame {
 		}
 
 		ActionListener passDisplayListener = new DisplayPassengerItemListener();
-		button3.addActionListener(passDisplayListener);
+		displayPassButton.addActionListener(passDisplayListener);
 
 
 		// Creating the Display Flights button.
-		button4 = new JButton("Display Flights");
+		displayFlightButton = new JButton("Display Flights");
 
 		class DisplayFlightItemListener implements ActionListener {
 			public void actionPerformed(ActionEvent event) {
@@ -148,10 +191,10 @@ public class FlightAppMenu extends JFrame {
 		}
 
 		ActionListener flightDisplayListener = new DisplayFlightItemListener();
-		button4.addActionListener(flightDisplayListener);
+		displayFlightButton.addActionListener(flightDisplayListener);
 
 		// Creating the quit button
-		button5 = new JButton("Quit");
+		quitButton = new JButton("Quit");
 
 		class ExitItemListener implements ActionListener {
 			public void actionPerformed(ActionEvent event) {
@@ -162,11 +205,13 @@ public class FlightAppMenu extends JFrame {
 		}
 
 		ActionListener listener = new ExitItemListener();
-		button5.addActionListener(listener);
+		quitButton.addActionListener(listener);
 	}
 
-
-	// -------- Methods --------
+	/**
+	 * Run the flight app menu.
+	 * @param args not used
+	 */
 	public static void main(String args[]) {
 		JFrame window = new FlightAppMenu();
 
