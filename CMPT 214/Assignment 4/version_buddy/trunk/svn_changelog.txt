@@ -1,0 +1,61 @@
+------------------------------------------------------------------------
+r84 | mam558@USASK.CA | 2016-12-05 23:08:38 -0600 (Mon, 05 Dec 2016) | 1 line
+
+Created v1.0 tag.
+------------------------------------------------------------------------
+r83 | mam558@USASK.CA | 2016-12-05 23:02:47 -0600 (Mon, 05 Dec 2016) | 1 line
+
+Making sure everything is up to date before v1.0 tag.
+------------------------------------------------------------------------
+r82 | mam558@USASK.CA | 2016-12-05 19:03:40 -0600 (Mon, 05 Dec 2016) | 1 line
+
+Version buddy is now feature complete, just need to do testing and refactoring if needed.
+------------------------------------------------------------------------
+r81 | mam558@USASK.CA | 2016-12-05 18:48:24 -0600 (Mon, 05 Dec 2016) | 1 line
+
+Refactored code to be more legible and more efficient.
+------------------------------------------------------------------------
+r80 | mam558@USASK.CA | 2016-12-05 17:35:08 -0600 (Mon, 05 Dec 2016) | 1 line
+
+Added a check to see if the file exists in the current directory.
+------------------------------------------------------------------------
+r79 | mam558@USASK.CA | 2016-12-05 03:08:42 -0600 (Mon, 05 Dec 2016) | 1 line
+
+Added a conditional to check if an option was provided.
+------------------------------------------------------------------------
+r78 | mam558@USASK.CA | 2016-12-05 02:31:27 -0600 (Mon, 05 Dec 2016) | 1 line
+
+Added a prompt when the program executes properly.
+------------------------------------------------------------------------
+r77 | mam558@USASK.CA | 2016-12-05 02:04:28 -0600 (Mon, 05 Dec 2016) | 1 line
+
+Added comments to all the conditional commands.
+------------------------------------------------------------------------
+r76 | mam558@USASK.CA | 2016-12-05 01:58:01 -0600 (Mon, 05 Dec 2016) | 1 line
+
+Refactored the test to see if the output file existed. Much cleaner now.
+------------------------------------------------------------------------
+r75 | mam558@USASK.CA | 2016-12-05 01:50:22 -0600 (Mon, 05 Dec 2016) | 1 line
+
+Added a check to see if the file given as an argument exists in the current directory.
+------------------------------------------------------------------------
+r74 | mam558@USASK.CA | 2016-12-04 21:19:23 -0600 (Sun, 04 Dec 2016) | 1 line
+
+Added a test condition to see if the converted file name already exists.
+------------------------------------------------------------------------
+r73 | mam558@USASK.CA | 2016-12-04 20:42:53 -0600 (Sun, 04 Dec 2016) | 1 line
+
+Got the initial replacement working. Still need to test more conditions.
+------------------------------------------------------------------------
+r72 | mam558@USASK.CA | 2016-12-04 17:58:36 -0600 (Sun, 04 Dec 2016) | 1 line
+
+Created the intial skeleton for version_buddy script.
+------------------------------------------------------------------------
+r71 | mam558@USASK.CA | 2016-12-04 17:30:39 -0600 (Sun, 04 Dec 2016) | 1 line
+
+Created tags and trunk folders.
+------------------------------------------------------------------------
+r70 | mam558@USASK.CA | 2016-12-04 17:28:51 -0600 (Sun, 04 Dec 2016) | 1 line
+
+Created the version_buddy project.
+------------------------------------------------------------------------

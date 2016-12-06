@@ -1,0 +1,198 @@
+Matthew Mulenga
+mam558
+11144528
+
+Each test in this file is successive meaning, that the test currently
+being executed has passed the one preceding it.
+
+-------- Test 1 --------
+
+Check to see if the correct number of arguments were given.
+Expected return value: 1
+
+Matt@trunk$ ./version_buddy -v queens_10_2.cc 
+usage: version_buddy <filename>
+	where <filename> is of the form Name_Major_Minor.Extension
+	and does not contain any whitespace
+
+Matt@trunk$ echo $?
+1
+
+Matt@trunk$ ./version_buddy 3 queens_10_2.cc 
+usage: version_buddy <filename>
+	where <filename> is of the form Name_Major_Minor.Extension
+	and does not contain any whitespace
+Matt@trunk$ echo $?
+1
+
+Matt@trunk$ ./version_buddy queens_10_2.cc queens.10.2.cc
+usage: version_buddy <filename>
+	where <filename> is of the form Name_Major_Minor.Extension
+	and does not contain any whitespace
+Matt@trunk$ echo $?
+1
+
+Matt@trunk$ ./version_buddy a.b c.d
+usage: version_buddy <filename>
+	where <filename> is of the form Name_Major_Minor.Extension
+	and does not contain any whitespace
+Matt@trunk$ echo $?
+1
+
+
+-------- Test 2 --------
+
+Check to see if there is an option
+Expected return value: 2
+
+Matt@trunk$ ./version_buddy -v 
+Option -v is not recognized.
+usage: version_buddy <filename>
+	where <filename> is of the form Name_Major_Minor.Extension
+	and does not contain any whitespace
+
+Matt@trunk$ echo $?
+2
+
+Matt@trunk$ ./version_buddy -v\ 3 
+Option -v 3 is not recognized.
+usage: version_buddy <filename>
+	where <filename> is of the format Name_Major_Minor.Extension
+	and does not contain any whitespace
+
+Matt@trunk$ echo $?
+2
+
+
+-------- Test 3 --------
+
+Check to see if the file provided exists.
+Expected return value: 6
+
+Matt@trunk$ ./version_buddy ../testfile
+The file does not exist.
+Matt@trunk$ echo $?
+6
+
+Matt@trunk$ ./version_buddy a.b\ b.d
+The file does not exist.
+Matt@trunk$ echo $?
+6
+
+Matt@trunk$ ./version_buddy queens_10_2.cc
+The file does not exist.
+Matt@trunk$ echo $?
+6
+
+
+-------- Test 4 --------
+
+Check to see if the file provided exists in the current working directory.
+Expected return value: 5
+
+Matt@trunk$ ls ..
+queens_10_2.cc	tags		trunk
+
+Matt@trunk$ ls
+Testing.txt	version_buddy
+
+Matt@trunk$ ./version_buddy ../queens_10_2.cc 
+File must be in the current working directory.
+Matt@trunk$ echo $?
+5
+
+Matt@version_buddy$ ls
+queens_10_2.cc	tags		testfile	trunk
+Matt@trunk$ ./version_buddy ../testfile
+File must be in the current working directory.
+Matt@trunk$ echo $?
+5
+
+
+-------- Test 5 --------
+
+Check to see if the file name is the proper format.
+Expected return value: 4
+
+Matt@trunk$ ls
+Testing.txt	queens.10.2.cc	test file	version_buddy
+_queens_10_2.cc	queens_10_2.cc	testfile
+
+Matt@trunk$ ls
+Testing.txt	test file	testfile	version_buddy
+
+Matt@trunk$ ./version_buddy ../trunk/testfile
+File name is of incorrect format.
+Matt@trunk$ echo $?
+4
+
+Matt@trunk$ ./version_buddy ../trunk/test\ file
+File name is of incorrect format.
+Matt@trunk$ echo $?
+4
+
+Matt@trunk$ ./version_buddy test\ file
+File name is of incorrect format.
+Matt@trunk$ echo $?
+4
+
+Matt@trunk$ ./version_buddy testfile
+File name is of incorrect format.
+Matt@trunk$ echo $?
+4
+
+Matt@trunk$ ./version_buddy _queens_10_2.cc
+File name is of incorrect format.
+Matt@trunk$ echo $?
+4
+
+Matt@trunk$ ./version_buddy queens_1_2_cc
+File name is of incorrect format.
+Matt@trunk$ echo $?
+4
+
+Matt@trunk$ ./version_buddy queens.1.2.cc
+File name is of incorrect format.
+Matt@trunk$ echo $?
+4
+
+Matt@trunk$ ./version_buddy queens_1_.cc
+File name is of incorrect format.
+Matt@trunk$ echo $?
+4
+
+Matt@trunk$ ./version_buddy queens_1_1_2.cc
+File name is of incorrect format.
+Matt@trunk$ echo $?
+4
+
+Matt@trunk$ ./version_buddy ../trunk/queens_10_2.cc 
+File name is of incorrect format.
+Matt@trunk$ echo $?
+4
+
+-------- Test 6 --------
+
+Check to see if the output file already exists.
+Expected return value: 3
+
+Matt@trunk$ ls
+Testing.txt	queens.10.2.cc	queens_10_2.cc	version_buddy
+
+Matt@trunk$ ./version_buddy queens_10_2.cc 
+The output file already exists.
+
+-------- Test 7 --------
+
+Check to see if file name conversion works.
+Expected return value: 0
+
+Matt@trunk$ ls
+Testing.txt	queens_10_2.cc	version_buddy
+
+Matt@trunk$ ./version_buddy queens_10_2.cc 
+queens_10_2.cc -> queens.10.2.cc
+
+Matt@trunk$ ls
+Testing.txt	queens.10.2.cc	version_buddy
+

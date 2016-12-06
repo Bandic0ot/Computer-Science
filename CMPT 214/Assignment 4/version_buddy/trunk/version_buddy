@@ -10,49 +10,61 @@ then
 	exit 1
 fi
 
-if [ `egrep '^-[[:alnum:]]+$' <<< $1` ]
+# Check to see if there is an option provided.
+if [ "$(egrep '\-[[:alnum:]]+' <<< $1)" ]
 then
 	echo "Option $1 is not recognized."
-	
-	exit 5
-fi
-
-# Check to see if the argument is the proper format.
-if [ `egrep '^[[:alnum:]-]+_[[:digit:]]+_[[:digit:]]+\.[[:alnum:]]+$' <<< $1` ]
-then
-
-	# Check to see if the file given as an argument exists in the current directory.
-	if [ -f $1 ]
-	then
-	
-		# Check to see if the output file already exists.
-		if [ -f `echo $1 | tr "_" "."` ]
-		then
-			echo "The file already exists."
-		
-			exit 2
-		# If the file it does not already exist change the format of 
-		# the file name to the proper one.
-		else
-			
-			echo "$1 -> \c"
-			echo $1 | tr "_" "."
-			mv $1 `echo $1 | tr "_" "."`
-		
-			exit 0
-		fi
-
-	# If the file does not exist output the appropriate message.
-	else
-	echo "File does not exist."
-fi
-
-# If the file name does not have the proper format, but it does exist
-# output an appropriate message.
-else
 	echo "usage: version_buddy <filename>
 	where <filename> is of the form Name_Major_Minor.Extension
 	and does not contain any whitespace"
 	
-	exit 3
+	exit 2
+fi
+
+# Check to see if the argument is a file that exists.
+if [ -f "$1" ]
+then
+	# Check to see if the argument is a file that exists in 
+	# the current working directory.
+	if [ -f "$(basename "$1")" ]
+	then
+		# Check to see if the argument is the proper format.
+		if [ $(egrep '^[[:alnum:]-]+_[[:digit:]]+_[[:digit:]]+\.[[:alnum:]]+$' <<< $1) ]
+		then
+			# Check to see if the output file already exists.
+			if [ -f $(echo $1 | tr "_" ".") ]
+			then
+				echo "The output file already exists."
+		
+				exit 3
+			# If the file name does not already exist change the format of 
+			# the file name to the proper one.
+			else
+			
+				echo "$1 -> \c"
+				echo $1 | tr "_" "."
+				mv $1 $(echo $1 | tr "_" ".")
+		
+				exit 0
+			fi
+		else
+			# If the file exists in the current directory, but it does not
+			# have the correct format display an appropriate message.
+			echo "File name is of incorrect format."
+			
+			exit 4
+		fi
+		
+	else
+		# If the file exists, but is not in the current directory
+		# display an appropriate message.
+		echo "File must be in the current working directory."
+		
+		exit 5
+	fi
+# If the file does not exist display an appropriate message.
+else
+	echo "The file does not exist."
+	
+	exit 6
 fi
