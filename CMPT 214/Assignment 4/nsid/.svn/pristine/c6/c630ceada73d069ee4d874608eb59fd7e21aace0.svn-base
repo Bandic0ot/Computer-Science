@@ -1,0 +1,21 @@
+#!/bin/sh
+
+is_nsid() {
+	# Check if the argument is the correct format.	
+	if [ $(egrep '^[[:alpha:]]{3}[[:digit:]]{3}$' <<< $1) ]
+	then
+		return 0
+	else 
+		return 1
+	fi
+}
+
+for N in "$@"
+do
+	if is_nsid $N
+	then
+		echo Success.
+	else
+		echo Failure.
+	fi 
+done

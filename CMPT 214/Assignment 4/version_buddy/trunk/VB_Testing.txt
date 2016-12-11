@@ -8,7 +8,7 @@ being executed has passed the one preceding it.
 -------- Test 1 --------
 
 Check to see if the correct number of arguments were given.
-Expected return value: 1
+Expected return value: 1 -> Usage Error
 
 Matt@trunk$ ./version_buddy -v queens_10_2.cc 
 usage: version_buddy <filename>
@@ -43,7 +43,7 @@ Matt@trunk$ echo $?
 -------- Test 2 --------
 
 Check to see if there is an option
-Expected return value: 2
+Expected return value: 2 -> "Option not recognized." + Usage error.
 
 Matt@trunk$ ./version_buddy -v 
 Option -v is not recognized.
@@ -67,7 +67,7 @@ Matt@trunk$ echo $?
 -------- Test 3 --------
 
 Check to see if the file provided exists.
-Expected return value: 6
+Expected return value: 6 -> "File does not exist."
 
 Matt@trunk$ ./version_buddy ../testfile
 The file does not exist.
@@ -88,7 +88,7 @@ Matt@trunk$ echo $?
 -------- Test 4 --------
 
 Check to see if the file provided exists in the current working directory.
-Expected return value: 5
+Expected return value: 5 -> "File must be in the current working directory."
 
 Matt@trunk$ ls ..
 queens_10_2.cc	tags		trunk
@@ -112,7 +112,7 @@ Matt@trunk$ echo $?
 -------- Test 5 --------
 
 Check to see if the file name is the proper format.
-Expected return value: 4
+Expected return value: 4 -> "File name is of incorrect type."
 
 Matt@trunk$ ls
 Testing.txt	queens.10.2.cc	test file	version_buddy
@@ -174,7 +174,7 @@ Matt@trunk$ echo $?
 -------- Test 6 --------
 
 Check to see if the output file already exists.
-Expected return value: 3
+Expected return value: 3 -> "The output file already exists."
 
 Matt@trunk$ ls
 Testing.txt	queens.10.2.cc	queens_10_2.cc	version_buddy
@@ -185,7 +185,7 @@ The output file already exists.
 -------- Test 7 --------
 
 Check to see if file name conversion works.
-Expected return value: 0
+Expected return value: 0 -> "Old_File_Name.cc->New.File.Name.cc"
 
 Matt@trunk$ ls
 Testing.txt	queens_10_2.cc	version_buddy

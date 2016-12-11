@@ -11,7 +11,7 @@ is_nsid() {
 	fi
 }
 
-# Check to see if reading in from stdin.
+# Check to see if the argument is from stdin.
 if [ -t 0 ]
 then
 
@@ -26,9 +26,7 @@ then
 	fi
 	done
 	
-	exit 0
-	
-# If the not reading in from stdin, use the argument as input.
+# If the argument is not from stdin we can assume it's a file being read in.
 else
 	# Create a variable which contains the concatenated contents of the file.
 	STRINGFILE=`cat $1`
@@ -43,8 +41,6 @@ else
 			echo "$STRING is not valid."
 		fi
 	done
-	
-	exit 0
 fi
 
 

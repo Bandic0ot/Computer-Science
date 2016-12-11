@@ -1,0 +1,44 @@
+#!/bin/sh
+
+#set -x
+
+is_nsid() {
+	if [ -t 0 ]
+	then
+		if [ "$(egrep '^[[:alpha:]]{3}[[:digit:]]{3}$' <<< $1)" ]
+		then
+			return 0
+		else
+			return 1
+		fi
+	else
+		if [ "$(cat $1 | egrep '^[[:alpha:]]{3}[[:digit:]]{3}$')" ]
+		then
+			return 0
+		else
+			return 1
+		fi
+	fi
+}
+
+if [ -t 0 ]
+then
+	if is_nsid $@
+	then
+		echo "$@ is valid."
+	else
+		echo "$@ is not valid."
+	fi
+else
+	STRING=$(cat "$@")
+	if is_nsid $@
+	then 
+		echo "$STRING is valid."
+	else
+		echo "$STRING is not valid."
+	fi
+
+fi
+
+
+

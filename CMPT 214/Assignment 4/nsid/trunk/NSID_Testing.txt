@@ -1,0 +1,143 @@
+Matthew Mulenga
+mam558
+11144528
+
+
+Matt@trunk$ cat testfile.txt
+mam558
+cat_339
+339mam
+mam5588
+mamm558
+mam 558
+
+-------- Test 1 --------
+
+Check to see if a file can be passed properly.
+Expected output:
+mam558 is valid.
+cat_339 is not valid.
+339mam is not valid.
+mam5588 is not valid.
+mamm558 is not valid.
+mam is not valid.
+558 is not valid.
+
+
+
+Matt@trunk$ sh nsid < testfile.txt 
+mam558 is valid.
+cat_339 is not valid.
+339mam is not valid.
+mam5588 is not valid.
+mamm558 is not valid.
+mam is not valid.
+558 is not valid.
+
+
+
+-------- Test 2 --------
+
+Check to see if the script works with a pipe.
+Expected output:
+mam558 is valid.
+cat_339 is not valid.
+339mam is not valid.
+mam5588 is not valid.
+mamm558 is not valid.
+mam is not valid.
+558 is not valid.
+
+
+
+Matt@trunk$ cat testfile.txt | sh nsid 
+mam558 is valid.
+cat_339 is not valid.
+339mam is not valid.
+mam5588 is not valid.
+mamm558 is not valid.
+mam is not valid.
+558 is not valid.
+
+
+
+-------- Test 3 --------
+
+Check to see if the script can test a single argument.
+Expected output:
+mam558 is valid.
+
+
+
+Matt@trunk$ ./nsid mam558
+mam558 is valid.
+
+
+
+-------- Test 4 --------
+
+Check to see if the script can test multiple arguments.
+Expected output:
+mam558 is valid.
+558mam is not valid.
+joe123 is valid.
+
+
+
+Matt@trunk$ ./nsid mam558 558mam joe123
+mam558 is valid.
+558mam is not valid.
+joe123 is valid.
+
+
+
+-------- Test 5 --------
+
+Check to see if the script can handle command redirection.
+Expected output:
+mam558 is valid.
+cat_339 is not valid.
+339mam is not valid.
+mam5588 is not valid.
+mamm558 is not valid.
+mam is not valid.
+558 is not valid.
+
+
+
+Matt@trunk$ ./nsid `cat testfile.txt`
+mam558 is valid.
+cat_339 is not valid.
+339mam is not valid.
+mam5588 is not valid.
+mamm558 is not valid.
+mam is not valid.
+558 is not valid.
+
+
+
+-------- Test 6 --------
+
+Check to see if the script can handle a here string.
+Expected output:
+mam558 is valid.
+
+
+
+Matt@trunk$ ./nsid <<< mam558
+mam558 is valid.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,31 @@
+Matthew Mulenga
+mam558
+11144528
+
+// ------------------- How To Run The Program -------------------
+	Requirements: 
+		- 	The "version_buddy" script file.
+		-	The script was created and tested on macOS.
+		
+	Execution:
+		- 	Run the "version_buddy" script using './version_buddy' or
+			'sh version_buddy'
+		-	Can take only one argument which is a filename with the format
+			'name_major_minor.ext'.
+		- 	ex:
+			./version_buddy <filename>
+			
+		
+			
+// -------------------------- The Code --------------------------
+	The script starts by checking if it was passed exactly one argument.
+	If it was not then it returns an appropriate error message. It then
+	goes on to check to see if an option was accidentally provided, if it
+	was it returns an appropriate error message. It then proceeds to check
+	if the argument is a file, then if the file is in the current directory,
+	then if the file name has the proper format, and finally if the output
+	file already exits. If all these tests are passed then the file name is
+	converted and a string displaying such is displayed on the console. If
+	any of the aforementioned tests fail then the appropriate error message
+	is displayed on the console.
+		

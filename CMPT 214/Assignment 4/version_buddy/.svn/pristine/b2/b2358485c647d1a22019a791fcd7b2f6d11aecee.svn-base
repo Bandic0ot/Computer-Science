@@ -1,0 +1,34 @@
+#!/bin/sh
+
+if [ $# -ne 1 ]
+then
+	echo "usage: version_buddy <filename>
+	where <filename> is of the form Name_Major_Minor.Extension
+	and does not contain any whitespace"
+	
+	exit 1
+fi
+
+if test `egrep '^[[:alnum:]-]+_[[:digit:]]+_[[:digit:]]+\.[[:alnum:]]+$' <<< $1`
+then
+	echo $1 > tempnamefile
+	
+	if [[ `tr "_" "." < tempnamefile | ls` ]]
+	then
+		echo "The file already exists."
+		
+		rm tempnamefile
+		
+		exit 2
+	else
+		mv $1 `tr "_" "." < tempnamefile`
+		
+		rm tempnamefile
+		
+		exit 0
+	fi
+else
+	echo Failure
+	
+	exit 3
+fi

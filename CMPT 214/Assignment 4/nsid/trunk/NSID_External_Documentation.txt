@@ -1,0 +1,29 @@
+Matthew Mulenga
+mam558
+11144528
+
+// ------------------- How To Run The Program -------------------
+	Requirements: 
+		- 	The "nsid" script file.
+		-	The script was created and tested on macOS.
+		
+	Execution:
+		- 	Run the "nsid" script using './nsid' or sh nsid
+		-	Can take one or more arugments or can be piped, redirected, etc.
+		- 	ex:
+			./nsid <argument>
+			./nsid <argument1> <argument2>
+			cat 'file' | sh nsid 
+			sh nsid < 'file'
+			sh nsid <<< 'string'
+		
+			
+// -------------------------- The Code --------------------------
+	This file contains a function calle is_nsid(). This function checks
+	to see if the passed argument matches the designated NSID pattern.
+	The rest of the code checks to see if an argument or something from stdin
+	is being passed to the script. is_nsid() is then called and checks the 
+	value that was passed and returns 0 if the value is a match or 1 if it is
+	not. The appropriate output is displayed according to whether or not the 
+	passed value was a match.
+		

@@ -1,0 +1,62 @@
+#!/bin/sh
+
+# Check to see if the proper number of arguments were given.
+if [ $# -ne 1 ]
+then
+	echo "usage: version_buddy <filename>
+	where <filename> is of the form Name_Major_Minor.Extension
+	and does not contain any whitespace"
+	
+	exit 1
+fi
+
+if [ $(egrep '^-[[:alnum:]]+$' <<< $1) ]
+then
+	echo "Option $1 is not recognized."
+	
+	exit 5
+fi
+
+# Check to see if the argument is a file that exists.
+if [ -f "$1" ]
+then
+	# Check to see if the argument is a file that exists in 
+	# the current working directory.
+	if [ -f "$(basename "$1")" ]
+	then
+		# Check to see if the argument is the proper format.
+		if [ $(egrep '^[[:alnum:]-]+_[[:digit:]]+_[[:digit:]]+\.[[:alnum:]]+$' <<< $1) ]
+		then
+			# Check to see if the output file already exists.
+			if [ -f $(echo $1 | tr "_" ".") ]
+			then
+				echo "The file already exists."
+		
+				exit 2
+			# If the file name does not already exist change the format of 
+			# the file name to the proper one.
+			else
+			
+				echo "$1 -> \c"
+				echo $1 | tr "_" "."
+				mv $1 $(echo $1 | tr "_" ".")
+		
+				exit 0
+			fi
+		else
+			echo "File name is of incorrect format."
+			
+			exit 3
+		fi
+		
+	else
+		echo "File must be in the current working directory."
+		
+		exit 5
+	fi
+# If the file does not exist display an appropriate message.
+else
+	echo "The file does not exist."
+	
+	exit 6
+fi

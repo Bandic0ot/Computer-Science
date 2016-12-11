@@ -11,11 +11,9 @@ is_nsid() {
 	fi
 }
 
-# Check to see if reading in from stdin.
+# Check to see if the argument
 if [ -t 0 ]
 then
-
-	# Iterate through each argument.
 	for STRING in $@
 	do
 		if is_nsid $STRING
@@ -25,15 +23,9 @@ then
 			echo "$STRING is not valid."
 	fi
 	done
-	
-	exit 0
-	
-# If the not reading in from stdin, use the argument as input.
 else
-	# Create a variable which contains the concatenated contents of the file.
 	STRINGFILE=`cat $1`
 
-	# Iterate through the contents line by line.
 	for STRING in $STRINGFILE
 	do
 		if is_nsid $STRING
@@ -43,8 +35,6 @@ else
 			echo "$STRING is not valid."
 		fi
 	done
-	
-	exit 0
 fi
 
 
