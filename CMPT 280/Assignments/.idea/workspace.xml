@@ -1,7 +1,95 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="abfb8a0d-65db-4926-9ee9-232f647baa91" name="Default" comment="" />
+    <list default="true" id="abfb8a0d-65db-4926-9ee9-232f647baa91" name="Default" comment="">
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../Assignmeny Resources/Sack.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../Assignmeny Resources/lib280-asn1/.classpath" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../Assignmeny Resources/lib280-asn1/.project" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../Assignmeny Resources/lib280-asn1/.settings/org.eclipse.jdt.core.prefs" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../Assignmeny Resources/lib280-asn1/bin/lib280/base/BasicDict280.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../Assignmeny Resources/lib280-asn1/bin/lib280/base/BilinearIterator280.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../Assignmeny Resources/lib280-asn1/bin/lib280/base/Container280.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../Assignmeny Resources/lib280-asn1/bin/lib280/base/Cursor280.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../Assignmeny Resources/lib280-asn1/bin/lib280/base/CursorPosition280.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../Assignmeny Resources/lib280-asn1/bin/lib280/base/CursorSaving280.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../Assignmeny Resources/lib280-asn1/bin/lib280/base/Dispenser280.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../Assignmeny Resources/lib280-asn1/bin/lib280/base/LinearIterator280.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../Assignmeny Resources/lib280-asn1/bin/lib280/base/Membership280.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../Assignmeny Resources/lib280-asn1/bin/lib280/base/Pair280.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../Assignmeny Resources/lib280-asn1/bin/lib280/base/Searchable280.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../Assignmeny Resources/lib280-asn1/bin/lib280/dictionary/Dict280.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../Assignmeny Resources/lib280-asn1/bin/lib280/dispenser/ArrayedQueue280.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../Assignmeny Resources/lib280-asn1/bin/lib280/dispenser/ArrayedStack280.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../Assignmeny Resources/lib280-asn1/bin/lib280/dispenser/LinkedQueue280.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../Assignmeny Resources/lib280-asn1/bin/lib280/dispenser/LinkedStack280.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../Assignmeny Resources/lib280-asn1/bin/lib280/dispenser/Queue280.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../Assignmeny Resources/lib280-asn1/bin/lib280/dispenser/Stack280.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../Assignmeny Resources/lib280-asn1/bin/lib280/exception/AfterTheEnd280Exception.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../Assignmeny Resources/lib280-asn1/bin/lib280/exception/BeforeTheStart280Exception.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../Assignmeny Resources/lib280-asn1/bin/lib280/exception/Container280Exception.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../Assignmeny Resources/lib280-asn1/bin/lib280/exception/ContainerEmpty280Exception.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../Assignmeny Resources/lib280-asn1/bin/lib280/exception/ContainerFull280Exception.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../Assignmeny Resources/lib280-asn1/bin/lib280/exception/DuplicateItems280Exception.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../Assignmeny Resources/lib280-asn1/bin/lib280/exception/Exception280.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../Assignmeny Resources/lib280-asn1/bin/lib280/exception/InvalidArgument280Exception.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../Assignmeny Resources/lib280-asn1/bin/lib280/exception/InvalidState280Exception.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../Assignmeny Resources/lib280-asn1/bin/lib280/exception/ItemNotFound280Exception.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../Assignmeny Resources/lib280-asn1/bin/lib280/exception/Iterator280Exception.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../Assignmeny Resources/lib280-asn1/bin/lib280/exception/NoCurrentItem280Exception.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../Assignmeny Resources/lib280-asn1/bin/lib280/list/ArrayedList280.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../Assignmeny Resources/lib280-asn1/bin/lib280/list/ArrayedListIterator280.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../Assignmeny Resources/lib280-asn1/bin/lib280/list/BilinkedIterator280.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../Assignmeny Resources/lib280-asn1/bin/lib280/list/BilinkedList280.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../Assignmeny Resources/lib280-asn1/bin/lib280/list/BilinkedNode280.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../Assignmeny Resources/lib280-asn1/bin/lib280/list/LinkedIterator280.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../Assignmeny Resources/lib280-asn1/bin/lib280/list/LinkedList280$1myPair.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../Assignmeny Resources/lib280-asn1/bin/lib280/list/LinkedList280.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../Assignmeny Resources/lib280-asn1/bin/lib280/list/LinkedNode280.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../Assignmeny Resources/lib280-asn1/bin/lib280/list/SimpleList280.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../Assignmeny Resources/lib280-asn1/lib280-asn1.iml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../Assignmeny Resources/lib280-asn1/lib280-asn2" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../Assignmeny Resources/lib280-asn1/src/lib280/base/BasicDict280.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../Assignmeny Resources/lib280-asn1/src/lib280/base/BilinearIterator280.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../Assignmeny Resources/lib280-asn1/src/lib280/base/Container280.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../Assignmeny Resources/lib280-asn1/src/lib280/base/Cursor280.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../Assignmeny Resources/lib280-asn1/src/lib280/base/CursorPosition280.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../Assignmeny Resources/lib280-asn1/src/lib280/base/CursorSaving280.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../Assignmeny Resources/lib280-asn1/src/lib280/base/Dispenser280.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../Assignmeny Resources/lib280-asn1/src/lib280/base/LinearIterator280.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../Assignmeny Resources/lib280-asn1/src/lib280/base/Membership280.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../Assignmeny Resources/lib280-asn1/src/lib280/base/Pair280.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../Assignmeny Resources/lib280-asn1/src/lib280/base/Searchable280.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../Assignmeny Resources/lib280-asn1/src/lib280/dictionary/Dict280.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../Assignmeny Resources/lib280-asn1/src/lib280/dispenser/ArrayedQueue280.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../Assignmeny Resources/lib280-asn1/src/lib280/dispenser/ArrayedStack280.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../Assignmeny Resources/lib280-asn1/src/lib280/dispenser/LinkedQueue280.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../Assignmeny Resources/lib280-asn1/src/lib280/dispenser/LinkedStack280.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../Assignmeny Resources/lib280-asn1/src/lib280/dispenser/Queue280.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../Assignmeny Resources/lib280-asn1/src/lib280/dispenser/Stack280.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../Assignmeny Resources/lib280-asn1/src/lib280/exception/AfterTheEnd280Exception.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../Assignmeny Resources/lib280-asn1/src/lib280/exception/BeforeTheStart280Exception.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../Assignmeny Resources/lib280-asn1/src/lib280/exception/Container280Exception.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../Assignmeny Resources/lib280-asn1/src/lib280/exception/ContainerEmpty280Exception.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../Assignmeny Resources/lib280-asn1/src/lib280/exception/ContainerFull280Exception.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../Assignmeny Resources/lib280-asn1/src/lib280/exception/DuplicateItems280Exception.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../Assignmeny Resources/lib280-asn1/src/lib280/exception/Exception280.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../Assignmeny Resources/lib280-asn1/src/lib280/exception/InvalidArgument280Exception.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../Assignmeny Resources/lib280-asn1/src/lib280/exception/InvalidState280Exception.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../Assignmeny Resources/lib280-asn1/src/lib280/exception/ItemNotFound280Exception.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../Assignmeny Resources/lib280-asn1/src/lib280/exception/Iterator280Exception.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../Assignmeny Resources/lib280-asn1/src/lib280/exception/NoCurrentItem280Exception.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../Assignmeny Resources/lib280-asn1/src/lib280/list/ArrayedList280.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../Assignmeny Resources/lib280-asn1/src/lib280/list/ArrayedListIterator280.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../Assignmeny Resources/lib280-asn1/src/lib280/list/BilinkedIterator280.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../Assignmeny Resources/lib280-asn1/src/lib280/list/BilinkedList280.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../Assignmeny Resources/lib280-asn1/src/lib280/list/BilinkedNode280.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../Assignmeny Resources/lib280-asn1/src/lib280/list/LinkedIterator280.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../Assignmeny Resources/lib280-asn1/src/lib280/list/LinkedList280.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../Assignmeny Resources/lib280-asn1/src/lib280/list/LinkedNode280.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../Assignmeny Resources/lib280-asn1/src/lib280/list/SimpleList280.java" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -14,18 +102,10 @@
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="BilinearIterator280.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/../Assignmeny Resources/lib280-asn1/src/lib280/base/BilinearIterator280.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="150">
-              <caret line="14" column="17" lean-forward="false" selection-start-line="14" selection-start-column="17" selection-end-line="14" selection-end-column="17" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
   </component>
   <component name="GradleLocalSettings">
     <option name="externalProjectsViewState">
@@ -42,6 +122,7 @@
     <option name="width" value="1440" />
     <option name="height" value="900" />
   </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1">
       <flattenPackages />
@@ -72,6 +153,24 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="CMPT280" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="lib280-asn1" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="bin" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="lib280" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
     </panes>
@@ -83,6 +182,7 @@
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="FullScreen" value="true" />
+    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
   </component>
   <component name="RunManager">
     <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" factoryName="Plugin">
@@ -185,16 +285,16 @@
       <updated>1484271517110</updated>
       <workItem from="1484271521586" duration="807000" />
       <workItem from="1484292058414" duration="320000" />
-      <workItem from="1484680333505" duration="24000" />
+      <workItem from="1484680333505" duration="301000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1151000" />
+    <option name="totallyTimeSpent" value="1428000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -202,7 +302,7 @@
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32942554" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -210,7 +310,7 @@
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24305555" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24305555" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
