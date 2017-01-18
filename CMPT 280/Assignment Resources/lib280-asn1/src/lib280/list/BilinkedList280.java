@@ -30,22 +30,34 @@ public class BilinkedList280<I> extends LinkedList280<I> implements BilinearIter
 	 * @param item - element to store in the new node
 	 * @return a new node containing item
 	 */
+	@Override
 	protected BilinkedNode280<I> createNewNode(I item)
 	{
-		// TODO
-
-
-		return null;  // This line is present only to prevent a compile error.  You should remove it before
-		              // completing this method.
+		return new BilinkedNode280<I>(item);
 	}
 
 	/**
 	 * Insert element at the beginning of the list
 	 * @param x item to be inserted at the beginning of the list 
 	 */
+
 	public void insertFirst(I x) 
 	{
-		// TODO
+		BilinkedNode280<I> newNode = createNewNode(x);
+
+		newNode.setPreviousNode(null);
+		newNode.setNextNode(this.head);
+
+		if(this.position == this.head) {
+			this.prevPosition = newNode;
+		}
+
+		if(this.isEmpty()) {
+			this.head = newNode;
+			this.tail = newNode;
+		} else {
+			this.head = newNode;
+		}
 	}
 
 	/**
@@ -125,6 +137,24 @@ public class BilinkedList280<I> extends LinkedList280<I> implements BilinearIter
 	public void insertLast(I x) 
 	{
 		// TODO
+		BilinkedNode280<I> newNode = createNewNode(x);
+
+		newNode.setNextNode(null);
+		newNode.setPreviousNode((BilinkedNode280)this.tail);
+
+		if(this.position == this.tail) {
+			this.prevPosition = this.tail;
+		}
+
+		if(this.isEmpty()) {
+			this.head = newNode;
+			this.tail = newNode;
+		} else {
+			this.tail.setNextNode(newNode);
+			this.tail = newNode;
+		}
+
+
 	}
 
 	/**
@@ -134,6 +164,7 @@ public class BilinkedList280<I> extends LinkedList280<I> implements BilinearIter
 	public void deleteItem() throws NoCurrentItem280Exception
 	{
 		// TODO
+
 
 	}
 
@@ -202,6 +233,7 @@ public class BilinkedList280<I> extends LinkedList280<I> implements BilinearIter
 	public void deleteFirst() throws ContainerEmpty280Exception
 	{
 		// TODO
+		super.deleteFirst();
 	}
 
 	/**
@@ -274,5 +306,38 @@ public class BilinkedList280<I> extends LinkedList280<I> implements BilinearIter
 	/* Regression test. */
 	public static void main(String[] args) {
 		// TODO
+
+		// ----- Test insertFirst. -----
+		BilinkedList280<Integer> iList = new BilinkedList280<>();
+
+		if (!iList.isEmpty()) {
+			System.out.println("List should be empty.");
+		}
+
+		iList.insertFirst(8);
+
+		if (iList.isEmpty()) {
+			System.out.println("List should contain one item.");
+		}
+
+		iList.insert(5);
+		iList.insertFirst(7);
+
+		if(iList.firstItem() != 7) {
+			System.out.println("First item should be 7.");
+		}
+
+		if(!iList.firstNode().nextNode().item.equals(5)) {
+			System.out.println("Something is wrong, item should be 5.");
+		}
+
+		if(!iList.head.item().equals(7)) {
+			System.out.println("Something is wrong, should be 7.");
+		}
+
+
+		// ----- Insert Last -----
+
+
 	}
 } 
