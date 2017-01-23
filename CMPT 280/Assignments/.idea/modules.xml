@@ -3,7 +3,9 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/A1Q1/A1Q1.iml" filepath="$PROJECT_DIR$/A1Q1/A1Q1.iml" />
+      <module fileurl="file://$PROJECT_DIR$/A2Q1/A2Q1.iml" filepath="$PROJECT_DIR$/A2Q1/A2Q1.iml" />
       <module fileurl="file://$PROJECT_DIR$/../Assignment Resources/lib280-asn1/lib280-asn1.iml" filepath="$PROJECT_DIR$/../Assignment Resources/lib280-asn1/lib280-asn1.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../Assignment Resources/lib280-asn2/lib280-asn2.iml" filepath="$PROJECT_DIR$/../Assignment Resources/lib280-asn2/lib280-asn2.iml" />
     </modules>
   </component>
 </project>
