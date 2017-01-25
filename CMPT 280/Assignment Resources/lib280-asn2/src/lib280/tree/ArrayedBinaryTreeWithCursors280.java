@@ -11,6 +11,7 @@ import lib280.exception.InvalidArgument280Exception;
 import lib280.exception.InvalidState280Exception;
 import lib280.exception.ItemNotFound280Exception;
 import lib280.exception.NoCurrentItem280Exception;
+import org.omg.CORBA.DynAnyPackage.Invalid;
 
 public class ArrayedBinaryTreeWithCursors280<I> extends
 		ArrayedBinaryTree280<I> implements Dict280<I>, Cursor280<I> {
@@ -20,6 +21,130 @@ public class ArrayedBinaryTreeWithCursors280<I> extends
 	public ArrayedBinaryTreeWithCursors280(int cap) {
 		super(cap);
 		searchesRestart = true;
+	}
+
+	@Override
+	public I item() {
+		return super.item();
+	}
+
+	@Override
+	public boolean itemExists() {
+		return super.itemExists();
+	}
+
+	/**	Move the current position to the first (the default) or the next x, if it exists.
+	 @param x item being sought */
+	public void search(I x) {
+		goFirst();
+
+		while (!after() && !membershipEquals(x, item()))
+			goForth();
+	}
+
+	@Override
+	public boolean before() {
+
+		return (this.currentNode <= 0);
+	}
+
+	@Override
+	public boolean after() {
+
+		return (this.currentNode > this.count());
+	}
+
+	@Override
+	public void goForth() throws AfterTheEnd280Exception {
+		if(this.after()) {
+			throw new AfterTheEnd280Exception("At the end of the tree, can't go further.");
+		}
+
+		if(this.before()) {
+			this.goFirst();
+		} else {
+			this.currentNode = this.currentNode + 1;
+		}
+	}
+
+	@Override
+	/**	Insert x into the dictionary.
+	 * @precond !isFull() and !has(x)
+	 * @param x item to be inserted into the dictionary
+	 * @throws ContainerFull280Exception if the dictionary is full.
+	 * @throws DuplicateItems280Exception if the dictionary already contains the item x.
+	 */
+	public void insert(I x) throws ContainerFull280Exception, DuplicateItems280Exception {
+		if(this.isFull()) {
+			throw new ContainerFull280Exception("Can't insert, the tree is full.");
+		}
+
+		if(this.has(x)) {
+			throw new DuplicateItems280Exception("Item is already in the tree.");
+		}
+
+		this.items[this.currentNode + 1] = x;
+		this.count++;
+		this.goForth();
+	}
+
+	@Override
+	public void goFirst() throws ContainerEmpty280Exception {
+		if(this.isEmpty()) {
+			throw new ContainerEmpty280Exception("The container is empty,"
+					+ " can't proceed.");
+		}
+
+		this.currentNode = 1;
+	}
+
+	@Override
+	public void deleteItem() throws NoCurrentItem280Exception {
+		if(!this.itemExists()) {
+			throw new NoCurrentItem280Exception("The cursor is not currently on an item.");
+		}
+
+		CursorPosition280 saved = this.currentPosition();
+		this.goAfter();
+		this.currentNode--;
+		I temp = this.items[this.currentNode];
+		this.items[this.currentNode] = null;
+
+
+		if(this.currentNode != this.count()) {
+			this.goPosition(saved);
+			this.items[this.currentNode] = temp;
+			count--;
+		} else {
+			this.currentNode = this.currentNode - 1;
+			count--;
+		}
+	}
+
+	@Override
+	public void goBefore() {
+		this.currentNode = 0;
+	}
+
+	@Override
+	public void goAfter() {
+		this.currentNode = this.count() + 1;
+	}
+
+	@Override
+	/**	Delete the item x.
+	 * @precond has(x)
+	 * @param x item to be deleted from the dictionary
+	 * @throws ItemNotFound280Exception if the item x is not in the dictionary.
+	 */
+	public void delete(I x) throws ItemNotFound280Exception {
+		if(!this.has(x)) {
+			throw new ItemNotFound280Exception("The item is not in the tree.");
+		}
+
+		this.search(x);
+
+		this.deleteItem();
 	}
 
 	@Override
@@ -38,6 +163,29 @@ public class ArrayedBinaryTreeWithCursors280<I> extends
 		throw new ItemNotFound280Exception("The given item could not be found.");
 	}
 
+	@Override
+	/**
+	 * 	Does the container contain the element 'y'?.
+	 *	@param y item whose presence is to be determined
+	 *  @return True if y is in the container, false otherwise.
+	 */
+	public boolean has(I y) {
+		if(this.items[this.currentNode] == null) {
+			return false;
+		}
+
+		CursorPosition280 saved = this.currentPosition();
+		this.goFirst();
+		while(this.itemExists()) {
+			if( membershipEquals(this.item(), y)) {
+				this.goPosition(saved);
+				return true;
+			}
+			this.goForth();
+		}
+		this.goPosition(saved);
+		return false;
+	}
 
 
 	@Override
@@ -47,16 +195,19 @@ public class ArrayedBinaryTreeWithCursors280<I> extends
 
 	@Override
 	public void restartSearches() {
+
 		this.searchesRestart = true;
 	}
 
 	@Override
 	public void resumeSearches() {
+
 		this.searchesRestart = false;
 	}
 
     @Override
 	public CursorPosition280 currentPosition() {
+
 		return new ArrayedBinaryTreePosition280(this.currentNode);
 	}
 
@@ -76,6 +227,14 @@ public class ArrayedBinaryTreeWithCursors280<I> extends
 	 */
 	public void parent() throws InvalidState280Exception {
         // TODO - Implement this method
+		if (this.currentNode == 1) {
+			throw new InvalidState280Exception("The cursor is on the root and the"
+					+ " root cannot have a parent.");
+		}
+
+		// This works because of truncation.
+		this.currentNode = this.currentNode / 2;
+
 	}
 
 	/**
@@ -85,8 +244,17 @@ public class ArrayedBinaryTreeWithCursors280<I> extends
 	 * @throws ContainerEmpty280Exception if the tree is empty.
 	 * @throws InvalidState280Exception if the current node has no left child.
 	 */
-	public void goLeftChild()  throws InvalidState280Exception, ContainerEmpty280Exception {
+	public void goLeftChild() throws InvalidState280Exception, ContainerEmpty280Exception {
         // TODO - Implement this method
+		if(isEmpty()) {
+			throw new ContainerEmpty280Exception("The tree is empty.");
+		}
+
+		if((this.currentNode * 2) > this.capacity() || this.items[this.currentNode * 2].equals(null)) {
+			throw new InvalidState280Exception("This node has no left child.");
+		}
+
+		this.currentNode = this.currentNode * 2;
 	}
 	
 	/**
@@ -98,6 +266,15 @@ public class ArrayedBinaryTreeWithCursors280<I> extends
 	 */
 	public void goRightChild() throws InvalidState280Exception, ContainerEmpty280Exception {
         // TODO - Implement this method
+		if(isEmpty()) {
+			throw new ContainerEmpty280Exception("The tree is empty.");
+		}
+
+		if(((this.currentNode * 2) + 1) > this.capacity() || this.items[(this.currentNode * 2) + 1].equals(null)) {
+			throw new InvalidState280Exception("This node has no right child.");
+		}
+
+		this.currentNode = (this.currentNode * 2) + 1;
 	}	
 	
 	/**
@@ -109,7 +286,30 @@ public class ArrayedBinaryTreeWithCursors280<I> extends
 	 */	
 	public void goSibling() throws InvalidState280Exception, ContainerEmpty280Exception {
         // TODO - Implement this method
+		if(isEmpty()) {
+			throw new ContainerEmpty280Exception("The tree is empty.");
+		}
 
+		// Check to see if we are dealing with the root.
+		if(this.currentNode == 1) {
+			throw new InvalidState280Exception("The root node has no siblings.");
+		}
+		// Check to see if we are dealing with a left or right node
+		else if((this.currentNode % 2) == 0) {
+			// If the next node is null throw an exception.
+			if(this.items[this.currentNode + 1].equals(null)) {
+				throw new InvalidState280Exception("This node has no sibling.");
+			}
+
+			this.currentNode = this.currentNode + 1;
+		} else {
+			// If the previous node is null throw an exception.
+			if(this.items[this.currentNode - 1].equals(null)) {
+				throw new InvalidState280Exception("This node has no sibling.");
+			}
+
+			this.currentNode = this.currentNode - 1;
+		}
 	}
 	
 	/**
@@ -120,6 +320,12 @@ public class ArrayedBinaryTreeWithCursors280<I> extends
 	 */
 	public void root() throws ContainerEmpty280Exception {
         // TODO - Implement this method
+
+		if(this.isEmpty()) {
+			throw new ContainerEmpty280Exception("The tree is empty.");
+		}
+
+		this.currentNode = 1;
 	}	
 	
 
