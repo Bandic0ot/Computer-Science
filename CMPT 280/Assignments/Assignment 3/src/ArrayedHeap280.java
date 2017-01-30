@@ -132,6 +132,8 @@ public class ArrayedHeap280<I extends Comparable<? super I>> extends ArrayedBina
         }
 
         this.currentNode = 1;
+
+
     }
 
     // Regression Tests
@@ -210,7 +212,7 @@ public class ArrayedHeap280<I extends Comparable<? super I>> extends ArrayedBina
         }
 
         // Test delete() on a "large" heap.
-        heap.deleteItem();
+        //heap.deleteItem();
 
         System.out.println(heap.toString());
 
@@ -218,3 +220,4 @@ public class ArrayedHeap280<I extends Comparable<? super I>> extends ArrayedBina
 
     }
 }
+
