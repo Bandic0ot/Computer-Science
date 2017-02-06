@@ -164,9 +164,6 @@ public class ArrayedHeap280<I extends Comparable<? super I>> extends ArrayedBina
 
         // Test the creation of a new heap.
         ArrayedHeap280 heap = new ArrayedHeap280(10);
-        if(!heap.isEmpty()) {
-            System.out.println("Test of isEmpty() on an empty heap failed.");
-        }
 
         // Test deleteItem() on an empty heap.
         x = null;
