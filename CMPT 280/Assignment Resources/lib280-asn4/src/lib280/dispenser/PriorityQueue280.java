@@ -10,22 +10,63 @@ public class PriorityQueue280<I extends Comparable<? super I>> {
 	// This is the heap that we are restricting.
 	// Items in the priority queue get stored in the heap.
 	protected IterableArrayedHeap280<I> items;
-	
-	
+
+	// TODO
+	// Add Priority Queue ADT methods (from the specification) here.
 	/**
 	 * Create a new priorty queue with a given capacity.
 	 * @param cap The maximum number of items that can be in the queue.
 	 */
 	public PriorityQueue280(int cap) {
+
 		items = new IterableArrayedHeap280<I>(cap);
 	}
 	
 	public String toString() {
-		return items.toString();	
+
+		return items.toString();
+	}
+
+	public boolean isEmpty() {
+
+		return this.items.isEmpty();
+	}
+
+	public boolean isFull() {
+		return this.items.isFull();
+	}
+
+	public int count() {
+		return this.items.count();
+	}
+
+	public I maxItem() {
+
+
+		return null;
+	}
+
+	public I minItem() {
+		return null;
+	}
+
+	public void deleteMax() {
+		this.items.deleteItem();
+	}
+
+	public void deleteMin() {
+
+	}
+
+	public void deleteAllMax() {
+
+	}
+
+	public void insert(I x) {
+		this.items.insert(x);
 	}
 	
-	// TODO
-	// Add Priority Queue ADT methods (from the specification) here.
+
 	
 
 	/* UNCOMMENT THE REGRESSION TEST WHEN YOU ARE READY
