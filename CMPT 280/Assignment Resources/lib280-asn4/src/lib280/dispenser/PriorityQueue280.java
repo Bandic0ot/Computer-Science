@@ -3,6 +3,7 @@ package lib280.dispenser;
 import lib280.exception.ContainerEmpty280Exception;
 import lib280.exception.ContainerFull280Exception;
 import lib280.tree.ArrayedBinaryTreeIterator280;
+import lib280.tree.ArrayedBinaryTreePosition280;
 import lib280.tree.IterableArrayedHeap280;
 
 public class PriorityQueue280<I extends Comparable<? super I>> {
@@ -10,6 +11,7 @@ public class PriorityQueue280<I extends Comparable<? super I>> {
 	// This is the heap that we are restricting.
 	// Items in the priority queue get stored in the heap.
 	protected IterableArrayedHeap280<I> items;
+	protected ArrayedBinaryTreeIterator280<I> iter;
 
 	// TODO
 	// Add Priority Queue ADT methods (from the specification) here.
@@ -20,6 +22,7 @@ public class PriorityQueue280<I extends Comparable<? super I>> {
 	public PriorityQueue280(int cap) {
 
 		items = new IterableArrayedHeap280<I>(cap);
+		iter = items.iterator();
 	}
 	
 	public String toString() {
@@ -29,47 +32,72 @@ public class PriorityQueue280<I extends Comparable<? super I>> {
 
 	public boolean isEmpty() {
 
-		return this.items.isEmpty();
+		return items.isEmpty();
 	}
 
 	public boolean isFull() {
-		return this.items.isFull();
+		return items.isFull();
 	}
 
 	public int count() {
-		return this.items.count();
+		return items.count();
 	}
 
 	public I maxItem() {
+		iter.goFirst();
 
-
-		return null;
+		return items.item();
 	}
 
 	public I minItem() {
-		return null;
+		if(!isEmpty()) {
+			iter.goForth();
+		}
+
+		while(iter.item().compareTo(items.item()) < 0) {
+			iter.goForth();
+		}
+
+		return iter.item();
 	}
 
 	public void deleteMax() {
-		this.items.deleteItem();
+		items.deleteItem();
 	}
 
 	public void deleteMin() {
+		int counter = 0;
+		while(!iter.after()) {
+			iter.goForth();
+			counter++;
+		}
 
+		iter.goFirst();
+
+		while(counter > 0) {
+			iter.goForth();
+			counter--;
+		}
+
+		items.deleteAtPosition(iter);
 	}
 
 	public void deleteAllMax() {
+		I temp = maxItem();
 
+		while(temp.equals(maxItem())) {
+			deleteMax();
+		}
 	}
 
 	public void insert(I x) {
-		this.items.insert(x);
+		items.insert(x);
 	}
 	
 
 	
 
-	/* UNCOMMENT THE REGRESSION TEST WHEN YOU ARE READY
+	// Regression Tests
 
 	public static void main(String args[]) {
 		class PriorityItem<I> implements Comparable<PriorityItem<I>> {
@@ -190,7 +218,4 @@ public class PriorityQueue280<I extends Comparable<? super I>> {
 
 		System.out.println("Regression test complete.");
 	}
-
-
-	*/
 }

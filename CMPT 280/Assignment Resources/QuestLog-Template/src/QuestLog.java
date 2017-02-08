@@ -1,6 +1,7 @@
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.Arrays;
 
 import com.opencsv.CSVReader;
 
@@ -43,8 +44,14 @@ public class QuestLog extends KeyedChainedHashTable280<String, QuestLogEntry> {
 	 */
 	public String[] keys() {
 		// TODO Implement this method.
-		
-		return null;  // Remove this line you're ready.  It's just to prevent compiler errors.
+		String[] keyTable = new String[this.capacity()];
+
+		for(int i = 0; i < this.count(); i++) {
+			keyTable[i] = this.itemKey();
+			this.goForth();
+		}
+
+		return keyTable;
 	}
 	
 	/**
@@ -55,9 +62,15 @@ public class QuestLog extends KeyedChainedHashTable280<String, QuestLogEntry> {
 	 */
 	public String toString() {
 		// TODO Implement this method.
-		
-		// Remove this line you're ready.  It's just to prevent compiler errors.
-		return "QuestLog.toString() not implemented yet!\n";  
+		Arrays.sort(this.keys());
+		String[] keyTableSorted = keys();
+		String output = "";
+
+		for(int i = 0; i < keyTableSorted.length; i++) {
+			output += this.obtain(keyTableSorted[i]).toString();
+		}
+
+		return output;
 	}
 	
 	/**
@@ -76,7 +89,9 @@ public class QuestLog extends KeyedChainedHashTable280<String, QuestLogEntry> {
 		// this method from scratch without using any of the superclass methods (mostly because 
 		// the superclass methods won't be terribly useful unless you can modify them, which you
 		// aren't allowed to do!).
-		
+
+		String[] keys = this.keys();
+
 	
 		return null;  // Remove this line you're ready.  It's just to prevent compiler errors.
 	}
