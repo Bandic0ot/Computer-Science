@@ -5,11 +5,13 @@
       <module fileurl="file://$PROJECT_DIR$/A1Q1/A1Q1.iml" filepath="$PROJECT_DIR$/A1Q1/A1Q1.iml" />
       <module fileurl="file://$PROJECT_DIR$/Assignment 3/Assignment 3.iml" filepath="$PROJECT_DIR$/Assignment 3/Assignment 3.iml" />
       <module fileurl="file://$PROJECT_DIR$/Assignment 4/Assignment 4.iml" filepath="$PROJECT_DIR$/Assignment 4/Assignment 4.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Assignment 5/Assignment 5.iml" filepath="$PROJECT_DIR$/Assignment 5/Assignment 5.iml" />
       <module fileurl="file://$PROJECT_DIR$/../Assignment Resources/QuestLog-Template/QuestLog-Template.iml" filepath="$PROJECT_DIR$/../Assignment Resources/QuestLog-Template/QuestLog-Template.iml" />
       <module fileurl="file://$PROJECT_DIR$/../Assignment Resources/lib280-asn1/lib280-asn1.iml" filepath="$PROJECT_DIR$/../Assignment Resources/lib280-asn1/lib280-asn1.iml" />
       <module fileurl="file://$PROJECT_DIR$/../Assignment Resources/lib280-asn2/lib280-asn2.iml" filepath="$PROJECT_DIR$/../Assignment Resources/lib280-asn2/lib280-asn2.iml" />
       <module fileurl="file://$PROJECT_DIR$/../Assignment Resources/lib280-asn3/lib280-asn3.iml" filepath="$PROJECT_DIR$/../Assignment Resources/lib280-asn3/lib280-asn3.iml" />
       <module fileurl="file://$PROJECT_DIR$/../Assignment Resources/lib280-asn4/lib280-asn4.iml" filepath="$PROJECT_DIR$/../Assignment Resources/lib280-asn4/lib280-asn4.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../Assignment Resources/lib280-asn5/lib280-asn5.iml" filepath="$PROJECT_DIR$/../Assignment Resources/lib280-asn5/lib280-asn5.iml" />
     </modules>
   </component>
 </project>
