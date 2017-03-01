@@ -16,8 +16,6 @@ public class AVLTree280<I extends Comparable<? super I>> extends OrderedSimpleTr
     /**
      * An integer to store the height of the current node.
      */
-    protected int leftSubtreeHeight;
-    protected int rightSubtreeHeight;
 
     // -------- Constructor --------
 
@@ -28,14 +26,10 @@ public class AVLTree280<I extends Comparable<? super I>> extends OrderedSimpleTr
 
     public AVLTree280() {
         super();
-
-        leftSubtreeHeight = 0;
-        rightSubtreeHeight = 0;
     }
 
     // -------- Methods --------
-    @Override
-    public void insert(I x) {
+    public void insert(AVLNode280<I> n, I x) {
         if(isEmpty()) {
             rootNode = createNewNode(x);
         } else if(x.compareTo(rootItem()) < 0) {
@@ -44,7 +38,7 @@ public class AVLTree280<I extends Comparable<? super I>> extends OrderedSimpleTr
             setRootLeftSubtree(leftTree);
 
             // Recompute the subtree height
-            leftSubtreeHeight = Integer.max(leftTree.leftSubtreeHeight, leftTree.rightSubtreeHeight) + 1;
+            n.height = Integer.max(height((AVLNode280<I>) n.leftNode()), height((AVLNode280<I>) n.rightNode())) + 1;
 
         } else {
             AVLTree280<I> rightTree = (AVLTree280<I>) rootRightSubtree();
@@ -52,10 +46,10 @@ public class AVLTree280<I extends Comparable<? super I>> extends OrderedSimpleTr
             setRootRightSubtree(rightTree);
 
             // Recompute the subtree height
-            rightSubtreeHeight = Integer.max(rightTree.leftSubtreeHeight, rightTree.rightSubtreeHeight) + 1;
+           n.height = Integer.max(height((AVLNode280<I>) n.leftNode()), height((AVLNode280<I>) n.rightNode())) + 1;
         }
 
-        restoreAVLProperty();
+        //restoreAVLProperty();
     }
 
     @Override
@@ -64,11 +58,11 @@ public class AVLTree280<I extends Comparable<? super I>> extends OrderedSimpleTr
     }
 
     public void restoreAVLProperty() {
-        // Left Rotation (Uses recursion)
-        if(rightSubtreeHeight - leftSubtreeHeight == 2) {
-            rotateLeft();
-            //restoreAVLProperty();
-        }
+//        // Left Rotation (Uses recursion)
+//        if(rightSubtreeHeight - leftSubtreeHeight == 2) {
+//            rotateLeft();
+//            //restoreAVLProperty();
+//        }
         // Right Rotation
 
         // Double Left Rotation
@@ -77,20 +71,11 @@ public class AVLTree280<I extends Comparable<? super I>> extends OrderedSimpleTr
     }
 
     private void rotateLeft() {
-        AVLTree280<I> temp = (AVLTree280<I>) rootLeftSubtree();
-        temp.insert(rootItem());
+        AVLNode280<I> tempRight = (AVLNode280<I>) rootNode.rightNode();
+        AVLNode280<I> tempLeft = (AVLNode280<I>) tempRight.leftNode();
 
-        setRootLeftSubtree(temp);
-
-        temp = (AVLTree280<I>) rootRightSubtree();
-        insert(temp.rootItem());
-//        temp.clear();
-//        temp.rootNode.setLeftNode(rootNode);
-
-        //temp.insert(cur.rightNode().item());
-
-
-//        setRootRightSubtree(null);
+        tempRight.setLeftNode(rootNode);
+        rootNode.setRightNode(tempLeft);
     }
 
     private void rotateRight() {
@@ -98,21 +83,23 @@ public class AVLTree280<I extends Comparable<? super I>> extends OrderedSimpleTr
     }
 
     @Override
-    public void clear() {
-        super.clear();
-        leftSubtreeHeight = 0;
-        rightSubtreeHeight = 0;
+    protected AVLNode280<I> createNewNode(I item) {
+        return new AVLNode280<I>(item);
     }
 
+    protected int height(AVLNode280<I> node) {
+        return node.height;
+    }
 
+    @SuppressWarnings("unchecked")
     public static void main(String args[]) {
         AVLTree280<Integer> T = new AVLTree280<>();
 
-        T.insert(8);
-        T.insert(10);
-        T.insert(11);
+        T.insert((AVLNode280)T.rootNode, 8);
+        T.insert((AVLNode280)T.rootNode, 10);
+        T.insert((AVLNode280)T.rootNode, 11);
 
         System.out.println(T.toStringByLevel());
-        System.out.println("Left: " + T.leftSubtreeHeight + " Right: " + T.rightSubtreeHeight);
+        //System.out.println("Left: " + T.leftSubtreeHeight + " Right: " + T.rightSubtreeHeight);
     }
 }
