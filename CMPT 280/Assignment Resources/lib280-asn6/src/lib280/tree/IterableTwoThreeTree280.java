@@ -102,37 +102,59 @@ public class IterableTwoThreeTree280<K extends Comparable<? super K>, I extends 
 			// If root is a leaf node, then it's time to create a new
 			// leaf node for our new element and return it so it gets linked
 			// into root's parent.
-			Pair280<TwoThreeNode280<K,I>, K> extraNode;
-			LinkedLeafTwoThreeNode280<K,I> oldLeaf = (LinkedLeafTwoThreeNode280<K, I>) root;
+			Pair280<TwoThreeNode280<K, I>, K> extraNode;
+			LinkedLeafTwoThreeNode280<K, I> oldLeaf = (LinkedLeafTwoThreeNode280<K, I>) root;
 
 			// If the new element is smaller than root, copy root's element to
 			// a new leaf node, put new element in existing leaf node, and
 			// return new leaf node.
-			if( newItem.key().compareTo(root.getKey1()) < 0) {
-				extraNode = new Pair280<TwoThreeNode280<K,I>, K>(createNewLeafNode(root.getData()), root.getKey1());
-				((LeafTwoThreeNode280<K,I>)root).setData(newItem);
-			}
-			else {
+			if (newItem.key().compareTo(root.getKey1()) < 0) {
+				extraNode = new Pair280<TwoThreeNode280<K, I>, K>(createNewLeafNode(root.getData()), root.getKey1());
+				((LeafTwoThreeNode280<K, I>) root).setData(newItem);
+			} else {
 				// Otherwise, just put the new element in a new leaf node
 				// and return it.
-				extraNode = new Pair280<TwoThreeNode280<K,I>, K>(createNewLeafNode(newItem), newItem.key());
+				extraNode = new Pair280<TwoThreeNode280<K, I>, K>(createNewLeafNode(newItem), newItem.key());
 			}
-			
-			LinkedLeafTwoThreeNode280<K,I> newLeaf= (LinkedLeafTwoThreeNode280<K, I>) extraNode.firstItem();
-		
+
+			LinkedLeafTwoThreeNode280<K, I> newLeaf = (LinkedLeafTwoThreeNode280<K, I>) extraNode.firstItem();
+
 			// No matter what happens above, the node 'newLeaf' is a new leaf node that is 
 			// immediately to the right of the node 'oldLeaf'.
-			
+
 			// TODO Link newLeaf to its proper successor/predecessor nodes and
 			// adjust links of successor/predecessor nodes accordingly.
-			
+
 			// Also adjust this.largest if necessary.
-			
+
 			// (this.smallest will never need adjustment because if a new
 			//  smallest element is inserted, it gets put in the existing 
 			//  leaf node, and the old smallest element is copied to a  
 			//  new node -- this is "true" case for the previous if/else.)
-			
+
+			if (cursor == this.smallest) {
+
+				oldLeaf.setNext(newLeaf);
+				newLeaf.setPrev(oldLeaf);
+
+				this.largest = newLeaf;
+
+			} else if (cursor == this.largest) {
+
+				oldLeaf.setNext(newLeaf);
+				newLeaf.setPrev(oldLeaf);
+
+			} else {
+
+				LinkedLeafTwoThreeNode280<K, I> oldPrev = (LinkedLeafTwoThreeNode280<K, I>) oldLeaf.prev();
+				LinkedLeafTwoThreeNode280<K, I> oldNext = (LinkedLeafTwoThreeNode280<K, I>) oldLeaf.next();
+
+				oldLeaf.setPrev(oldPrev);
+				oldLeaf.setNext(newLeaf);
+
+				newLeaf.setPrev(oldLeaf);
+				newLeaf.setNext(oldNext);
+			}
 		
 			return extraNode;
 		}
@@ -279,7 +301,7 @@ public class IterableTwoThreeTree280<K extends Comparable<? super K>, I extends 
 
 				// TODO Unlink leaf from it's linear successor/predecessor
 				// Hint: Be prepared to typecast where appropriate.
-
+				LinkedLeafTwoThreeNode280 temp = 
 				
 				
 				
@@ -560,6 +582,17 @@ public class IterableTwoThreeTree280<K extends Comparable<? super K>, I extends 
 		T.insert(sampleItem);
 
 		// TODO Write your regression test here
+		Loot testItem = new Loot("Aew Armor", 800);
+		Loot testItem2 = new Loot("New Armor", 700);
+
+		T.insert(testItem);
+		T.insert(testItem2);
+
+		System.out.println(T.toStringByLevel());
+
+		if(T.item() != testItem) {
+			System.out.println("Error in inserting method.");
+		}
 	
 	}
 
