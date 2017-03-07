@@ -133,28 +133,12 @@ public class IterableTwoThreeTree280<K extends Comparable<? super K>, I extends 
 			//  leaf node, and the old smallest element is copied to a  
 			//  new node -- this is "true" case for the previous if/else.)
 
-			if (cursor == this.smallest) {
+			newLeaf.setNext(oldLeaf.next());
+			newLeaf.setPrev(oldLeaf);
+			oldLeaf.setNext(newLeaf);
 
-				oldLeaf.setNext(newLeaf);
-				newLeaf.setPrev(oldLeaf);
-
+			if(newLeaf.next() == null) {
 				this.largest = newLeaf;
-
-			} else if (cursor == this.largest) {
-
-				oldLeaf.setNext(newLeaf);
-				newLeaf.setPrev(oldLeaf);
-
-			} else {
-
-				LinkedLeafTwoThreeNode280<K, I> oldPrev = (LinkedLeafTwoThreeNode280<K, I>) oldLeaf.prev();
-				LinkedLeafTwoThreeNode280<K, I> oldNext = (LinkedLeafTwoThreeNode280<K, I>) oldLeaf.next();
-
-				oldLeaf.setPrev(oldPrev);
-				oldLeaf.setNext(newLeaf);
-
-				newLeaf.setPrev(oldLeaf);
-				newLeaf.setNext(oldNext);
 			}
 		
 			return extraNode;
@@ -363,7 +347,7 @@ public class IterableTwoThreeTree280<K extends Comparable<? super K>, I extends 
 	@Override
 	public K itemKey() throws NoCurrentItem280Exception {
 		// TODO Return the key of the item in the node
-		// on which the cursor is positioned.
+		// on which the x is positioned.
 		
 		// This is just a placeholder to avoid compile errors. Remove it when ready.
 		return cursor.getData().key();
@@ -387,6 +371,10 @@ public class IterableTwoThreeTree280<K extends Comparable<? super K>, I extends 
 		// positioned.
 
 		// This is just a placeholder to avoid compile errors. Remove it when ready.
+		if(!itemExists()) {
+			throw new NoCurrentItem280Exception("The cursor is not on an item.");
+		}
+
 		return cursor.getData();
 	}
 
@@ -614,17 +602,24 @@ public class IterableTwoThreeTree280<K extends Comparable<? super K>, I extends 
 		T.insert(sampleItem);
 
 		// TODO Write your regression test here
-		Loot testItem = new Loot("Aew Armor", 800);
-		Loot testItem2 = new Loot("New Armor", 700);
+		Loot item1 = new Loot("Nordic Armor", 1200);
+		Loot item2 = new Loot("Helmet", 250);
+		Loot item3 = new Loot("Boots", 200);
 
-		T.insert(testItem);
-		T.insert(testItem2);
+		// Test insert() with multiple items.
+		T.insert(item1);
+		T.insert(item2);
+		T.insert(item3);
+
+		if(T.largest.getData().itemValue() != 1200) {
+			System.out.println("Error: The largest item value should be 1200.");
+		}
+
+		if(T.smallest.getData().itemValue() != 200) {
+			System.out.println("Error: The smallest item value should be 200.");
+		}
 
 		System.out.println(T.toStringByLevel());
-
-		if(T.item() != testItem) {
-			System.out.println("Error in inserting method.");
-		}
 	
 	}
 
