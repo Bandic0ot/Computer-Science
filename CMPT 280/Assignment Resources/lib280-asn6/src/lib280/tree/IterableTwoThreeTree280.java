@@ -10,6 +10,7 @@ import lib280.exception.DuplicateItems280Exception;
 import lib280.exception.InvalidArgument280Exception;
 import lib280.exception.InvalidState280Exception;
 import lib280.exception.NoCurrentItem280Exception;
+import sun.awt.image.ImageWatched;
 
 public class IterableTwoThreeTree280<K extends Comparable<? super K>, I extends Keyed280<K>> extends TwoThreeTree280<K, I> implements KeyedDict280<K,I> {
 
@@ -301,10 +302,11 @@ public class IterableTwoThreeTree280<K extends Comparable<? super K>, I extends 
 
 				// TODO Unlink leaf from it's linear successor/predecessor
 				// Hint: Be prepared to typecast where appropriate.
-				LinkedLeafTwoThreeNode280 temp = 
-				
-				
-				
+				LinkedLeafTwoThreeNode280<K, I> temp = (LinkedLeafTwoThreeNode280<K, I>) root.getLeftSubtree();
+
+				temp.prev().setNext(temp.next());
+				temp.next().setPrev(temp.prev());
+
 				// Proceed with deletion of leaf from the 2-3 tree.
 				root.setLeftSubtree(root.getMiddleSubtree());
 				root.setMiddleSubtree(root.getRightSubtree());
@@ -320,9 +322,10 @@ public class IterableTwoThreeTree280<K extends Comparable<? super K>, I extends 
 
 				// TODO Unlink leaf from it's linear successor/predecessor
 				// Hint: Be prepared to typecast where appropriate.
-		
-				
-				
+				LinkedLeafTwoThreeNode280<K, I> temp = (LinkedLeafTwoThreeNode280<K, I>) root.getMiddleSubtree();
+
+				temp.prev().setNext(temp.next());
+				temp.next().setPrev(temp.prev());
 				
 				// Proceed with deletion from the 2-3 tree.
 				root.setMiddleSubtree(root.getRightSubtree());				
@@ -341,9 +344,10 @@ public class IterableTwoThreeTree280<K extends Comparable<? super K>, I extends 
 
 				// TODO Unlink leaf from it's linear successor/predecessor
 				// Hint: Be prepared to typecast where appropriate.
+				LinkedLeafTwoThreeNode280<K, I> temp = (LinkedLeafTwoThreeNode280<K, I>) root.getRightSubtree();
 
-				
-				
+				temp.prev().setNext(temp.next());
+				temp.next().setPrev(temp.prev());
 				
 				// Proceed with deletion of the node from the 2-3 tree.
 				root.setKey2(null);
@@ -362,7 +366,7 @@ public class IterableTwoThreeTree280<K extends Comparable<? super K>, I extends 
 		// on which the cursor is positioned.
 		
 		// This is just a placeholder to avoid compile errors. Remove it when ready.
-		return null;  
+		return cursor.getData().key();
 	}
 
 
@@ -383,7 +387,7 @@ public class IterableTwoThreeTree280<K extends Comparable<? super K>, I extends 
 		// positioned.
 
 		// This is just a placeholder to avoid compile errors. Remove it when ready.
-		return null;  
+		return cursor.getData();
 	}
 
 
@@ -466,8 +470,15 @@ public class IterableTwoThreeTree280<K extends Comparable<? super K>, I extends 
 		// it exists, then adjust the cursor variables to 
 		// refer to it.  If no item with key k can be found
 		// leave the cursor in the after position.
-		
 
+		if(find(k) != null) {
+
+			cursor.setData(find(k));
+
+		} else {
+
+			goAfter();
+		}
 	}
 
 
@@ -504,6 +515,19 @@ public class IterableTwoThreeTree280<K extends Comparable<? super K>, I extends 
 		// positioned does not have the same key as x, throw
 		// an appropriate exception.
 
+		if(!itemExists()) {
+			throw new NoCurrentItem280Exception("The cursor is not on an item.");
+		}
+
+		if(cursor.getData().key() != x.key()) {
+
+			throw new InvalidArgument280Exception("The key does not match.");
+
+		} else {
+
+			cursor.setData(x);
+		}
+
 	}
 
 
@@ -513,6 +537,14 @@ public class IterableTwoThreeTree280<K extends Comparable<? super K>, I extends 
 		// Leave the cursor on the successor of the deleted item.
 	
 		// Hint: If this takes more than 5 or 6 lines, you're doing it wrong!
+		if(!itemExists()) {
+
+			throw new NoCurrentItem280Exception("The cursor is not on an item.");
+
+		} else {
+			delete(cursor.getData().key());
+			goForth();
+		}
 	}
 
 
