@@ -108,7 +108,6 @@ public class KDTree280<I extends Comparable<? super I>> extends LinkedSimpleTree
         }
 
         KDTree280<NDPoint280> T = new KDTree280<NDPoint280>(5);
-        T.array =
 
         int test = T.partition(array, 0, 2, 2);
         System.out.println(test);
