@@ -2,120 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c38d225c-e60f-42a1-8063-38aa0d4e5375" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/lib280-asn7/lib280/base/BasicDict280.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/lib280-asn7/lib280/base/BilinearIterator280.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/lib280-asn7/lib280/base/Container280.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/lib280-asn7/lib280/base/Cursor280.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/lib280-asn7/lib280/base/CursorPosition280.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/lib280-asn7/lib280/base/CursorSaving280.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/lib280-asn7/lib280/base/Dispenser280.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/lib280-asn7/lib280/base/Keyed280.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/lib280-asn7/lib280/base/KeyedCursor280.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/lib280-asn7/lib280/base/KeyedLinearIterator280.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/lib280-asn7/lib280/base/LinearIterator280.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/lib280-asn7/lib280/base/Membership280.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/lib280-asn7/lib280/base/NDPoint280.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/lib280-asn7/lib280/base/Pair280.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/lib280-asn7/lib280/base/Searchable280.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/lib280-asn7/lib280/dictionary/Dict280.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/lib280-asn7/lib280/dictionary/HashTable280.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/lib280-asn7/lib280/dictionary/KeyedAccess280.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/lib280-asn7/lib280/dictionary/KeyedBasicAccess280.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/lib280-asn7/lib280/dictionary/KeyedBasicDict280.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/lib280-asn7/lib280/dictionary/KeyedDict280.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/lib280-asn7/lib280/dispenser/ArrayedQueue280.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/lib280-asn7/lib280/dispenser/ArrayedStack280.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/lib280-asn7/lib280/dispenser/LinkedQueue280.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/lib280-asn7/lib280/dispenser/LinkedStack280.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/lib280-asn7/lib280/dispenser/PriorityQueue280$1PriorityItem.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/lib280-asn7/lib280/dispenser/PriorityQueue280.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/lib280-asn7/lib280/dispenser/Queue280.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/lib280-asn7/lib280/dispenser/Stack280.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/lib280-asn7/lib280/exception/AfterTheEnd280Exception.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/lib280-asn7/lib280/exception/BeforeTheStart280Exception.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/lib280-asn7/lib280/exception/Container280Exception.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/lib280-asn7/lib280/exception/ContainerEmpty280Exception.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/lib280-asn7/lib280/exception/ContainerFull280Exception.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/lib280-asn7/lib280/exception/DuplicateItems280Exception.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/lib280-asn7/lib280/exception/Exception280.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/lib280-asn7/lib280/exception/InvalidArgument280Exception.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/lib280-asn7/lib280/exception/InvalidState280Exception.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/lib280-asn7/lib280/exception/ItemNotFound280Exception.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/lib280-asn7/lib280/exception/Iterator280Exception.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/lib280-asn7/lib280/exception/NoCurrentItem280Exception.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/lib280-asn7/lib280/graph/Edge280.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/lib280-asn7/lib280/graph/Graph280.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/lib280-asn7/lib280/graph/GraphAdjListRep280.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/lib280-asn7/lib280/graph/GraphMatrixRep280.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/lib280-asn7/lib280/graph/GraphPosition280.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/lib280-asn7/lib280/graph/GraphWithCursors280.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/lib280-asn7/lib280/graph/NonNegativeWeightedGraphAdjListRep280.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/lib280-asn7/lib280/graph/Vertex280.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/lib280-asn7/lib280/graph/WeightedEdge280.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/lib280-asn7/lib280/graph/WeightedGraphAdjListRep280.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/lib280-asn7/lib280/graph/WeightedGraphMatrixRep280.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/lib280-asn7/lib280/hashtable/ChainedHashTable280.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/lib280-asn7/lib280/hashtable/KeyedChainedHashTable280$1Skill.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/lib280-asn7/lib280/hashtable/KeyedChainedHashTable280.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/lib280-asn7/lib280/list/ArrayedList280.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/lib280-asn7/lib280/list/ArrayedListIterator280.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/lib280-asn7/lib280/list/BilinkedIterator280.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/lib280-asn7/lib280/list/BilinkedList280$1myPair.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/lib280-asn7/lib280/list/BilinkedList280.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/lib280-asn7/lib280/list/BilinkedNode280.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/lib280-asn7/lib280/list/LinkedIterator280.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/lib280-asn7/lib280/list/LinkedList280$1myPair.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/lib280-asn7/lib280/list/LinkedList280.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/lib280-asn7/lib280/list/LinkedNode280.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/lib280-asn7/lib280/list/SimpleList280.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/lib280-asn7/lib280/tree/AVLTree280.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/lib280-asn7/lib280/tree/AVLTreeNode280.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/lib280-asn7/lib280/tree/ArrayedBinaryTree280.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/lib280-asn7/lib280/tree/ArrayedBinaryTreeIterator280.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/lib280-asn7/lib280/tree/ArrayedBinaryTreePosition280.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/lib280-asn7/lib280/tree/ArrayedBinaryTreeWithCursors280.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/lib280-asn7/lib280/tree/ArrayedHeap280.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/lib280-asn7/lib280/tree/ArrayedMinHeap280.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/lib280-asn7/lib280/tree/BasicMAryTree280.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/lib280-asn7/lib280/tree/BinaryNode280.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/lib280-asn7/lib280/tree/InternalTwoThreeNode280.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/lib280-asn7/lib280/tree/IterableArrayedHeap280.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/lib280-asn7/lib280/tree/IterableTwoThreeTree280$1Loot.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/lib280-asn7/lib280/tree/IterableTwoThreeTree280.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/lib280-asn7/lib280/tree/KDNode280.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/lib280-asn7/lib280/tree/KDTree280.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/lib280-asn7/lib280/tree/LeafTwoThreeNode280.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/lib280-asn7/lib280/tree/LinkedLeafTwoThreeNode280.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/lib280-asn7/lib280/tree/LinkedSimpleTree280.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/lib280-asn7/lib280/tree/MAryIterator280.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/lib280-asn7/lib280/tree/MAryNode280.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/lib280-asn7/lib280/tree/OrderedSimpleTree280.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/lib280-asn7/lib280/tree/SimpleTree280.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/lib280-asn7/lib280/tree/TwoThreeNode280.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/lib280-asn7/lib280/tree/TwoThreeTree280$1myItem.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/lib280-asn7/lib280/tree/TwoThreeTree280.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/lib280-asn7/lib280/tree/TwoThreeTreePosition280.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/lib280-asn7/.classpath" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/lib280-asn7/.project" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/lib280-asn7/lib280/graph/graph.dat" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/lib280-asn7/lib280/graph/graph2.dat" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/lib280-asn7/lib280/graph/testgraph.gra" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/lib280-asn7/lib280/graph/weightedtestgraph.gra" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/quests16.txt" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Kruskal-Template/.classpath" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Kruskal-Template/.project" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Kruskal-Template/.settings/org.eclipse.jdt.core.prefs" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Kruskal-Template/Kruskal-Template.iml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Kruskal-Template/bin/Kruskal.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Kruskal-Template/bin/UnionFind280.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Kruskal-Template/mst.graph" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Kruskal-Template/src/Kruskal.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Kruskal-Template/src/UnionFind280.java" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Assignment Resources/QuestPrerequisites-Template/bin/QuestPrerequisites/Quest.class" afterPath="$PROJECT_DIR$/../Assignment Resources/QuestPrerequisites-Template/bin/QuestPrerequisites/Quest.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Assignment Resources/QuestPrerequisites-Template/bin/QuestPrerequisites/QuestProgression.class" afterPath="$PROJECT_DIR$/../Assignment Resources/QuestPrerequisites-Template/bin/QuestPrerequisites/QuestProgression.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Assignment Resources/QuestPrerequisites-Template/bin/QuestPrerequisites/QuestVertex.class" afterPath="$PROJECT_DIR$/../Assignment Resources/QuestPrerequisites-Template/bin/QuestPrerequisites/QuestVertex.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Assignment Resources/QuestPrerequisites-Template/src/QuestPrerequisites/QuestProgression.java" afterPath="$PROJECT_DIR$/../Assignment Resources/QuestPrerequisites-Template/src/QuestPrerequisites/QuestProgression.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Assignment Resources/Kruskal-Template/bin/UnionFind280.class" afterPath="$PROJECT_DIR$/../Assignment Resources/Kruskal-Template/bin/UnionFind280.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Assignment Resources/Kruskal-Template/src/UnionFind280.java" afterPath="$PROJECT_DIR$/../Assignment Resources/Kruskal-Template/src/UnionFind280.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -145,8 +33,8 @@
       <file leaf-file-name="Kruskal.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/../Assignment Resources/Kruskal-Template/src/Kruskal.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <state relative-caret-position="310">
+              <caret line="22" column="42" lean-forward="true" selection-start-line="22" selection-start-column="42" selection-end-line="22" selection-end-column="42" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -157,11 +45,64 @@
       <file leaf-file-name="UnionFind280.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/../Assignment Resources/Kruskal-Template/src/UnionFind280.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="390">
-              <caret line="26" column="29" lean-forward="true" selection-start-line="26" selection-start-column="29" selection-end-line="26" selection-end-column="29" />
+            <state relative-caret-position="55">
+              <caret line="65" column="9" lean-forward="true" selection-start-line="65" selection-start-column="9" selection-end-line="65" selection-end-column="9" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="mst.graph" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../Assignment Resources/Kruskal-Template/mst.graph">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="GraphWithCursors280.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../Assignment Resources/lib280-asn7/src/lib280/graph/GraphWithCursors280.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="168">
+              <caret line="213" column="19" lean-forward="false" selection-start-line="213" selection-start-column="19" selection-end-line="213" selection-end-column="19" />
+              <folding>
+                <element signature="e#5253#5254#0" expanded="true" />
+                <element signature="e#5285#5286#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Edge280.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../Assignment Resources/lib280-asn7/src/lib280/graph/Edge280.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="313">
+              <caret line="29" column="13" lean-forward="false" selection-start-line="29" selection-start-column="13" selection-end-line="29" selection-end-column="13" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="GraphAdjListRep280.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../Assignment Resources/lib280-asn7/src/lib280/graph/GraphAdjListRep280.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-641">
+              <caret line="117" column="16" lean-forward="false" selection-start-line="117" selection-start-column="16" selection-end-line="117" selection-end-column="16" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Vertex280.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../Assignment Resources/lib280-asn7/src/lib280/graph/Vertex280.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="45">
+              <caret line="3" column="13" lean-forward="false" selection-start-line="3" selection-start-column="13" selection-end-line="3" selection-end-column="13" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -221,6 +162,7 @@
         <option value="$PROJECT_DIR$/../Assignment Resources/lib280-asn6/src/lib280/tree/AVLTree280.java" />
         <option value="$PROJECT_DIR$/Assignment 6/src/KDTree280.java" />
         <option value="$PROJECT_DIR$/../Assignment Resources/QuestPrerequisites-Template/src/QuestPrerequisites/QuestProgression.java" />
+        <option value="$PROJECT_DIR$/../Assignment Resources/Kruskal-Template/src/UnionFind280.java" />
       </list>
     </option>
   </component>
@@ -326,27 +268,7 @@
       <recent name="$PROJECT_DIR$/A1Q1/src" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.QuestProgression">
-    <configuration default="false" name="OrderedSimpleTree280" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
-        <pattern>
-          <option name="PATTERN" value="lib280.tree.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="MAIN_CLASS_NAME" value="lib280.tree.OrderedSimpleTree280" />
-      <option name="VM_PARAMETERS" />
-      <option name="PROGRAM_PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="ENABLE_SWING_INSPECTOR" value="false" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <module name="lib280-asn5" />
-      <envs />
-      <method />
-    </configuration>
+  <component name="RunManager" selected="Application.UnionFind280">
     <configuration default="false" name="AVLTree280" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <option name="MAIN_CLASS_NAME" value="AVLTree280" />
@@ -414,6 +336,21 @@
       <option name="ENV_VARIABLES" />
       <option name="PASS_PARENT_ENVS" value="true" />
       <module name="QuestPrerequisites-Template" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="UnionFind280" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <option name="MAIN_CLASS_NAME" value="UnionFind280" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="Kruskal-Template" />
       <envs />
       <method />
     </configuration>
@@ -798,19 +735,19 @@
       <method />
     </configuration>
     <list size="5">
-      <item index="0" class="java.lang.String" itemvalue="Application.OrderedSimpleTree280" />
-      <item index="1" class="java.lang.String" itemvalue="Application.AVLTree280" />
-      <item index="2" class="java.lang.String" itemvalue="Application.IterableTwoThreeTree280" />
-      <item index="3" class="java.lang.String" itemvalue="Application.KDTree280" />
-      <item index="4" class="java.lang.String" itemvalue="Application.QuestProgression" />
+      <item index="0" class="java.lang.String" itemvalue="Application.AVLTree280" />
+      <item index="1" class="java.lang.String" itemvalue="Application.IterableTwoThreeTree280" />
+      <item index="2" class="java.lang.String" itemvalue="Application.KDTree280" />
+      <item index="3" class="java.lang.String" itemvalue="Application.QuestProgression" />
+      <item index="4" class="java.lang.String" itemvalue="Application.UnionFind280" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Application.QuestProgression" />
-        <item index="1" class="java.lang.String" itemvalue="Application.KDTree280" />
-        <item index="2" class="java.lang.String" itemvalue="Application.IterableTwoThreeTree280" />
-        <item index="3" class="java.lang.String" itemvalue="Application.AVLTree280" />
-        <item index="4" class="java.lang.String" itemvalue="Application.OrderedSimpleTree280" />
+        <item index="0" class="java.lang.String" itemvalue="Application.UnionFind280" />
+        <item index="1" class="java.lang.String" itemvalue="Application.QuestProgression" />
+        <item index="2" class="java.lang.String" itemvalue="Application.KDTree280" />
+        <item index="3" class="java.lang.String" itemvalue="Application.IterableTwoThreeTree280" />
+        <item index="4" class="java.lang.String" itemvalue="Application.AVLTree280" />
       </list>
     </recent_temporary>
   </component>
@@ -850,12 +787,12 @@
       <workItem from="1489437188993" duration="82000" />
       <workItem from="1489437653692" duration="849000" />
       <workItem from="1490042384232" duration="4968000" />
-      <workItem from="1490056998255" duration="20074000" />
+      <workItem from="1490056998255" duration="23370000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="280125000" />
+    <option name="totallyTimeSpent" value="283421000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -880,7 +817,7 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32942554" sideWeight="0.50277776" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32891566" sideWeight="0.49722221" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32891566" sideWeight="0.49722221" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -975,27 +912,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/../Assignment Resources/lib280-asn5/src/lib280/tree/LinkedSimpleTree280.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="149">
-          <caret line="51" column="0" lean-forward="false" selection-start-line="51" selection-start-column="0" selection-end-line="51" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../Assignment Resources/lib280-asn5/src/lib280/tree/BinaryNode280.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="495">
-          <caret line="53" column="16" lean-forward="false" selection-start-line="53" selection-start-column="16" selection-end-line="53" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../Assignment Resources/lib280-asn6/src/lib280/base/Pair280.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="21" column="11" lean-forward="false" selection-start-line="21" selection-start-column="11" selection-end-line="21" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Assignment 5/src/AVLTree280.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="168">
@@ -1292,14 +1208,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../Assignment Resources/lib280-asn7/src/lib280/graph/Edge280.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="157">
-          <caret line="29" column="13" lean-forward="false" selection-start-line="29" selection-start-column="13" selection-end-line="29" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../Assignment Resources/QuestPrerequisites-Template/src/QuestPrerequisites/QuestVertex.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="195">
@@ -1310,35 +1218,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../Assignment Resources/lib280-asn7/src/lib280/graph/Vertex280.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="3" column="13" lean-forward="false" selection-start-line="3" selection-start-column="13" selection-end-line="3" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../Assignment Resources/QuestPrerequisites-Template/src/QuestPrerequisites/Quest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1407">
           <caret line="114" column="0" lean-forward="false" selection-start-line="114" selection-start-column="0" selection-end-line="114" selection-end-column="0" />
           <folding>
             <element signature="e#1772#1773#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../Assignment Resources/lib280-asn7/src/lib280/graph/GraphWithCursors280.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="149">
-          <caret line="223" column="0" lean-forward="false" selection-start-line="223" selection-start-column="0" selection-end-line="223" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#5045#5046#0" expanded="false" />
-            <element signature="e#5076#5077#0" expanded="false" />
-            <element signature="e#5253#5254#0" expanded="false" />
-            <element signature="e#5285#5286#0" expanded="false" />
-            <element signature="e#5470#5471#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1357,20 +1242,73 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../Assignment Resources/Kruskal-Template/src/Kruskal.java">
+    <entry file="file://$PROJECT_DIR$/../Assignment Resources/lib280-asn7/src/lib280/graph/Vertex280.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="3" column="13" lean-forward="false" selection-start-line="3" selection-start-column="13" selection-end-line="3" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../Assignment Resources/lib280-asn7/src/lib280/graph/Edge280.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="313">
+          <caret line="29" column="13" lean-forward="false" selection-start-line="29" selection-start-column="13" selection-end-line="29" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../Assignment Resources/Kruskal-Template/mst.graph">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../Assignment Resources/lib280-asn7/src/lib280/graph/WeightedGraphAdjListRep280.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="10" column="13" lean-forward="false" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/../Assignment Resources/lib280-asn7/src/lib280/graph/GraphAdjListRep280.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-641">
+          <caret line="117" column="16" lean-forward="false" selection-start-line="117" selection-start-column="16" selection-end-line="117" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../Assignment Resources/Kruskal-Template/src/Kruskal.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="310">
+          <caret line="22" column="42" lean-forward="true" selection-start-line="22" selection-start-column="42" selection-end-line="22" selection-end-column="42" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../Assignment Resources/lib280-asn7/src/lib280/graph/GraphWithCursors280.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="168">
+          <caret line="213" column="19" lean-forward="false" selection-start-line="213" selection-start-column="19" selection-end-line="213" selection-end-column="19" />
+          <folding>
+            <element signature="e#5253#5254#0" expanded="true" />
+            <element signature="e#5285#5286#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/../Assignment Resources/Kruskal-Template/src/UnionFind280.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="390">
-          <caret line="26" column="29" lean-forward="true" selection-start-line="26" selection-start-column="29" selection-end-line="26" selection-end-column="29" />
+        <state relative-caret-position="55">
+          <caret line="65" column="9" lean-forward="true" selection-start-line="65" selection-start-column="9" selection-end-line="65" selection-end-column="9" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
