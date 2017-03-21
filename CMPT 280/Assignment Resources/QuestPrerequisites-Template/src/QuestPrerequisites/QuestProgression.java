@@ -4,8 +4,11 @@ import java.io.*;
 import java.util.Scanner;
 
 import lib280.base.CursorPosition280;
+import lib280.exception.DuplicateItems280Exception;
 import lib280.graph.Edge280;
 import lib280.graph.GraphMatrixRep280;
+import lib280.graph.Vertex280;
+import lib280.hashtable.KeyedChainedHashTable280;
 import lib280.list.LinkedList280;
 import lib280.tree.ArrayedHeap280;
 
@@ -87,8 +90,13 @@ public class QuestProgression {
 	public static boolean hasNoIncomingEdges(GraphMatrixRep280<QuestVertex,Edge280<QuestVertex>> G, int v) {
 		
 		// TODO Write this method
-		
-		return false;   // replace this with your own return statement -- this is just a placeholder to prevent compiler errors.
+		for(int i = 1; i <= G.numVertices(); i++) {
+			if(G.isAdjacent(i, v)) {
+				return false;
+			}
+		}
+
+		return true;
 	}
 	
 	
@@ -101,9 +109,46 @@ public class QuestProgression {
 	public static LinkedList280<Quest> questProgression(GraphMatrixRep280<QuestVertex,Edge280<QuestVertex>> G) {
 	
 		// TODO Write this method
-		
-		return null;  // Replace this with your own return statement -- this is jsut a placeholder to prevent compiler errors.
+		LinkedList280<Quest> L = new LinkedList280<Quest>();
+		ArrayedHeap280<Quest> H = new ArrayedHeap280<Quest>(G.capacity());
 
+		G.goFirst();
+
+		while(!G.after()) {
+			if(hasNoIncomingEdges(G, G.itemIndex())) {
+				H.insert(G.item().quest());
+			}
+
+			G.goForth();
+		}
+
+		G.goFirst();
+
+		while(!H.isEmpty()) {
+			QuestVertex n = (QuestVertex) G.vertex(H.item().id());
+			H.deleteItem();
+			L.insertLast(n.quest());
+
+			G.eGoFirst(G.vertex(n.index()));
+			for(int m = 1; m <= G.numVertices(); m++) {
+
+				if(G.isAdjacent(n.index(), m)) {
+					G.deleteEItem();
+
+					if(hasNoIncomingEdges(G, m)) {
+						H.insert(G.vertex(m).quest());
+					}
+				}
+			}
+
+			G.goForth();
+		}
+
+		if(G.eItemExists()) {
+			throw new DuplicateItems280Exception("The graph had at least one cycle.");
+		} else {
+			return L;
+		}
 	}
 	
 	public static void main(String args[]) {
@@ -111,7 +156,7 @@ public class QuestProgression {
 		
 		// If you get an error reading the file here and you're using Eclipse, 
 		// remove the 'QuestPrerequisites-Template/' portion of the filename.
-		GraphMatrixRep280<QuestVertex,Edge280<QuestVertex>> questGraph = readQuestFile("QuestPrerequisites-Template/quests16.txt");
+		GraphMatrixRep280<QuestVertex,Edge280<QuestVertex>> questGraph = readQuestFile("quests16.txt");
 		
 		// Perform a topological sort on the graph.
 		LinkedList280<Quest> questListForMaxXp = questProgression(questGraph);
