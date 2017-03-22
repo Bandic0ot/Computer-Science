@@ -156,7 +156,7 @@ public class QuestProgression {
 		
 		// If you get an error reading the file here and you're using Eclipse, 
 		// remove the 'QuestPrerequisites-Template/' portion of the filename.
-		GraphMatrixRep280<QuestVertex,Edge280<QuestVertex>> questGraph = readQuestFile("quests16.txt");
+		GraphMatrixRep280<QuestVertex,Edge280<QuestVertex>> questGraph = readQuestFile("QuestPrerequisites-Template/quests16.txt");
 		
 		// Perform a topological sort on the graph.
 		LinkedList280<Quest> questListForMaxXp = questProgression(questGraph);

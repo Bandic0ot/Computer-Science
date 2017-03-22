@@ -71,6 +71,40 @@
       */
      public Pair280<double[], int[]> shortestPathDijkstra(int startVertex) {
          // TODO Implement this method
+         // Create an array/set called V and fill it with the vertices from G
+         Vertex280 V[] = new Vertex280[this.numVertices() + 1];
+         Double tentativeDistance[] = new Double[this.numVertices() + 1];
+         boolean visited[] = new boolean[this.numVertices() + 1];
+         Vertex280 predecessorNode[] = new Vertex280[this.numVertices() + 1];
+
+         for(int i = 1; i <= this.numVertices(); i++) {
+             V[i] = this.vertex(i);
+
+             tentativeDistance[i] = Double.POSITIVE_INFINITY;
+             visited[i] = false;
+             predecessorNode[i] = null;
+         }
+
+         tentativeDistance[startVertex] = 0.0;
+
+         Vertex280 cur = this.vertex(startVertex);
+
+         while(visited[cur.index()] != true) {
+             for(int i = 1; i <= this.numVertices() + 1; i++) {
+                 if (tentativeDistance[i] < tentativeDistance[cur.index()]) {
+                     cur = this.vertex(i);
+                 }
+             }
+
+             visited[cur.index()] = true;
+
+             for(int z = 1; z <= numVertices() + 1; z++) {
+                 if(visited[z] == false && tentativeDistance[z] > tentativeDistance[cur.index()] + getEdgeWeight(cur.index(), z)) {
+                     tentativeDistance[z] = tentativeDistance[cur.index()] + getEdgeWeight(cur.index(), z);
+                     predecessorNode[z] = cur;
+                 }
+             }
+         }
 
          // Remove this return statement when you're ready -- it's a placeholder to prevent a compiler error.
          return new Pair280<double[], int[]>(null, null);

@@ -48,7 +48,7 @@ public class Kruskal {
 		WeightedGraphAdjListRep280<Vertex280> G = new WeightedGraphAdjListRep280<Vertex280>(1, false);
 		// If you get a file not found error here and you're using eclipse just remove the 
 		// 'Kruskal-template/' part from the path string.
-		G.initGraphFromFile("mst.graph");
+		G.initGraphFromFile("Kruskal-Template/mst.graph");
 		System.out.println(G);
 		
 		WeightedGraphAdjListRep280<Vertex280> minST = minSpanningTree(G);
