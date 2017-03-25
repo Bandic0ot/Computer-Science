@@ -73,41 +73,39 @@
          // TODO Implement this method
          // Create an array/set called V and fill it with the vertices from G
          Vertex280 V[] = new Vertex280[this.numVertices() + 1];
-         Double tentativeDistance[] = new Double[this.numVertices() + 1];
+         double[] tentativeDistance = new double[this.numVertices() + 1];
          boolean visited[] = new boolean[this.numVertices() + 1];
-         Vertex280 predecessorNode[] = new Vertex280[this.numVertices() + 1];
+         int[] predecessorNode = new int[this.numVertices() + 1];
 
          for(int i = 1; i <= this.numVertices(); i++) {
              V[i] = this.vertex(i);
 
              tentativeDistance[i] = Double.POSITIVE_INFINITY;
              visited[i] = false;
-             predecessorNode[i] = null;
          }
 
          tentativeDistance[startVertex] = 0.0;
 
-         Vertex280 cur = this.vertex(startVertex);
+         int cur = startVertex;
 
-         while(visited[cur.index()] != true) {
-             for(int i = 1; i <= this.numVertices() + 1; i++) {
-                 if (tentativeDistance[i] < tentativeDistance[cur.index()]) {
-                     cur = this.vertex(i);
+         while(visited[cur] != true) {
+             for(int i = 1; i < this.numVertices() + 1; i++) {
+                 if (tentativeDistance[i] < tentativeDistance[cur]) {
+                     cur = i;
                  }
              }
 
-             visited[cur.index()] = true;
+             visited[cur] = true;
 
-             for(int z = 1; z <= numVertices() + 1; z++) {
-                 if(visited[z] == false && tentativeDistance[z] > tentativeDistance[cur.index()] + getEdgeWeight(cur.index(), z)) {
-                     tentativeDistance[z] = tentativeDistance[cur.index()] + getEdgeWeight(cur.index(), z);
+             for(int z = 1; z < numVertices() + 1; z++) {
+                 if(visited[z] == false && tentativeDistance[z] > (tentativeDistance[cur] + getEdgeWeight(cur, z))) {
+                     tentativeDistance[z] = tentativeDistance[cur] + getEdgeWeight(cur, z);
                      predecessorNode[z] = cur;
                  }
              }
          }
 
-         // Remove this return statement when you're ready -- it's a placeholder to prevent a compiler error.
-         return new Pair280<double[], int[]>(null, null);
+         return new Pair280<double[], int[]>(tentativeDistance, predecessorNode);
 
      }
 
@@ -124,7 +122,7 @@
          NonNegativeWeightedGraphAdjListRep280<Vertex280> G = new NonNegativeWeightedGraphAdjListRep280<Vertex280>(1, false);
 
          if( args.length == 0)
-             G.initGraphFromFile("lib280-asn7/src/lib280/graph/weightedtestgraph.gra");
+             G.initGraphFromFile("weightedtestgraph.gra");
          	 // If you're using Eclipse and you get an error opening the file, comment
          	 // the line above, and uncomment the line below:
          	 // G.initGraphFromFile("src/lib280/graph/weightedtestgraph.gra");
