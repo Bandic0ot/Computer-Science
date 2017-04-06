@@ -2,11 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c38d225c-e60f-42a1-8063-38aa0d4e5375" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Assignment Resources/RadixSortMSD-Template/bin/RadixSortMSD.class" afterPath="$PROJECT_DIR$/../Assignment Resources/RadixSortMSD-Template/bin/RadixSortMSD.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Assignment Resources/RadixSortMSD-Template/src/RadixSortMSD.java" afterPath="$PROJECT_DIR$/../Assignment Resources/RadixSortMSD-Template/src/RadixSortMSD.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Assignment Resources/lib280-asn8/lib280-asn8.iml" afterPath="$PROJECT_DIR$/../Assignment Resources/lib280-asn8/lib280-asn8.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Knapsack-Template/Knapsack-Template.iml" afterPath="$PROJECT_DIR$/Knapsack-Template/Knapsack-Template.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Knapsack-Template/src/Knapsack.java" afterPath="$PROJECT_DIR$/Knapsack-Template/src/Knapsack.java" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -35,7 +33,7 @@
       <file leaf-file-name="RadixSortMSD.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/../Assignment Resources/RadixSortMSD-Template/src/RadixSortMSD.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
+            <state relative-caret-position="630">
               <caret line="172" column="0" lean-forward="false" selection-start-line="172" selection-start-column="0" selection-end-line="172" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -49,8 +47,8 @@
       <file leaf-file-name="TSP.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/TSP/src/TSP.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-122">
-              <caret line="18" column="4" lean-forward="false" selection-start-line="18" selection-start-column="4" selection-end-line="18" selection-end-column="4" />
+            <state relative-caret-position="-30">
+              <caret line="89" column="131" lean-forward="false" selection-start-line="89" selection-start-column="20" selection-end-line="89" selection-end-column="131" />
               <folding />
             </state>
           </provider>
@@ -59,8 +57,8 @@
       <file leaf-file-name="Knapsack.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Knapsack-Template/src/Knapsack.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="18" column="13" lean-forward="true" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
+            <state relative-caret-position="475">
+              <caret line="203" column="32" lean-forward="false" selection-start-line="203" selection-start-column="32" selection-end-line="203" selection-end-column="32" />
               <folding />
             </state>
           </provider>
@@ -69,7 +67,7 @@
       <file leaf-file-name="RandomKnapsackInstance.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Knapsack-Template/src/RandomKnapsackInstance.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="45">
+            <state relative-caret-position="-215">
               <caret line="7" column="13" lean-forward="false" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
               <folding />
             </state>
@@ -94,9 +92,9 @@
       <find>1</find>
       <find>15</find>
       <find>66</find>
+      <find>Vertex</find>
     </findStrings>
     <replaceStrings>
-      <replace>14</replace>
       <replace>15</replace>
       <replace>16</replace>
       <replace>17</replace>
@@ -126,6 +124,7 @@
       <replace>88</replace>
       <replace>89</replace>
       <replace>90</replace>
+      <replace>Item</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -167,6 +166,7 @@
         <option value="$PROJECT_DIR$/../Assignment Resources/QuestPrerequisites-Template/src/QuestPrerequisites/QuestProgression.java" />
         <option value="$PROJECT_DIR$/../Assignment Resources/lib280-asn7/src/lib280/graph/NonNegativeWeightedGraphAdjListRep280.java" />
         <option value="$PROJECT_DIR$/../Assignment Resources/RadixSortMSD-Template/src/RadixSortMSD.java" />
+        <option value="$PROJECT_DIR$/Knapsack-Template/src/Knapsack.java" />
       </list>
     </option>
   </component>
@@ -792,12 +792,12 @@
       <workItem from="1490516997969" duration="202000" />
       <workItem from="1490668098496" duration="14815000" />
       <workItem from="1491104358893" duration="9829000" />
-      <workItem from="1491356779646" duration="16229000" />
+      <workItem from="1491356779646" duration="18789000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="343928000" />
+    <option name="totallyTimeSpent" value="346488000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -827,7 +827,7 @@
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22818312" sideWeight="0.49518073" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.22818312" sideWeight="0.49518073" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24964234" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -929,13 +929,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/../Assignment Resources/lib280-asn6/src/lib280/tree/AVLTreeNode280.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="13" lean-forward="false" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../Assignment Resources/lib280-asn6/src/lib280/tree/TwoThreeTreePosition280.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="60">
@@ -1238,18 +1231,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../Assignment Resources/RadixSortMSD-Template/src/RadixSortMSD.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="172" column="0" lean-forward="false" selection-start-line="172" selection-start-column="0" selection-end-line="172" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#519#520#0" expanded="true" />
-            <element signature="e#549#550#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../Assignment Resources/lib280-asn8/src/lib280/list/ArrayedList280.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="3435">
@@ -1268,14 +1249,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/TSP/src/TSP.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-122">
-          <caret line="18" column="4" lean-forward="false" selection-start-line="18" selection-start-column="4" selection-end-line="18" selection-end-column="4" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Knapsack-Template/.classpath">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -1284,9 +1257,37 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/../Assignment Resources/lib280-asn8/src/lib280/graph/GraphMatrixRep280.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="176">
+          <caret line="235" column="19" lean-forward="false" selection-start-line="235" selection-start-column="19" selection-end-line="235" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../Assignment Resources/RadixSortMSD-Template/src/RadixSortMSD.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="630">
+          <caret line="172" column="0" lean-forward="false" selection-start-line="172" selection-start-column="0" selection-end-line="172" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#519#520#0" expanded="true" />
+            <element signature="e#549#550#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TSP/src/TSP.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-30">
+          <caret line="89" column="131" lean-forward="false" selection-start-line="89" selection-start-column="20" selection-end-line="89" selection-end-column="131" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Knapsack-Template/src/RandomKnapsackInstance.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
+        <state relative-caret-position="-215">
           <caret line="7" column="13" lean-forward="false" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
           <folding />
         </state>
@@ -1294,8 +1295,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Knapsack-Template/src/Knapsack.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="18" column="13" lean-forward="true" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
+        <state relative-caret-position="475">
+          <caret line="203" column="32" lean-forward="false" selection-start-line="203" selection-start-column="32" selection-end-line="203" selection-end-column="32" />
           <folding />
         </state>
       </provider>
@@ -1357,7 +1358,6 @@
             <option name="proportions">
               <list>
                 <option value="0.2" />
-                <option value="0.6" />
               </list>
             </option>
           </splitter-proportions>

@@ -1,5 +1,6 @@
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.Arrays;
 import java.util.Scanner;
 
 
@@ -117,6 +118,13 @@ class KnapsackInstance {
 
 public class Knapsack {
 
+	// Globals
+	public double bestCost;
+	public boolean visited[];
+	public int sequence[];
+	public int bestSequence[];
+	public int extensionsTried;
+
 	public static KnapsackInstance readKnapsackInstance(String filename) {
 		
 		Scanner infile = null;
@@ -157,6 +165,44 @@ public class Knapsack {
 	}
 
 	// TODO Write your backtracking and greedy solutions to Knapsack here.
+
+	public double bTAlgorithm(KnapsackInstance sack, int startItem) {
+		// Initialize everything.
+		visited = new boolean[sack.capacity().intValue() + 1];
+		sequence = new int[sack.capacity().intValue()];
+		bestCost = Double.MAX_VALUE;
+		extensionsTried = 0;
+		visited[startItem] = true;
+		sequence[0] = startItem;
+
+		// Begin the search for the shortest tour.
+		bTAlgorithmHelper(sack, startItem, startItem, 0, 0);
+		return bestCost;
+	}
+
+	protected void bTAlgorithmHelper(KnapsackInstance sack, int startItem, int currentItem, double cost, int pathLength) {
+		visited[currentItem] = true;
+		sequence[pathLength] = currentItem;
+
+		if(pathLength == sack.capacity() - 1) {
+			if(cost + sack.weight(currentItem) < bestCost) {
+				bestCost = cost + sack.weight(currentItem);
+				bestSequence = Arrays.copyOf(sequence, sequence.length);
+			}
+		}
+		else if(cost < bestCost) {
+			for(int i = 1; i <= sack.capacity(); i++) {
+				if(!visited[i]) {
+					extensionsTried++;
+
+					bTAlgorithmHelper(sack, startItem, i, cost + sack.weight(currentItem), pathLength + 1);
+				}
+			}
+		}
+
+		visited[currentItem] = false;
+		sequence[0] = startItem;
+	}
 	
 
 	public static void main(String args[]) {
