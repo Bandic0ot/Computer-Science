@@ -1,0 +1,8 @@
+DROP TABLE enrollments;
+DROP TABLE sections;
+DROP TABLE students;
+DROP TABLE instructors;
+DROP TABLE terms;
+DROP TABLE courses;
+DROP TABLE departments;
+DROP TABLE universities;
