@@ -1,0 +1,188 @@
+
+    For this portion of the assignment, our future code will allow for
+multiple lists to be accessed and adjusted. This will be achieved
+through the use of two dynamic allocations of space, one will be much
+larger than the other as it will store nodes that will be used by the
+lists. This implementation will pass pointers to the nodes in the shape 
+of an integer which is equivilent to its position in the second array 
+and pass the reference to the item back to the list, where the
+information can be stored into the chosen node and consiquently added
+to the list. There are other functionallities of this, that are
+specified under the function headers below which are not self
+explanitory.
+
+
+
+struct NODE{    
+    void *item;
+    NODE *next;
+    NODE *prev;
+}
+
+struct LIST{    
+    NODE *head;
+    NODE *cur;
+    NODE *tail;
+    int size;
+}
+
+
+//LIST *listCreate()
+//pre: nothing
+//post: makes an new, empty list, and returns its reference on success. 
+// Returns a NULL pointer on failure, else the newly created list.
+
+
+//int listCount(LIST list)    
+//pre: list- List*
+//post: returns the number of items list pointer.
+
+Ether keeps tally of the number of nodes, or counts each node
+individually.
+
+
+//void *listFirst(LIST list)      
+//pre: list- LIST*
+//post: returns a pointer to the first item and makes the first item 
+    the current item.
+    
+return head, change cur pointer
+
+
+//void *listLast(LIST list)       
+//pre: list- LIST*
+//post: returns a pointer to the last item and makes the last item the
+        current item.
+        
+return tail, change cur pointer
+
+
+//void *listNext(LIST list)       
+//pre: list- LIST*
+//post: Advances the list current item by one, and returns a pointer
+        to the new current item. If this tries to advance past the 
+        end of the list, return NULL.
+        
+use the pointer next, in the current node. change cur pointer
+
+
+//void *listPrev(LIST list)        
+//pre: list- LIST*
+//post: backs up lists current item by one, and returns a pointer 
+        to the new current item. If this tries to advance past the
+        end of the list, return NULL.
+        
+user the pointer prev, change cur pointer
+
+
+//void *listCur(LIST list)     
+//pre: list- LIST*
+//post: returns a pointer to the current item int the list.
+
+return current.
+
+
+//int listAdd(list,item)    
+//pre: list - LIST*
+//      item - void*
+//post: adds the new item to the list directly after the current item,
+        and makes the inserted item the current item. if the current 
+        pointer is at the end of the list, the item is added at the end. 
+        Return 0 on success, -1 on failure.
+        
+add using new node, and swap pointers. change cur pointer
+
+
+//int listInsert(list, item)      
+//pre: list - LIST*
+//      item - void*
+//post: adds item to the list directly before the current item, and makes 
+            the new item the current one. if the current pointer is at the
+            start of the list, the item is added at the end. 
+//return:   success = 0
+//          failure = -1
+
+add using new node, and swap pointers. change cur pointer
+
+
+//int listAppend(list, item)      
+//pre: list - LIST*
+//      item - void*
+//post: adds item to the end of the list, and makes the new item the 
+        current one.
+//return:   success = 0
+//          failure = -1
+
+add using new node, and swap pointers. change cur pointer
+
+
+//int listPrepend(list, item)     
+//pre: list - LIST*
+//      item - void*
+//post: adds item to the front of the list, and makes the new item the 
+        current one.
+//return:   success = 0
+            failure = -1
+            
+add using new node, and swap pointers. change cur pointer
+
+
+//void *listRemove(list)      
+//pre: list - LIST*
+//post: return current item, and take it out of the list. 
+        Make the next item the current one.
+//return: current item.
+
+use a temp var for the next var, and then swap pointers to remove 
+the cur pointer. change cur pointer
+
+
+// void listConcat(list1,list2)     
+// pre: list1 - LIST*
+//      lsit2 - LIST*
+// post: adds list2 to the end of list1. the current pointer is set to the 
+            current pointer of list1. list2 nolonger exists after operation.
+//return: nothing
+
+tail1 = head2.
+
+
+//void listFree(list,listFree)      
+//pre: list1 - LIST*
+//      list2 - LIST*
+//post: delete item. itemFree is a pointer to a routine tha frees an item. 
+        It should be invoked(within listFree) as: (*itemFree)(itemToBeFreed);
+//return: nothing.
+
+delete, change cur pointer
+
+
+//void *listTrim(list)          //list_removers
+//pre: list - LIST*
+//post: take last item out of the list, the current pointer shall be the 
+        new last item in the list.
+//return: the last item.
+
+use previous fuction on the tail.
+
+
+//void *listSearch(list, comparator, comparasonArg) 
+//pre: list - LIST*
+//      comparator - function pointer
+//      comparasonArg - void*
+//post: searches list starting at the current item, until ether a match is 
+        found, or the end of the list is reached. pointer is left at the 
+        matched item or the end of the list.
+//return: if no match found, return NULL. else, return pointer to the item 
+            that was found.
+            
+use the provided fuction pointer to compare two items, and start at the current 
+element, and step forward in the list until you find a match or hit the end of the list.
+
+
+
+
+
+
+
+
