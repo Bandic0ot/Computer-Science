@@ -92,3 +92,34 @@ WHERE c.id = s.course_id;
 
 /* Part 3 */
 /* Question 1 */
+/* Question 2 */
+CREATE TABLE assessments(
+  id INT,
+  name VARCHAR(100) NOT NULL,
+  type CHAR(1),
+  total_points FLOAT,
+  weight FLOAT,
+  due_date DATE,
+  section_id INT NOT NULL REFERENCES sections,
+  PRIMARY KEY (id));
+
+CREATE TABLE enrollment_assessments(
+  id INT,
+  enrollment_id INT NOT NULL REFERENCES enrollments,
+  assessments_id INT NOT NULL REFERENCES assessments,
+  points FLOAT,
+  PRIMARY KEY (id));
+
+/* Question 3 */
+INSERT INTO assessments
+VALUES  (1, 'Assignment 1', 'A', 100, 10, TO_DATE('9, 25, 2017', 'MM/DD/YYYY'), 82736),
+        (2, 'Assignment 2', 'A', 100, 10, TO_DATE('10, 01, 2017', 'MM/DD/YYYY'), 82736),
+        (3, 'Assignment 3', 'A', 100, 10, TO_DATE('10, 15, 2017', 'MM/DD/YYYY'), 82736),
+        (4, 'Assignment 4', 'A', 100, 10, TO_DATE('10, 29, 2017', 'MM/DD/YYYY'), 82736),
+        (5, 'Assignment 5', 'A', 100, 10, TO_DATE('11, 14, 2017', 'MM/DD/YYYY'), 82736),
+        (6, 'Midterm', 'M', 100, 20, TO_DATE('11, 20, 2017', 'MM/DD/YYYY'), 82736),
+        (7, 'Final', 'F', 100, 30, TO_DATE('12, 8, 2017', 'MM/DD/YYYY'), 82736);
+        
+/* Question 4 */
+DELETE FROM instructors i
+WHERE i.employee_number = 3559;
