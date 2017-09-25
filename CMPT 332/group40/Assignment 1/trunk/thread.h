@@ -1,25 +1,34 @@
-// Structure and typedef from week1-threads tutorial material.
+#ifndef _THREAD_H_
+#define _THREAD_H_
+
+/* Modified from week1-threads tutorial material. */
 typedef int(*thread_entry)(int);
 
 /* Store information for thread */
 struct thread_info {
-    int id;
-    thread_entry entry;
-    void *thread; /* point to arch specific thread info */
+  int id;
+  thread_entry entry;
+  void *thread; /* point to arch specific thread info */
+  int size;
 };
 
 
-// Create a new thread.
+/* Create a thread */
 int thread_create(struct thread_info *);
 
-// Tell a thread to sleep.
+/* Create the parent thread */
+int parent_main(int num_threads, int deadline, int int_size);
+
+/* Join a thread */
+int thread_join(struct thread_info *);
+
+/* Sleep for a thread */
 void thread_sleep(int deadline);
 
-// Exit from a thread.
+/* Exit a thread */
 void thread_exit();
 
-// Kill another thread.
-int thread_kill(int pid);
+int square(int n);
 
-// Parse the given arguments - from week1-threads tutorial material.
-int parse_args(int argc, char *argv[]);
+
+#endif /* _THREAD_H_ */

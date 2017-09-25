@@ -1,28 +1,70 @@
 #include <stdlib.h>
 #include <stdio.h>
+#include <stdbool.h>
+
+#include <windows.h>
 
 #include "thread.h"
 
-int main(int argc, char *argv[]) {
-  struct thread_info *n_thread;
+bool gKeepRunning = true;
+int call_count = 0;
 
-  // Modified from week1-threads material.
-  // Check to make sure 3 arguments are passed.
-  if(argc != 4) {
-    printf("Usage: %s <THREADS> <DEADLINE> <SIZE>\n", argv[0]);
-    exit(1);
+/* Main code for threads */
+int child_main(int size) {
+  printf("%d", GetCurrentThreadId());
+  square(size);
+
+  /* Thread is signaled to exit by parent. */
+  if(gKeepRunning == false) {
+    thread_exit();
   }
 
-  int threads_argument = atoi(argv[1]);
-  int deadline_argument = atoi(argv[2]);
-  int size_argument = atoi(argv[3]);
-
-
-  // Test all the thread functions to see if they check for valid parameters.
-  thread_create(n_thread);
-  thread_sleep(deadline_argument);
-  thread_exit();
-  thread_kill(5);
-
   return 0;
+}
+
+/* Main code for parent thread */
+int parent_main(int num_threads, int deadline, int int_size)
+{
+  int i;
+  struct thread_info *threads;
+  int counter_array[num_threads];
+
+  threads = malloc(num_threads * sizeof(struct thread_info));
+  if (threads == NULL) exit(1);
+
+  for (i = 0; i < num_threads; i++) {
+    threads[i].entry = child_main;
+    threads[i].size = int_size;
+    thread_create(&threads[i]);
+    counter_array[i] = threads[i].id;
+  }
+
+  /* Sleep this thread until the deadline */
+  printf("Sleeping parent thread...\n");
+  thread_sleep(deadline);
+
+  gKeepRunning = false;
+
+  /*for (i = 0; i < num_threads; i++) {
+  printf("Thread %d executed the square() function 0 times.\n", deadline);
+}*/
+
+printf("All %d threads finished\n", num_threads);
+
+return 0;
+}
+
+int square(int n) {
+  call_count++;
+
+  if(gKeepRunning == false) {
+    return 0;
+  }
+
+  if (n == 0) {
+    printf("Thread done!\n");
+    return(0);
+  }
+
+  return(square(n-1) + n + n - 1);
 }

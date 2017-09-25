@@ -5,39 +5,55 @@
 
 #include "thread.h"
 
-// Create a new thread.
-int thread_create(struct thread_info *info) {
-  if(1 == 1) {
-    printf("Got to procedure 'thread_create'.\n");
-  } else {
-    printf("Error in procedure 'thread_create': invalid parameter 'thread_info *'.\n");
-  }
-
-  return 0;
+static void thread_wrapper(void *arg)
+{
+    struct thread_info *info = arg;
+    info->entry(info->id);
+    Pexit();
 }
 
-// Tell a thread to sleep.
-void thread_sleep(int deadline) {
-  if(deadline > 0) {
-    printf("Got to procedure 'thread_sleep'.\n");
-  } else {
-    printf("Error in procedure 'thread_sleep': invalid parameter 'deadline'.\n");
-  }
+int thread_create(struct thread_info *info)
+{
+    PID *thread;
+
+    thread = malloc(sizeof(PID));
+    info->thread = thread;
+    *thread = Create(thread_wrapper, 4096, "dummy", info, NORM, USR);
+
+    return 0;
 }
 
-// Exit from a thread.
-void thread_exit() {
-  printf("Got to procedure 'thread_exit'.\n");
+void thread_sleep(int seconds)
+{
+    /* TICKINTERVAL is in microseconds */
+    int ticks = (seconds * 1000000) / TICKINTERVAL;
+    while (ticks > 0xffff) {
+        Sleep(0xffff);
+        ticks -= 0xffff;
+    }
+
+    Sleep(ticks);
 }
 
-// Kill another thread.
-int thread_kill(int pid) {
-  if(pid > 0) {
-    printf("Got to procedure 'thread_kill'.\n");
-  } else {
-    printf("Error in procedure 'thread_kill': invalid parameter 'pid'.\n");
-  }
+int thread_join(struct thread_info *info)
+{
+    PID *thread;
 
+    thread = info->thread;
+    /* busy ish wait... */
+    while (PExists(*thread)) {
+        Sleep(1);
+    }
+
+    return 0;
+}
+
+static void parent_wrapper(void *arg)
+{
+    int n = *(int *) arg;
+    parent_main(n);
+    Pexit();
+}
 
   return 0;
 }

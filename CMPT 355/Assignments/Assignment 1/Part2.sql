@@ -14,7 +14,7 @@ WHERE u.id = 1
   AND d.id = c.department_id;
 
 /* Question 2 */
-SELECT COUNT (*) AS Course_Match_Count
+SELECT COUNT (*) AS Section_Match_Count
 FROM courses c
 WHERE c.id IN
     (SELECT s.course_id
