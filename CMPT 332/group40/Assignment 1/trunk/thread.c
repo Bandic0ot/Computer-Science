@@ -1,23 +1,51 @@
+//Sean Robson-Kullman
+//skr519
+//11182480
+//Matthew Mulenga
+//mam558
+//11144528
+
+
+
 #include <stdlib.h>
 #include <stdio.h>
 #include <stdbool.h>
 
-#include <windows.h>
-
 #include "thread.h"
 
-bool gKeepRunning = true;
-int call_count = 0;
+struct hash {
+	int thread_id;
+	int count;
+};
+
+int gKeepRunning = 1;
+struct hash *counter_array;
 
 /* Main code for threads */
 int child_main(int size) {
-  printf("%d", GetCurrentThreadId());
+  int start = get_systemtime();
+
   square(size);
 
   /* Thread is signaled to exit by parent. */
-  if(gKeepRunning == false) {
+  if(gKeepRunning == 0) {
+	for(int i = 0; i < size; i++) {
+		if(get_threadId() == counter_array[i].thread_id) {
+			printf("Thread %d ran square %d times. Elapsed time: %dms\n",
+      counter_array[i].thread_id, counter_array[i].count,
+       (get_systemtime() - start));
+		}
+	}
     thread_exit();
   }
+
+    	for(int i = 0; i < size; i++) {
+		if(get_threadId() == counter_array[i].thread_id) {
+			printf("Thread %d ran square %d times. Elapsed time: %dms\n",
+      counter_array[i].thread_id, counter_array[i].count,
+       (get_systemtime() - start));
+		}
+	}
 
   return 0;
 }
@@ -27,8 +55,8 @@ int parent_main(int num_threads, int deadline, int int_size)
 {
   int i;
   struct thread_info *threads;
-  int counter_array[num_threads];
 
+  counter_array = malloc(int_size * sizeof(struct hash));
   threads = malloc(num_threads * sizeof(struct thread_info));
   if (threads == NULL) exit(1);
 
@@ -36,33 +64,39 @@ int parent_main(int num_threads, int deadline, int int_size)
     threads[i].entry = child_main;
     threads[i].size = int_size;
     thread_create(&threads[i]);
-    counter_array[i] = threads[i].id;
+
+	/* Initialize the counting array */
+	counter_array[i].thread_id = threads[i].id;
+	counter_array[i].count = 0;
   }
 
   /* Sleep this thread until the deadline */
   printf("Sleeping parent thread...\n");
   thread_sleep(deadline);
-
-  gKeepRunning = false;
+  printf("Deadline up!\n");
+  gKeepRunning = 0;
+  thread_sleep(1);
 
   /*for (i = 0; i < num_threads; i++) {
   printf("Thread %d executed the square() function 0 times.\n", deadline);
 }*/
 
-printf("All %d threads finished\n", num_threads);
-
 return 0;
 }
 
 int square(int n) {
-  call_count++;
 
-  if(gKeepRunning == false) {
-    return 0;
+	if(gKeepRunning == 0) {
+    return (0);
+  }
+
+  for(int i = 0; i < n; i++) {
+    if(get_threadId() == counter_array[i].thread_id) {
+      counter_array[i].count++;
+    }
   }
 
   if (n == 0) {
-    printf("Thread done!\n");
     return(0);
   }
 

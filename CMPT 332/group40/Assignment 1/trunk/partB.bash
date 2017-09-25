@@ -1,3 +1,14 @@
+
+//Sean Robson-Kullman
+//skr519
+//11182480
+//Matthew Mulenga
+//mam558
+//11144528
+
+
+
+
 #!/bin/bash
 
 # Check to see which version the user wishes to run.
@@ -12,7 +23,7 @@ LOOP_COUNT=0
 check_version() {
 	if [ "$VERSION" == "A1" ]
 	then
-		.\wthread $THREADS $DEADLINE $SIZE
+		./wthread.exe $THREADS $DEADLINE $SIZE
 	elif [ "$VERSION" == "A2" ]
 	then
 		./pthread $THREADS $DEADLINE $SIZE

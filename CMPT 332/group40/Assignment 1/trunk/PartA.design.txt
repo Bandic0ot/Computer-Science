@@ -1,3 +1,14 @@
+
+//Sean Robson-Kullman
+//skr519
+//11182480
+//Matthew Mulenga
+//mam558
+//11144528
+
+
+
+
 We need to create a program that generates x threads. So we'll start off by
 getting input from the arguments. We need to validate the input data to make
 sure it's the right type of data. This means we need positive integers for
@@ -8,21 +19,24 @@ a given 'deadline'. We also have a global variable called 'keepRunning'
 initialized to true, which is checked by 'child_thread'. Files should be split
 into OS-agnostic and OS-specific code.
 
-parent_thread(num_threads, sleep_length)
+parent_thread(num_threads, deadline, int_size)
 Pre:	num_threads - Integer
-			sleep_length - Integer
-			size - Integer
+			deadline - Integer
+			int_size - Integer
 Post:	Loops 'num_threads' amount of times and creates a child process on each
 			iteration passing 'size' as an argument. Sleeps until deadline, tells
-			any children that are still running to exit on wake.
+			any children that are still running to exit on wake. Also creates
+			an array that stores thread IDs and their 'square()' execution counts.
 
 
 child_thread(index)
 Pre:	index - Integer
 Post:	Execute the square function passing it the given index as an argument.
-			Checks 'keepRunning', if false exit thread.
+			Outputs runtime and number of square() calls a thread performed if
+			the thread ran past the deadline.
 
 
 square(N)
 Pre:	N - Integer
-Post:	Return the square of N without using multiplication.
+Post:	Return the square of N without using multiplication. Square will check
+			to see if the parent thread has set the keepRunning value to false.

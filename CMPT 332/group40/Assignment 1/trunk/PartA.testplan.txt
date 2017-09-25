@@ -1,0 +1,42 @@
+
+//Sean Robson-Kullman
+//skr519
+//11182480
+//Matthew Mulenga
+//mam558
+//11144528
+
+Test 1:
+
+Arguments: Threads: 1 Deadline: 1 Size: 2
+Testing to see if basic input works.
+
+Test 2:
+
+Arguments: Threads: 1 Deadline: 1 Size: 2000
+Testing a medium size on a single thread to see if it can complete.
+
+Test 3:
+
+Arguments: Threads: 2 Deadline: 1 Size: 2
+Testing to see if multiple threads work with basic input.
+
+Test 4:
+
+Arguments: Threads: 4 Deadline: 5 Size: 1000
+Testing to see if multiple threads with a large deadline can complete.
+
+Test 5:
+
+Arguments: Threads: 1000 Deadline: 1 Size: 4
+Testing to see if a large amount of threads with a small size can complete.
+
+Test 6:
+
+Arguments: Threads: 3 Deadline: 4 Size: 200000
+Testing to see if multiple threads with a large size can complete.
+
+Test 7:
+
+Arguments: Threads: 4 Deadline: 1 Size: 2000
+Testing a multiple threads with a short deadline and medium size.

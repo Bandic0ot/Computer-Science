@@ -1,0 +1,63 @@
+//Sean Robson-Kullman
+//skr519
+//11182480
+//Matthew Mulenga
+//mam558
+//11144528
+
+PartC.testplan.txt
+
+
+
+This is the output from the test code that is in mytestlist
+right now.
+
+"
+insufficient list or item input in listAdd.
+listInsert should print out an error message.
+insufficient list input in listInsert.
+listAppend should print out an error message.
+insufficient list or item input in listAppend.
+listPrepend should print out an error message.
+insufficient list or item input in listPrepend.
+listRemove should print out an error message.
+insufficient list input in listRemove.
+listFree should print out an error message.
+insufficient list input in listFree.
+listFree should print out another error message.
+insufficient list input in listFree.
+listFree should print out another error message.
+insufficient list input in listFree.
+listTrim should print out an error message.
+insufficient list input in listTrim.
+listFirst should print out an error message.
+listFirst input is insufficient.
+listLast should print out an error message.
+listLast input is insufficient.
+listNext should print out an error message.
+listNext input is insufficient.
+listPrev should print out an error message.
+listPrev input is insufficient.
+listCount should print out an error message.
+insufficient list input in listCount.
+listCur should print out an error message.
+insufficient list input in listFirst.
+listConcat should print out an error message.
+insufficient list input in listConcat.
+listConcat should print out another error message.
+insufficient list input in listConcat.
+"
+
+
+
+
+
+
+
+	For the future, along with testing all inputs, and return
+values of all given values, there will be a function that will be
+used to test the bonus section when it is implemented in the phase 3
+hand in. There must also always be test cases for all boundary
+conditions, including empty,full,half full lists, and make sure
+that these fuctions still work for when all lists/nodes have been
+used up. These are important special cases.

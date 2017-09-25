@@ -1,4 +1,12 @@
 
+//Sean Robson-Kullman
+//skr519
+//11182480
+//Matthew Mulenga
+//mam558
+//11144528
+
+
     For this portion of the assignment, our future code will allow for
 multiple lists to be accessed and adjusted. This will be achieved
 through the use of two dynamic allocations of space, one will be much

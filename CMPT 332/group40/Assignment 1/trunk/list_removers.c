@@ -1,11 +1,15 @@
 
+//Sean Robson-Kullman
+//skr519
+//11182480
+//Matthew Mulenga
+//mam558
+//11144528
+
+
 #include <stdio.h>
 #include <stdlib.h>
 #include "list.h"
-
-
-
-
 
 
 //void *listRemove(list)
@@ -43,5 +47,6 @@ void *listTrim(struct LIST *list){
     if(list == NULL){
         printf("insufficient list input in listTrim. \n");
     }
+        
     return 0;
 }

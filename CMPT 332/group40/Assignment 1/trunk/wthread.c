@@ -1,3 +1,12 @@
+//Sean Robson-Kullman
+//skr519
+//11182480
+//Matthew Mulenga
+//mam558
+//11144528
+
+
+
 #include <stdlib.h>
 #include <stdio.h>
 
@@ -20,7 +29,7 @@ int thread_create(struct thread_info *info)
 
   thread = malloc(sizeof(HANDLE));
   info->thread = thread;
-  *thread = CreateThread(NULL, 2048, thread_wrapper, info, 0, &thread_id);
+  *thread = CreateThread(NULL, 1500000, thread_wrapper, info, 0, &thread_id);
   info->id = (int) thread_id;
 
   return 0;
@@ -29,7 +38,6 @@ int thread_create(struct thread_info *info)
 void thread_sleep(int seconds)
 {
   Sleep(seconds * 1000);
-  printf("Deadline up.\n");
 }
 
 int thread_join(struct thread_info *info)
@@ -45,8 +53,26 @@ int thread_join(struct thread_info *info)
 void thread_exit() {
 	DWORD exit_code;
 
-  printf("Exiting thread...\n");
   ExitThread(exit_code);
+}
+
+void thread_resume(struct thread_info *info) {
+	ResumeThread(info->thread);
+}
+
+int get_systemtime() {
+	SYSTEMTIME time;
+	GetSystemTime(&time);
+
+	int s = time.wSecond * 1000;
+	int ms =  time.wMilliseconds;
+	int total = s + ms;
+
+	return total;
+}
+
+int get_threadId() {
+	return GetCurrentThreadId();
 }
 
 int main(int argc, char *argv[]) {

@@ -28,10 +28,10 @@ TARGET = windows
 else
 TARGET = unix
 
-PTHREADS  = /student/cmpt332/pthreads
-CPPFLAGS += -I$(PTHREADS)
-LDFLAGS  += -L$(PTHREADS)/lib/$(ARCH)
-LDLIBS   += -lpthreads
+#PTHREADS  = /student/cmpt332/pthreads
+#CPPFLAGS += -I$(PTHREADS)
+#LDFLAGS  += -L$(PTHREADS)/lib/$(ARCH)
+#LDLIBS   += -lpthreads
 endif
 
 all: $(TARGET)
@@ -53,17 +53,19 @@ unix: mytestlist
 windows: clean
 
 test: test.o
-test.o: liblist.a testlist.c list.h
+test.o: liblist.a testlist.c 
 
-list_adders.o: list_adders.c list.h
-list_removers.o: list_removers.c list.h
-list_movers.o: list_movers.c list.h
+list_adders.o: list_adders.c
+list_removers.o: list_removers.c 
+list_movers.o: list_movers.c 
 
 liblist.a: list_adders.o list_removers.o list_movers.o
 	ar rcs liblist.a list_adders.o list_removers.o list_movers.o
 
-mytestlist: liblist.a mytestlist.o
 mytestlist.o: mytestlist.c list.h
+mytestlist: liblist.a mytestlist.o
+mytestlist.o: mytestlist.c liblist.a
+
 
 
 
@@ -72,4 +74,4 @@ mytestlist.o: mytestlist.c list.h
 
 
 clean:
-	rm -rf *.o pthread whtread.exe
+	rm -rf *.o pthread whtread.exe mytestlist liblist.a

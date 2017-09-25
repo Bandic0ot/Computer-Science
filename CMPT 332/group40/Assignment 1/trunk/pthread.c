@@ -1,3 +1,13 @@
+
+//Sean Robson-Kullman
+//skr519
+//11182480
+//Matthew Mulenga
+//mam558
+//11144528
+
+
+
 #include <stdlib.h>
 #include <stdio.h>
 

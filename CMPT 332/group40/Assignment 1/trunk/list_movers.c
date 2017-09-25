@@ -1,14 +1,26 @@
+
+//Sean Robson-Kullman
+//skr519
+//11182480
+//Matthew Mulenga
+//mam558
+//11144528
+
+
 //list_movers.c
+#ifndef VARS_NEEDED
+
 #include <stdio.h>
 #include <stdlib.h>
 #include "list.h"
 
+#endif
 
 //void *listFirst(LIST list)
 //pre: list- LIST*
 //post: returns a pointer to the first item and makes the first item
 //the current item.
-void *listFirst(LIST *list){
+void *listFirst(struct LIST *list){
     if(list == NULL){
         printf("listFirst input is insufficient.\n");
         return 0;
@@ -19,12 +31,11 @@ void *listFirst(LIST *list){
 
 
 
-
 //void *listLast(LIST list)
 //pre: list- LIST*
 //post: returns a pointer to the last item and makes the last item
 //the current item.
-void *listLast(LIST *list){
+void *listLast(struct LIST *list){
     if(list == NULL){
         printf("listLast input is insufficient.\n");
         return 0;
@@ -38,7 +49,7 @@ void *listLast(LIST *list){
 //post: Advances the list current item by one, and returns a pointer to
 //the new current
 //item. If this tries to advance past the end of the list, return NULL.
-void *listNext(LIST *list){
+void *listNext(struct LIST *list){
     if(list == NULL){
         printf("listNext input is insufficient.\n");
         return 0;
@@ -51,7 +62,7 @@ void *listNext(LIST *list){
 //post: backs up lists current item by one, and returns a pointer to the
 //new current item.
 //If this tries to advance past the end of the list, return NULL.
-void *listPrev(LIST *list){
+void *listPrev(struct LIST *list){
     if(list == NULL){
         printf("listPrev input is insufficient.\n");
         return NULL;
@@ -69,7 +80,7 @@ void *listPrev(LIST *list){
 // item or the end of the list.
 //return: if no match found, return NULL. else, return pointer to the item
 // that was found.
-void *listSearch(LIST *list, int comparator(void *item1, void *item2), void *comparatorArg){
+void *listSearch(struct LIST *list, int comparator(void *item1, void *item2), void *comparatorArg){
     if(list == NULL){
         printf("listSearch list input is insufficient.\n");
     }else if(comparatorArg == NULL){
@@ -86,7 +97,7 @@ void *listSearch(LIST *list, int comparator(void *item1, void *item2), void *com
 //int listCount(LIST list)
 //pre: list- List*
 //post: returns the number of items list pointer.
-int listCount(LIST *list){
+int listCount(struct LIST *list){
 if(list == NULL){
         printf("insufficient list input in listCount. \n");
     }
@@ -97,7 +108,7 @@ if(list == NULL){
 //void *listCur(LIST *list)
 //pre: list- LIST*
 //post: returns a pointer to the current item int the list.
-void *listCur(LIST *list){
+void *listCur(struct LIST *list){
     if(list == NULL){
         printf("insufficient list input in listFirst. \n");
     }
@@ -111,7 +122,7 @@ void *listCur(LIST *list){
 // post: adds list2 to the end of list1. the current pointer is set to the
 //current pointer of list1. list2 nolonger exists after operation.
 //return: nothing
-void listConcat(LIST *list1,LIST *list2){
+void listConcat(struct LIST *list1,struct LIST *list2){
     if(list1 == NULL || list2 == NULL){
         printf("insufficient list input in listConcat. \n");
     }
