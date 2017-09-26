@@ -7,18 +7,22 @@
 //11144528
 
 
-    For this portion of the assignment, our future code will allow for
-multiple lists to be accessed and adjusted. This will be achieved
-through the use of two dynamic allocations of space, one will be much
-larger than the other as it will store nodes that will be used by the
-lists. This implementation will pass pointers to the nodes in the shape 
-of an integer which is equivilent to its position in the second array 
-and pass the reference to the item back to the list, where the
-information can be stored into the chosen node and consiquently added
-to the list. There are other functionallities of this, that are
-specified under the function headers below which are not self
-explanitory.
+	Currently, our code throught the use of two global variables, 
+there will be a memory allocated to each that will contain the lists 
+and nodes.  The lists, will be handed out to the user one at a time, 
+when it calls createList(). In this way, the distribution of resources 
+can be controled from behind the scenes. The memory is only allocated 
+the first time that the function is called, otherwise the function 
+returns a previously existing list that is empty and in wait for use.
+In the next phase, I hope to add a feature that once all the nodes or 
+lists have been used up, then this createList() will allocate more memory 
+as needed based on the size specified in two other global vaiables. 
+Currently, if all the nodes/lists have been used up, the function will 
+return a value indicating failure. The adding of nodes, relies heavily 
+on the swapping of pointers. For all the specific functionalities, they 
+are deffined under the function specific header.
 
+									
 
 
 struct NODE{    
@@ -40,12 +44,14 @@ struct LIST{
 //post: makes an new, empty list, and returns its reference on success. 
 // Returns a NULL pointer on failure, else the newly created list.
 
+	Allocated memory, is the only place that malloc() is called.
+
 
 //int listCount(LIST list)    
 //pre: list- List*
 //post: returns the number of items list pointer.
 
-Ether keeps tally of the number of nodes, or counts each node
+	Ether keeps tally of the number of nodes, or counts each node
 individually.
 
 
@@ -54,7 +60,7 @@ individually.
 //post: returns a pointer to the first item and makes the first item 
     the current item.
     
-return head, change cur pointer
+	return head, change cur pointer
 
 
 //void *listLast(LIST list)       
@@ -62,7 +68,7 @@ return head, change cur pointer
 //post: returns a pointer to the last item and makes the last item the
         current item.
         
-return tail, change cur pointer
+	Return tail, change cur pointer
 
 
 //void *listNext(LIST list)       
@@ -71,7 +77,7 @@ return tail, change cur pointer
         to the new current item. If this tries to advance past the 
         end of the list, return NULL.
         
-use the pointer next, in the current node. change cur pointer
+	Use the pointer next, in the current node. change cur pointer
 
 
 //void *listPrev(LIST list)        
@@ -80,14 +86,14 @@ use the pointer next, in the current node. change cur pointer
         to the new current item. If this tries to advance past the
         end of the list, return NULL.
         
-user the pointer prev, change cur pointer
+	User the pointer prev, change cur pointer
 
 
 //void *listCur(LIST list)     
 //pre: list- LIST*
 //post: returns a pointer to the current item int the list.
 
-return current.
+	Return current.
 
 
 //int listAdd(list,item)    
@@ -98,7 +104,7 @@ return current.
         pointer is at the end of the list, the item is added at the end. 
         Return 0 on success, -1 on failure.
         
-add using new node, and swap pointers. change cur pointer
+	Add using new node, and swap pointers. change cur pointer
 
 
 //int listInsert(list, item)      
@@ -121,8 +127,8 @@ add using new node, and swap pointers. change cur pointer
 //return:   success = 0
 //          failure = -1
 
-add using new node, and swap pointers. change cur pointer
-
+	Checks input, changes the current pointer to the list tail, 
+and calls listAdd()		
 
 //int listPrepend(list, item)     
 //pre: list - LIST*
@@ -131,8 +137,10 @@ add using new node, and swap pointers. change cur pointer
         current one.
 //return:   success = 0
             failure = -1
-            
-add using new node, and swap pointers. change cur pointer
+ 
+         Checks input,changes the current pointer to the list tail, 
+and calls listInsert().  
+
 
 
 //void *listRemove(list)      
@@ -141,7 +149,7 @@ add using new node, and swap pointers. change cur pointer
         Make the next item the current one.
 //return: current item.
 
-use a temp var for the next var, and then swap pointers to remove 
+	Use a temp var for the next var, and then swap pointers to remove 
 the cur pointer. change cur pointer
 
 

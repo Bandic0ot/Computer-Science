@@ -28,10 +28,10 @@ TARGET = windows
 else
 TARGET = unix
 
-#PTHREADS  = /student/cmpt332/pthreads
-#CPPFLAGS += -I$(PTHREADS)
-#LDFLAGS  += -L$(PTHREADS)/lib/$(ARCH)
-#LDLIBS   += -lpthreads
+PTHREADS  = /student/cmpt332/pthreads
+CPPFLAGS += -I$(PTHREADS)
+LDFLAGS  += -L$(PTHREADS)/lib/$(ARCH)
+LDLIBS   += -lpthreads
 endif
 
 all: $(TARGET)
@@ -47,26 +47,18 @@ pthread.o: pthread.c thread.h
 wthread: wthread.o thread_$(ARCH).o
 wthread.o: wthread.c thread.h
 
-all:$(TARGET)
-
-unix: mytestlist
-windows: clean
-
 test: test.o
-test.o: liblist.a testlist.c 
+test.o: liblist.a testlist.c
 
-list_adders.o: list_adders.c
-list_removers.o: list_removers.c 
-list_movers.o: list_movers.c 
+list_adders.o: list_adders.c list.h
+list_removers.o: list_removers.c list.h
+list_movers.o: list_movers.c list.h
 
 liblist.a: list_adders.o list_removers.o list_movers.o
 	ar rcs liblist.a list_adders.o list_removers.o list_movers.o
 
-mytestlist.o: mytestlist.c list.h
 mytestlist: liblist.a mytestlist.o
-mytestlist.o: mytestlist.c liblist.a
-
-
+mytestlist.o: mytestlist.c list.h
 
 
 %_$(ARCH).o %.o: %.c
@@ -74,4 +66,4 @@ mytestlist.o: mytestlist.c liblist.a
 
 
 clean:
-	rm -rf *.o pthread whtread.exe mytestlist liblist.a
+	rm -rf *.o pthread wthread.exe mytestlist liblist.a

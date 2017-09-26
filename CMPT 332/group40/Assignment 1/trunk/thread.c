@@ -14,8 +14,8 @@
 #include "thread.h"
 
 struct hash {
-	int thread_id;
-	int count;
+  int thread_id;
+  int count;
 };
 
 int gKeepRunning = 1;
@@ -29,23 +29,23 @@ int child_main(int size) {
 
   /* Thread is signaled to exit by parent. */
   if(gKeepRunning == 0) {
-	for(int i = 0; i < size; i++) {
-		if(get_threadId() == counter_array[i].thread_id) {
-			printf("Thread %d ran square %d times. Elapsed time: %dms\n",
-      counter_array[i].thread_id, counter_array[i].count,
-       (get_systemtime() - start));
-		}
-	}
+    for(int i = 0; i < size; i++) {
+      if(get_threadId() == counter_array[i].thread_id) {
+        printf("Thread %d ran square %d times. Elapsed time: %dms\n",
+        counter_array[i].thread_id, counter_array[i].count,
+        (get_systemtime() - start));
+      }
+    }
     thread_exit();
   }
 
-    	for(int i = 0; i < size; i++) {
-		if(get_threadId() == counter_array[i].thread_id) {
-			printf("Thread %d ran square %d times. Elapsed time: %dms\n",
+  for(int i = 0; i < size; i++) {
+    if(get_threadId() == counter_array[i].thread_id) {
+      printf("Thread %d ran square %d times. Elapsed time: %dms\n",
       counter_array[i].thread_id, counter_array[i].count,
-       (get_systemtime() - start));
-		}
-	}
+      (get_systemtime() - start));
+    }
+  }
 
   return 0;
 }
@@ -65,9 +65,9 @@ int parent_main(int num_threads, int deadline, int int_size)
     threads[i].size = int_size;
     thread_create(&threads[i]);
 
-	/* Initialize the counting array */
-	counter_array[i].thread_id = threads[i].id;
-	counter_array[i].count = 0;
+    /* Initialize the counting array */
+    counter_array[i].thread_id = threads[i].id;
+    counter_array[i].count = 0;
   }
 
   /* Sleep this thread until the deadline */
@@ -77,16 +77,12 @@ int parent_main(int num_threads, int deadline, int int_size)
   gKeepRunning = 0;
   thread_sleep(1);
 
-  /*for (i = 0; i < num_threads; i++) {
-  printf("Thread %d executed the square() function 0 times.\n", deadline);
-}*/
-
-return 0;
+  return 0;
 }
 
 int square(int n) {
 
-	if(gKeepRunning == 0) {
+  if(gKeepRunning == 0) {
     return (0);
   }
 
