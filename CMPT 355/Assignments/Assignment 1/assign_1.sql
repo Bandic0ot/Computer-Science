@@ -1,3 +1,7 @@
+/* Matthew Mulenga */
+/* mam558 */
+/* 11144528 */
+
 /* Part 2 */
 /* Question 1 */
 SELECT u.name AS University,
@@ -14,13 +18,14 @@ WHERE u.id = 1
   AND d.id = c.department_id;
 
 /* Question 2 */
-SELECT COUNT (s.id) AS Enrollment_Count
+SELECT COUNT (s.id) AS Sections_With_Matching_Enrollment
 FROM sections s
 WHERE s.num_enrolled IN (SELECT COUNT (e.section_id)
-                                 FROM enrollments e
-                             GROUP BY e.section_id);
-     
-/* Question 3 */ /* Implicit Joins */
+                         FROM enrollments e
+                         GROUP BY e.section_id);
+
+/* Question 3 */
+/* Implicit Joins */
 SELECT c.code,
        c.name,
        s.lec_type,
@@ -98,13 +103,17 @@ CREATE TABLE enrollment_assessments(
 
 /* Question 3 */
 INSERT INTO assessments (id, name, type, total_points, weight, due_date, section_id)
-VALUES  (1, 'Assignment 1', 'A', 100, 10, TO_DATE('9, 25, 2017', 'MM/DD/YYYY'), 82736),
-        (2, 'Assignment 2', 'A', 100, 10, TO_DATE('10, 01, 2017', 'MM/DD/YYYY'), 82736),
-        (3, 'Assignment 3', 'A', 100, 10, TO_DATE('10, 15, 2017', 'MM/DD/YYYY'), 82736),
-        (4, 'Assignment 4', 'A', 100, 10, TO_DATE('10, 29, 2017', 'MM/DD/YYYY'), 82736),
-        (5, 'Assignment 5', 'A', 100, 10, TO_DATE('11, 14, 2017', 'MM/DD/YYYY'), 82736),
-        (6, 'Midterm', 'M', 100, 20, TO_DATE('11, 20, 2017', 'MM/DD/YYYY'), 82736),
-        (7, 'Final', 'F', 100, 30, TO_DATE('12, 8, 2017', 'MM/DD/YYYY'), 82736);
+SELECT a.id, a.name, a.type, a.total_points, a.weight, a.due_date, s.id
+FROM (VALUES (1, 'Assignment 1', 'A', 100, 10, TO_DATE('9, 25, 2017', 'MM/DD/YYYY')),
+             (2, 'Assignment 2', 'A', 100, 10, TO_DATE('10, 01, 2017', 'MM/DD/YYYY')),
+             (3, 'Assignment 3', 'A', 100, 10, TO_DATE('10, 15, 2017', 'MM/DD/YYYY')),
+             (4, 'Assignment 4', 'A', 100, 10, TO_DATE('10, 29, 2017', 'MM/DD/YYYY')),
+             (5, 'Assignment 5', 'A', 100, 10, TO_DATE('11, 14, 2017', 'MM/DD/YYYY')),
+             (6, 'Midterm', 'M', 100, 20, TO_DATE('11, 20, 2017', 'MM/DD/YYYY')),
+             (7, 'Final', 'F', 100, 30, TO_DATE('12, 8, 2017', 'MM/DD/YYYY')))
+          AS a (id, name, type, total_points, weight, due_date),
+             sections s
+WHERE s.id = 82736;
 
 /* Question 4 */
 UPDATE sections
@@ -115,7 +124,7 @@ DELETE FROM instructors i
 WHERE i.id = 1;
 
 INSERT INTO instructors (id, employee_number, first_name, last_name, seniority_date, email_address)
-VALUES (1, 42, 'Ellen', 'Redlick', TO_DATE('9, 6, 2017', 'MM/DD/YYYY'), 'dopedatabasedisciplinarian@usask.ca');
+VALUES (1, 42, 'Ellen', 'Redlick', TO_DATE('9, 6, 2017', 'MM/DD/YYYY'), 'dopedatabasedeveloper@usask.ca');
 
 UPDATE sections
 SET instructor_id = 1

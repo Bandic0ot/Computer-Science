@@ -1,0 +1,43 @@
+Matthew Mulenga
+mam558
+11144528
+
+1)  'id' is the only possible candidate key, because it is the only column with
+    unique values.
+
+    If we didn't use a surrogate key I would use the 'student_id' as a primary
+    key. I would choose 'student_id' as the primary key because we can assume
+    that student IDs are unique to a student and we shouldn't see repetition
+    within the column.
+
+2)  a)
+      We could use a CHECK statement when creating the table to check if the
+      value is one of the four valid possibilities.
+
+      We could create a domain and then check that the value is valid within
+      the newly created domain.
+
+    b)
+      -------- Using a check statement --------
+
+      CREATE TABLE students (
+        gender CHAR NOT NULL
+        CHECK (gender IN ('M', 'F', 'U', 'N'))
+      );
+
+      -------- Using a domain --------
+
+      CREATE DOMAIN genderType AS CHAR
+      CHECK (VALUE IN ('M', 'F', 'U', 'N'));
+
+      CREATE TABLE students (
+        gender genderType NOT NULL
+      );
+
+3)    We could alter the table and a check to make sure the number of
+      enrolled students is less than the maximum enrollment to ensure
+      we don't get an over-filled class.
+
+      ALTER TABLE sections
+      ADD CONSTRAINT enforce_max_enroll
+      CHECK (num_enrolled < max_enrollment);
