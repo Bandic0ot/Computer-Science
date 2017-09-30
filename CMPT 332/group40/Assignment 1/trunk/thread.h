@@ -17,6 +17,7 @@ struct thread_info {
   thread_entry entry;
   void *thread; /* point to arch specific thread info */
   int size;
+  int count; /* Counts how many times the thread has called square function. */
 };
 
 

@@ -31,6 +31,7 @@ int thread_create(struct thread_info *info)
   info->thread = thread;
   *thread = CreateThread(NULL, 1500000, thread_wrapper, info, 0, &thread_id);
   info->id = (int) thread_id;
+  info->count = 0;
 
   return 0;
 }

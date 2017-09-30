@@ -1,0 +1,230 @@
+Sean Robson-Kullman
+skr519
+11182480
+Matthew Mulenga
+mam558
+11144528
+
+------------------------------------------------------------------------
+r57 | mam558@USASK.CA | 2017-09-25 23:26:51 -0600 (Mon, 25 Sep 2017) | 1 line
+
+Got pthread in a executable state.
+------------------------------------------------------------------------
+r56 | mam558@USASK.CA | 2017-09-25 20:13:23 -0600 (Mon, 25 Sep 2017) | 1 line
+
+Added functions to pthread.c.
+------------------------------------------------------------------------
+r55 | mam558@USASK.CA | 2017-09-25 17:40:34 -0600 (Mon, 25 Sep 2017) | 1 line
+
+Fixed typo in makefile.
+------------------------------------------------------------------------
+r54 | mam558@USASK.CA | 2017-09-25 17:36:29 -0600 (Mon, 25 Sep 2017) | 1 line
+
+Cleaned up makefile.
+------------------------------------------------------------------------
+r52 | mam558@USASK.CA | 2017-09-25 15:55:42 -0600 (Mon, 25 Sep 2017) | 1 line
+
+Finalizing stuff.
+------------------------------------------------------------------------
+r51 | mam558@USASK.CA | 2017-09-25 15:51:44 -0600 (Mon, 25 Sep 2017) | 1 line
+
+Adding PartA documentation.
+------------------------------------------------------------------------
+r50 | mam558@USASK.CA | 2017-09-25 15:51:09 -0600 (Mon, 25 Sep 2017) | 1 line
+
+Completed wthread stuff.
+------------------------------------------------------------------------
+r49 | skr519@USASK.CA | 2017-09-25 15:03:31 -0600 (Mon, 25 Sep 2017) | 1 line
+
+updated the PartC.design.txt
+------------------------------------------------------------------------
+r48 | skr519@USASK.CA | 2017-09-25 14:38:31 -0600 (Mon, 25 Sep 2017) | 1 line
+
+minor change to the Makefile, making it so that clean removes all executables.
+------------------------------------------------------------------------
+r47 | skr519@USASK.CA | 2017-09-25 14:33:54 -0600 (Mon, 25 Sep 2017) | 1 line
+
+added PartC.testplan.txt mostly complete.
+------------------------------------------------------------------------
+r46 | skr519@USASK.CA | 2017-09-25 13:52:52 -0600 (Mon, 25 Sep 2017) | 1 line
+
+added testing to the mytestlist.c
+------------------------------------------------------------------------
+r45 | skr519@USASK.CA | 2017-09-25 12:46:35 -0600 (Mon, 25 Sep 2017) | 1 line
+
+getting minor changes onto tux world, for part c.
+------------------------------------------------------------------------
+r44 | skr519@USASK.CA | 2017-09-25 08:34:16 -0600 (Mon, 25 Sep 2017) | 1 line
+
+adding incomplete code to list_adder.c, and am getting it onto a different computer.
+------------------------------------------------------------------------
+r43 | mam558@USASK.CA | 2017-09-22 00:47:56 -0600 (Fri, 22 Sep 2017) | 1 line
+
+Reworking child thread creation. Specifically passing the appropriate arguments to the child thread.
+------------------------------------------------------------------------
+r42 | mam558@USASK.CA | 2017-09-21 22:51:41 -0600 (Thu, 21 Sep 2017) | 1 line
+
+Implementing parse_args.
+------------------------------------------------------------------------
+r40 | mam558@USASK.CA | 2017-09-15 20:48:33 -0600 (Fri, 15 Sep 2017) | 1 line
+
+Quick fix.
+------------------------------------------------------------------------
+r39 | mam558@USASK.CA | 2017-09-15 20:46:51 -0600 (Fri, 15 Sep 2017) | 1 line
+
+Cleaned up line length.
+------------------------------------------------------------------------
+r38 | mam558@USASK.CA | 2017-09-15 20:34:44 -0600 (Fri, 15 Sep 2017) | 1 line
+
+Properly implemented bash script version check.
+------------------------------------------------------------------------
+r37 | mam558@USASK.CA | 2017-09-15 20:25:26 -0600 (Fri, 15 Sep 2017) | 1 line
+
+Implemented library test function.
+------------------------------------------------------------------------
+r36 | mam558@USASK.CA | 2017-09-15 20:04:15 -0600 (Fri, 15 Sep 2017) | 1 line
+
+Started adding a check for integers in thread.c
+------------------------------------------------------------------------
+r35 | skr519@USASK.CA | 2017-09-15 19:34:39 -0600 (Fri, 15 Sep 2017) | 1 line
+
+debugged tests in mytestlist.c
+------------------------------------------------------------------------
+r34 | mam558@USASK.CA | 2017-09-15 19:09:33 -0600 (Fri, 15 Sep 2017) | 1 line
+
+Modified thread.c to take command line arguments.
+------------------------------------------------------------------------
+r33 | skr519@USASK.CA | 2017-09-15 19:01:53 -0600 (Fri, 15 Sep 2017) | 1 line
+
+adding tests to mytestlist.c
+------------------------------------------------------------------------
+r32 | mam558@USASK.CA | 2017-09-15 18:20:14 -0600 (Fri, 15 Sep 2017) | 1 line
+
+Updated wthread tests.
+------------------------------------------------------------------------
+r31 | mam558@USASK.CA | 2017-09-15 18:14:23 -0600 (Fri, 15 Sep 2017) | 1 line
+
+Fixed tests in pthread.c
+------------------------------------------------------------------------
+r30 | mam558@USASK.CA | 2017-09-15 18:06:58 -0600 (Fri, 15 Sep 2017) | 1 line
+
+Updated makefile recipes.
+------------------------------------------------------------------------
+r29 | mam558@USASK.CA | 2017-09-15 18:02:33 -0600 (Fri, 15 Sep 2017) | 1 line
+
+Reworked Makefile, working now?
+------------------------------------------------------------------------
+r28 | skr519@USASK.CA | 2017-09-15 17:10:07 -0600 (Fri, 15 Sep 2017) | 1 line
+
+deBugging partC and makefile
+------------------------------------------------------------------------
+r27 | mam558@USASK.CA | 2017-09-15 16:50:58 -0600 (Fri, 15 Sep 2017) | 1 line
+
+Completed Part B bash script.
+------------------------------------------------------------------------
+r26 | mam558@USASK.CA | 2017-09-15 16:17:16 -0600 (Fri, 15 Sep 2017) | 1 line
+
+Almost finished script just need to provide specific programs.
+------------------------------------------------------------------------
+r25 | skr519@USASK.CA | 2017-09-15 16:11:12 -0600 (Fri, 15 Sep 2017) | 1 line
+
+moved functions from a list.c function, to functions that we are supposed to be using.
+------------------------------------------------------------------------
+r24 | skr519@USASK.CA | 2017-09-15 16:06:48 -0600 (Fri, 15 Sep 2017) | 1 line
+
+basic syntactical changes to the Cpart
+------------------------------------------------------------------------
+r23 | skr519@USASK.CA | 2017-09-15 15:35:43 -0600 (Fri, 15 Sep 2017) | 1 line
+
+updating them make file to tabs, where there were spaces, so i can get it onto my laptop.
+------------------------------------------------------------------------
+r22 | skr519@USASK.CA | 2017-09-15 15:33:52 -0600 (Fri, 15 Sep 2017) | 1 line
+
+adding librarys to existing partC files
+------------------------------------------------------------------------
+r21 | skr519@USASK.CA | 2017-09-15 15:23:41 -0600 (Fri, 15 Sep 2017) | 2 lines
+
+adding list_removers.c
+
+------------------------------------------------------------------------
+r20 | skr519@USASK.CA | 2017-09-15 15:18:19 -0600 (Fri, 15 Sep 2017) | 1 line
+
+small redundancy correction to the make file
+------------------------------------------------------------------------
+r19 | mam558@USASK.CA | 2017-09-15 15:13:01 -0600 (Fri, 15 Sep 2017) | 1 line
+
+Actually removed extra Make file this time.
+------------------------------------------------------------------------
+r18 | mam558@USASK.CA | 2017-09-15 14:47:21 -0600 (Fri, 15 Sep 2017) | 1 line
+
+Removed extra makefile.
+------------------------------------------------------------------------
+r17 | mam558@USASK.CA | 2017-09-15 14:43:14 -0600 (Fri, 15 Sep 2017) | 1 line
+
+Updated wthread with pseudo test.
+------------------------------------------------------------------------
+r16 | mam558@USASK.CA | 2017-09-15 13:47:03 -0600 (Fri, 15 Sep 2017) | 1 line
+
+Re-added kernel.h
+------------------------------------------------------------------------
+r15 | mam558@USASK.CA | 2017-09-15 13:32:24 -0600 (Fri, 15 Sep 2017) | 1 line
+
+Created pseudo test for thread_create in pthread.c we're going to need to change this.
+------------------------------------------------------------------------
+r14 | skr519@USASK.CA | 2017-09-15 13:15:40 -0600 (Fri, 15 Sep 2017) | 1 line
+
+changed the file name Make to Makefile.
+------------------------------------------------------------------------
+r13 | skr519@USASK.CA | 2017-09-15 13:14:50 -0600 (Fri, 15 Sep 2017) | 2 lines
+
+edited partC files, and added to the Makefile.
+
+------------------------------------------------------------------------
+r12 | mam558@USASK.CA | 2017-09-15 13:02:41 -0600 (Fri, 15 Sep 2017) | 1 line
+
+Reworked partB.bash, still need to add OS detection and input file mechanism.
+------------------------------------------------------------------------
+r11 | skr519@USASK.CA | 2017-09-15 12:27:30 -0600 (Fri, 15 Sep 2017) | 1 line
+
+actually adding the make file
+------------------------------------------------------------------------
+r10 | skr519@USASK.CA | 2017-09-15 12:27:00 -0600 (Fri, 15 Sep 2017) | 1 line
+
+adding content to current files, and adding the make.
+------------------------------------------------------------------------
+r9 | skr519@USASK.CA | 2017-09-14 21:55:39 -0600 (Thu, 14 Sep 2017) | 1 line
+
+adding basic files for 'C' that need to be added too.
+------------------------------------------------------------------------
+r8 | mam558@USASK.CA | 2017-09-14 20:43:07 -0600 (Thu, 14 Sep 2017) | 1 line
+
+Created inteface for thread modules and started OS agnostic thread module.
+------------------------------------------------------------------------
+r7 | mam558@USASK.CA | 2017-09-14 20:41:55 -0600 (Thu, 14 Sep 2017) | 1 line
+
+Created thread module for Windows OS.
+------------------------------------------------------------------------
+r6 | mam558@USASK.CA | 2017-09-14 20:41:21 -0600 (Thu, 14 Sep 2017) | 1 line
+
+Created thread module for Unix OS.
+------------------------------------------------------------------------
+r5 | mam558@USASK.CA | 2017-09-14 19:38:10 -0600 (Thu, 14 Sep 2017) | 1 line
+
+Finalized design documentation for part A.
+------------------------------------------------------------------------
+r4 | mam558@USASK.CA | 2017-09-14 19:02:04 -0600 (Thu, 14 Sep 2017) | 1 line
+
+Completed design documentation for part A.
+------------------------------------------------------------------------
+r3 | mam558@USASK.CA | 2017-09-12 20:53:25 -0600 (Tue, 12 Sep 2017) | 1 line
+
+Changed name of assignment folder.
+------------------------------------------------------------------------
+r2 | mam558@USASK.CA | 2017-09-11 23:56:34 -0600 (Mon, 11 Sep 2017) | 1 line
+
+Created skeleton design documentation.
+------------------------------------------------------------------------
+r1 | mam558@USASK.CA | 2017-09-11 23:37:25 -0600 (Mon, 11 Sep 2017) | 1 line
+
+Created intial a1-phase1 folder structure.
+------------------------------------------------------------------------

@@ -13,13 +13,8 @@
 
 #include "thread.h"
 
-struct hash {
-  int thread_id;
-  int count;
-};
-
 int gKeepRunning = 1;
-struct hash *counter_array;
+struct thread_info *threads;
 
 /* Main code for threads */
 int child_main(int size) {
@@ -30,9 +25,9 @@ int child_main(int size) {
   /* Thread is signaled to exit by parent. */
   if(gKeepRunning == 0) {
     for(int i = 0; i < size; i++) {
-      if(get_threadId() == counter_array[i].thread_id) {
+      if(get_threadId() == threads[i].id) {
         printf("Thread %d ran square %d times. Elapsed time: %dms\n",
-        counter_array[i].thread_id, counter_array[i].count,
+        threads[i].id, threads[i].count,
         (get_systemtime() - start));
       }
     }
@@ -40,9 +35,9 @@ int child_main(int size) {
   }
 
   for(int i = 0; i < size; i++) {
-    if(get_threadId() == counter_array[i].thread_id) {
+    if(get_threadId() == threads[i].id) {
       printf("Thread %d ran square %d times. Elapsed time: %dms\n",
-      counter_array[i].thread_id, counter_array[i].count,
+      threads[i].id, threads[i].count,
       (get_systemtime() - start));
     }
   }
@@ -54,11 +49,9 @@ int child_main(int size) {
 int parent_main(int num_threads, int deadline, int int_size)
 {
   int i;
-  struct thread_info *threads;
 
   printf("%d, %d, %d\n", num_threads, deadline, int_size);
 
-  counter_array = malloc(int_size * sizeof(struct hash));
   threads = malloc(num_threads * sizeof(struct thread_info));
   if (threads == NULL) exit(1);
 
@@ -66,10 +59,6 @@ int parent_main(int num_threads, int deadline, int int_size)
     threads[i].entry = child_main;
     threads[i].size = int_size;
     thread_create(&threads[i]);
-
-    /* Initialize the counting array */
-    counter_array[i].thread_id = threads[i].id;
-    counter_array[i].count = 0;
   }
 
   /* Sleep this thread until the deadline */
@@ -89,8 +78,8 @@ int square(int n) {
   }
 
   for(int i = 0; i < n; i++) {
-    if(get_threadId() == counter_array[i].thread_id) {
-      counter_array[i].count++;
+    if(get_threadId() == threads[i].id) {
+      threads[i].count++;
     }
   }
 
