@@ -1,44 +1,47 @@
-//Sean Robson-Kullman
-//skr519
-//11182480
-//Matthew Mulenga
-//mam558
-//11144528
-
-
+/* Sean Robson-Kullman */
+/* skr519 */
+/* 11182480 */
+/* Matthew Mulenga */
+/* mam558 */
+/* 11144528 */
 
 #include <stdlib.h>
 #include <stdio.h>
 #include <stdbool.h>
 
-#include "thread.h"
+#include "partA.h"
 
 int gKeepRunning = 1;
+int *number_of_threads;
 struct thread_info *threads;
 
 /* Main code for threads */
 int child_main(int size) {
-  int start = get_systemtime();
+  int i;
+  int end;
+  int start;
+
+  start = get_systemtime();
 
   square(size);
 
+  end = get_systemtime();
+
   /* Thread is signaled to exit by parent. */
   if(gKeepRunning == 0) {
-    for(int i = 0; i < size; i++) {
+    for(i = 0; i < *number_of_threads; i++) {
       if(get_threadId() == threads[i].id) {
-        printf("Thread %d ran square %d times. Elapsed time: %dms\n",
-        threads[i].id, threads[i].count,
-        (get_systemtime() - start));
+        printf("Killed. Thread %d ran square %d times. Elapsed time: %dms\n",
+        threads[i].id, threads[i].count , (end - start));
       }
     }
     thread_exit();
   }
 
-  for(int i = 0; i < size; i++) {
+  for(i = 0; i < *number_of_threads; i++) {
     if(get_threadId() == threads[i].id) {
       printf("Thread %d ran square %d times. Elapsed time: %dms\n",
-      threads[i].id, threads[i].count,
-      (get_systemtime() - start));
+      threads[i].id, threads[i].count, (end - start));
     }
   }
 
@@ -49,8 +52,7 @@ int child_main(int size) {
 int parent_main(int num_threads, int deadline, int int_size)
 {
   int i;
-
-  printf("%d, %d, %d\n", num_threads, deadline, int_size);
+  number_of_threads = &num_threads;
 
   threads = malloc(num_threads * sizeof(struct thread_info));
   if (threads == NULL) exit(1);
@@ -63,8 +65,17 @@ int parent_main(int num_threads, int deadline, int int_size)
 
   /* Sleep this thread until the deadline */
   printf("Sleeping parent thread...\n");
+  for (i = 0; i < num_threads; i++) {
+	  thread_resume(&threads[i]);
+  }
   thread_sleep(deadline);
   printf("Deadline up!\n");
+
+  /* Kill all the running child threads. */
+  for(i = 0; i < num_threads; i++) {
+	  thread_kill(&threads[i]);
+  }
+
   gKeepRunning = 0;
   thread_sleep(1);
 
@@ -72,19 +83,21 @@ int parent_main(int num_threads, int deadline, int int_size)
 }
 
 int square(int n) {
+  int i;
 
   if(gKeepRunning == 0) {
     return (0);
   }
 
-  for(int i = 0; i < n; i++) {
+  if (n == 0) {
+    return(0);
+  }
+
+  /* Increment the current threads call count. */
+  for(i = 0; i < *number_of_threads; i++) {
     if(get_threadId() == threads[i].id) {
       threads[i].count++;
     }
-  }
-
-  if (n == 0) {
-    return(0);
   }
 
   return(square(n-1) + n + n - 1);

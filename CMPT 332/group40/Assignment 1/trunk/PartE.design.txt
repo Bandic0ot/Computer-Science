@@ -1,0 +1,20 @@
+Sean Robson-Kullman
+skr519
+11182480
+Matthew Mulenga
+mam558
+11144528
+
+
+This is incomplete. The shell does not work.
+
+The shell takes input from the consol, and takes out the spaces, 
+storing each word in a seperate collumn of the array. From here,it
+is put through conditionals to understand what is desired by the user. 
+Then the desired action will be executed through the shell.
+
+
+
+
+
+

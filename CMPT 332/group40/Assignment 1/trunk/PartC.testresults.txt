@@ -1,0 +1,82 @@
+Names: Sean Rosbon-Kullman & Matthew Mulenga
+NSIDS: skr519 & mam558
+Student #: 11182480 & 11144528
+
+test results:
+
+
+
+ listCreate() allocated a new list correctly.
+
+ list size: 0
+ listAdd should print out an error message.
+insufficient list input in listAdd. 
+
+ list size: 1
+ listInsert should print out an error message.
+insufficient list input in listInsert. 
+
+ list size: 2
+ listAppend should print out an error message.
+insufficient list or item input in listAppend. 
+
+ list size: 3
+ listPrepend should print out an error message.
+insufficient list or item input in listPrepend. 
+
+ list size: 4
+ listRemove should print out an error message.
+insufficient list input in listRemove. 
+
+ list size: 3 
+
+ listFree should print out an error message.
+insufficient list input in listFree. 
+
+ listFree should print out another error message.
+insufficient list input in listFree. 
+
+ listFree should print out another error message.
+insufficient list input in listFree. 
+
+ list size: 3
+ listTrim should print out an error message.
+insufficient list input in listTrim. 
+
+ list size: 2
+ listFirst should print out an error message.
+listFirst input is insufficient.
+
+ listLast should print out an error message.
+listLast input is insufficient.
+
+ listNext should print out an error message.
+listNext input is insufficient.
+
+ listPrev should print out an error message.
+listPrev input is insufficient.
+
+ size of list: 2
+
+ item not found by listSearch
+
+ item found by listSearch
+
+ item found by listSearch
+
+ listCount should print out an error message.
+insufficient list input in listCount. 
+
+ listCur should print out an error message.
+insufficient list input in listFirst. 
+
+ listConcat should print out an error message.
+insufficient list input in listConcat. 
+
+ listConcat should print out another error message.
+insufficient list input in listConcat. 
+
+
+
+
+
