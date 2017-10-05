@@ -1,0 +1,26 @@
+Sean Robson-Kullman
+skr519
+11182480
+Matthew Mulenga
+mam558
+11144528
+
+$ info &; info &; info   
+PID: 7 Number of Context Switches: 2
+PID: 3 Number of Context Switches: 6
+PID: 5 Number of Context Switches: 11
+PID: 7 Number of Context Switches: 85
+PID: 3 Number of Context Switches: 90
+PID: 5 Number of Context Switches: 93
+PID: 7 Number of Context Switches: 170
+PID: 3 Number of Context Switches: 179
+PID: 5 Number of Context Switches: 181
+PID: 7 Number of Context Switches: 251
+PIDP: 3 Number of Context Switches: 266
+ID: 5 Number of Context Switches: 265
+PID: 7 Number of Context Switches: 339
+PID: 3 Number of Context Switches: 356
+PID: 5 Number of Context Switches: 356
+zombie!
+zombie!
+$ 

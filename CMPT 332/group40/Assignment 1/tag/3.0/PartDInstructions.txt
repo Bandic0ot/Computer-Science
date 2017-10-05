@@ -1,0 +1,13 @@
+Sean Robson-Kullman
+skr519
+11182480
+Matthew Mulenga
+mam558
+11144528
+
+Steps to test our xv6 system call program. The program is called
+info.
+
+1. cd /xv6-public/
+2. make qemu-nox
+3. info &; info &; info
