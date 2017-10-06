@@ -5,7 +5,7 @@ using UnityEngine;
 public class Movement : MonoBehaviour {
 
     Rigidbody2D body;
-    Animator animate;
+    Animator anim;
 
     public float jump_force;
     public float move_force;
@@ -21,15 +21,15 @@ public class Movement : MonoBehaviour {
     // Use this for initialization
     void Start () {
         body = GetComponent<Rigidbody2D>();
-        animate = GetComponent<Animator>();
+        anim = GetComponent<Animator>();
 	}
-	
+
 	// Update is called once per frame
 	void Update () {
-        if (Input.GetButtonDown("Jump"))
-        {
-            if (isGrounded)
-            {
+		bool jump = Input.GetButtonDown ("Jump");
+
+        if (jump) {
+            if (isGrounded) {
                 body.AddForce(new Vector2(0, jump_force));
             }
         }
@@ -37,25 +37,30 @@ public class Movement : MonoBehaviour {
 
     void FixedUpdate() {
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundType);
-        animate.SetBool("Ground", isGrounded);
-
         float moveX = Input.GetAxis("Horizontal");
 
+		anim.SetFloat("Speed", Mathf.Abs(moveX));
+		anim.SetBool("Ground", isGrounded);
+
+		// Cap the player's horizontal speed. 
         body.AddForce(new Vector2(moveX * move_force, 0));
+		if (Mathf.Abs(body.velocity.x) > maxSpeed) {
+			if (body.velocity.x > 0) {
+				body.velocity = new Vector2 (maxSpeed, body.velocity.y);
+			} else if (body.velocity.x < 0) {
+				body.velocity = new Vector2 (-maxSpeed, body.velocity.y);
+			}
+		}
 
-        animate.SetFloat("Speed", Mathf.Abs(moveX));
-
-        if (moveX > 0 && !facingRight)
-        {
+		// Flip the character if they change directions.
+        if (moveX > 0 && !facingRight) {
             Flip();
-        } else if(moveX < 0 && facingRight)
-        {
+        } else if(moveX < 0 && facingRight) {
             Flip();
         }
     }
 
-    void Flip()
-    {
+    void Flip() {
         facingRight = !facingRight;
 
         Vector2 bodyScale = transform.localScale;
