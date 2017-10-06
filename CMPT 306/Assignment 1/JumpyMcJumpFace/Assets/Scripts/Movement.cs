@@ -7,8 +7,8 @@ public class Movement : MonoBehaviour {
     Rigidbody2D body;
     Animator anim;
 
-    public float jump_force;
-    public float move_force;
+    public float jumpForce;
+    public float moveForce;
 
     public float maxSpeed = 10.0f;
     public Transform groundCheck;
@@ -30,7 +30,7 @@ public class Movement : MonoBehaviour {
 
         if (jump) {
             if (isGrounded) {
-                body.AddForce(new Vector2(0, jump_force));
+                body.AddForce(new Vector2(0, jumpForce));
             }
         }
     }
@@ -43,7 +43,7 @@ public class Movement : MonoBehaviour {
 		anim.SetBool("Ground", isGrounded);
 
 		// Cap the player's horizontal speed. 
-        body.AddForce(new Vector2(moveX * move_force, 0));
+        body.AddForce(new Vector2(moveX * moveForce, 0));
 		if (Mathf.Abs(body.velocity.x) > maxSpeed) {
 			if (body.velocity.x > 0) {
 				body.velocity = new Vector2 (maxSpeed, body.velocity.y);
@@ -66,5 +66,17 @@ public class Movement : MonoBehaviour {
         Vector2 bodyScale = transform.localScale;
         bodyScale.x *= -1;
         transform.localScale = bodyScale;
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision) {
+        if (collision.transform.tag == "Moving Platform") {
+            transform.parent = collision.transform;
+        }
+    }
+
+    private void OnCollisionExit2D(Collision2D collision) {
+        if (collision.transform.tag == "Moving Platform") {
+            transform.parent = null;
+        }
     }
 }
