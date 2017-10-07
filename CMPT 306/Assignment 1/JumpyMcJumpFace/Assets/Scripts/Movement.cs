@@ -81,6 +81,7 @@ public class Movement : MonoBehaviour {
 
 		if (collision.transform.tag == "Deathzone") {
 			transform.position = startPosition;
+            body.velocity = new Vector2(0, 0);
 		}
     }
 
