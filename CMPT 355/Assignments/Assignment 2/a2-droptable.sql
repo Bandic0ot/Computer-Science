@@ -1,0 +1,12 @@
+DROP TABLE Employee_Department;
+DROP TABLE Departments;
+DROP TABLE Employee_Location;
+DROP TABLE Location_Contact;
+DROP TABLE Employee_Contact;
+DROP TABLE Addresses;
+DROP TABLE Phone_Numbers;
+DROP TABLE Locations;
+DROP TABLE Employees;
+DROP TABLE Jobs;
+DROP TABLE Employee_Salary;
+DROP TABLE Salaries;
