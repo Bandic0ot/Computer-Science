@@ -886,7 +886,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 30, y: 1}
+  m_Size: {x: 50, y: 1}
   m_EdgeRadius: 0
 --- !u!4 &1282232288
 Transform:
@@ -1003,7 +1003,7 @@ CircleCollider2D:
   m_GameObject: {fileID: 1444070930}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: fd42419d384e0294f97bd4449b3c21ee, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -1459,8 +1459,8 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1799626832}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.12, y: -0.01, z: 0}
-  m_LocalScale: {x: 21.293043, y: 3.5465999, z: 1}
+  m_LocalPosition: {x: -0.294, y: -0.01, z: 0}
+  m_LocalScale: {x: 27.941446, y: 3.5465999, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 10

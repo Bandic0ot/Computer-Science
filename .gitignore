@@ -53,6 +53,7 @@ crashlytics-build.properties
 fabric.properties
 
 
+
 ######## Unity Ignore ########
 /[Ll]ibrary/
 /[Tt]emp/
