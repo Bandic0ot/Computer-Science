@@ -6,7 +6,7 @@
 /* 11144528 */
 
 #include <stdio.h>
-#include<stdlib.h>
+#include <stdlib.h>
 
 
 #ifndef VARS_NEEDED
