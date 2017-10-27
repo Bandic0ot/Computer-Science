@@ -8,17 +8,20 @@ using UnityEngine;
 
 public class Zombie : MonoBehaviour
 {
-    GameObject target;
-	UIManager manager;
+    public GameObject target;
+    public AudioSource deathSound;
 
-    public float movement_speed = 2.0f;
+    UIManager manager;
+
+    public float movement_speed = 1.5f;
     public float damage = 1.0f;
 
     // Use this for initialization
     void Start()
     {
-        target = GameObject.FindGameObjectWithTag("Player");
-		manager = FindObjectOfType<UIManager>();
+        target = GameObject.Find("Player");
+        deathSound = AudioSource.FindObjectOfType<AudioSource>();
+        manager = FindObjectOfType<UIManager>();
     }
 
     // Update is called once per frame
@@ -45,8 +48,10 @@ public class Zombie : MonoBehaviour
 
     public void die()
     {
-		manager.SendMessage("addKill");
+        manager.SendMessage("addKill");
         Destroy(this.gameObject);
+
+        deathSound.Play();
     }
 
 	public void spawn() {
