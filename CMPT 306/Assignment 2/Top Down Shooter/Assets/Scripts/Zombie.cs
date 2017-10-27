@@ -8,8 +8,8 @@ using UnityEngine;
 
 public class Zombie : MonoBehaviour
 {
-
     GameObject target;
+	UIManager manager;
 
     public float movement_speed = 2.0f;
     public float damage = 1.0f;
@@ -18,6 +18,7 @@ public class Zombie : MonoBehaviour
     void Start()
     {
         target = GameObject.FindGameObjectWithTag("Player");
+		manager = FindObjectOfType<UIManager>();
     }
 
     // Update is called once per frame
@@ -44,6 +45,11 @@ public class Zombie : MonoBehaviour
 
     public void die()
     {
+		manager.SendMessage("addKill");
         Destroy(this.gameObject);
     }
+
+	public void spawn() {
+		
+	}
 }
