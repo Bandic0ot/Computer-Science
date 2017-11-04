@@ -11,6 +11,10 @@
  *
  */
 
+int mutex;
+struct LIST* processList;
+int curState;
+
 /* MonEnter()
  * pre: nothing
  * post:

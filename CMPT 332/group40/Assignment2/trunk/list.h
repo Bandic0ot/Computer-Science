@@ -171,3 +171,5 @@ void listFree(struct LIST *list,void *itemFree);
 /* last item in the list. */
 /* return: the last item. */
 void *listTrim(struct LIST *list);
+
+int size(struct LIST *list);

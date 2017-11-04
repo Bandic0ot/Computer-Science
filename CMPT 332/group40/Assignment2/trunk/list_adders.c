@@ -19,8 +19,8 @@
 
 struct LIST *EMPTYLIST = NULL;
 struct NODE *EMPTYNODE = NULL;
-int MIN_NODE_SIZE = 2000;
-int MIN_LIST_SIZE = 1000;
+int MIN_NODE_SIZE = 200;
+int MIN_LIST_SIZE = 100;
 int CURRENT_NODE_SIZE = 0;
 int CURRENT_LIST_SIZE = 0;
 #endif
@@ -295,4 +295,9 @@ int listPrepend(struct LIST *list, void *item){
 	    list->head = list->cur;
     }
     return val;
+}
+
+
+int size(struct LIST *list){
+	return list->size;
 }

@@ -12,7 +12,18 @@
  */
 
 
+when monEnter() is called, at the start of the function. if there is an element in the process list or there is a process running, then the current will enqueue itself, and put itself to sleep. 
 
+in monLeave(), if there is a process on the queue, it will dequeu the next process, and consequently resume that dequeued process. else, if there are no processes on the queue, will unlock the mutex that lets monEnter() run through without enqueing the process.
+
+monWait() will continally check the global variable curState, and busy wait for the state to change.
+
+monSignal() will change the global variable.
+
+monInit() set the mutex to 0, and initializes the list.
+
+
+this will keep mutual exclution between the processes, with the slowest part being the busy wait in monWait().
 
 
 

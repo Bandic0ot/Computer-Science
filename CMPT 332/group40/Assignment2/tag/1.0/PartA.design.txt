@@ -1,0 +1,23 @@
+Sean Robson-Kullman
+11182480
+skr519
+
+Matthew Mulenga
+11144528
+mam558
+
+thread_create()
+	- Essentially a modified fork. The fork creates a new process,
+allocating the page table, kernel stack, state, etc. the same way it would
+for any normal process. We modify the function so that the return instruction
+pointer from the trap frame points to the entry point 'tmain'. Then we take
+the stack that was passed in as an argument and set the stack pointer to point
+to the base address given by 'stack' plus some arbitrary size which gives us
+the top of the stack. From here we move the stack pointer down by 4 bytes and
+push the 'arg' passed in to thread_create onto the stack. (4 bytes because
+that's the size of void pointer) Again we subtract 4 bytes and set the
+return address of the stack to 0xFFFFFFFF, the new top of the stack and where
+the stack will resume next time something is put on it.
+
+thread_join()
+	- Wait for a single child thread to terminate.	

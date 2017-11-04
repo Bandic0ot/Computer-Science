@@ -11,10 +11,25 @@
  *
  */
 
-int main() {
+#include "monitor.h"
+#include "reader-writer-monitor.h"
+#include "reader-writer.c"
+#include "list.h"
 
-	return 0;
+
+
+
+int main(){
+	int conditional;
+	printf("Hello, eh.\n");
+	
+	conditional = mainp();
+
+	if(!conditional){
+		printf("yes! \n");
+	}else printf("no!\n");
+
+	
+	
+	return 1;
 }
-
-
-

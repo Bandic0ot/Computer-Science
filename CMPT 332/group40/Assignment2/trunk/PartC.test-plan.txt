@@ -15,4 +15,26 @@
 
 
 
+	Using two diffent computers, signed into tuxworld, we will make sure that 
+everything is running smoothly. 
+
+	This will involve sending special charictors 
+such as ", *, &, \n, ., $, ect. to ensure that these do not perform in an 
+undesired way.  
+
+	We will also send two messages at the same time (within human error), to 
+confirm that there is no deadlock that can be enabled.
+
+	As there are few boundry cases, comunicating a sentence such as:
+
+		Hello, \n $(this) is a 't*st' of the "functionality" & is gr8. Eh.
+
+	testing functionallity/correctness.
+
+	- 	8 correspondences btween computers
+	- 	repeated quickly successive outputs
+	- 	a copied and pasted words consisting of multiple return statements
+	- 	input a file on both computers, at the same time. Confirm content 
+		remains together
+
 
