@@ -1,0 +1,33 @@
+Matthew Mulenga
+11144528
+mam558
+
+Review
+
+When creating the new design for the database for Assignment 3, I decided to
+break out the Country, Province, City and Address Types tables. I chose to do
+this because while it technically would have got the job done leaving these tables
+as attributes in the 'Addresses' table, it would have presented the problem of
+deletion anomalies. I also decided to do away with the 'Salaries' table because
+the 'Employee_Jobs' table was a good fit for this kind of info. I also wanted to
+avoid circular relationships, that's why I included a 'Managers' table.
+
+In regards to issues loading tables into the database...
+
+There were a couple instances of characters within the flat files which weren't
+enabling me to actually load the files into load tables. I manually went back
+and change the characters to letters. eg. Trois-Rivieres. In a real world scenario
+I would have checked with the supplier of the file to get the correct input instead
+of blindly guessing what the proper spelling should be.
+
+Another problem I found was there were two employees with the same ID, 100171. I
+found there was no employee with ID 100479 so I moved one of the repeating employees
+to the free ID. Again this is something that would have to be checked with the
+supplier of the files because we don't know how they have this implemented in
+their systems and this change could screw up their stuff.
+
+It also appears that the postal codes for two separate Calgary locations were the
+same, once again something the supplier would need to be contacted about.
+
+Another difficulty I ran into was the conversion of a column header to a type.
+For example, extracting an address type from the busStreet vs homeStreet headings.

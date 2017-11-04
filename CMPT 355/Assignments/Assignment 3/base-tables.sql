@@ -16,43 +16,32 @@ CREATE TABLE Phone_Types (
 
 CREATE TABLE Countries (
   id INT,
-  name VARCHAR(100) UNIQUE,
+  name VARCHAR(100),
   PRIMARY KEY (id)
 );
 
 CREATE TABLE Provinces (
   id INT,
-  name VARCHAR(100) UNIQUE,
+  name VARCHAR(100),
   PRIMARY KEY (id)
 );
 
 CREATE TABLE Cities (
   id INT,
-  name VARCHAR(100) UNIQUE,
+  name VARCHAR(100),
   PRIMARY KEY (id)
 );
 
 CREATE TABLE Addresses (
   id INT,
-  address_type VARCHAR(10),
   street_number INT,
   street_name VARCHAR(50),
   street_suffix VARCHAR(10),
   postal_code VARCHAR(10),
-  address_type_id INT REFERENCES Address_Types,
   city_id INT REFERENCES Cities,
   province_id INT REFERENCES Provinces,
   country_id INT REFERENCES Countries,
-  PRIMARY KEY (id)
-);
-
-CREATE TABLE Phone_Numbers (
-  id INT,
-  country_code INT,
-  area_code INT,
-  phone_number INT,
-  extension INT,
-  phone_type_id INT REFERENCES Phone_Types,
+  address_type_id INT REFERENCES Address_Types,
   PRIMARY KEY (id)
 );
 
@@ -65,23 +54,33 @@ CREATE TABLE Employees (
   PRIMARY KEY (id)
 );
 
+CREATE TABLE Phone_Numbers (
+  id INT,
+  country_code INT,
+  area_code INT,
+  phone_number INT,
+  extension INT,
+  phone_type_id INT REFERENCES Phone_Types,
+  employee_id INT REFERENCES Employees,
+  PRIMARY KEY (id)
+);
+
 CREATE TABLE Locations (
   id INT,
-  code VARCHAR(10) UNIQUE,
+  code VARCHAR(10),
   name VARCHAR(50),
   address_id INT REFERENCES Addresses,
   PRIMARY KEY (id)
 );
 
-CREATE TABLE Employee_Contact (
+CREATE TABLE Employee_Addresses (
   id INT,
   employee_id INT REFERENCES Employees,
-  phone_number_id INT REFERENCES Phone_Numbers,
   address_id INT REFERENCES Addresses,
   PRIMARY KEY (id)
 );
 
-CREATE TABLE Employee_Location (
+CREATE TABLE Employee_Locations (
   id INT,
   location_id INT REFERENCES Locations,
   employee_id INT REFERENCES Employees,
@@ -90,13 +89,13 @@ CREATE TABLE Employee_Location (
 
 CREATE TABLE Departments (
   id INT,
-  code VARCHAR(10) UNIQUE,
+  code VARCHAR(10),
   name VARCHAR(20),
   location_id INT REFERENCES Locations,
   PRIMARY KEY (id)
 );
 
-CREATE TABLE Employee_Department (
+CREATE TABLE Employee_Departments (
   id INT,
   department_id INT REFERENCES Departments,
   employee_id INT REFERENCES Employees,
@@ -105,14 +104,14 @@ CREATE TABLE Employee_Department (
 
 CREATE TABLE Jobs (
   id INT,
-  code VARCHAR(10) UNIQUE,
+  code VARCHAR(10),
   name VARCHAR(50),
-  effective_date DATE CHECK(effective_date > expire_date),
-  expire_date DATE,
+  effective_date DATE CHECK(effective_date < expiry_date),
+  expiry_date DATE,
   pay_frequency VARCHAR(10),
   pay_type VARCHAR(10),
-  report_to_job_id INT REFERENCES Jobs,
   department_id INT REFERENCES Departments,
+  report_to_job_id INT REFERENCES Jobs,
   PRIMARY KEY (id)
 );
 
@@ -127,5 +126,9 @@ CREATE TABLE Employee_Jobs (
   PRIMARY KEY (id)
 );
 
-ALTER TABLE Departments
-ADD COLUMN manager_job_id INT REFERENCES Jobs;
+CREATE TABLE Managers (
+  id INT,
+  department_id INT REFERENCES Departments,
+  job_id INT REFERENCES Jobs,
+  PRIMARY KEY (id)
+);
