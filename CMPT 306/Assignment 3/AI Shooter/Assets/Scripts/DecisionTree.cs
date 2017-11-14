@@ -1,4 +1,8 @@
-﻿using System.Collections;
+﻿// Matthew Mulenga
+// mam558
+// 11144528
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -43,7 +47,6 @@ public class DecisionTree {
 		}
 
 		if(tree.decision != null) {
-			Debug.Log(tree.decision());
 			if (tree.decision()) {
 				search(tree.leftNode);
 			} else {
