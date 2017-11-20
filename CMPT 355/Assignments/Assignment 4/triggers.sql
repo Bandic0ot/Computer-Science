@@ -151,7 +151,7 @@ END;
 $$ LANGUAGE plpgsql;
 
 /* Create audit trigger for employees table. */
-CREATE TRIGGER employees_audit_trigger
+CREATE TRIGGER c_employees_audit_trigger
 AFTER INSERT OR UPDATE OR DELETE ON employees
 FOR EACH ROW
 EXECUTE PROCEDURE employees_audit_trigger();
@@ -257,10 +257,11 @@ END;
 $$ LANGUAGE plpgsql;
 
 /* Create audit trigger for employee_jobs table. */
-CREATE TRIGGER employee_jobs_audit_trigger
+CREATE TRIGGER c_employee_jobs_audit_trigger
 AFTER INSERT OR UPDATE OR DELETE ON employee_jobs
 FOR EACH ROW
 EXECUTE PROCEDURE employee_jobs_audit_trigger();
+
 
 /* Create history trigger function for employees table. */
 CREATE OR REPLACE FUNCTION employee_history_trigger()
@@ -324,93 +325,123 @@ BEGIN
         NEW.gender,
         NEW.ssn,
         NEW.birth_date,
+
         (SELECT m.code
           FROM marital_statuses m
           WHERE m.id = NEW.marital_status_id),
+
         (SELECT m.name
           FROM marital_statuses m
           WHERE m.id = NEW.marital_status_id),
+
         (SELECT e.employee_status_code
           FROM employee_history e
           WHERE e.employee_number = NEW.employee_number),
+
         (SELECT e.employee_status_name
           FROM employee_history e
           WHERE e.employee_number = NEW.employee_number),
+
         NEW.hire_date,
         NEW.rehire_date,
         NEW.termination_date,
+
         (SELECT t.code
           FROM termination_reasons t
           WHERE t.id = NEW.term_reason_id),
+
         (SELECT t.name
           FROM termination_reasons t
           WHERE t.id = NEW.term_reason_id),
+
         (SELECT t.code
           FROM termination_types t
           WHERE t.id = NEW.term_type_id),
+
         (SELECT t.name
           FROM termination_types t
           WHERE t.id = NEW.term_type_id),
+
         (SELECT e.job_code
           FROM employee_history e
           WHERE e.employee_number = NEW.employee_number),
+
         (SELECT e.job_title
           FROM employee_history e
           WHERE e.employee_number = NEW.employee_number),
+
         (SELECT e.job_st_date
           FROM employee_history e
           WHERE e.employee_number = NEW.employee_number),
+
         (SELECT e.job_end_date
           FROM employee_history e
           WHERE e.employee_number = NEW.employee_number),
+
         (SELECT e.pay_amount
           FROM employee_history e
           WHERE e.employee_number = NEW.employee_number),
+
         (SELECT e.standard_hours
           FROM employee_history e
           WHERE e.employee_number = NEW.employee_number),
+
         (SELECT e.employee_type_code
           FROM employee_history e
           WHERE e.employee_number = NEW.employee_number),
+
         (SELECT e.employee_type_name
           FROM employee_history e
           WHERE e.employee_number = NEW.employee_number),
+
         (SELECT e.code
           FROM employment_status_types e
           WHERE e.id = NEW.employment_status_id),
+
         (SELECT e.name
           FROM employment_status_types e
           WHERE e.id = NEW.employment_status_id),
+
         (SELECT e.department_code
           FROM employee_history e
           WHERE e.employee_number = NEW.employee_number),
+
         (SELECT e.department_name
           FROM employee_history e
           WHERE e.employee_number = NEW.employee_number),
+
         (SELECT e.location_code
           FROM employee_history e
           WHERE e.employee_number = NEW.employee_number),
+
         (SELECT e.location_name
           FROM employee_history e
           WHERE e.employee_number = NEW.employee_number),
+
         (SELECT e.pay_frequency_code
           FROM employee_history e
           WHERE e.employee_number = NEW.employee_number),
+
         (SELECT e.pay_frequency_name
           FROM employee_history e
           WHERE e.employee_number = NEW.employee_number),
+
         (SELECT e.pay_type_code
           FROM employee_history e
           WHERE e.employee_number = NEW.employee_number),
+
         (SELECT e.pay_type_name
           FROM employee_history e
           WHERE e.employee_number = NEW.employee_number),
+
         (SELECT e.supervisor_job_code
           FROM employee_history e
           WHERE e.employee_number = NEW.employee_number),
+
         (SELECT e.supervisor_job_title
           FROM employee_history e
           WHERE e.employee_number = NEW.employee_number),
+
         CURRENT_TIMESTAMP
       );
       RETURN NEW;
@@ -466,93 +497,123 @@ BEGIN
         OLD.gender,
         OLD.ssn,
         OLD.birth_date,
+
         (SELECT m.code
           FROM marital_statuses m
           WHERE m.id = OLD.marital_status_id),
+
         (SELECT m.name
           FROM marital_statuses m
           WHERE m.id = OLD.marital_status_id),
+
         (SELECT e.employee_status_code
           FROM employee_history e
           WHERE e.employee_number = OLD.employee_number),
+
         (SELECT e.employee_status_name
           FROM employee_history e
           WHERE e.employee_number = OLD.employee_number),
+
         OLD.hire_date,
         OLD.rehire_date,
         OLD.termination_date,
+
         (SELECT t.code
           FROM termination_reasons t
           WHERE t.id = OLD.term_reason_id),
+
         (SELECT t.name
           FROM termination_reasons t
           WHERE t.id = OLD.term_reason_id),
+
         (SELECT t.code
           FROM termination_types t
           WHERE t.id = OLD.term_type_id),
+
         (SELECT t.name
           FROM termination_types t
           WHERE t.id = OLD.term_type_id),
+
         (SELECT e.job_code
           FROM employee_history e
           WHERE e.employee_number = OLD.employee_number),
+
         (SELECT e.job_title
           FROM employee_history e
           WHERE e.employee_number = OLD.employee_number),
+
         (SELECT e.job_st_date
           FROM employee_history e
           WHERE e.employee_number = OLD.employee_number),
+
         (SELECT e.job_end_date
           FROM employee_history e
           WHERE e.employee_number = OLD.employee_number),
+
         (SELECT e.pay_amount
           FROM employee_history e
           WHERE e.employee_number = OLD.employee_number),
+
         (SELECT e.standard_hours
           FROM employee_history e
           WHERE e.employee_number = OLD.employee_number),
+
         (SELECT e.employee_type_code
           FROM employee_history e
           WHERE e.employee_number = OLD.employee_number),
+
         (SELECT e.employee_type_name
           FROM employee_history e
           WHERE e.employee_number = OLD.employee_number),
+
         (SELECT e.code
           FROM employment_status_types e
           WHERE e.id = OLD.employment_status_id),
+
         (SELECT e.name
           FROM employment_status_types e
           WHERE e.id = OLD.employment_status_id),
+
         (SELECT e.department_code
           FROM employee_history e
           WHERE e.employee_number = OLD.employee_number),
+
         (SELECT e.department_name
           FROM employee_history e
           WHERE e.employee_number = OLD.employee_number),
+
         (SELECT e.location_code
           FROM employee_history e
           WHERE e.employee_number = OLD.employee_number),
+
         (SELECT e.location_name
           FROM employee_history e
           WHERE e.employee_number = OLD.employee_number),
+
         (SELECT e.pay_frequency_code
           FROM employee_history e
           WHERE e.employee_number = OLD.employee_number),
+
         (SELECT e.pay_frequency_name
           FROM employee_history e
           WHERE e.employee_number = OLD.employee_number),
+
         (SELECT e.pay_type_code
           FROM employee_history e
           WHERE e.employee_number = OLD.employee_number),
+
         (SELECT e.pay_type_name
           FROM employee_history e
           WHERE e.employee_number = OLD.employee_number),
+
         (SELECT e.supervisor_job_code
           FROM employee_history e
           WHERE e.employee_number = OLD.employee_number),
+
         (SELECT e.supervisor_job_title
           FROM employee_history e
           WHERE e.employee_number = OLD.employee_number),
+
         CURRENT_TIMESTAMP
       );
       RETURN OLD;
@@ -562,10 +623,18 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql;
 
-/* Create history trigger for employees table. */
-CREATE TRIGGER employee_history_trigger
-AFTER UPDATE OR DELETE ON employees
+/* Create history update trigger for employees table. */
+CREATE TRIGGER b_employee_history_update_trigger
+AFTER UPDATE ON employees
+FOR EACH ROW WHEN(OLD.* != NEW.*)
+EXECUTE PROCEDURE employee_history_trigger();
+
+
+/* Create history delete trigger for employees table. */
+CREATE TRIGGER a_employee_history_delete_trigger
+AFTER DELETE ON employees
 FOR EACH ROW
+WHEN(OLD.* IS NOT NULL)
 EXECUTE PROCEDURE employee_history_trigger();
 
 
@@ -624,44 +693,44 @@ BEGIN
       )
       VALUES (
         (SELECT e.employee_number
-          FROM employee_history e
-          WHERE e.employee_number = NEW.employee_number),
+          FROM employee_history e, employee_jobs ej
+          WHERE ej.employee_id = NEW.employee_id),
 
         (SELECT e.title
-          FROM employee_history e
-          WHERE e.employee_number = NEW.employee_number),
+          FROM employee_history e, employee_jobs ej
+          WHERE ej.employee_id = NEW.employee_id),
 
         (SELECT e.first_name
-          FROM employee_history e
-          WHERE e.employee_number = NEW.employee_number),
+          FROM employee_history e, employee_jobs ej
+          WHERE ej.employee_id = NEW.employee_id),
 
         (SELECT e.middle_name
-          FROM employee_history e
-          WHERE e.employee_number = NEW.employee_number),
+          FROM employee_history e, employee_jobs ej
+          WHERE ej.employee_id = NEW.employee_id),
 
         (SELECT e.last_name
-          FROM employee_history e
-          WHERE e.employee_number = NEW.employee_number),
+          FROM employee_history e, employee_jobs ej
+          WHERE ej.employee_id = NEW.employee_id),
 
         (SELECT e.gender
-          FROM employee_history e
-          WHERE e.employee_number = NEW.employee_number),
+          FROM employee_history e, employee_jobs ej
+          WHERE ej.employee_id = NEW.employee_id),
 
         (SELECT e.ssn
-          FROM employee_history e
-          WHERE e.employee_number = NEW.employee_number),
+          FROM employee_history e, employee_jobs ej
+          WHERE ej.employee_id = NEW.employee_id),
 
         (SELECT e.birth_date
-          FROM employee_history e
-          WHERE e.employee_number = NEW.employee_number),
+          FROM employee_history e, employee_jobs ej
+          WHERE ej.employee_id = NEW.employee_id),
 
-        (SELECT m.marital_status_code
-          FROM employee_history e
-          WHERE e.employee_number = NEW.employee_number),
+        (SELECT e.marital_status_code
+          FROM employee_history e, employee_jobs ej
+          WHERE ej.employee_id = NEW.employee_id),
 
-        (SELECT m.marital_status_name
-          FROM employee_history e
-          WHERE e.employee_number = NEW.employee_number),
+        (SELECT e.marital_status_name
+          FROM employee_history e, employee_jobs ej
+          WHERE ej.employee_id = NEW.employee_id),
 
         (SELECT e.code
           FROM employee_statuses e
@@ -671,25 +740,33 @@ BEGIN
           FROM employee_statuses e
           WHERE e.id = NEW.employee_status_id),
 
-        NEW.hire_date,
-        NEW.rehire_date,
-        NEW.termination_date,
+        (SELECT e.orig_hire_date
+          FROM employee_history e, employee_jobs ej
+          WHERE ej.employee_id = NEW.employee_id),
+
+        (SELECT e.rehire_date
+          FROM employee_history e, employee_jobs ej
+          WHERE ej.employee_id = NEW.employee_id),
+
+        (SELECT e.termination_date
+          FROM employee_history e, employee_jobs ej
+          WHERE ej.employee_id = NEW.employee_id),
 
         (SELECT e.termination_reason_code
-          FROM employee_history e
-          WHERE e.employee_number = NEW.employee_number),
+          FROM employee_history e, employee_jobs ej
+          WHERE ej.employee_id = NEW.employee_id),
 
         (SELECT e.termination_reason_name
-          FROM employee_history e
-          WHERE e.employee_number = NEW.employee_number),
+          FROM employee_history e, employee_jobs ej
+          WHERE ej.employee_id = NEW.employee_id),
 
         (SELECT e.termination_type_code
-          FROM employee_history e
-          WHERE e.employee_number = NEW.employee_number),
+          FROM employee_history e, employee_jobs ej
+          WHERE ej.employee_id = NEW.employee_id),
 
         (SELECT e.termination_type_name
-          FROM employee_history e
-          WHERE e.employee_number = NEW.employee_number),
+          FROM employee_history e, employee_jobs ej
+          WHERE ej.employee_id = NEW.employee_id),
 
         (SELECT j.code
           FROM jobs j
@@ -713,52 +790,52 @@ BEGIN
           WHERE e.id = NEW.employee_type_id),
 
         (SELECT e.employment_status_code
-          FROM employee_history e
-          WHERE e.employee_number = NEW.employee_number),
+          FROM employee_history e, employee_jobs ej
+          WHERE ej.employee_id = NEW.employee_id),
 
         (SELECT e.employment_status_name
-          FROM employee_history e
-          WHERE e.employee_number = NEW.employee_number),
+          FROM employee_history e, employee_jobs ej
+          WHERE ej.employee_id = NEW.employee_id),
 
         (SELECT e.department_code
-          FROM employee_history e
-          WHERE e.employee_number = NEW.employee_number),
+          FROM employee_history e, employee_jobs ej
+          WHERE ej.employee_id = NEW.employee_id),
 
         (SELECT e.department_name
-          FROM employee_history e
-          WHERE e.employee_number = NEW.employee_number),
+          FROM employee_history e, employee_jobs ej
+          WHERE ej.employee_id = NEW.employee_id),
 
         (SELECT e.location_code
-          FROM employee_history e
-          WHERE e.employee_number = NEW.employee_number),
+          FROM employee_history e, employee_jobs ej
+          WHERE ej.employee_id = NEW.employee_id),
 
         (SELECT e.location_name
-          FROM employee_history e
-          WHERE e.employee_number = NEW.employee_number),
+          FROM employee_history e, employee_jobs ej
+          WHERE ej.employee_id = NEW.employee_id),
 
         (SELECT e.pay_frequency_code
-          FROM employee_history e
-          WHERE e.employee_number = NEW.employee_number),
+          FROM employee_history e, employee_jobs ej
+          WHERE ej.employee_id = NEW.employee_id),
 
         (SELECT e.pay_frequency_name
-          FROM employee_history e
-          WHERE e.employee_number = NEW.employee_number),
+          FROM employee_history e, employee_jobs ej
+          WHERE ej.employee_id = NEW.employee_id),
 
         (SELECT e.pay_type_code
-          FROM employee_history e
-          WHERE e.employee_number = NEW.employee_number),
+          FROM employee_history e, employee_jobs ej
+          WHERE ej.employee_id = NEW.employee_id),
 
         (SELECT e.pay_type_name
-          FROM employee_history e
-          WHERE e.employee_number = NEW.employee_number),
+          FROM employee_history e, employee_jobs ej
+          WHERE ej.employee_id = NEW.employee_id),
 
         (SELECT e.supervisor_job_code
-          FROM employee_history e
-          WHERE e.employee_number = NEW.employee_number),
+          FROM employee_history e, employee_jobs ej
+          WHERE ej.employee_id = NEW.employee_id),
 
         (SELECT e.supervisor_job_title
-          FROM employee_history e
-          WHERE e.employee_number = NEW.employee_number),
+          FROM employee_history e, employee_jobs ej
+          WHERE ej.employee_id = NEW.employee_id),
 
         CURRENT_TIMESTAMP
       );
@@ -808,141 +885,149 @@ BEGIN
       )
       VALUES (
         (SELECT e.employee_number
-          FROM employee_history e
-          WHERE e.employee_number = NEW.employee_number),
+          FROM employee_history e, employee_jobs ej
+          WHERE ej.employee_id = OLD.employee_id),
 
         (SELECT e.title
-          FROM employee_history e
-          WHERE e.employee_number = NEW.employee_number),
+          FROM employee_history e, employee_jobs ej
+          WHERE ej.employee_id = OLD.employee_id),
 
         (SELECT e.first_name
-          FROM employee_history e
-          WHERE e.employee_number = NEW.employee_number),
+          FROM employee_history e, employee_jobs ej
+          WHERE ej.employee_id = OLD.employee_id),
 
         (SELECT e.middle_name
-          FROM employee_history e
-          WHERE e.employee_number = NEW.employee_number),
+          FROM employee_history e, employee_jobs ej
+          WHERE ej.employee_id = OLD.employee_id),
 
         (SELECT e.last_name
-          FROM employee_history e
-          WHERE e.employee_number = NEW.employee_number),
+          FROM employee_history e, employee_jobs ej
+          WHERE ej.employee_id = OLD.employee_id),
 
         (SELECT e.gender
-          FROM employee_history e
-          WHERE e.employee_number = NEW.employee_number),
+          FROM employee_history e, employee_jobs ej
+          WHERE ej.employee_id = OLD.employee_id),
 
         (SELECT e.ssn
-          FROM employee_history e
-          WHERE e.employee_number = NEW.employee_number),
+          FROM employee_history e, employee_jobs ej
+          WHERE ej.employee_id = OLD.employee_id),
 
         (SELECT e.birth_date
-          FROM employee_history e
-          WHERE e.employee_number = NEW.employee_number),
+          FROM employee_history e, employee_jobs ej
+          WHERE ej.employee_id = OLD.employee_id),
 
-        (SELECT m.marital_status_code
-          FROM employee_history e
-          WHERE e.employee_number = NEW.employee_number),
+        (SELECT e.marital_status_code
+          FROM employee_history e, employee_jobs ej
+          WHERE ej.employee_id = OLD.employee_id),
 
-        (SELECT m.marital_status_name
-          FROM employee_history e
-          WHERE e.employee_number = NEW.employee_number),
+        (SELECT e.marital_status_name
+          FROM employee_history e, employee_jobs ej
+          WHERE ej.employee_id = OLD.employee_id),
 
         (SELECT e.code
           FROM employee_statuses e
-          WHERE e.id = NEW.employee_status_id),
+          WHERE e.id = OLD.employee_status_id),
 
         (SELECT e.name
           FROM employee_statuses e
-          WHERE e.id = NEW.employee_status_id),
+          WHERE e.id = OLD.employee_status_id),
 
-        NEW.hire_date,
-        NEW.rehire_date,
-        NEW.termination_date,
+        (SELECT e.orig_hire_date
+          FROM employee_history e, employee_jobs ej
+          WHERE ej.employee_id = OLD.employee_id),
+
+        (SELECT e.rehire_date
+          FROM employee_history e, employee_jobs ej
+          WHERE ej.employee_id = OLD.employee_id),
+
+        (SELECT e.termination_date
+          FROM employee_history e, employee_jobs ej
+          WHERE ej.employee_id = OLD.employee_id),
 
         (SELECT e.termination_reason_code
-          FROM employee_history e
-          WHERE e.employee_number = NEW.employee_number),
+          FROM employee_history e, employee_jobs ej
+          WHERE ej.employee_id = OLD.employee_id),
 
         (SELECT e.termination_reason_name
-          FROM employee_history e
-          WHERE e.employee_number = NEW.employee_number),
+          FROM employee_history e, employee_jobs ej
+          WHERE ej.employee_id = OLD.employee_id),
 
         (SELECT e.termination_type_code
-          FROM employee_history e
-          WHERE e.employee_number = NEW.employee_number),
+          FROM employee_history e, employee_jobs ej
+          WHERE ej.employee_id = OLD.employee_id),
 
         (SELECT e.termination_type_name
-          FROM employee_history e
-          WHERE e.employee_number = NEW.employee_number),
+          FROM employee_history e, employee_jobs ej
+          WHERE ej.employee_id = OLD.employee_id),
 
         (SELECT j.code
           FROM jobs j
-          WHERE j.id = NEW.job_id),
+          WHERE j.id = OLD.job_id),
 
         (SELECT j.name
           FROM jobs j
-          WHERE j.id = NEW.job_id),
+          WHERE j.id = OLD.job_id),
 
-        NEW.effective_date,
-        NEW.expiry_date,
-        NEW.pay_amount,
-        NEW.standard_hours,
+        OLD.effective_date,
+        OLD.expiry_date,
+        OLD.pay_amount,
+        OLD.standard_hours,
 
         (SELECT e.code
           FROM employee_types e
-          WHERE e.id = NEW.employee_type_id),
+          WHERE e.id = OLD.employee_type_id),
 
         (SELECT e.name
           FROM employee_types e
-          WHERE e.id = NEW.employee_type_id),
+          WHERE e.id = OLD.employee_type_id),
 
         (SELECT e.employment_status_code
-          FROM employee_history e
-          WHERE e.employee_number = NEW.employee_number),
+          FROM employee_history e, employee_jobs ej
+          WHERE ej.employee_id = OLD.employee_id),
 
         (SELECT e.employment_status_name
-          FROM employee_history e
-          WHERE e.employee_number = NEW.employee_number),
+          FROM employee_history e, employee_jobs ej
+          WHERE ej.employee_id = OLD.employee_id),
 
         (SELECT e.department_code
-          FROM employee_history e
-          WHERE e.employee_number = NEW.employee_number),
+          FROM employee_history e, employee_jobs ej
+          WHERE ej.employee_id = OLD.employee_id),
 
         (SELECT e.department_name
-          FROM employee_history e
-          WHERE e.employee_number = NEW.employee_number),
+          FROM employee_history e, employee_jobs ej
+          WHERE ej.employee_id = OLD.employee_id),
 
         (SELECT e.location_code
-          FROM employee_history e
-          WHERE e.employee_number = NEW.employee_number),
+          FROM employee_history e, employee_jobs ej
+          WHERE ej.employee_id = OLD.employee_id),
 
         (SELECT e.location_name
-          FROM employee_history e
-          WHERE e.employee_number = NEW.employee_number),
+          FROM employee_history e, employee_jobs ej
+          WHERE ej.employee_id = OLD.employee_id),
 
         (SELECT e.pay_frequency_code
-          FROM employee_history e
-          WHERE e.employee_number = NEW.employee_number),
+          FROM employee_history e, employee_jobs ej
+          WHERE ej.employee_id = OLD.employee_id),
 
         (SELECT e.pay_frequency_name
-          FROM employee_history e
-          WHERE e.employee_number = NEW.employee_number),
+          FROM employee_history e, employee_jobs ej
+          WHERE ej.employee_id = OLD.employee_id),
 
         (SELECT e.pay_type_code
-          FROM employee_history e
-          WHERE e.employee_number = NEW.employee_number),
+          FROM employee_history e, employee_jobs ej
+          WHERE ej.employee_id = OLD.employee_id),
 
         (SELECT e.pay_type_name
-          FROM employee_history e
-          WHERE e.employee_number = NEW.employee_number),
+          FROM employee_history e, employee_jobs ej
+          WHERE ej.employee_id = OLD.employee_id),
 
         (SELECT e.supervisor_job_code
-          FROM employee_history e
-          WHERE e.employee_number = NEW.employee_number),
+          FROM employee_history e, employee_jobs ej
+          WHERE ej.employee_id = OLD.employee_id),
 
         (SELECT e.supervisor_job_title
-          FROM employee_history e
-          WHERE e.employee_number = NEW.employee_number),
+          FROM employee_history e, employee_jobs ej
+          WHERE ej.employee_id = OLD.employee_id),
 
         CURRENT_TIMESTAMP
       );
@@ -954,8 +1039,15 @@ END;
 $$ LANGUAGE plpgsql;
 
 
-/* Create history trigger for employee_jobs table. */
-CREATE TRIGGER employee_jobs_history_trigger
-AFTER UPDATE OR DELETE ON employee_jobs
+/* Create history update trigger for employee_jobs table. */
+CREATE TRIGGER b_employee_jobs_history_update_trigger
+AFTER UPDATE ON employee_jobs
+FOR EACH ROW WHEN(OLD.* != NEW.*)
+EXECUTE PROCEDURE employee_jobs_history_trigger();
+
+/* Create history delete trigger for employee_jobs table. */
+CREATE TRIGGER a_employee_jobs_history_delete_trigger
+AFTER DELETE ON employee_jobs
 FOR EACH ROW
+WHEN(OLD.* IS NOT NULL)
 EXECUTE PROCEDURE employee_jobs_history_trigger();
