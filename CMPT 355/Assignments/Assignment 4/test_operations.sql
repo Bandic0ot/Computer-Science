@@ -4,15 +4,15 @@ VALUES ('888888', 'Mr.', 'John', 'Jacob', 'Jingleheimerschmidt', 'M', '888888888
 
 UPDATE employees
 SET marital_status_id = '2'
-WHERE employee_number = '100001';
+WHERE employee_number = '100002';
 
 UPDATE employee_jobs
 SET pay_amount = '100000'
-WHERE employee_id = '1';
+WHERE employee_id = '2';
 
 
 DELETE FROM phone_numbers *
-WHERE employee_id = '1';
+WHERE employee_id = '';
 
 DELETE FROM employee_reviews *
 WHERE employee_id = '1';

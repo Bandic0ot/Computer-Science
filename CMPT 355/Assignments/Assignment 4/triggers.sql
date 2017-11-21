@@ -151,7 +151,7 @@ END;
 $$ LANGUAGE plpgsql;
 
 /* Create audit trigger for employees table. */
-CREATE TRIGGER c_employees_audit_trigger
+CREATE TRIGGER employees_audit_trigger
 AFTER INSERT OR UPDATE OR DELETE ON employees
 FOR EACH ROW
 EXECUTE PROCEDURE employees_audit_trigger();
@@ -257,7 +257,7 @@ END;
 $$ LANGUAGE plpgsql;
 
 /* Create audit trigger for employee_jobs table. */
-CREATE TRIGGER c_employee_jobs_audit_trigger
+CREATE TRIGGER employee_jobs_audit_trigger
 AFTER INSERT OR UPDATE OR DELETE ON employee_jobs
 FOR EACH ROW
 EXECUTE PROCEDURE employee_jobs_audit_trigger();
@@ -624,17 +624,9 @@ END;
 $$ LANGUAGE plpgsql;
 
 /* Create history update trigger for employees table. */
-CREATE TRIGGER b_employee_history_update_trigger
+CREATE TRIGGER employee_history_trigger
 AFTER UPDATE ON employees
 FOR EACH ROW WHEN(OLD.* != NEW.*)
-EXECUTE PROCEDURE employee_history_trigger();
-
-
-/* Create history delete trigger for employees table. */
-CREATE TRIGGER a_employee_history_delete_trigger
-AFTER DELETE ON employees
-FOR EACH ROW
-WHEN(OLD.* IS NOT NULL)
 EXECUTE PROCEDURE employee_history_trigger();
 
 
@@ -1040,14 +1032,7 @@ $$ LANGUAGE plpgsql;
 
 
 /* Create history update trigger for employee_jobs table. */
-CREATE TRIGGER b_employee_jobs_history_update_trigger
+CREATE TRIGGER employee_jobs_history_trigger
 AFTER UPDATE ON employee_jobs
-FOR EACH ROW WHEN(OLD.* != NEW.*)
-EXECUTE PROCEDURE employee_jobs_history_trigger();
-
-/* Create history delete trigger for employee_jobs table. */
-CREATE TRIGGER a_employee_jobs_history_delete_trigger
-AFTER DELETE ON employee_jobs
-FOR EACH ROW
-WHEN(OLD.* IS NOT NULL)
+FOR EACH ROW WHEN(OLD.* != FROM NEW.*)
 EXECUTE PROCEDURE employee_jobs_history_trigger();
