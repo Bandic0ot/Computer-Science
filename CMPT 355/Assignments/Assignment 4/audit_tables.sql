@@ -45,6 +45,7 @@ CREATE TABLE employee_jobs_audit (
 CREATE TABLE employee_history (
   id SERIAL,
   employee_number VARCHAR(200),
+  employee_id INT,
   title VARCHAR(20),
   first_name VARCHAR(100),
   middle_name VARCHAR(100),

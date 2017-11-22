@@ -1,0 +1,7 @@
+/* Matthew Mulenga */
+/* mam558 */
+/* 11144528 */
+
+Used after triggers because I wanted the changes to take place before inserting
+into the audit/history tables. The biggest issue I ran into was dividing the
+phone numbers into the correct format for the view.

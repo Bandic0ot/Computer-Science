@@ -1,4 +1,7 @@
 /* Modified */
+/* NOTE */
+/* All changes made marked with "Assignment 4 load procedure modifications." */
+
 /* Matthew Mulenga */
 /* mam558 */
 /* 11144528 */
@@ -131,7 +134,7 @@ END; $$ LANGUAGE plpgsql;
 
 -- Helper function to load phone numbers
 CREATE OR REPLACE FUNCTION load_phone_numbers(p_emp_id INT, p_country_code VARCHAR(5), p_area_code VARCHAR(3),
-                                              p_ph_number CHAR(7), p_extension VARCHAR(10), p_ph_type VARCHAR(10))
+                                              p_ph_number CHAR(20), p_extension VARCHAR(10), p_ph_type VARCHAR(10))
 RETURNS void AS  $$
 DECLARE
   v_phone_type_id INT;
@@ -142,11 +145,16 @@ BEGIN
   FROM phone_types
   WHERE UPPER(name) = UPPER(p_ph_type);
 
-  IF v_phone_type_id IS NOT NULL AND p_area_code IS NOT NULL AND p_ph_number IS NOT NULL THEN
-    INSERT INTO phone_numbers(employee_id, country_code,area_code,ph_number,extension,type_id)
-    VALUES(p_emp_id,p_country_code,p_area_code,p_ph_number,p_extension,v_phone_type_id);
+  /* Assignment 4 load procedure modifications. */
+  IF char_length(p_ph_number) < 8 THEN
+    IF v_phone_type_id IS NOT NULL AND p_area_code IS NOT NULL AND p_ph_number IS NOT NULL THEN
+      INSERT INTO phone_numbers(employee_id, country_code,area_code,ph_number,extension,type_id)
+      VALUES(p_emp_id,p_country_code,p_area_code,p_ph_number,p_extension,v_phone_type_id);
+    ELSE
+      RAISE NOTICE 'Did not insert phone number for record: %', p_ph_number;
+    END IF;
   ELSE
-    RAISE NOTICE 'Did not insert phone number for record: %', p_ph_number;
+    RAISE NOTICE 'Phone number is not in the correct format, skipping.';
   END IF;
 
 END; $$ language plpgsql;
@@ -947,6 +955,7 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql;
 
+/* Assignment 4 load procedure modifications. */
 CREATE OR REPLACE FUNCTION load_history()
 RETURNS void AS $$
 DECLARE
@@ -955,6 +964,7 @@ BEGIN
   FOR v_history IN (
     SELECT
       e.employee_number,
+      ej.employee_id,
       e.title,
       e.first_name,
       e.middle_name,
@@ -975,8 +985,8 @@ BEGIN
       tt.name AS termination_type_name,
       j.code AS job_code,
       j.name AS job_title,
-      j.effective_date AS job_st_date,
-      j.expiry_date AS job_end_date,
+      ej.effective_date AS job_st_date,
+      ej.expiry_date AS job_end_date,
       ej.pay_amount,
       ej.standard_hours,
       et.code AS employee_type_code,
@@ -1011,6 +1021,7 @@ BEGIN
   LOOP
   INSERT INTO employee_history (
     employee_number,
+    employee_id,
     title,
     first_name,
     middle_name,
@@ -1053,6 +1064,7 @@ BEGIN
   )
   VALUES (
     v_history.employee_number,
+    v_history.employee_id,
     v_history.title,
     v_history.first_name,
     v_history.middle_name,
@@ -1101,7 +1113,7 @@ $$ LANGUAGE plpgsql;
 /* Disable triggers for our loads. */
 SELECT set_config('session.trigs_enabled', 'N', FALSE);
 -- Invoke all the functions in the right order
-SELECT load_reference_tables();
+-- SELECT load_reference_tables();
 SELECT load_phone_types();
 SELECT load_locations();
 SELECT load_departments();
