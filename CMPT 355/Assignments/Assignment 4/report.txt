@@ -1,7 +1,36 @@
-/* Matthew Mulenga */
-/* mam558 */
-/* 11144528 */
+Matthew Mulenga
+mam558
+11144528
 
-Used after triggers because I wanted the changes to take place before inserting
-into the audit/history tables. The biggest issue I ran into was dividing the
-phone numbers into the correct format for the view.
+1.  When creating the employee_history table I thought it would be a good idea to
+    add an employee_number column, an employee_id column, and a history_timestamp
+    column. The timestamp gives us insight as to what the most recent changes were,
+    while the employee_number/id columns give us possibly more flexibility when
+    viewing the employee history. (Perhaps the company does not reuse employee numbers
+    or IDs so it would be a good idea to be able to view them should an employee get
+    deleted from the live database.)
+
+2.  I decided to use AFTER triggers for all of the triggers because I wanted the
+    changes to take place before inserting into the audit/history tables. In other
+    words I wanted the newest changes on the employee stored, not the old values.
+
+3.  The biggest issue I ran into was dividing the phone numbers into the correct
+    columns for for the report view. There was also a problem with loading phone
+    numbers that weren't in the correct format (ie. too long), so I added a check
+    in the phone loading procedure which skips the record and raises a notice.
+
+
+General Comments
+
+I noticed there was a typo in the busCountry column (busCoutry), not sure if this
+was intentional. In a real world scenario I'd probably contact the company to see
+if this could be corrected.
+
+Notes
+
+Within load_procedures.sql all the changes I made are marked with
+/* Assignment 4 load procedure modifications. */ using text find should be
+the quickest way to see my changes.
+
+Dates were formatted during CSV export since they were already of type date
+within the database. Otherwise would have used TO_DATE(date, 'yyyy-mm-dd').
