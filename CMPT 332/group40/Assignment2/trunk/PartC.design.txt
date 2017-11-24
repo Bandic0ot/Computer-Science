@@ -12,8 +12,20 @@
  */
 
 
+	This sectioin will be separated into two different Producer/Consumer based
+queues. 
 
+1. 	Keyboard input, that is put into a list one character at a time that 
+	will be sent to the other computer.
+2. 	Incoming information from the partner computer, will be enqued one 
+	character at a time. the consumer will dequeue and print the element 
+	to the console.
 
+	Both of the consumers will have to print to the console, and will there 
+will need to be a mutex in place to determine who is allowed to print to the
+console. The functionality will be handed off between the consumers based on 
+return commands, where the current consumer printing gets priority to 
+continue printing.
 
 	This sectioin will be separated into two different Producer/Consumer based
 queues. 

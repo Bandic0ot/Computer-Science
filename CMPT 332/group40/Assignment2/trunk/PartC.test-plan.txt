@@ -12,8 +12,15 @@
  */
 
 
+	Using two diffent computers, signed into tuxworld, we will make sure that 
+everything is running smoothly. 
 
+	This will involve sending special charictors 
+such as ", *, &, \n, ., $, ect. to ensure that these do not perform in an 
+undesired way.  
 
+	We will also send two messages at the same time (within human error), to 
+confirm that there is no deadlock that can be enabled.
 
 	Using two diffent computers, signed into tuxworld, we will make sure that 
 everything is running smoothly. 

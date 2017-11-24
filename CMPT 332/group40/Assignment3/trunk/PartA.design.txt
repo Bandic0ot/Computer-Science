@@ -1,0 +1,40 @@
+# Sean Robson-Kullman
+# skr519
+# 11182480
+# Matthew Mulenga
+# mam558
+# 11144528
+
+
+
+in proc.c
+
+added 	int priority to type proc. 
+added 	5 global arrays for the 5 levels of priority. All sleeping
+		processes will be placed at the back of their priority queue.
+
+added 	nice(int incr) function takes in the change in priority,
+		takes the current process from the global variable initproc.
+		changes adds incr to the current priority, but
+		if the new value is outside the bounds 0-4, subtracts 
+		incr and returns -1. else returns 0.
+
+added 	getpriority(int pid) function, finds the process 
+		that correlates to the pid. retruns the priority.
+
+added 	setpriority(int pid, int new-priority) function, finds 
+		correlating process to pid. and sets that processes priority to
+		new-priority.
+
+//alter	scheduler so that it chooses processes based off of prioritys. via
+//		if/else statements starting with if(proc0->size > 0) and going to 
+//		proc4. Upon succes of an if statement, will proceed with kernel lvl
+//		round robbin scheduling on that list. 
+
+
+
+
+
+create 	partA.test.c , uses fork() to create child process that will run.
+		and the scheduler will confirm which array and priority they 
+		are in/have. Verify that multiple queues are being used.
