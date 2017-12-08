@@ -6,14 +6,15 @@
 * Authors: Derek Perrin, Dominic McKeith
 */
 
-#include <Monitor.h>
-#include <list.h>
 #include <stdlib.h>
 #include <stdio.h>
 
 /* UBC Pthreads */
 #include <os.h>
 #include <standards.h>
+
+#include "monitor.h"
+#include "list.h"
 
 typedef struct CV {
     int sem;

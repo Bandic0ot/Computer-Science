@@ -30,10 +30,12 @@ endif
 
 all: $(TARGET)
 
-unix: filesys
+unix: filesys-sim
 
-filesys: filesys-sim-monitor.o
-filesys-sim-monitor.o: filesys-sim-monitor.c libMonitor.a
+filesys-sim: filesys-sim.o 
+filesys-sim.o: filesys-sim.c filesys-sim.h libMonitor.a 
+
+filesys-sim-monitor.o: filesys-sim-monitor.c filesys-sim.c libMonitor.a
 
 liblist.a: liblist.a(list_adders.o list_movers.o list_removers.o list_alloc.o)
 
@@ -43,11 +45,11 @@ list_adders.o: list_adders.c list_alloc.c list_alloc.h list.h
 list_alloc.o: list_alloc.c list_alloc.h
 
 # make monitor library
-libMonitor.a: libMonitor.a(Monitor.o) liblist.a
-Monitor.o: Monitor.c Monitor.h list.h
+monitor.o: monitor.c monitor.h list.h
+libMonitor.a: libMonitor.a(monitor.o) liblist.a
 
 %_$(ARCH).o %.o: %.c
 	$(CC) $(CPPFLAGS) $(CFLAGS) -c -o $@ $<
 
 clean:
-	rm -rf *.o liblist.a libMonitor.a
+	rm -rf *.o *.a

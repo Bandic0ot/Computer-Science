@@ -1,0 +1,50 @@
+/*
+ * PartB.design.txt
+ *
+ * Sean Robson-Kullman
+ * 11182480
+ * skr519
+ *
+ * Matthew Muulenga
+ * 11144528
+ * mam558
+ *
+ */
+
+
+
+As part A is not complete, file system performance tests can not
+be executed by the code. but, this will descuss the plan to test.
+
+
+the variables that would have individually been changed, would be:
+- the total amount of disk space. reducing it to fewer blocks than possible files.
+- the number of threads acting on the system at once (average)
+- number of files, the average number in the system.
+- the frequency of thread requests.(sleeps for longer)
+- number of inodes available
+
+this would be done by changing environment variables within the file.
+
+while recording values for:
+- average thread wait time (shorter the better)
+- average thread execution time. (shorter the better)
+- the number of times a file was successfully added and removed
+- total disk space (a constant)
+- average size of all files (a constant)
+- average # of threads executing at once. (higher the better)
+- length of threads sleeping
+- average # of files in the system. (higher the better)
+- number of inodes available. (a constant)
+
+a constant would be changed a couple of times t view the fluxuations 
+by the other variables.(eg. small disk space, large file size, effect on wait times)
+
+the compleation of these tests would show when graphed the point that increasing
+disk size no longer significantly increases execution time.
+
+
+
+
+
+

@@ -12,8 +12,8 @@
 #include <stdbool.h>
 #include <stdlib.h>
 
-#define MIN_LISTS 2    /* we picked these because they're computer numbers */
-#define MIN_NODES 8
+#define MIN_LISTS 5    /* we picked these because they're computer numbers */
+#define MIN_NODES 100
 
 /* NODE structure: Used to store data and are used in the linked list. */
 typedef struct NODE {

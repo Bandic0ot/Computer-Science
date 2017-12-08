@@ -1,0 +1,27 @@
+/*
+ * README
+ *
+ * Sean Robson-Kullman
+ * 11182480
+ * skr519
+ *
+ * Matthew Muulenga
+ * 11144528
+ * mam558
+ *
+ */
+
+
+The assignment is incomplete.
+
+We have the format layed out, and understand what needs to get done, we 
+are unsure of how to do what needs to be done.
+
+Type make into terminal while being in the current directory.
+
+Then type ./filesys-sim
+
+You will get something, but it will not achieve the desired effect,
+as it is not completed.
+
+

@@ -5,7 +5,7 @@
 *
 * Authors: Derek Perrin, Dominic McKeith
 */
-#define NO_CVS 7
+#define NO_CVS 21
 
 void MonEnter(void);
 void MonLeave(void);

@@ -1,0 +1,113 @@
+/*
+ * PartA.design.txt
+ *
+ * Sean Robson-Kullman
+ * 11182480
+ * skr519
+ *
+ * Matthew Muulenga
+ * 11144528
+ * mam558
+ *
+ */
+
+
+!!!!!!!JUST DO IT!!!!!!!
+
+There will be a reader write monitor implementation that will 
+be in filesys-sim-monitor.c
+
+With the rest of part A being coded in filesys-sim-threads.c. 
+This will consist of one large chunk of allocated memory, to 
+be used by the simulation. This will be used to store all data 
+needed for the file system simulation.
+
+Based largly on the pre-existing system in xv6 that is provided for this class.
+
+Ignoring the boot block that will not be needed in our simulation, 
+the first items stored in our block will be in the order of super block, 
+i-nodes, bit map to free memory, and free memory blocks. 
+
+[super block | i-nodes | bit map to free mem | root dir | data blocks ]
+
+
+The super block will consist of:
+	size = number of total blocks allocated.
+	num_inodes = number of blocks allocated to i-nodes
+	num_blocks = number of data blocks allocated
+	inode_start = the location of the first i-node
+	bitMap = the start of the bitmap
+	
+An i-node will consist of:
+	type = file type. 
+	number_of_links = number of links to inode in file system
+	size = size of file contained
+	address = data block address 
+
+
+The total size of memory will be determined by the total 
+number of blocks needed as overhead, plus the fixed number
+of data blocks used by the system. 
+
+
+
+
+mkdir 	- starts write, will find a free inode, if not possible, then 
+		returns. 
+		- checks for how many datablocks will be needed to 
+		allocate the full file. 
+		- traverses the bitmap, checking for a long enough sequence of free data blocks to fit the directory.
+
+cd 		- takes in the inode, and the index for the directory to be 
+		entered. Starts write. 
+
+open 	- Start read. 
+		- checks the file is a file.
+		- opens the file.
+
+close 	- closes file
+		- checks the file is open
+		- stop read.
+
+read 	- start read. 
+		- checks the file is a file.
+		- reads the specified file.
+
+write 	- Start write. magic. 
+
+seek 	- Start write. magic
+
+rm 		- Start write. provided with the inode containing the address 
+		pointing to the inode containing the file to be deleted, and two integers referencing where the file is stored in the address 
+		arrays.
+		- checks that it is asked to delete a file. 
+		- dealocates the bitmap for the memory allocated to the file.
+		- sets inode to empty
+		- sets the address withing the parent inode to NULL
+
+
+rmdir 	- Start write. provided with the inode containing the parent
+		inode, and two integer references to location in both arrays.
+		- checks is the address array is empty.
+		- call rm.
+
+
+
+filesys-sim-threads.c
+
+- contains a function to return a random number.
+
+- contains a function to provide execute a random operation.
+
+
+
+
+
+
+
+
+
+
+
+
+
