@@ -25,6 +25,11 @@ func crawl(inputURL string, depth int) {
 
 	if depth > 0 {
 		for i := range links {
+			// Skip .dtd links
+			if strings.HasSuffix(links[i], ".dtd") {
+				i++
+			}
+
 			crawl(links[i], depth - 1)
 		}
 	} else {
