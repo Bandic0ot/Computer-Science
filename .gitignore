@@ -1,5 +1,7 @@
 .svn
 .DS_Store
+.vscode
+dbconfig.properties
 
 # Created by https://www.gitignore.io/api/intellij
 
