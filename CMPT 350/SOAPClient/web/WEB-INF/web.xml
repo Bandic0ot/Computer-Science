@@ -3,4 +3,20 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
          version="3.1">
+    <servlet>
+        <servlet-name>MessageBoard</servlet-name>
+        <servlet-class>soap.MessageBoard</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>MessageBoard</servlet-name>
+        <url-pattern>/messages</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>PostMessages</servlet-name>
+        <servlet-class>soap.PostMessages</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>PostMessages</servlet-name>
+        <url-pattern>/postmessage</url-pattern>
+    </servlet-mapping>
 </web-app>

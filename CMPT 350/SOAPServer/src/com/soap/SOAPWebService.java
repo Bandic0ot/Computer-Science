@@ -43,12 +43,6 @@ public class SOAPWebService {
   public static void main(String[] argv) {
     SOAPWebService s = new SOAPWebService();
 
-    LinkedList<String> m = s.readMessages();
-
-    for(String msg : m) {
-      System.out.println(msg);
-    }
-
     Object implementor = new SOAPWebService();
     String address = "http://localhost:9000/SOAPWebService";
     Endpoint.publish(address, implementor);

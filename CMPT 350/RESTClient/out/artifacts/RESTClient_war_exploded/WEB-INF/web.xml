@@ -11,4 +11,12 @@
         <servlet-name>Messages</servlet-name>
         <url-pattern>/messages</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>PostMessages</servlet-name>
+        <servlet-class>PostMessages</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>PostMessages</servlet-name>
+        <url-pattern>/postmessage</url-pattern>
+    </servlet-mapping>
 </web-app>

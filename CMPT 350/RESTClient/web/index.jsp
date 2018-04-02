@@ -11,7 +11,7 @@
   <title>Assignment 3</title>
 </head>
 <body>
-<form action="NEWMESSAGES" method="GET">
+<form action="postmessage" method="GET">
   <input type="submit" value="New Messages">
 </form>
 <form action="messages" method="GET">

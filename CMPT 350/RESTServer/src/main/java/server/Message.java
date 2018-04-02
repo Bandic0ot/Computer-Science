@@ -4,6 +4,10 @@ public class Message {
     private int id;
     private String msg;
 
+    public Message() {
+        super();
+    }
+
     public Message(int i, String m) {
         id = i;
         msg = m;

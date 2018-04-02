@@ -1,5 +1,3 @@
-import org.glassfish.jersey.client.JerseyClientBuilder;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -18,7 +16,7 @@ public class MessageBoard extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String messages = "";
-        Client client = JerseyClientBuilder.createClient();
+        Client client = ClientBuilder.newClient();
         MessageList m = client
                 .target("http://localhost:8080/RESTServer")
                 .path("messages")
@@ -35,7 +33,7 @@ public class MessageBoard extends HttpServlet {
                 "<head><title>" + "Message Board" + "</title></head>\n" +
                 "<body>\n" +
                 messages +
-                "<form action=\"NEWMESSAGES\" method=\"GET\">\n" +
+                "<form action=\"postmessage\" method=\"GET\">\n" +
                 "<input type=\"submit\" value=\"Add Message\">" +
                 "</form>\n" +
                 "</body> </html>");

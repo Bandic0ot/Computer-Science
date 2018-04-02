@@ -2,6 +2,7 @@ package server;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
@@ -13,8 +14,12 @@ public class RESTWebService {
   }
 
   @POST
-  public void addMessage(String message) {
-    database.insert("messages (message)\n " + "VALUES ('" + message + "');");
+  @Consumes(MediaType.APPLICATION_JSON)
+  public Response addMessage(Message message) {
+    database.insert("messages (message)\n " + "VALUES ('" + message.getMsg() + "');");
+    database.insert("messages (message)\n " + "VALUES ('test'));");
+
+    return Response.status(200).build();
   }
 
   @GET
