@@ -12,8 +12,8 @@
     </database>
     <schema id="4" parent="2" name="public">
       <ObjectId>2200</ObjectId>
-      <IntrospectionTimestamp>2018-04-01.16:58:23.433</IntrospectionTimestamp>
-      <IntrospectionStateNumber>895</IntrospectionStateNumber>
+      <IntrospectionTimestamp>2018-04-02.13:53:15.753</IntrospectionTimestamp>
+      <IntrospectionStateNumber>918</IntrospectionStateNumber>
       <Current>1</Current>
       <Visible>1</Visible>
     </schema>
@@ -40,7 +40,7 @@
     </sequence>
     <table id="11" parent="4" name="messages">
       <ObjectId>40971</ObjectId>
-      <StateNumber>895</StateNumber>
+      <StateNumber>918</StateNumber>
     </table>
     <column id="12" parent="11" name="id">
       <Position>1</Position>
@@ -55,12 +55,22 @@
       <DataType>varchar(1000)|0</DataType>
       <StateNumber>895</StateNumber>
     </column>
-    <index id="14" parent="11" name="messages_pkey">
+    <column id="14" parent="11" name="post_time">
+      <Position>3</Position>
+      <DataType>timestamp|0</DataType>
+      <StateNumber>904</StateNumber>
+    </column>
+    <column id="15" parent="11" name="user_id">
+      <Position>5</Position>
+      <DataType>varchar(100)|0</DataType>
+      <StateNumber>918</StateNumber>
+    </column>
+    <index id="16" parent="11" name="messages_pkey">
       <ObjectId>40978</ObjectId>
       <ColNames>id</ColNames>
       <Unique>1</Unique>
     </index>
-    <key id="15" parent="11" name="messages_pkey">
+    <key id="17" parent="11" name="messages_pkey">
       <ObjectId>40979</ObjectId>
       <ColNames>id</ColNames>
       <UnderlyingIndexName>messages_pkey</UnderlyingIndexName>

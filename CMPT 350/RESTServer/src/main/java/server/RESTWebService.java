@@ -1,14 +1,15 @@
 package server;
 
 import javax.ws.rs.*;
-import javax.ws.rs.core.MediaType;
-import javax.ws.rs.core.Response;
+import javax.ws.rs.core.*;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDateTime;
 
 @Path("/messages")
 public class RESTWebService {
   private DatabaseInteface database;
+
   public RESTWebService() {
     database = new DatabaseInteface();
   }
@@ -16,8 +17,13 @@ public class RESTWebService {
   @POST
   @Consumes(MediaType.APPLICATION_JSON)
   public Response addMessage(Message message) {
-    database.insert("messages (message)\n " + "VALUES ('" + message.getMsg() + "');");
-    database.insert("messages (message)\n " + "VALUES ('test'));");
+    if(message.getId() == null) {
+      database.insert("messages (message, post_time)\n " +
+              "VALUES ('" + message.getMsg() + "', current_timestamp);");
+    } else {
+      database.insert("messages (id, message, post_time)\n" +
+              "VALUES (" + message.getId() + ", '" + message.getMsg() + "', current_timestamp);");
+    }
 
     return Response.status(200).build();
   }
@@ -31,7 +37,9 @@ public class RESTWebService {
 
     try {
       while(messageSet.next()) {
-        mList.getList().add(new Message(messageSet.getInt("id"), messageSet.getString("message")));
+        mList.getList().add(new Message(messageSet.getString("user_id"),
+                messageSet.getString("message"),
+                messageSet.getTimestamp("post_time").toLocalDateTime().toString()));
       }
 
       return mList;
@@ -42,18 +50,34 @@ public class RESTWebService {
     }
   }
 
-  public static void main(String args[]) {
-    DatabaseInteface database = new DatabaseInteface();
+  @Path("/recent")
+  @GET
+  @Produces(MediaType.APPLICATION_JSON)
+  public MessageList recentMessages(@Context Request r) {
     ResultSet messageSet;
+    Response.ResponseBuilder response = null;
     MessageList mList = new MessageList();
-    messageSet = database.select("* FROM messages");
+    CacheControl cache = new CacheControl();
+    EntityTag etag = new EntityTag(Integer.toString(LocalDateTime.now().toString().hashCode()));
 
-    try {
-      while (messageSet.next()) {
-        mList.getList().add(new Message(messageSet.getInt("id"), messageSet.getString("message")));
-      }
-    } catch (SQLException e) {
-      e.printStackTrace();
+    cache.setMaxAge(86400);
+
+    response = r.evaluatePreconditions(etag);
+
+    if(response != null) {
+      return response.cacheControl(cache).build().getEntity();
+    }
+
+    messageSet = database.select("* FROM messages WHERE");
+
+    return mList;
+  }
+
+  public static void main(String args[]) {
+    RESTWebService s = new RESTWebService();
+
+    for(Message m : s.readMessages().getList()) {
+      System.out.println(m.getPost_time());
     }
   }
 }

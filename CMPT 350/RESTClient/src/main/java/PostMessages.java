@@ -18,7 +18,7 @@ public class PostMessages extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html");
 
-        Message m = new Message(0, request.getParameter("message"));
+        Message m = new Message(null, request.getParameter("message"), null);
 
         Response rep = client.target("http://localhost:8080/RESTServer")
                 .path("messages")
