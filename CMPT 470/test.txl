@@ -14,19 +14,6 @@ compounds
   '== '!= '<= '>= '|| '&&
 end compounds
 
-define expr
-    [id]
-  | [number]
-  | [expr] [op] [expr]
-end define
-
-define op
-    '+
-  | '-
-  | '*
-  | '/
-end define
-
-rule program
+define program
   [expr]
-end rule
+end define

@@ -1,0 +1,15 @@
+define expr
+    [id]
+  | [number]
+  | [expr] [op] [expr]
+end define
+
+define op
+    '+
+  | '-
+  | '*
+  | '/
+  | '%
+end define
+
+
