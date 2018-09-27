@@ -11,5 +11,5 @@ define program
   | [variable]
   | [declaration]
   | [assignment]
-  | [compare]
+  | [if_struct]
 end define

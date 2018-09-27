@@ -25,14 +25,13 @@ end define
 define expression
     [variable]
   | [number]
+  | '([expression]')
   | [expression] [arithmetic_op] [expression]
 end define
 
 define comparison
-    [variable]
-  | [number]
-  | [comparison] [compare_op] [expression]
-  | [expression] [compare_op] [comparison]
+    [expression]
+  | [expression] [compare_op] [expression]
 end define
 
 define declaration
@@ -43,12 +42,30 @@ define assignment
     [variable] [assign_op] [expression]';
 end define
 
-define compare
-    [comparison]
+define condition
+    '([comparison]')
+end define
+
+define statement
+    [declaration]
+  | [assignment]
+  | [function_call]
+end define
+
+define if_struct
+    if [condition] {
+        [repeat statement]
+    }
+end define
+
+define loop_struct 
+    [loop] [condition] {
+        [repeat statement]
+    }
 end define
 
 define function_call
-    [id] '( [id] ')';
+    [variable]'([list variable]')';
 end define
 
 define body
