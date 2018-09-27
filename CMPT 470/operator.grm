@@ -1,0 +1,26 @@
+compounds
+  '== '!= '<= '>= '|| '&& '++ '--
+end compounds
+
+define assign_op
+    '=
+end define
+
+define arithmetic_op
+    '+
+  | '-
+  | '*
+  | '/
+  | '%
+end define
+
+define compare_op
+    '>
+  | '<
+  | '==
+  | '!=
+  | '<=
+  | '>=
+end define
+
+

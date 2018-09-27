@@ -1,0 +1,62 @@
+keys
+  main auto double int struct break else long switch
+  case enum register typedef char extern return union
+  continue for signed void do if static while
+  default goto sizeof volatile const float short unsigned
+end keys
+
+define preprocessor
+    '#[id] '< [id]'.h '>
+  | '#[id] '< [id]'.c '>
+end define
+
+define type
+    'int
+  | 'float
+  | 'double
+  | 'char
+  | 'void
+end define
+
+define variable
+    [id]
+end define
+
+define expression
+    [variable]
+  | [number]
+  | [expression] [arithmetic_op] [expression]
+end define
+
+define comparison
+    [variable]
+  | [number]
+  | [comparison] [compare_op] [expression]
+  | [expression] [compare_op] [comparison]
+end define
+
+define declaration
+    [type] [list variable]';
+end define
+
+define assignment
+    [variable] [assign_op] [expression]';
+end define
+
+define compare
+    [comparison]
+end define
+
+define function_call
+    [id] '( [id] ')';
+end define
+
+define body
+  int main() {
+    [repeat block]
+  }
+end define
+
+define block
+  [repeat id];
+end define
