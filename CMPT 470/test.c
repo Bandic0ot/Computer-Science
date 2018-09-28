@@ -1,4 +1,9 @@
-if(x == 5) {
-	y = 5;
-	call(x);
-}
+ if (mark > 40)
+   {
+     if (mark > 90)
+       {
+	 printf("You are really smart!");
+       }
+      pass = 'y';
+      printf("You passed");
+   }

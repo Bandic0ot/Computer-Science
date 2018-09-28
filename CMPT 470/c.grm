@@ -20,11 +20,15 @@ end define
 
 define variable
     [id]
+  | [mem_op] [id]
 end define
 
 define expression
     [variable]
   | [number]
+  | [stringlit]
+  | [charlit]
+  | [sign] [expression]
   | '([expression]')
   | [expression] [arithmetic_op] [expression]
 end define
@@ -42,8 +46,14 @@ define assignment
     [variable] [assign_op] [expression]';
 end define
 
+define function_call
+    [variable]'([list expression]')';
+end define
+
 define condition
-    '([comparison]')
+    'if '([comparison]')
+  | 'else
+  | 'else if '([comparison]')
 end define
 
 define statement
@@ -53,19 +63,9 @@ define statement
 end define
 
 define if_struct
-    if [condition] {
-        [repeat statement]
+    [condition] {
+        [repeat block]
     }
-end define
-
-define loop_struct 
-    [loop] [condition] {
-        [repeat statement]
-    }
-end define
-
-define function_call
-    [variable]'([list variable]')';
 end define
 
 define body
@@ -75,5 +75,6 @@ define body
 end define
 
 define block
-  [repeat id];
+    [repeat statement]
+  | [repeat if_struct]
 end define

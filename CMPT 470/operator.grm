@@ -1,9 +1,23 @@
 compounds
-  '== '!= '<= '>= '|| '&& '++ '--
+  '== '!= '<= '>= '|| '&& '++ '-- '+= '-= '*= '/=
 end compounds
+
+define sign
+    '+
+  | '-
+end define
+
+define incr_decr
+    '++
+  | '--
+end define
 
 define assign_op
     '=
+  | '+=
+  | '-=
+  | '*=
+  | '/=
 end define
 
 define arithmetic_op
@@ -14,6 +28,11 @@ define arithmetic_op
   | '%
 end define
 
+define mem_op
+    '&
+  | '*
+end define
+
 define compare_op
     '>
   | '<
@@ -22,5 +41,3 @@ define compare_op
   | '<=
   | '>=
 end define
-
-

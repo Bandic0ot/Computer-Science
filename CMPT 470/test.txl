@@ -9,7 +9,6 @@ end function
 define program
     [preprocessor]
   | [variable]
-  | [declaration]
-  | [assignment]
+  | [statement]
   | [if_struct]
 end define
