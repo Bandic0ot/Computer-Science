@@ -7,7 +7,7 @@ define sign
   | '-
 end define
 
-define incr_decr
+define plus_minus_op
     '++
   | '--
 end define

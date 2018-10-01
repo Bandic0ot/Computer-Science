@@ -10,12 +10,29 @@ define preprocessor
   | '#[id] '< [id]'.c '>
 end define
 
+define constant_type
+    'const
+end define
+
+define signed_modifier
+    'signed
+  | 'unsigned
+end define
+
+define long_modifier
+    'long
+  | 'short
+end define
+
 define type
-    'int
+    [signed_modifier]
+  | [opt signed_modifier] [repeat long_modifier] 'int
+  | [opt signed_modifier] 'char
   | 'float
   | 'double
-  | 'char
+  | 'long 'double
   | 'void
+  | [constant_type] [type]
 end define
 
 define variable
@@ -33,48 +50,106 @@ define expression
   | [expression] [arithmetic_op] [expression]
 end define
 
-define comparison
-    [expression]
-  | [expression] [compare_op] [expression]
-end define
-
-define declaration
-    [type] [list variable]';
-end define
-
-define assignment
-    [variable] [assign_op] [expression]';
-end define
-
-define function_call
-    [variable]'([list expression]')';
+define and_or
+    '&&
+  | '||
 end define
 
 define condition
-    'if '([comparison]')
-  | 'else
-  | 'else if '([comparison]')
+    [expression]
+  | [expression] [compare_op] [expression]
+  | '([expression] [compare_op] [expression]')
+  | [condition] [and_or] [condition]
+  | '![condition]
+end define
+
+define declaration
+    [type] [list variable]
+end define
+
+define assignment
+    [variable] [assign_op] [expression]
+  | [variable] [plus_minus_op]
+  | [plus_minus_op] [variable]
+  | [type] [assignment]
+end define
+
+define function_call
+    [variable]'([list expression]')
+end define
+
+define func
+    [type] [variable]'([repeat declaration]') '{
+      [repeat block]
+    '}
 end define
 
 define statement
-    [declaration]
-  | [assignment]
-  | [function_call]
-end define
-
-define if_struct
-    [condition] {
-        [repeat block]
-    }
-end define
-
-define body
-  int main() {
-    [repeat block]
-  }
+    [declaration]';
+  | [assignment]';
+  | [function_call]';
+  | 'return [expression]';
+  | 'continue;
+  | 'break;
 end define
 
 define block
-    [repeat statement]
-  | [repeat if_struct]
+    [statement]
+  | [func]
+  | [if_struct]
+  | [loop_struct]
+  | [switch_struct]
+end define
+
+define conditional
+    'if '([condition]')
+  | 'else
+  | 'else if '([condition]')
+end define
+
+define loop
+    'for '([opt assignment]'; [opt condition]'; [opt assignment]')
+  | 'while '([condition]')
+end define
+
+define switch_statement
+    'switch '([condition]')
+end define
+
+define switch_case
+    'case [expression]':
+      [repeat statement]
+  | 'default:
+      [repeat statement]
+end define
+
+define if_struct
+    [conditional]
+      [statement]
+  | [conditional] '{
+      [repeat block]
+    '}
+end define
+
+define loop_struct
+    [loop]
+      [statement]
+  | [loop] '{
+      [repeat block]
+    '}
+  | 'do '{
+      [repeat block]
+    '} 'while '([condition]');
+end define
+
+define switch_struct
+    [switch_statement] '{
+      [repeat switch_case]
+    '}
+end define
+
+define body
+  int main() '{
+    [repeat block]
+  '}
 end define

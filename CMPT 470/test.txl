@@ -8,7 +8,6 @@ end function
 
 define program
     [preprocessor]
-  | [variable]
-  | [statement]
-  | [if_struct]
+  | [body]
+  | [repeat func]
 end define
