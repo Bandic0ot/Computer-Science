@@ -5,11 +5,6 @@ keys
   default goto sizeof volatile const float short unsigned
 end keys
 
-define preprocessor
-    '#[id] '< [id]'.h '>
-  | '#[id] '< [id]'.c '>
-end define
-
 define constant_type
     'const
 end define
@@ -88,7 +83,7 @@ define statement
     [declaration]';
   | [assignment]';
   | [function_call]';
-  | 'return [expression]';
+  | 'return [opt expression]';
   | 'continue;
   | 'break;
 end define

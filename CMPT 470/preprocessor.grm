@@ -1,0 +1,22 @@
+define directive
+    '#'define
+  | '#'undef
+  | '#'ifdef
+  | '#'ifndef
+  | '#'if
+  | '#'else
+  | '#'elif
+  | '#'endif
+  | '#'error
+  | '#'pragma
+end define
+
+define incl
+    '#'include '<[id]'.[id]'>
+  | '#'include '"[id]'.[id]'"
+end define
+
+define preprocessor
+    [incl]
+  | [directive][repeat id]
+end define

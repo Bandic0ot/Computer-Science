@@ -1,3 +1,5 @@
+#include <stdio.h>
+
 int main()
 {
    printf("Hello World\n");
@@ -119,5 +121,5 @@ int main()
       continue;
       printf("Hello\n");
    }
-   return 0;
+   return;
 }
