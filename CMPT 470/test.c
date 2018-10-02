@@ -1,8 +1,13 @@
-#include <stdio.h>
+#include<stdio.h>
+
+/* Author: Your name
+   Date: yyyy/mm/dd
+   Description:
+   Writes the words "Hello World" on the screen */
 
 int main()
 {
-   printf("Hello World\n");
+   printf("Hello World\n"); //prints "Hello World"
 
    int a;
    char b;
@@ -46,10 +51,14 @@ int main()
       pass = 'y';
       printf("You passed");
    }
-   else
+   else if(1)
    {
       pass = 'n';
       printf("You failed");
+   }
+   else
+   {
+     doSomething();
    }
 
    int a,b;
@@ -121,5 +130,5 @@ int main()
       continue;
       printf("Hello\n");
    }
-   return;
+   return 0;
 }

@@ -12,7 +12,7 @@ define program
 end define
 
 define code
-    [preprocessor]
-  | [body]
-  | [repeat func]
-end code
+    [preprocessor] [NL]
+  | [body] [NL]
+  | [func_struct] [NL]
+end define

@@ -5,6 +5,11 @@ keys
   default goto sizeof volatile const float short unsigned
 end keys
 
+comments
+/* */
+//
+end comments
+
 define constant_type
     'const
 end define
@@ -73,32 +78,29 @@ define function_call
     [variable]'([list expression]')
 end define
 
-define func
-    [type] [variable]'([repeat declaration]') '{
-      [repeat block]
-    '}
-end define
-
 define statement
-    [declaration]';
-  | [assignment]';
-  | [function_call]';
-  | 'return [opt expression]';
-  | 'continue;
-  | 'break;
+    [declaration]'; [NL]
+  | [assignment]'; [NL]
+  | [function_call]'; [NL]
+  | 'return [opt expression]'; [NL]
+  | 'continue; [NL]
+  | 'break; [NL]
 end define
 
 define block
     [statement]
-  | [func]
+  | [func_struct]
   | [if_struct]
   | [loop_struct]
   | [switch_struct]
 end define
 
-define conditional
+define if_conditional
     'if '([condition]')
-  | 'else
+end define
+
+define else_conditional
+    'else
   | 'else if '([condition]')
 end define
 
@@ -112,39 +114,54 @@ define switch_statement
 end define
 
 define switch_case
-    'case [expression]':
-      [repeat statement]
-  | 'default:
-      [repeat statement]
+    'case [expression]': [NL][IN]
+      [repeat block] [EX]
+  | 'default: [NL][IN]
+      [repeat block] [EX]
 end define
 
 define if_struct
-    [conditional]
-      [statement]
-  | [conditional] '{
-      [repeat block]
+    [NL] [if_conditional] [NL][IN]
+      [statement] [EX]
+    [repeat else_struct] [NL][NL]
+  | [NL] [if_conditional] '{ [NL][IN]
+      [repeat block] [EX]
+    '} [repeat else_struct] [NL][NL]
+end define
+
+define else_struct
+    [else_conditional] [NL][IN]
+      [statement] [EX]
+  | [else_conditional] '{ [NL][IN]
+      [repeat block] [EX]
     '}
 end define
 
 define loop_struct
-    [loop]
-      [statement]
-  | [loop] '{
-      [repeat block]
-    '}
-  | 'do '{
-      [repeat block]
-    '} 'while '([condition]');
+    [NL] [loop] [NL][IN]
+      [statement] [NL][EX]
+  | [NL] [loop] '{ [NL][IN]
+      [repeat block] [EX]
+    '} [NL][NL]
+  | [NL] 'do '{ [NL][IN]
+      [repeat block] [EX]
+    '} 'while '([condition]'); [NL][NL]
 end define
 
 define switch_struct
-    [switch_statement] '{
-      [repeat switch_case]
-    '}
+    [NL] [switch_statement] '{ [NL][IN]
+      [repeat switch_case] [EX]
+    '} [NL][NL]
+end define
+
+define func_struct
+    [NL] [type] [variable]'([repeat declaration]') '{ [NL][IN]
+      [repeat block] [EX]
+    '} [NL][NL]
 end define
 
 define body
-  int main() '{
-    [repeat block]
-  '}
+  [NL] int main() '{ [NL][IN]
+    [repeat block] [EX]
+  '} [NL]
 end define
