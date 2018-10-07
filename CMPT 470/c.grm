@@ -37,7 +37,7 @@ end define
 
 define variable
     [id]
-  | [mem_op] [id]
+  | [mem_op] [SPOFF] [id] [SPON]
 end define
 
 define expression
@@ -45,9 +45,9 @@ define expression
   | [number]
   | [stringlit]
   | [charlit]
-  | [sign] [expression]
-  | '([expression]')
   | [expression] [arithmetic_op] [expression]
+  | [sign] [SPOFF] [expression] [SPON]
+  | '( [expression] ')
 end define
 
 define and_or
@@ -58,9 +58,9 @@ end define
 define condition
     [expression]
   | [expression] [compare_op] [expression]
-  | '([expression] [compare_op] [expression]')
   | [condition] [and_or] [condition]
-  | '![condition]
+  | '! [SPOFF] [condition] [SPON]
+  | '( [expression] [compare_op] [expression] ')
 end define
 
 define declaration
@@ -69,13 +69,13 @@ end define
 
 define assignment
     [variable] [assign_op] [expression]
-  | [variable] [plus_minus_op]
-  | [plus_minus_op] [variable]
+  | [variable] [SPOFF] [plus_minus_op] [SPON]
+  | [plus_minus_op] [SPOFF] [variable] [SPON]
   | [type] [assignment]
 end define
 
 define function_call
-    [variable]'([list expression]')
+    [variable] [SPOFF] '( [SPON] [list expression] ')
 end define
 
 define statement
@@ -96,27 +96,27 @@ define block
 end define
 
 define if_conditional
-    'if '([condition]')
+    'if [SPOFF] '( [SPON] [condition] ')
 end define
 
 define else_conditional
     'else
-  | 'else if '([condition]')
+  | 'else 'if [SPOFF] '( [SPON] [condition] ')
 end define
 
 define loop
-    'for '([opt assignment]'; [opt condition]'; [opt assignment]')
-  | 'while '([condition]')
+    [SPOFF] 'for '( [SPON] [opt assignment]'; [opt condition]'; [opt assignment] ') 
+  | [SPOFF] 'while '( [SPON] [condition] ') 
 end define
 
 define switch_statement
-    'switch '([condition]')
+    'switch [SPOFF] '( [SPON] [condition] ')
 end define
 
 define switch_case
-    'case [expression]': [NL][IN]
+    'case [expression] [SPOFF] ': [SPON] [NL][IN]
       [repeat block] [EX]
-  | 'default: [NL][IN]
+  | 'default [SPOFF] ': [SPON] [NL][IN]
       [repeat block] [EX]
 end define
 
@@ -145,7 +145,7 @@ define loop_struct
     '} [NL][NL]
   | [NL] 'do '{ [NL][IN]
       [repeat block] [EX]
-    '} 'while '([condition]'); [NL][NL]
+    '} 'while [SPOFF] '( [SPON] [condition] '); [NL][NL]
 end define
 
 define switch_struct
@@ -161,7 +161,7 @@ define func_struct
 end define
 
 define body
-  [NL] int main() '{ [NL][IN]
+  [NL] 'int 'main [SPOFF] '() [SPON] '{ [NL][IN]
     [repeat block] [EX]
   '} [NL]
 end define

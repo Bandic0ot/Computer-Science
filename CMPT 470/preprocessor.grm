@@ -12,8 +12,8 @@ define directive
 end define
 
 define incl
-    '#'include '<[id]'.[id]'>
-  | '#'include '"[id]'.[id]'"
+    [SPOFF] '#'include [SP] '<[id]'.[id]'> [SPON]
+  | [SPOFF] '#'include [SP] '"[id]'.[id]'" [SPON]
 end define
 
 define preprocessor
