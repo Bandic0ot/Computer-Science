@@ -51,14 +51,10 @@ int main()
       pass = 'y';
       printf("You passed");
    }
-   else if(1)
+   else
    {
       pass = 'n';
       printf("You failed");
-   }
-   else
-   {
-     doSomething();
    }
 
    int a,b;
