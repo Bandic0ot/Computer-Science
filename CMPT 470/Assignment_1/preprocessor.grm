@@ -2,6 +2,7 @@
 % mam558
 % 11144528
 
+% This file handles preprocessor statements.
 define directive
     '#'define
   | '#'undef

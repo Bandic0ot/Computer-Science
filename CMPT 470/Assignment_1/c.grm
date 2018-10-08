@@ -2,6 +2,7 @@
 % mam558
 % 11144528
 
+% C Keywords
 keys
   main auto double int struct break else long switch
   case enum register typedef char extern return union
@@ -9,11 +10,13 @@ keys
   default goto sizeof volatile const float short unsigned
 end keys
 
+% Comment handling
 comments
 /* */
 //
 end comments
 
+% Data Type Modifiers
 define constant_type
     'const
 end define
@@ -28,6 +31,7 @@ define long_modifier
   | 'short
 end define
 
+% C Data Types
 define type
     [signed_modifier]
   | [opt signed_modifier] [repeat long_modifier] 'int
@@ -39,6 +43,7 @@ define type
   | [constant_type] [type]
 end define
 
+% Basic C syntax definitions
 define variable
     [id]
   | [mem_op] [SPOFF] [id] [SPON]
@@ -82,6 +87,7 @@ define function_call
     [variable] [SPOFF] '( [SPON] [list expression] ')
 end define
 
+% Logical grouping syntax
 define statement
     [declaration]'; [NL]
   | [assignment]'; [NL]
@@ -99,6 +105,8 @@ define block
   | [switch_struct]
 end define
 
+
+% Below are all the "headers" for all the C structures.
 define if_conditional
     'if [SPOFF] '( [SPON] [condition] ')
 end define
@@ -117,6 +125,7 @@ define switch_statement
     'switch [SPOFF] '( [SPON] [condition] ')
 end define
 
+% Below are all the definitions for all the bodies of the C structures.
 define switch_case
     'case [expression] [SPOFF] ': [SPON] [NL][IN]
       [repeat block] [EX]

@@ -2,6 +2,7 @@
 % mam558
 % 11144528
 
+% This file handles defines all the operators.
 compounds
   '== '!= '<= '>= '|| '&& '++ '-- '+= '-= '*= '/=
 end compounds
