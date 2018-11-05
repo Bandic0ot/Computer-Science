@@ -188,7 +188,8 @@ public class SplashScreen extends JComponent
 		{
 			while (running)
 			{
-				scrollPosition -= 10;
+				// Adjust scroll speed here. Higher numbers give a less smooth animation.
+				scrollPosition -= 5;
 
 				if(scrollPosition < 0)
 					scrollPosition = scrollStartPosition;
