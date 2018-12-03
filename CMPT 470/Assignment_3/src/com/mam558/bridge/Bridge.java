@@ -1,7 +1,7 @@
 package com.mam558.bridge;
 
-public class Bridge {
-    public static void main(String[] args) {
-
-    }
+public interface Bridge {
+    void accelerate();
+    void brake();
+    void start();
 }
