@@ -1,24 +1,14 @@
 package com.mam558.abstractfactory;
 
-abstract class AbstractFactory {
-    static AbstractFactory createFactory(String os) {
-        AbstractFactory factory;
+public class AbstractFactory {
+    public static void main(String[] args) {
+        Machine OSXInstance = Machine.createMachineInstance("OSX");
+        Machine WindowsInstance = Machine.createMachineInstance("Windows");
 
-        if(os == "Windows") {
-            factory = new Windows();
-        } else if(os == "OSX") {
-            factory = new OSX();
-        } else {
-            factory = null;
-        }
+        System.out.println(OSXInstance.instance());
+        System.out.println(OSXInstance.database() + "\n");
 
-        return factory;
+        System.out.println(WindowsInstance.instance());
+        System.out.println(WindowsInstance.database());
     }
-
-    // Methods for creating an OS instance appropriate for client's machine
-    public abstract String instance();
-    public abstract String greeting();
 }
-
-
-

@@ -1,6 +1,6 @@
 package com.mam558.abstractfactory;
 
-public class Windows extends AbstractFactory {
+public class Windows extends Machine {
 
     @Override
     public String instance() {
@@ -8,7 +8,7 @@ public class Windows extends AbstractFactory {
     }
 
     @Override
-    public String greeting() {
-        return "Welcome to Windows!";
+    public String database() {
+        return "This is a MySQL database.";
     }
 }

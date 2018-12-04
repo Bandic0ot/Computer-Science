@@ -1,13 +1,13 @@
 package com.mam558.abstractfactory;
 
-public class OSX extends AbstractFactory{
+public class OSX extends Machine {
     @Override
     public String instance() {
         return "OSX";
     }
 
     @Override
-    public String greeting() {
-        return "Welcome to OSX!";
+    public String database() {
+        return "This is a Postgres database.";
     }
 }

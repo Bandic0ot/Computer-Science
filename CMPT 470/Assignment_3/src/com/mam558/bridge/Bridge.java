@@ -9,6 +9,8 @@ public class Bridge {
         electric.accelerate();
         electric.brake();
 
+        System.out.print("\n");
+
         gas.engine();
         gas.accelerate();
         gas.brake();
