@@ -1,7 +1,16 @@
 package com.mam558.bridge;
 
-public interface Bridge {
-    void accelerate();
-    void brake();
-    void start();
+public class Bridge {
+    public static void main(String[] args) {
+        Car electric = new Car(new ElectricCar());
+        Car gas = new Car(new GasCar());
+
+        electric.engine();
+        electric.accelerate();
+        electric.brake();
+
+        gas.engine();
+        gas.accelerate();
+        gas.brake();
+    }
 }

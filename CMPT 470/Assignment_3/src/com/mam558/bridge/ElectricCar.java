@@ -1,18 +1,8 @@
 package com.mam558.bridge;
 
-public class ElectricCar implements Bridge{
+public class ElectricCar implements CarInterface {
     @Override
-    public void accelerate() {
-
-    }
-
-    @Override
-    public void brake() {
-
-    }
-
-    @Override
-    public void start() {
-
+    public void engine() {
+        System.out.println("The car is driving using an electric engine.");
     }
 }

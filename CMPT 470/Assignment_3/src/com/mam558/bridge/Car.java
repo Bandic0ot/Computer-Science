@@ -1,22 +1,20 @@
 package com.mam558.bridge;
 
-public class Car implements Bridge{
-    @Override
+public class Car {
+    private CarInterface carInterface;
+
+    public Car(CarInterface i) {
+        this.carInterface = i;
+    }
+
+    public void engine() {
+        carInterface.engine();
+    }
     public void accelerate() {
-
+        System.out.println("The car is accelerating.");
     }
 
-    @Override
     public void brake() {
-
-    }
-
-    @Override
-    public void start() {
-
-    }
-
-    public static void main(String[] args) {
-
+        System.out.println("The car is braking.");
     }
 }
