@@ -1,6 +1,7 @@
 package com.mam558.abstractfactory;
 
 abstract class Machine {
+    // This acts as a factory for creating machine configurations
     static Machine createMachineInstance(String os) {
         Machine machine;
 
