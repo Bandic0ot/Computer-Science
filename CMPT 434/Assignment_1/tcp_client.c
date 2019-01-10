@@ -3,12 +3,12 @@
 #include <sys/socket.h>
 #include <string.h>
 
-void get() {
-  printf("This is a get function.\n");
+void get(char* local_file, char* remote_file) {
+  printf("GET: %s %s\n", local_file, remote_file);
 }
 
-void put() {
-  printf("This is the put function.\n");
+void put(char* local_file, char* remote_file) {
+  printf("PUT: %s %s\n", local_file, remote_file);
 }
 
 int main(int argc, char *argv[]) {
@@ -22,21 +22,28 @@ int main(int argc, char *argv[]) {
 
   // Program loop
   while(1) {
-    printf("Please enter a command [get] [put] [quit]:\n");
+    printf("Please enter a command [get|put|quit] [local] [remote]:\n");
 
     char command[5];
-    scanf("%s", command);
+    char local_file[50];
+    char remote_file[50];
 
-    // Match the user input to a known command.
-    if(strcmp(command, "get") == 0) {
-      get();
-    } else if(strcmp(command, "put") == 0) {
-      put();
-    } else if(strcmp(command, "quit") == 0) {
-      break;
-    } else {
+    // Check to see if the right number of strings was given.
+    if(scanf("%s %s %s", command, local_file, remote_file) <= 0) {
       printf("Invalid command.\n");
       continue;
+    } else {
+      // Match the user input to a known command.
+      if(strcmp(command, "get") == 0) {
+        get(local_file, remote_file);
+      } else if(strcmp(command, "put") == 0) {
+        put(local_file, remote_file);
+      } else if(strcmp(command, "quit") == 0) {
+        return 0;
+      } else {
+        printf("Invalid command.\n");
+        continue;
+      }
     }
   }
 
