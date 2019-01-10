@@ -25,7 +25,7 @@ int main(int argc, char *argv[]) {
     printf("Please enter a command [get] [put] [quit]:\n");
 
     char command[5];
-    scanf("%s\n", command);
+    scanf("%s", command);
 
     // Match the user input to a known command.
     if(strcmp(command, "get") == 0) {
