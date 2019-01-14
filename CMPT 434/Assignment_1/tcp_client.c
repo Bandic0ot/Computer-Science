@@ -16,22 +16,22 @@ void put(char *local_file, char *remote_file) {
 // each word becomes an element of the provided array.
 void parse_input(char *input, char **input_args) {
     char *token;
-    int counter = 0;
+    int arg_count = 0;
 
     token = strtok(input, " ");
-    input_args[counter] = token;
+    input_args[arg_count] = token;
 
     while(token != NULL) {
-      counter++;
+      arg_count++;
       token = strtok(NULL, " ");
-      input_args[counter] = token;
+      input_args[arg_count] = token;
     }
 
-    if(counter == 1) {
-      if(strcmp(strtok(input_args[0], "\n"), "quit") == 0) {
+    if(arg_count == 1) {
+      if(strcmp(input_args[0], "quit\n") == 0) {
         exit(0);
       }
-    } else if(counter == 3) {
+    } else if(arg_count == 3) {
       if(strcmp(input_args[0], "get") == 0) {
         get(input_args[1], input_args[2]);
         return;
