@@ -14,8 +14,9 @@ void put(char *local_file, char *remote_file) {
 
 // Takes the given input and separates it by spaces, 
 // each word becomes an element of the provided array.
-void parse_input(char *input, char **input_args) {
+void parse_input(char *input) {
     char *token;
+    char *input_args[50];
     int arg_count = 0;
 
     token = strtok(input, " ");
@@ -44,7 +45,6 @@ void parse_input(char *input, char **input_args) {
     // If the input arguments aren't valid the default behaviour is 
     // to reset the arguments to NULL and return an invalid message.
     input = NULL;
-    input_args = NULL;
 
     printf("Invalid command.\n");
 }
@@ -62,12 +62,11 @@ int main(int argc, char *argv[]) {
   // Program loop
   while(1) {
     char *input = malloc(sizeof(char) * BUFFER);
-    char **input_args = malloc(sizeof(char *) * (BUFFER / 2));
 
     printf("Please enter a command [get|put|quit] [local] [remote]:\n");
     fgets(input, BUFFER, stdin);
 
-    parse_input(input, input_args);
+    parse_input(input);
   }
 
   return 0;
