@@ -5,6 +5,44 @@
 #include <sys/types.h>
 #include <sys/socket.h>
 #include <netdb.h>
+#include <arpa/inet.h>
+
+int create_connection(char *address, char *port) {
+  int sock, addrinfo_status;
+  struct addrinfo hints, *results;
+
+  memset(&hints, 0, sizeof(hints));
+  hints.ai_family = AF_UNSPEC;
+  hints.ai_socktype = SOCK_STREAM;
+
+  addrinfo_status = getaddrinfo(address, port, &hints, &results);
+  if(addrinfo_status != 0) {
+    fprintf(stderr, "%s\n", gai_strerror(addrinfo_status));
+    return -1;
+  }
+
+  for(struct addrinfo *r = results; r != NULL; r = r->ai_next) {
+    sock = socket(r->ai_family, r->ai_socktype, r->ai_protocol);
+
+    if(sock == -1) {
+      perror("Socket");
+      continue;
+    }
+
+    if(connect(sock, r->ai_addr, r->ai_addrlen) == -1) {
+      close(sock);
+      perror("Connect");
+      continue;
+    }
+
+    if(r == NULL) {
+      fprintf(stderr, "Failed to connect.\n");
+      return -1;
+    }
+  }
+
+  return -1;
+}
 
 int file_exists(char *file) {
   if(access(file, F_OK) == 0) {
@@ -49,6 +87,7 @@ void parse_input(char *input) {
     int arg_count = 0;
 
     // Because fgets reads in a newline when no input is given, we
+    // set input_args to NULL in order to avoid a segfault with strtok.
     if(strcmp(input, "\n") != 0) {
       token = strtok(input, " ");
       input_args[arg_count] = token;
@@ -94,15 +133,28 @@ void parse_input(char *input) {
     printf("Invalid command.\n");
 }
 
+void parse_args(int count, char **args) {
+  if(count == 3) {
+    void *dst;
+    char *address = args[count - 2];
+
+    // Make sure the first argument is a valid IPv4 or IPv6 address.
+    if(inet_pton(AF_INET, address, &dst) == 1) {
+      return;
+    } else if(inet_pton(AF_INET6, address, &dst) == 1) {
+      return;
+    }
+  }
+  
+  printf("Invalid command line arguments. Must be a valid IPv4 or IPv6 address.\n");
+  exit(-1);
+}
+
 int main(int argc, char *argv[]) {
   int BUFFER = 100;
-  // Validate the given command line argument.
-  if(argc == 2) {
-    printf("%s\n", argv[argc - 1]);
-  } else {
-    printf("Invalid command line arguments.\n");
-    return 1;
-  }
+
+  parse_args(argc, argv);
+  create_connection(argv[1], argv[2]);
 
   // Program loop
   while(1) {
