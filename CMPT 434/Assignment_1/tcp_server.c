@@ -44,9 +44,18 @@ void put(char *local_file, char *remote_file) {
   printf("PUT: %s %s\n", local_file, remote_file);
 }
 
-void start_server(int *listen_sock, int *main_sock) {
+void *get_in_addr(struct sockaddr *sa) {
+  if (sa->sa_family == AF_INET) {
+    return &(((struct sockaddr_in *) sa)->sin_addr);
+  }
+  
+  return &(((struct sockaddr_in6 *) sa)->sin6_addr);
+}
+
+void start_server(int *listen_sock) {
   struct addrinfo hints, *results;
   int addrinfo_status;
+  char *address = malloc(sizeof(socklen_t));
 
   memset(&hints, 0, sizeof(hints));
   hints.ai_family = AF_UNSPEC;
@@ -75,6 +84,12 @@ void start_server(int *listen_sock, int *main_sock) {
       continue;
     }
 
+    if(r->ai_family == AF_INET) {
+      inet_ntop(r->ai_family, &(((struct sockaddr_in *) r->ai_addr)->sin_addr), address, sizeof(address));
+    } else {
+      inet_ntop(r->ai_family, &(((struct sockaddr_in6 *) r->ai_addr)->sin6_addr), address, sizeof(address));
+    }
+
     break;
   }
 
@@ -85,13 +100,31 @@ void start_server(int *listen_sock, int *main_sock) {
     return;
   }
 
-  printf("Server started...\n");
+  printf("Server started on %s, port %s...\n", address, PORT);
 }
 
 int main(int argc, char *argv[]) {
   int listen_sock, main_sock;
+  struct sockaddr_storage client_addr;
+  socklen_t client_addrlen;
 
-  start_server(&listen_sock, &main_sock);
+  start_server(&listen_sock);
+
+  // Program loop
+  while(1) {
+    char s[100];
+    client_addrlen = sizeof(socklen_t);
+    main_sock = accept(listen_sock, (struct sockaddr *) &client_addr, &client_addrlen);
+
+    if(main_sock == -1) {
+      perror("Accept");
+      continue;
+    }
+
+    inet_ntop(client_addr.ss_family, get_in_addr((struct sockaddr *) &client_addr), s, sizeof(s));
+    printf("Got connection from %s\n", s);
+
+  }
 
   return 0;
 }
