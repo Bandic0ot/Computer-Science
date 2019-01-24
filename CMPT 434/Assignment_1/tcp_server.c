@@ -7,7 +7,8 @@
 #include <netdb.h>
 #include <arpa/inet.h>
 
-#define PORT "30080"
+#define PORT "30081"
+#define BUFFER_SIZE 10000
 
 int file_exists(char *file) {
   if(access(file, F_OK) == 0) {
@@ -17,31 +18,34 @@ int file_exists(char *file) {
   return -1;
 }
 
-// Returns 0 if true, -1 otherwise.
-int check_filetype(char *file1, char* file2) {
-  char *ext1 = strrchr(file1, '.');
-  char *ext2 = strrchr(file2, '.');
+// Retrieve the file requested in the message.
+void get(char *file, int sock) {
+  char *msg;
+  char buffer[BUFFER_SIZE + 1];
+  FILE *f;
+  size_t text_size;
 
-  if(ext1 != NULL && ext2 != NULL) {
-    if(strcmp(ext1, ".txt") == 0 && strcmp(ext2, ".txt") == 0) {
-      return 0;
-    }
-  }
-
-  printf("Invalid file type, both files must be of type .txt\n");
-  return -1; 
-}
-
-void get(char *local_file, char *remote_file) {
-  if(file_exists(local_file) == 0) {
-    printf("The file %s, already exists.", local_file);
+  if(file_exists(file) != 0) {
+    msg = "File does not exist.";
+    send(sock, msg, strlen(msg), 0);
     return;
   }
-  printf("GET: %s %s\n", local_file, remote_file);
+
+  f = fopen(file, "r");
+
+  if(f != NULL) {
+    text_size = fread(buffer, sizeof(char), BUFFER_SIZE, f);
+    buffer[text_size + 1] = '\0';
+  }
+
+  fclose(f);
+
+  send(sock, buffer, text_size + 1, 0);
 }
 
-void put(char *local_file, char *remote_file) {
-  printf("PUT: %s %s\n", local_file, remote_file);
+// Write to the file specified in the message.
+void put(char *file) {
+
 }
 
 void *get_in_addr(struct sockaddr *sa) {
@@ -75,13 +79,13 @@ void start_server(int *listen_sock) {
 
     if(*listen_sock == -1) {
       perror("Socket");
-      continue;
+      exit(EXIT_FAILURE);
     }
 
     // Bind to the designated port.
     if(bind(*listen_sock, r->ai_addr, r->ai_addrlen) == -1) {
       perror("Bind");
-      continue;
+      exit(EXIT_FAILURE);
     }
 
     if(r->ai_family == AF_INET) {
@@ -97,33 +101,54 @@ void start_server(int *listen_sock) {
 
   if(listen(*listen_sock, 10) == -1) {
     perror("Listen");
-    return;
+    exit(EXIT_FAILURE);
   }
 
   printf("Server started on %s, port %s...\n", address, PORT);
 }
 
 int main(int argc, char *argv[]) {
-  int listen_sock, main_sock;
+  int listen_sock, main_sock, bytes;
   struct sockaddr_storage client_addr;
   socklen_t client_addrlen;
+  char s[100];
+  char msg[100];
 
   start_server(&listen_sock);
 
+  client_addrlen = sizeof(socklen_t);
+  main_sock = accept(listen_sock, (struct sockaddr *) &client_addr, &client_addrlen);
+
+  if(main_sock == -1) {
+    perror("Accept");
+    exit(EXIT_FAILURE);
+  }
+
+  inet_ntop(client_addr.ss_family, get_in_addr((struct sockaddr *) &client_addr), s, sizeof(s));
+  printf("Got connection from %s\n", s);
+
+  bytes = recv(main_sock, msg, sizeof(msg), 0);
   // Program loop
-  while(1) {
-    char s[100];
-    client_addrlen = sizeof(socklen_t);
-    main_sock = accept(listen_sock, (struct sockaddr *) &client_addr, &client_addrlen);
+  if(bytes == -1) {
+    perror("Recieve");
+    exit(EXIT_FAILURE);
+  } else if(bytes == 0) {
+    printf("Connection closed.\n");
+    close(main_sock);
+    exit(EXIT_FAILURE);
+  }
 
-    if(main_sock == -1) {
-      perror("Accept");
-      continue;
-    }
+  msg[bytes] = '\0';
 
-    inet_ntop(client_addr.ss_family, get_in_addr((struct sockaddr *) &client_addr), s, sizeof(s));
-    printf("Got connection from %s\n", s);
+  char *command, *file;
 
+  command = strtok(msg, " ");
+  file = strtok(NULL, " ");
+
+  if(strcmp(command, "GET") == 0) {
+    get(file, main_sock);
+  } else {
+    put(file);
   }
 
   return 0;
