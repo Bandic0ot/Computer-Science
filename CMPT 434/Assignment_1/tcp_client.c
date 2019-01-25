@@ -7,6 +7,8 @@
 #include <netdb.h>
 #include <arpa/inet.h>
 
+#define BUFFER_SIZE 1000000
+
 void create_connection(char *address, char *port, int *sock) {
   int addrinfo_status;
   struct addrinfo hints, *results;
@@ -46,7 +48,7 @@ void create_connection(char *address, char *port, int *sock) {
 
 int file_exists(char *file) {
   if(access(file, F_OK) == 0) {
-    printf("The file %s, already exists.", file);
+    printf("The file %s, already exists.\n", file);
     return 0;
   }
 
@@ -78,31 +80,93 @@ int check_filetype(char *file1, char* file2) {
 }
 
 void get(char *local_file, char *remote_file, int sock) {
+  FILE *f;
+  char buffer[BUFFER_SIZE + 1];
+  char cmd[100] = "GET ";
+  char *msg = strcat(cmd, remote_file);
+  int bytes = 0;
+  int bytes_recv = 0;
+
   if(file_exists(local_file) == 0) {
     return;
   }
-
-  char cmd[100] = "GET ";
-  char rsp[100];
-  int bytes;
-  char *msg = strcat(cmd, remote_file);
   
   send(sock, msg, strlen(msg), 0);
-  bytes = recv(sock, rsp, sizeof(rsp), 0);
-  // rsp[bytes] = '\0';
 
-  printf("%s", rsp);
+  // Loop the recv until we see a nul terminator.
+  do {
+    bytes = recv(sock, &buffer[bytes_recv], BUFFER_SIZE + 1, 0);
+    bytes_recv += bytes;
+
+    if(bytes == -1) {
+      perror("recv");
+      exit(EXIT_FAILURE);
+    } else if (bytes == 0) {
+      break;
+    }
+  } while(buffer[bytes_recv - 1] != '\0');
+
+  f = fopen(local_file, "w");
+
+  if(f != NULL) {
+    fwrite(buffer, sizeof(char), bytes_recv - 1, f);
+    
+    if(ferror(f) != 0) {
+      printf("Error writing to file.");
+      exit(EXIT_FAILURE);
+    } 
+  }
+
+  fclose(f);
 }
 
 void put(char *local_file, char *remote_file, int sock) {
-  if(file_exists(local_file) == 0) {
-    return;
-  }
+  FILE *f;
+  size_t text_size;
+  char buffer[BUFFER_SIZE + 1];
 
   char *cmd = "PUT ";
   char *msg = strcat(cmd, remote_file);
+
+  if(file_exists(local_file) != 0) {
+    exit(EXIT_FAILURE);
+  }
   
   send(sock, msg, strlen(msg), 0);
+
+  f = fopen(local_file, "r");
+
+  if(f != NULL) {
+    text_size = fread(buffer, sizeof(char), BUFFER_SIZE, f);
+
+    if(ferror(f) != 0) {
+      printf("Error reading file.");
+      exit(EXIT_FAILURE);
+    } 
+
+    buffer[text_size] = '\0';
+  } else {
+    printf("Error opening file.");
+    fclose(f);
+    exit(EXIT_FAILURE);
+  }
+
+  fclose(f);
+
+  int bytes_remaining = text_size + 1;
+  int bytes_sent = 0;
+  int bytes;
+
+  while(bytes_sent < text_size + 1) {
+    bytes = send(sock, &buffer[bytes_sent], bytes_remaining, 0);
+    bytes_sent += bytes;
+    bytes_remaining -= bytes;
+
+    if(bytes == -1) {
+      perror("Send");
+      exit(EXIT_FAILURE);
+    }
+  }
 }
 
 // Takes the given input and separates it by spaces, 
@@ -184,14 +248,14 @@ int main(int argc, char *argv[]) {
   create_connection(argv[1], argv[2], &sock);
 
   // Program loop
-  while(1) {
-    char *input = malloc(sizeof(char) * BUFFER);
+  char *input = malloc(sizeof(char) * BUFFER);
 
-    printf("Please enter a command [get|put|quit] [local] [remote]:\n");
-    fgets(input, BUFFER, stdin);
+  printf("Please enter a command [get|put|quit] [local] [remote]:\n");
+  fgets(input, BUFFER, stdin);
 
-    parse_input(input, sock);
-  }
+  parse_input(input, sock);
+
+  close(sock);
 
   return 0;
 }

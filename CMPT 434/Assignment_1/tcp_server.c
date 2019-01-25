@@ -8,7 +8,7 @@
 #include <arpa/inet.h>
 
 #define PORT "30081"
-#define BUFFER_SIZE 10000
+#define BUFFER_SIZE 1000000
 
 int file_exists(char *file) {
   if(access(file, F_OK) == 0) {
@@ -20,13 +20,13 @@ int file_exists(char *file) {
 
 // Retrieve the file requested in the message.
 void get(char *file, int sock) {
-  char *msg;
-  char buffer[BUFFER_SIZE + 1];
   FILE *f;
   size_t text_size;
+  char *msg;
+  char buffer[BUFFER_SIZE + 1];
 
   if(file_exists(file) != 0) {
-    msg = "File does not exist.";
+    msg = "File does not exist.\n";
     send(sock, msg, strlen(msg), 0);
     return;
   }
@@ -35,19 +35,72 @@ void get(char *file, int sock) {
 
   if(f != NULL) {
     text_size = fread(buffer, sizeof(char), BUFFER_SIZE, f);
-    buffer[text_size + 1] = '\0';
+
+    if(ferror(f) != 0) {
+      printf("Error reading file.");
+      exit(EXIT_FAILURE);
+    } 
+
+    buffer[text_size] = '\0';
   }
 
   fclose(f);
 
-  send(sock, buffer, text_size + 1, 0);
+  int bytes_remaining = text_size + 1;
+  int bytes_sent = 0;
+  int bytes;
+
+  while(bytes_sent < text_size + 1) {
+    bytes = send(sock, &buffer[bytes_sent], bytes_remaining, 0);
+    bytes_sent += bytes;
+    bytes_remaining -= bytes;
+
+    if(bytes == -1) {
+      perror("Send");
+      exit(EXIT_FAILURE);
+    }
+  }
 }
 
 // Write to the file specified in the message.
-void put(char *file) {
+void put(char *file, int sock) {
+  FILE *f;
+  char buffer[BUFFER_SIZE + 1];
+  int bytes = 0;
+  int bytes_recv = 0;
 
+  if(file_exists(file) == 0) {
+    return;
+  }
+
+  // Loop the recv until we see a nul terminator.
+  do {
+    bytes = recv(sock, &buffer[bytes_recv], BUFFER_SIZE + 1, 0);
+    bytes_recv += bytes;
+
+    if(bytes == -1) {
+      perror("recv");
+      exit(EXIT_FAILURE);
+    } else if (bytes == 0) {
+      break;
+    }
+  } while(buffer[bytes_recv - 1] != '\0');
+
+  f = fopen(file, "w");
+
+  if(f != NULL) {
+    fwrite(buffer, sizeof(char), bytes_recv - 1, f);
+    
+    if(ferror(f) != 0) {
+      printf("Error writing to file.");
+      exit(EXIT_FAILURE);
+    } 
+  }
+
+  fclose(f);
 }
 
+// Taken from Beej's Networking guide
 void *get_in_addr(struct sockaddr *sa) {
   if (sa->sa_family == AF_INET) {
     return &(((struct sockaddr_in *) sa)->sin_addr);
@@ -56,6 +109,7 @@ void *get_in_addr(struct sockaddr *sa) {
   return &(((struct sockaddr_in6 *) sa)->sin6_addr);
 }
 
+// Main server function
 void start_server(int *listen_sock) {
   struct addrinfo hints, *results;
   int addrinfo_status;
@@ -127,8 +181,8 @@ int main(int argc, char *argv[]) {
   inet_ntop(client_addr.ss_family, get_in_addr((struct sockaddr *) &client_addr), s, sizeof(s));
   printf("Got connection from %s\n", s);
 
-  bytes = recv(main_sock, msg, sizeof(msg), 0);
-  // Program loop
+  bytes = recv(main_sock, msg, sizeof(msg), 0); 
+
   if(bytes == -1) {
     perror("Recieve");
     exit(EXIT_FAILURE);
@@ -148,8 +202,10 @@ int main(int argc, char *argv[]) {
   if(strcmp(command, "GET") == 0) {
     get(file, main_sock);
   } else {
-    put(file);
+    put(file, main_sock);
   }
+
+  close(main_sock);
 
   return 0;
 }
