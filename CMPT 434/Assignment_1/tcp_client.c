@@ -7,6 +7,8 @@
 #include <netdb.h>
 #include <arpa/inet.h>
 
+#include "file_transfer.h"
+
 #define BUFFER_SIZE 1000000
 
 void create_connection(char *address, char *port, int *sock) {
@@ -46,15 +48,6 @@ void create_connection(char *address, char *port, int *sock) {
   return;
 }
 
-int file_exists(char *file) {
-  if(access(file, F_OK) == 0) {
-    printf("The file %s, already exists.\n", file);
-    return 0;
-  }
-
-  return -1;
-}
-
 // Returns 0 if true, -1 otherwise.
 int check_filetype(char *file1, char* file2) {
   char *ext1 = strrchr(file1, '.');
@@ -80,93 +73,35 @@ int check_filetype(char *file1, char* file2) {
 }
 
 void get(char *local_file, char *remote_file, int sock) {
-  FILE *f;
-  char buffer[BUFFER_SIZE + 1];
+  char buffer[BUFFER_SIZE];
+  int bytes;
   char cmd[100] = "GET ";
   char *msg = strcat(cmd, remote_file);
-  int bytes = 0;
-  int bytes_recv = 0;
 
   if(file_exists(local_file) == 0) {
     return;
   }
-  
-  send(sock, msg, strlen(msg), 0);
 
-  // Loop the recv until we see a nul terminator.
-  do {
-    bytes = recv(sock, &buffer[bytes_recv], BUFFER_SIZE + 1, 0);
-    bytes_recv += bytes;
+  msg[strlen(msg)] = '\0';
+  send_all(sock, msg, strlen(msg) + 1);
 
-    if(bytes == -1) {
-      perror("recv");
-      exit(EXIT_FAILURE);
-    } else if (bytes == 0) {
-      break;
-    }
-  } while(buffer[bytes_recv - 1] != '\0');
+  bytes = recv_all(sock, buffer, BUFFER_SIZE);
 
-  f = fopen(local_file, "w");
-
-  if(f != NULL) {
-    fwrite(buffer, sizeof(char), bytes_recv - 1, f);
-    
-    if(ferror(f) != 0) {
-      printf("Error writing to file.");
-      exit(EXIT_FAILURE);
-    } 
-  }
-
-  fclose(f);
+  buffer_to_file(local_file, buffer, bytes);
 }
 
 void put(char *local_file, char *remote_file, int sock) {
-  FILE *f;
-  size_t text_size;
-  char buffer[BUFFER_SIZE + 1];
-
-  char *cmd = "PUT ";
+  char buffer[BUFFER_SIZE];
+  int msg_length;
+  char cmd[100] = "PUT ";
   char *msg = strcat(cmd, remote_file);
 
-  if(file_exists(local_file) != 0) {
-    exit(EXIT_FAILURE);
-  }
-  
-  send(sock, msg, strlen(msg), 0);
+  msg[strlen(msg)] = '\0';
+  send_all(sock, msg, strlen(msg) + 1);
 
-  f = fopen(local_file, "r");
+  msg_length = file_to_buffer(local_file, buffer);
 
-  if(f != NULL) {
-    text_size = fread(buffer, sizeof(char), BUFFER_SIZE, f);
-
-    if(ferror(f) != 0) {
-      printf("Error reading file.");
-      exit(EXIT_FAILURE);
-    } 
-
-    buffer[text_size] = '\0';
-  } else {
-    printf("Error opening file.");
-    fclose(f);
-    exit(EXIT_FAILURE);
-  }
-
-  fclose(f);
-
-  int bytes_remaining = text_size + 1;
-  int bytes_sent = 0;
-  int bytes;
-
-  while(bytes_sent < text_size + 1) {
-    bytes = send(sock, &buffer[bytes_sent], bytes_remaining, 0);
-    bytes_sent += bytes;
-    bytes_remaining -= bytes;
-
-    if(bytes == -1) {
-      perror("Send");
-      exit(EXIT_FAILURE);
-    }
-  }
+  send_all(sock, buffer, msg_length);
 }
 
 // Takes the given input and separates it by spaces, 

@@ -3,17 +3,17 @@
 # 11144528
 
 CC = gcc
-CFLAGS = -g -Wall -pedantic
+CFLAGS = -g -I -Wall -pedantic
 
 .PHONY: clean
 
 all: tcp_client tcp_server
 
-tcp_client: tcp_client.o
-	$(CC) -o tcp_client tcp_client.o
+tcp_client: tcp_client.o file_transfer.o
+	$(CC) -o tcp_client tcp_client.o file_transfer.o
 
-tcp_server: tcp_server.o
-	$(CC) -o tcp_server tcp_server.o
+tcp_server: tcp_server.o file_transfer.o
+	$(CC) -o tcp_server tcp_server.o file_transfer.o
 
 clean:
 	rm -rf *.o *_client *_server

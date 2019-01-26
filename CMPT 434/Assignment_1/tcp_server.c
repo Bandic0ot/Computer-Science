@@ -7,23 +7,16 @@
 #include <netdb.h>
 #include <arpa/inet.h>
 
+#include "file_transfer.h"
+
 #define PORT "30081"
 #define BUFFER_SIZE 1000000
 
-int file_exists(char *file) {
-  if(access(file, F_OK) == 0) {
-    return 0;
-  }
-
-  return -1;
-}
-
 // Retrieve the file requested in the message.
 void get(char *file, int sock) {
-  FILE *f;
-  size_t text_size;
   char *msg;
-  char buffer[BUFFER_SIZE + 1];
+  char buffer[BUFFER_SIZE];
+  int msg_length;
 
   if(file_exists(file) != 0) {
     msg = "File does not exist.\n";
@@ -31,73 +24,23 @@ void get(char *file, int sock) {
     return;
   }
 
-  f = fopen(file, "r");
+  msg_length = file_to_buffer(file, buffer);
 
-  if(f != NULL) {
-    text_size = fread(buffer, sizeof(char), BUFFER_SIZE, f);
-
-    if(ferror(f) != 0) {
-      printf("Error reading file.");
-      exit(EXIT_FAILURE);
-    } 
-
-    buffer[text_size] = '\0';
-  }
-
-  fclose(f);
-
-  int bytes_remaining = text_size + 1;
-  int bytes_sent = 0;
-  int bytes;
-
-  while(bytes_sent < text_size + 1) {
-    bytes = send(sock, &buffer[bytes_sent], bytes_remaining, 0);
-    bytes_sent += bytes;
-    bytes_remaining -= bytes;
-
-    if(bytes == -1) {
-      perror("Send");
-      exit(EXIT_FAILURE);
-    }
-  }
+  send_all(sock, buffer, msg_length);
 }
 
 // Write to the file specified in the message.
 void put(char *file, int sock) {
-  FILE *f;
-  char buffer[BUFFER_SIZE + 1];
-  int bytes = 0;
-  int bytes_recv = 0;
+  char buffer[BUFFER_SIZE];
+  int bytes_recv;
 
   if(file_exists(file) == 0) {
     return;
   }
 
-  // Loop the recv until we see a nul terminator.
-  do {
-    bytes = recv(sock, &buffer[bytes_recv], BUFFER_SIZE + 1, 0);
-    bytes_recv += bytes;
+  bytes_recv = recv_all(sock, buffer, BUFFER_SIZE);
 
-    if(bytes == -1) {
-      perror("recv");
-      exit(EXIT_FAILURE);
-    } else if (bytes == 0) {
-      break;
-    }
-  } while(buffer[bytes_recv - 1] != '\0');
-
-  f = fopen(file, "w");
-
-  if(f != NULL) {
-    fwrite(buffer, sizeof(char), bytes_recv - 1, f);
-    
-    if(ferror(f) != 0) {
-      printf("Error writing to file.");
-      exit(EXIT_FAILURE);
-    } 
-  }
-
-  fclose(f);
+  buffer_to_file(file, buffer, bytes_recv);
 }
 
 // Taken from Beej's Networking guide
@@ -162,11 +105,11 @@ void start_server(int *listen_sock) {
 }
 
 int main(int argc, char *argv[]) {
-  int listen_sock, main_sock, bytes;
+  int listen_sock, main_sock;
   struct sockaddr_storage client_addr;
   socklen_t client_addrlen;
   char s[100];
-  char msg[100];
+  char cmd_msg[100];
 
   start_server(&listen_sock);
 
@@ -181,22 +124,11 @@ int main(int argc, char *argv[]) {
   inet_ntop(client_addr.ss_family, get_in_addr((struct sockaddr *) &client_addr), s, sizeof(s));
   printf("Got connection from %s\n", s);
 
-  bytes = recv(main_sock, msg, sizeof(msg), 0); 
-
-  if(bytes == -1) {
-    perror("Recieve");
-    exit(EXIT_FAILURE);
-  } else if(bytes == 0) {
-    printf("Connection closed.\n");
-    close(main_sock);
-    exit(EXIT_FAILURE);
-  }
-
-  msg[bytes] = '\0';
+  recv_all(main_sock, cmd_msg, 100); 
 
   char *command, *file;
 
-  command = strtok(msg, " ");
+  command = strtok(cmd_msg, " ");
   file = strtok(NULL, " ");
 
   if(strcmp(command, "GET") == 0) {
