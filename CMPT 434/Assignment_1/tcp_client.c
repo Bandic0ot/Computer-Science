@@ -1,3 +1,8 @@
+/* Matthew Mulenga
+ * mam558
+ * 11144528
+ */
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
@@ -22,7 +27,7 @@ void create_connection(char *address, char *port, int *sock) {
   addrinfo_status = getaddrinfo(address, port, &hints, &results);
   if(addrinfo_status != 0) {
     fprintf(stderr, "%s\n", gai_strerror(addrinfo_status));
-    exit(-1);
+    exit(EXIT_FAILURE);
   }
 
   for(struct addrinfo *r = results; r != NULL; r = r->ai_next) {
@@ -36,12 +41,12 @@ void create_connection(char *address, char *port, int *sock) {
     if(connect(*sock, r->ai_addr, r->ai_addrlen) == -1) {
       close(*sock);
       perror("Connect");
-      exit(-1);
+      exit(EXIT_FAILURE);
     }
 
     if(r == NULL) {
       fprintf(stderr, "Failed to connect.\n");
-      exit(-1);
+      exit(EXIT_FAILURE);
     }
   }
 
@@ -79,15 +84,17 @@ void get(char *local_file, char *remote_file, int sock) {
   char *msg = strcat(cmd, remote_file);
 
   if(file_exists(local_file) == 0) {
-    return;
+    printf("A file named %s already exists, please select a different file name.\n", local_file);
+    exit(EXIT_FAILURE);
   }
 
-  msg[strlen(msg)] = '\0';
-  send_all(sock, msg, strlen(msg) + 1);
+  send_all(sock, msg, strlen(msg));
 
   bytes = recv_all(sock, buffer, BUFFER_SIZE);
 
   buffer_to_file(local_file, buffer, bytes);
+
+  printf("File successfully transferred.\n");
 }
 
 void put(char *local_file, char *remote_file, int sock) {
@@ -96,12 +103,18 @@ void put(char *local_file, char *remote_file, int sock) {
   char cmd[100] = "PUT ";
   char *msg = strcat(cmd, remote_file);
 
-  msg[strlen(msg)] = '\0';
-  send_all(sock, msg, strlen(msg) + 1);
+  if(file_exists(local_file) != 0) {
+    printf("The file %s does not exist.\n", local_file);
+    exit(EXIT_FAILURE);
+  }
+
+  send_all(sock, msg, strlen(msg));
 
   msg_length = file_to_buffer(local_file, buffer);
 
   send_all(sock, buffer, msg_length);
+
+  printf("File successfully transferred.\n");
 }
 
 // Takes the given input and separates it by spaces, 

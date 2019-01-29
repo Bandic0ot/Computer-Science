@@ -1,3 +1,8 @@
+/* Matthew Mulenga
+ * mam558
+ * 11144528
+ */
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
@@ -59,14 +64,32 @@ int file_to_buffer(char *file, char *buffer) {
   return file_bytes + 1;
 }
 
+void pack_length(char *msg, int msg_length, char *buffer) {
+  uint32_t length = htonl(msg_length);
+
+  memcpy(buffer, &length, sizeof(uint32_t));
+  memcpy(&buffer[sizeof(uint32_t)], msg, msg_length);
+}
+
+int unpack_length(char *msg) {
+  uint32_t msg_length;
+
+  msg_length = ntohl(msg[0] + (msg[1] << 8) + (msg[2] << 16) + (msg[3] << 24));
+
+  return msg_length;
+}
+
 void send_all(int sock, char *msg, int msg_length) {
   int bytes, bytes_sent, bytes_remaining;
+  char buffer[msg_length + sizeof(uint32_t)];
 
-  bytes_remaining = msg_length;
+  pack_length(msg, msg_length, buffer);
+
+  bytes_remaining = msg_length + sizeof(uint32_t);
   bytes_sent = 0;
 
-  while(bytes_sent < msg_length) {
-    bytes = send(sock, &msg[bytes_sent], bytes_remaining, 0);
+  while(bytes_sent < msg_length + sizeof(uint32_t)) {
+    bytes = send(sock, &buffer[bytes_sent], bytes_remaining, 0);
     bytes_sent += bytes;
     bytes_remaining -= bytes;
 
@@ -78,23 +101,40 @@ void send_all(int sock, char *msg, int msg_length) {
 }
 
 int recv_all(int sock, char *buffer, int buffer_length) {
-  int bytes, bytes_recv;
+  int bytes, bytes_recv, msg_length;
+  char length_buffer[sizeof(uint32_t)];
+
+  recv(sock, length_buffer, sizeof(u_int32_t), 0);
+
+  msg_length = unpack_length(length_buffer);
 
   bytes_recv = 0;
 
-  do {
+  while(bytes_recv < msg_length) {
     bytes = recv(sock, &buffer[bytes_recv], buffer_length, 0);
     bytes_recv += bytes;
 
     if(bytes == -1) {
-      perror("recv");
+      perror("Recv");
+      printf("File may be too large for buffer.\n");
       exit(EXIT_FAILURE);
     } else if (bytes == 0) {
       printf("Connection closed.\n");
       exit(EXIT_FAILURE);
     }
   
-  } while(buffer[bytes_recv - 1] != '\0');
+  }
+
+  buffer[bytes_recv] = '\0';
 
   return bytes_recv - 1;
+}
+
+// Taken from Beej's Networking guide
+void *get_in_addr(struct sockaddr *sa) {
+  if (sa->sa_family == AF_INET) {
+    return &(((struct sockaddr_in *) sa)->sin_addr);
+  }
+  
+  return &(((struct sockaddr_in6 *) sa)->sin6_addr);
 }

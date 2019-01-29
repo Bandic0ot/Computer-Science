@@ -1,3 +1,8 @@
+/* Matthew Mulenga
+ * mam558
+ * 11144528
+ */
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
@@ -9,52 +14,12 @@
 
 #include "file_transfer.h"
 
-#define PORT "30081"
+#define PORT "30080"
 #define BUFFER_SIZE 1000000
-
-// Retrieve the file requested in the message.
-void get(char *file, int sock) {
-  char *msg;
-  char buffer[BUFFER_SIZE];
-  int msg_length;
-
-  if(file_exists(file) != 0) {
-    msg = "File does not exist.\n";
-    send(sock, msg, strlen(msg), 0);
-    return;
-  }
-
-  msg_length = file_to_buffer(file, buffer);
-
-  send_all(sock, buffer, msg_length);
-}
-
-// Write to the file specified in the message.
-void put(char *file, int sock) {
-  char buffer[BUFFER_SIZE];
-  int bytes_recv;
-
-  if(file_exists(file) == 0) {
-    return;
-  }
-
-  bytes_recv = recv_all(sock, buffer, BUFFER_SIZE);
-
-  buffer_to_file(file, buffer, bytes_recv);
-}
-
-// Taken from Beej's Networking guide
-void *get_in_addr(struct sockaddr *sa) {
-  if (sa->sa_family == AF_INET) {
-    return &(((struct sockaddr_in *) sa)->sin_addr);
-  }
-  
-  return &(((struct sockaddr_in6 *) sa)->sin6_addr);
-}
 
 // Main server function
 void start_server(int *listen_sock) {
-  struct addrinfo hints, *results;
+  struct addrinfo hints, *results, *r;
   int addrinfo_status;
   char *address = malloc(sizeof(socklen_t));
 
@@ -70,7 +35,7 @@ void start_server(int *listen_sock) {
     return;
   }
 
-  for(struct addrinfo *r = results; r != NULL; r = r->ai_next) {
+  for(r = results; r != NULL; r = r->ai_next) {
     // Create a socket for listening.
     *listen_sock = socket(r->ai_family, r->ai_socktype, r->ai_protocol);
 
@@ -94,6 +59,11 @@ void start_server(int *listen_sock) {
     break;
   }
 
+  if(r == NULL) {
+    fprintf(stderr, "Server failed to bind.\n");
+    exit(EXIT_FAILURE);
+  }
+
   freeaddrinfo(results);
 
   if(listen(*listen_sock, 10) == -1) {
@@ -102,6 +72,37 @@ void start_server(int *listen_sock) {
   }
 
   printf("Server started on %s, port %s...\n", address, PORT);
+}
+
+// Retrieve the file requested in the message.
+void get(char *file, int sock) {
+  char *msg;
+  char buffer[BUFFER_SIZE];
+  int msg_length;
+
+  if(file_exists(file) != 0) {
+    printf("%s does not exist.\n", file);
+    exit(EXIT_FAILURE);
+  }
+
+  msg_length = file_to_buffer(file, buffer);
+
+  send_all(sock, buffer, msg_length);
+}
+
+// Write to the file specified in the message.
+void put(char *file, int sock) {
+  char buffer[BUFFER_SIZE];
+  int bytes_recv;
+
+  if(file_exists(file) == 0) {
+    printf("File %s already exists.\n", file);
+    exit(EXIT_FAILURE);
+  }
+
+  bytes_recv = recv_all(sock, buffer, BUFFER_SIZE);
+
+  buffer_to_file(file, buffer, bytes_recv);
 }
 
 int main(int argc, char *argv[]) {

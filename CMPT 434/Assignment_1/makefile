@@ -7,7 +7,7 @@ CFLAGS = -g -I -Wall -pedantic
 
 .PHONY: clean
 
-all: tcp_client tcp_server
+all: tcp_client tcp_server tcp_proxy
 
 tcp_client: tcp_client.o file_transfer.o
 	$(CC) -o tcp_client tcp_client.o file_transfer.o
@@ -15,5 +15,8 @@ tcp_client: tcp_client.o file_transfer.o
 tcp_server: tcp_server.o file_transfer.o
 	$(CC) -o tcp_server tcp_server.o file_transfer.o
 
+tcp_proxy: tcp_proxy.o file_transfer.o
+	$(CC) -o tcp_proxy tcp_proxy.o file_transfer.o
+
 clean:
-	rm -rf *.o *_client *_server
+	rm -rf *.o *_client *_server *_proxy
