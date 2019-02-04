@@ -1,4 +1,14 @@
-a) Tuple
-b) Tuple
-c) Integer
-d) Function
+These were answered assuming these functions took in integers as it was not
+specified in the assignment outline.
+
+a)  swap :: (Integer, Integer) -> (Integer, Integer)
+    swap (x, y) = (y, x)
+
+b)  pair :: Integer -> Integer -> (Integer, Integer)
+    pair x y = (x, y)
+
+c)  double :: Integer -> Integer
+    double x = x*2
+
+d)  twice :: Integer -> (Integer -> (Integer))
+    twice f x = f (f (x))
