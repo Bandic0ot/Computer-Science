@@ -1,0 +1,146 @@
+----- Problem 3 Testing -----
+--- Addition ---
+*Main> Fraction (1, 2) + Fraction (2, 2)
+6/4
+*Main> Fraction (1, 2) + Fraction (2, -2)
+*** Exception: Denominator must be positive.
+CallStack (from HasCallStack):
+  error, called at programs.hs:63:17 in main:Main
+*Main> Fraction (1, 2) + Fraction (2, 0)
+*** Exception: Division by 0.
+CallStack (from HasCallStack):
+  error, called at programs.hs:62:17 in main:Main
+*Main> Fraction (1, 2) + Fraction (2, 5)
+9/10
+--- Subtraction ---
+*Main> Fraction (1, 2) - Fraction (2, 5)
+1/10
+*Main> Fraction (1, 5) - Fraction (2, 5)
+-5/25
+*Main> Fraction (1, 3) - Fraction (1, 4)
+1/12
+--- Multiplication ---
+*Main> Fraction (1, 3) * Fraction (1, 4)
+1/12
+*Main> Fraction (5, 3) * Fraction (1, 4)
+5/12
+--- Division ---
+*Main> Fraction (5, 3) / Fraction (1, 2)
+10/3
+*Main> Fraction (5, 3) / Fraction (1, 2)
+10/3
+*Main> Fraction (4, 2) / Fraction (2, 1)
+4/4
+*Main> Fraction (5, 2) / Fraction (-2, 1)
+5/-4
+--- Negation ---
+*Main> negate(Fraction (-2, 1))
+2/1
+*Main> negate(Fraction (2, 1))
+-2/1
+*Main> negate(Fraction (2, 1) - Fraction(4,1))
+2/1
+--- Comparisons ---
+*Main> Fraction(1,4) < Fraction(3,4)
+True
+*Main> Fraction(1,4) > Fraction(3,4)
+False
+*Main> Fraction(1,4) >= Fraction(3,4)
+False
+*Main> Fraction(1,4) <= Fraction(3,4)
+True
+*Main> Fraction(1,4) == Fraction(4,16)
+True
+*Main> Fraction(1,4) /= Fraction(4,16)
+False
+--- numerator Function ---
+*Main> numerator(Fraction(1,4))
+1
+*Main> numerator(Fraction(-1,4))
+-1
+*Main> numerator(Fraction(1,-4))
+*** Exception: Denominator must be positive.
+CallStack (from HasCallStack):
+  error, called at programs.hs:63:17 in main:Main
+*Main> numerator(Fraction(1,0))
+*** Exception: Division by 0.
+CallStack (from HasCallStack):
+  error, called at programs.hs:62:17 in main:Main
+--- denominator Function ---
+*Main> denominator(Fraction(1,4))
+4
+*Main> denominator(Fraction(-1,4))
+4
+*Main> denominator(Fraction(-1,-4))
+*** Exception: Denominator must be positive.
+CallStack (from HasCallStack):
+  error, called at programs.hs:69:17 in main:Main
+*Main> denominator(Fraction(-1,0))
+*** Exception: Division by 0.
+CallStack (from HasCallStack):
+  error, called at programs.hs:68:17 in main:Main
+
+
+----- Problem 4(a) Testing -----
+*Main> shuffle [] []
+[]
+*Main> shuffle [1] []
+[1]
+*Main> shuffle [1] [2]
+[1,2]
+*Main> shuffle [1,2,3] [4,5,6]
+[1,4,2,5,3,6]
+
+----- Problem 4(b) Testing -----
+*Main> split [1,2,3,4,5,6] 0
+[[],[1,2,3,4,5,6]]
+*Main> split [1,2,3,4,5,6] 1
+[[1],[2,3,4,5,6]]
+*Main> split [1,2,3,4,5,6] 2
+[[1,2],[3,4,5,6]]
+*Main> split [1,2,3,4,5,6] 5
+[[1,2,3,4,5],[6]]
+*Main> split [1,2,3,4,5,6] 3
+[[1,2,3],[4,5,6]]
+*Main> split [1,2,3,4,5,6] 6
+[[1,2,3,4,5,6],[]]
+
+----- Problem 4(c) Testing -----
+*Main> outshuffle []
+[]
+*Main> outshuffle [1]
+[1]
+*Main> outshuffle [1,2,3,4,5,6]
+[1,4,2,5,3,6]
+*Main> inshuffle []
+[]
+*Main> inshuffle [1]
+[1]
+*Main> inshuffle [1,2,3,4,5,6]
+[4,1,5,2,6,3]
+
+----- Problem 4(d) Testing -----
+*Main> nshuffle inshuffle 0 [1,2,3,4,5,6]
+[1,2,3,4,5,6]
+*Main> nshuffle inshuffle 1 [1,2,3,4,5,6]
+[4,1,5,2,6,3]
+*Main> nshuffle inshuffle 2 [1,2,3,4,5,6]
+[2,4,6,1,3,5]
+*Main> nshuffle inshuffle 3 [1,2,3,4,5,6]
+[1,2,3,4,5,6]
+*Main> nshuffle inshuffle 3 []
+[]
+*Main> nshuffle outshuffle 0 [1,2,3,4,5,6]
+[1,2,3,4,5,6]
+*Main> nshuffle outshuffle 1 [1,2,3,4,5,6]
+[1,4,2,5,3,6]
+*Main> nshuffle outshuffle 2 [1,2,3,4,5,6]
+[1,5,4,3,2,6]
+*Main> nshuffle outshuffle 3 [1,2,3,4,5,6]
+[1,3,5,2,4,6]
+*Main> nshuffle outshuffle 4 [1,2,3,4,5,6]
+[1,2,3,4,5,6]
+*Main> nshuffle outshuffle 4 []
+[]
+
+----- Problem 4(e) Testing -----
