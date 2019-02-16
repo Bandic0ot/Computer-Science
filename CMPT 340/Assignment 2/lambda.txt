@@ -1,3 +1,31 @@
+Matthew Mulenga
+mam558
+11144528
+
 ----- Problem 1 -----
+true  = \x -> \y -> (x)
+false = \x -> \y -> (y)
+not   = \v -> \w -> \x -> (v x w)
+or    = \v -> \w -> (v v w)
+
+    or false (not true)
+=>  \v -> \w -> (v v w) false (not true)
+=>  \w -> (false false w) (not true)
+=>  false false (not true)
+=>  \x -> \y -> (y) false (not true)
+=>  \y -> (y) false (not true)
+=>  false (not true)
+=>  \x -> \y -> (y) (not true)
+=>  \y -> (y) (not true)
+=>  not true
+=>  \v -> \w -> \x (v x w) true
+=>  \w -> \x -> (true x w)
+=>  \w -> \x -> (\a -> \b -> (a) x w)
+=>  \w -> \x ->(\b -> (x) w)
+=>  \w -> \x -> (x)
+=>  \x -> \y -> (y)
+=>  false
 
 ----- Problem 2 -----
+curry = \x -> \y -> \z -> (x, y, z)
+uncurry = \x -> \y -> \z -> (x(y z))

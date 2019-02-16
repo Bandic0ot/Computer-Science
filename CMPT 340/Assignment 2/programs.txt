@@ -1,3 +1,7 @@
+Matthew Mulenga
+mam558
+11144528
+
 ----- Problem 3 Testing -----
 --- Addition ---
 *Main> Fraction (1, 2) + Fraction (2, 2)
@@ -144,3 +148,23 @@ CallStack (from HasCallStack):
 []
 
 ----- Problem 4(e) Testing -----
+a) It takes 8 (1 initial, 7 after) out-shuffles to return a deck of 52 cards to its original ordering.
+*Main> outshuffle [1..52]
+[1,27,2,28,3,29,4,30,5,31,6,32,7,33,8,34,9,35,10,36,11,37,12,38,13,39,14,40,15,41,16,42,17,43,18,44,19,45,20,46,21,47,22,48,23,49,24,50,25,51,26,52]
+*Main> howManyShuffles outshuffle [1,27,2,28,3,29,4,30,5,31,6,32,7,33,8,34,9,35,10,36,11,37,12,38,13,39,14,40,15,41,16,42,17,43,18,44,19,45,20,46,21,47,22,48,23,49,24,50,25,51,26,52] [1..52]
+7
+
+b) It takes 26 in-shuffles to completely reverse a deck.
+*Main> howManyShuffles inshuffle [1..52] (reverse [1..52])
+26
+
+*Main> howManyShuffles outshuffle [1, 2, 3, 4, 5, 6] [1, 4, 3, 2, 5, 6]
+*** Exception: Cannot achieve shuffle.
+CallStack (from HasCallStack):
+  error, called at programs.hs:118:27 in main:Main
+
+*Main> howManyShuffles outshuffle [1, 5, 4, 3, 2, 6] [1, 2, 3, 4, 5, 6]
+2
+
+*Main> howManyShuffles inshuffle [2, 4, 6, 1, 3, 5] [1, 2, 3, 4, 5, 6]
+1

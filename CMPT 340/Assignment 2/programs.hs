@@ -1,3 +1,7 @@
+-- Matthew Mulenga
+-- mam558
+-- 11144528
+
 -- Problem 3
 data MyFraction = Fraction (Integer, Integer)
 
@@ -115,4 +119,5 @@ howManyShuffles :: ([Integer] -> [Integer]) -> [Integer] -> [Integer] -> Integer
 howManyShuffles func l1 l2 = delta func l1 l2 0
   where delta func l1 l2 n
           | l1 == l2    = n
+          | n > 100     = error "Cannot achieve shuffle."
           | otherwise   = delta func (func l1) l2 (n + 1)
