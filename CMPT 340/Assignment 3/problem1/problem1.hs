@@ -3,7 +3,7 @@ unfold p h t x
   | p x        = []
   | otherwise  = h x : unfold p h t (t x)
 
--- mapf :: (a -> b) -> [a] -> [b]
+mapf :: Eq a => (a -> b) -> [a] -> [b]
 mapf f = unfold (== []) (f . head) (tail)
 
 iteratef f x = unfold (> 100) f f x

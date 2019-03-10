@@ -1,0 +1,17 @@
+altMap test
+*Main> altMap [(+10), (+100)] [0,1,2,3,4]
+[10,101,12,103,14]
+*Main> altMap [(+10), (*100)] [0,3,4]
+[10,300,14]
+*Main> altMap [(+10)] [0,3,4]
+[10,13,14]
+*Main> altMap [(+10), (*100)] [10]
+[20]
+
+luhn test
+*Main> luhn [1, 7, 8, 4]
+True
+*Main> luhn [1, 7, 8, 2]
+False
+*Main> luhn []
+False
