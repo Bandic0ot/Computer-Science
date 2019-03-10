@@ -1,0 +1,2 @@
+*Main> perfect
+[6,28,496,8128^CInterrupted.
