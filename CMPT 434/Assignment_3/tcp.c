@@ -157,25 +157,29 @@ uint32_t parse_packet(char *packet, char *buffer) {
 int unpack_packet_size(char *packet) {
   uint32_t packet_size;
 
-  for(int i = 0, packet_size = 0; i < sizeof(uint32_t); i++) {
+  packet_size = 0;
+
+  for(int i = 0; i < sizeof(uint32_t); i++) {
     packet_size += packet[i] << (i * 8);
   }
 
-  return ntohl(packet_size);
+  packet_size = ntohl(packet_size);
+
+  return packet_size;
 }
 
 void send_all(int sock, char *data, uint32_t size) {
   int bytes, bytes_sent, bytes_remaining, packet_size;
-  char *buffer;
+  char *packet;
 
-  buffer = create_packet(data, size);
-  packet_size = size;
+  packet = create_packet(data, size);
+  packet_size = size + sizeof(uint32_t);
 
   bytes_remaining = packet_size;
   bytes_sent = 0;
 
   while(bytes_sent < packet_size) {
-    bytes = send(sock, &buffer[bytes_sent], bytes_remaining, 0);
+    bytes = send(sock, &packet[bytes_sent], bytes_remaining, 0);
     bytes_sent += bytes;
     bytes_remaining -= bytes;
 
@@ -186,7 +190,9 @@ void send_all(int sock, char *data, uint32_t size) {
   }
 }
 
-int recv_all(int sock, char *data, uint32_t size) {
+// Receives data from the specified socket and writes it to a buffer. 
+// Returns the number of bytes recieved.
+int recv_all(int sock, char *buffer, uint32_t size) {
   int bytes, bytes_recv, data_size;
   char packet_size_buffer[sizeof(uint32_t)];
 
@@ -197,7 +203,7 @@ int recv_all(int sock, char *data, uint32_t size) {
   bytes_recv = 0;
 
   while(bytes_recv < data_size) {
-    bytes = recv(sock, &data[bytes_recv], size, 0);
+    bytes = recv(sock, &buffer[bytes_recv], size, 0);
     bytes_recv += bytes;
 
     if(bytes == -1) {
@@ -210,7 +216,17 @@ int recv_all(int sock, char *data, uint32_t size) {
   
   }
 
-  data[bytes_recv] = '\0';
+  return bytes_recv;
+}
 
-  return bytes_recv - 1;
+// Appends the second byte array to the first.
+char *append_byte_array(char *byte1, char *byte2, uint32_t size1, uint32_t size2) {
+  char *byte_array;
+
+  byte_array = malloc(size1 + size2);
+
+  memmove(byte_array, byte1, size1);
+  memmove(&byte_array[size1], byte2, size2);
+
+  return byte_array;
 }

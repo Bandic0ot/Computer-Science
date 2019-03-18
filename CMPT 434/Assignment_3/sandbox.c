@@ -9,16 +9,22 @@
 
 #include "structures.h"
 
-Node *init_node(char *string) {
-  Node *node = malloc(sizeof(*node));
+Node *init_node(char **args) {
+  Node *node;
+  char *ptr;
 
-  node->id = 1;
-
-  node->x = ((float) rand() / (float) RAND_MAX) * (1000 - 0) + 0;
-  node->y = ((float) rand() / (float) RAND_MAX) * (1000 - 0) + 0;
+  node = malloc(sizeof(*node));
   node->buffer = malloc(sizeof(Node) * 10);
 
-  memcpy(node->data, string, sizeof(string));
+  node->id = strtol(args[1], &ptr, 10);
+  node->distance = strtol(args[3], &ptr, 10);
+  node->x = rand() % (1000 + 1 - 0) + 0;
+  node->y = rand() % (1000 + 1 - 0) + 0;
+
+  strcpy(node->data, args[2]);
+  strcpy(node->recv_port, args[4]);
+  strcpy(node->log_hostname, args[5]);
+  strcpy(node->log_port, args[6]);
 
   return node;
 }
@@ -101,22 +107,86 @@ char *append_byte_array(char *byte1, char *byte2, uint32_t size1, uint32_t size2
   return byte_array;
 }
 
+// Creates a node to logger data array.
+char *ntol_data(uint32_t id, char *recv_port, uint32_t x, uint32_t y) {
+  char *data;
+  uint32_t packed_id, packed_x, packed_y;
+
+  data = malloc(sizeof(uint32_t) * 3 + 50);
+  packed_id = htonl(id);
+  packed_x = htonl(x);
+  packed_y = htonl(y);
+
+  memmove(data, &packed_id, sizeof(uint32_t));
+  memmove(&data[sizeof(uint32_t)], recv_port, 50);
+  memmove(&data[sizeof(uint32_t) + 50], &packed_x, sizeof(uint32_t));
+  memmove(&data[sizeof(uint32_t) * 2 + 50], &packed_y, sizeof(uint32_t));
+
+  return data;
+}
+
+// Populates a node from recieved packet.
+void unpack_ntol_data(Node *node, char *buffer) {
+  uint32_t id, x, y;
+  char recv_port[50];
+
+  id = 0;
+  x = 0;
+  y = 0;
+
+  // Extract the ID from the message.
+  for(int i = 0; i < sizeof(uint32_t); i++) {
+    id += buffer[i] << (i * 8);
+  }
+
+  // Extract the recieve port from the message.
+  memmove(node->recv_port, &buffer[sizeof(uint32_t)], 50);
+
+  // Extract the x-coordinate from the message.
+  for(int i = 0; i < sizeof(uint32_t); i++) {
+    x += buffer[i + sizeof(uint32_t) + 50] << (i * 8);
+  }
+
+  // Extract the y-coordinate from the message.
+  for(int i = 0; i < sizeof(uint32_t); i++) {
+    y += buffer[i + sizeof(uint32_t) * 2 + 50] << (i * 8);
+  }
+
+  node->id = ntohl(id);
+  node->x = ntohl(x);
+  node->y = ntohl(y);
+}
+
+int unpack_packet_size(char *packet) {
+  uint32_t packet_size;
+
+  packet_size = 0;
+
+  for(int i = 0; i < sizeof(uint32_t); i++) {
+    packet_size += packet[i] << (i * 8);
+  }
+
+  packet_size = ntohl(packet_size);
+
+  return packet_size;
+}
+
 int main(int argc, char *argv[]) {
   Node *node;
-  char *packet;
-  char *buffer;
+  char *packet, *data;
   int length;
 
-  char *f = "Hello";
-  char *s = "World";
+  node = init_node(argv);
 
-  buffer = append_byte_array(f, s, strlen(f), strlen(s));
+  data = ntol_data(node->id, node->recv_port, node->x, node->y);
+  packet = create_packet(data, 62);
 
-  packet = create_packet(buffer, 16);
-  length = parse_packet(packet, buffer);
+  unpack_ntol_data(node, packet);
 
-  printf("%d\n", length);
-  printf("%s\n", buffer);
+  printf("%d\n", node->id);
+  printf("%s\n", node->recv_port);
+  printf("%d\n", node->x);
+  printf("%d\n", node->y);
 
   return EXIT_SUCCESS;
 }

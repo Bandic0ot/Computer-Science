@@ -19,4 +19,4 @@ sandbox: sandbox.o
 	$(CC) -o sandbox sandbox.o
 
 clean:
-	rm -rf *.o node sandbox
+	rm -rf *.o node logger sandbox 
