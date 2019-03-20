@@ -71,12 +71,14 @@ void pack_length(char *msg, int msg_length, char *buffer) {
   memcpy(&buffer[sizeof(uint32_t)], msg, msg_length);
 }
 
-int unpack_length(char *msg) {
-  uint32_t msg_length;
+int packet_size(char *packet) {
+  uint32_t packet_size;
 
-  msg_length = ntohl(msg[0] + (msg[1] << 8) + (msg[2] << 16) + (msg[3] << 24));
+  for(int i = 0, packet_size = 0; i < sizeof(uint32_t); i++) {
+    packet_size += packet[i] << (i * 8);
+  }
 
-  return msg_length;
+  return ntohl(packet_size);
 }
 
 void send_all(int sock, char *msg, int msg_length) {

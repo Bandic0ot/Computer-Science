@@ -3,20 +3,18 @@
 # 11144528
 
 CC = gcc
-CFLAGS = -g -I -Wall -pedantic
+CFLAGS = -g -I -Wall -pedantic 
+LDLIBS = -pthread
 
 .PHONY: clean
 
-all: node logger sandbox
+all: node logger
 
 node: node.o tcp.o
-	$(CC) -o node node.o tcp.o
+	$(CC) -o node node.o tcp.o $(LDLIBS)
 
 logger: logger.o tcp.o
-	$(CC) -o logger logger.o tcp.o
-
-sandbox: sandbox.o
-	$(CC) -o sandbox sandbox.o
+	$(CC) -o logger logger.o tcp.o $(LDLIBS)
 
 clean:
-	rm -rf *.o node logger sandbox 
+	rm -rf *.o node logger

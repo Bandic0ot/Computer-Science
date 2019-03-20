@@ -1,3 +1,8 @@
+/* Matthew Mulenga
+ * mam558
+ * 11144528
+ */
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
@@ -134,24 +139,6 @@ char *create_packet(char *data, uint32_t size) {
   memmove(&packet[sizeof(uint32_t)], data, size);
 
   return packet;
-}
-
-// Takes a packet and a buffer, returns the length of the packet
-// and stores the data in buffer.
-uint32_t parse_packet(char *packet, char *buffer) {
-  uint32_t length;
-
-  length = 0;
-
-  for(int i = 0; i < sizeof(uint32_t); i++) {
-    length += packet[i] << (i * 8);
-  }
-
-  length = ntohl(length);
-
-  memmove(buffer, &packet[sizeof(uint32_t)], length - sizeof(u_int32_t));
-
-  return length;
 }
 
 int unpack_packet_size(char *packet) {

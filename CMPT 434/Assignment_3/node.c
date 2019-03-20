@@ -1,3 +1,8 @@
+/* Matthew Mulenga
+ * mam558
+ * 11144528
+ */
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
@@ -13,12 +18,19 @@
 #include "structures.h"
 #include "tcp.h"
 
+#define NOT_IN_RANGE "NIR"
+#define IN_RANGE "IR"
+#define NODE_REQUEST "NR"
+#define NO_MORE_NODE "NMN"
+#define BASESTATION 500
+
 Node *init_node(char **args) {
   Node *node;
   char *ptr;
 
   node = malloc(sizeof(*node));
-  node->buffer = malloc(sizeof(Node) * 10);
+  
+  memset(node->node_buffer, 0, sizeof(Node *) * 5);
 
   node->id = strtol(args[1], &ptr, 10);
   node->distance = strtol(args[3], &ptr, 10);
@@ -26,6 +38,7 @@ Node *init_node(char **args) {
   node->y = rand() % (1000 + 1 - 0) + 0;
 
   strcpy(node->data, args[2]);
+  strcpy(node->ip, "127.0.0.1");
   strcpy(node->recv_port, args[4]);
   strcpy(node->log_hostname, args[5]);
   strcpy(node->log_port, args[6]);
@@ -48,7 +61,7 @@ uint32_t sign() {
 void move(Node *node, uint32_t distance) {
   uint32_t delta_x, delta_y;
 
-  delta_x = sign() * (rand() / (RAND_MAX / distance));
+  delta_x = sign() * (rand() % (distance + 1 - 0) + 0);
   delta_y = sign() * (distance - abs(delta_x));
 
   //printf ("Delta: %f, %f\n", delta_x, delta_y);
@@ -76,7 +89,7 @@ void move(Node *node, uint32_t distance) {
 }
 
 // Creates a node to logger data array.
-char *ntol_data(uint32_t id, char *recv_port, uint32_t x, uint32_t y) {
+char *node_to_log_data(uint32_t id, char *recv_port, uint32_t x, uint32_t y) {
   char *data;
   uint32_t packed_id, packed_x, packed_y;
 
@@ -93,33 +106,72 @@ char *ntol_data(uint32_t id, char *recv_port, uint32_t x, uint32_t y) {
   return data;
 }
 
-/* transmit() {
- * create_connection(logger)
- * send(id, port, location)
- * 
- * if(recv == in_range)
- *    send(data)
- * else
- *    while(recv(node) != no_nodes_left)
- *        create_connection(node)
- *        recv(location)
- *        if(location == closer)
- *            send(data)
- *        else
- *            send(nvm)
- *            close_connection(node)
- * close_connection(logger)
- */
+// Populates a node from recieved n2n packet.
+void unpack_node_connect_data(Node *node, char *buffer) {
+  uint32_t id;
+
+  id = 0;
+
+  // Extract the ID from the message.
+  for(int i = 0; i < sizeof(uint32_t); i++) {
+    id += buffer[i] << (i * 8);
+  }
+
+  node->id = ntohl(id);
+
+  // Extract the ip from the message.
+  memmove(node->ip, &buffer[sizeof(uint32_t)], 50);
+
+  // Extract the recieve port from the message.
+  memmove(node->recv_port, &buffer[sizeof(uint32_t) + 50], 50);
+}
+
+// Checks to see if the first location is closer than the second location.
+int closer(int x1, int y1, int x2, int y2) {
+  int manhattan1, manhattan2;
+
+  manhattan1 = abs(BASESTATION - x1) + abs(BASESTATION - y1);
+  manhattan2 = abs(BASESTATION - x2) + abs(BASESTATION - y2);
+
+  if(manhattan1 < manhattan2) {
+    return 0;
+  } else {
+    return -1;
+  }
+}
 
 void transmit(Node *node) {
   int main_sock;
   char *packet;
+  char buffer[100];
 
-  packet = ntol_data(node->id, node->recv_port, node->x, node->y);
+  packet = node_to_log_data(node->id, node->recv_port, node->x, node->y);
 
   create_connection(node->log_hostname, node->log_port, &main_sock);
   
   send_all(main_sock, packet, 62);
+  recv_all(main_sock, buffer, sizeof(buffer));
+  
+  if(strcmp(buffer, IN_RANGE) == 0) {
+    send_all(main_sock, node->data, sizeof(node->data));
+  } else {
+    recv_all(main_sock, buffer, sizeof(buffer));
+
+    while(strcmp(buffer, NO_MORE_NODE) != 0) {
+      Node *connect_node;
+      int node_sock;
+
+      connect_node = malloc(sizeof(*connect_node));
+      unpack_node_connect_data(connect_node, buffer);
+
+      //create_connection(connect_node->ip, connect_node->recv_port, &node_sock);
+      recv_all(main_sock, buffer, sizeof(buffer));
+    }
+
+    printf("No more nodes.\n");
+  }
+
+  close(main_sock);
 }
 
 int main(int argc, char *argv[]) {

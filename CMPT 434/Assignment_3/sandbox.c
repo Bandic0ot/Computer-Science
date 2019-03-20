@@ -6,15 +6,24 @@
 #include <sys/socket.h>
 #include <netdb.h>
 #include <arpa/inet.h>
+#include <time.h>
+#include <pthread.h>
 
 #include "structures.h"
+
+#define NOT_IN_RANGE "NIR"
+#define IN_RANGE "IR"
+#define NODE_REQUEST "NR"
+#define NO_MORE_NODE "NMN"
+#define BASESTATION 500
 
 Node *init_node(char **args) {
   Node *node;
   char *ptr;
 
   node = malloc(sizeof(*node));
-  node->buffer = malloc(sizeof(Node) * 10);
+  
+  memset(node->node_buffer, 0, sizeof(*node));
 
   node->id = strtol(args[1], &ptr, 10);
   node->distance = strtol(args[3], &ptr, 10);
@@ -171,22 +180,32 @@ int unpack_packet_size(char *packet) {
   return packet_size;
 }
 
+// Checks to see if the first location is closer than the second location.
+int closer(int x1, int y1, int x2, int y2) {
+  int manhattan1, manhattan2;
+
+  manhattan1 = abs(BASESTATION - x1) + abs(BASESTATION - y1);
+  manhattan2 = abs(BASESTATION - x2) + abs(BASESTATION - y2);
+
+  if(manhattan1 < manhattan2) {
+    return 0;
+  } else {
+    return -1;
+  }
+}
+
+void *process_thread() {
+  printf("Hello.\n");
+}
+
 int main(int argc, char *argv[]) {
-  Node *node;
-  char *packet, *data;
-  int length;
+  pthread_t pid;
+  
+  pthread_create(&pid, NULL, process_thread, NULL);
 
-  node = init_node(argv);
-
-  data = ntol_data(node->id, node->recv_port, node->x, node->y);
-  packet = create_packet(data, 62);
-
-  unpack_ntol_data(node, packet);
-
-  printf("%d\n", node->id);
-  printf("%s\n", node->recv_port);
-  printf("%d\n", node->x);
-  printf("%d\n", node->y);
+  printf("World.\n");
+  pthread_join(pid, NULL);
+  
 
   return EXIT_SUCCESS;
 }

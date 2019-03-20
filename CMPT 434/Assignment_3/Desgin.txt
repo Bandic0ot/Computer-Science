@@ -1,0 +1,46 @@
+Design Document
+
+Problem Abstract: Get data packet from moving node to base station.
+
+Requirements: - 1000 x 1000 area
+              - nodes start at random location
+              - nodes move distance D in random direction once per second
+                (must "bounce" if out of area bounds)
+              - logger process acts as base station
+              - nodes open TCP connection to logger once per second (send ID, port, location)
+              - logger sends back message telling whether or not node is in range
+                - if it is, node transmits packets it has buffered
+                - if it doesn't, node sends message to logger asking for info from other nodes within 
+                  range of itself, repeats until there it exhausts the list
+                    - if another node is found create connection, send/receive packets, close connection
+
+I started by breaking the requirements down into components:
+Node:
+  - data
+  - listening port
+  - location
+  - movement distance
+
+Logger:
+  - transmission range
+  - # of sensor nodes
+  - sensor node buffer
+
+Pseudocode for single cycle of communication between node and logger
+/* transmit() {
+ * create_connection(logger)
+ * send(id, port, location)
+ * 
+ * if(recv == in_range)
+ *    send(data)
+ * else
+ *    while(recv(node) != no_nodes_left)
+ *        create_connection(node)
+ *        recv(location)
+ *        if(location == closer)
+ *            send(data)
+ *        else
+ *            send(nvm)
+ *            close_connection(node)
+ * close_connection(logger)
+ */

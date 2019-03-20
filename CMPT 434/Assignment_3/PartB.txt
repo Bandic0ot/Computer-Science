@@ -1,0 +1,53 @@
+Matthew Mulenga
+mam558
+11144528
+
+Part B
+
+Question 1
+R = 40 Mbps = 40*10^6 bps
+S = 500 microseconds = 0.0005s
+M = 1 Gbps = 1 * 10^9 bps
+
+B = S(M - R)
+  = 0.0005s * (1 * 10^9 bps - 40 * 10^6 bps)
+  = 480000 bits
+  = 0.48 Mb
+
+Question 2
+a) 10.11.43.127
+b) 10.11.43.160
+c) 10.11.49.123
+d) 10.11.44.222
+
+Question 3
+SRTT = 125ms
+RTT = 80ms
+
+α(new) = 0.125
+α(old) = 0.875
+
+1) SRTT = (0.875) * (125ms) + (1 - 0.875)(80ms)
+        = 119.375ms
+
+2) SRTT = (0.125) * (119.375ms) + (1 - 0.125)(80ms)
+        = 84.921875ms
+
+Two measurements of the new RTT are required before SRTT drops below 100ms.
+
+Question 4
+
+Question 5
+a) Rounds 1 to 7 and 22 to 26 are in slow start mode.
+
+b) Triple duplicate ACK
+
+c) Timeout
+
+d) 64
+
+e) 35
+
+f) 21
+
+g) Both will be 8.
