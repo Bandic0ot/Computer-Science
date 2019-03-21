@@ -7,12 +7,14 @@ import akka.event.Logging;
 import akka.event.LoggingAdapter;
 
 public class FibonacciActor extends AbstractActor {
-    private int n, sub1, sub2;
+    private int count, accumulator;
     private ActorRef parent;
     private ActorRef[] workers;
 
     public FibonacciActor() {
-
+        this.count = 0;
+        this.workers = new ActorRef[2];
+        this.accumulator = 0;
     }
 
     static public Props props() {
@@ -25,24 +27,11 @@ public class FibonacciActor extends AbstractActor {
                     this.result(msg);
                 })
                 .match(FibonacciMessage.FinalResult.class, msg -> {
-                    this.finalResult(msg);
-                })
-                .match(FibonacciMessage.FirstResult.class, msg -> {
-                    this.firstResult(msg);
-                })
-                .match(FibonacciMessage.SecondResult.class, msg -> {
-                    this.secondResult(msg);
+                    this.FinalResult(msg);
                 })
                 .build();
     }
 
-    public void firstResult(FibonacciMessage.FirstResult msg) {
-        this.sub1 = msg.n;
-    }
-
-    public void secondResult(FibonacciMessage.SecondResult msg) {
-        this.sub2 = msg.n;
-    }
 
     public void result(FibonacciMessage.Result msg) {
         this.parent = getSender();
@@ -53,18 +42,20 @@ public class FibonacciActor extends AbstractActor {
             parent.tell(new FibonacciMessage.FinalResult(1), getSelf());
         } else {
             for(int i = 0; i < 2; i++) {
-                workers[i] = getContext().getSystem().actorOf(FibonacciActor.props());
+                this.workers[i] = getContext().getSystem().actorOf(FibonacciActor.props());
             }
 
-            workers[0].tell(new FibonacciMessage.FirstResult(msg.n - 1), self());
-            workers[1].tell(new FibonacciMessage.SecondResult(msg.n - 2), self());
-
-            parent.tell(new FibonacciMessage.FinalResult(this.sub1 + this.sub2), self());
+            workers[0].tell(new FibonacciMessage.Result(msg.n - 1), getSelf());
+            workers[1].tell(new FibonacciMessage.Result(msg.n - 2), getSelf());
         }
     }
 
-    public void finalResult(FibonacciMessage.FinalResult msg) {
-        this.parent.forward(msg, this.getContext());
+    public void FinalResult(FibonacciMessage.FinalResult msg) {
+        if(this.count == 0) {
+            this.accumulator += msg.n;
+            this.count++;
+        } else {
+            parent.forward(new FibonacciMessage.FinalResult(accumulator), getContext());
+        }
     }
-
 }

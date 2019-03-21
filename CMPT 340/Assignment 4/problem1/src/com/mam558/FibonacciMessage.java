@@ -9,21 +9,6 @@ public class FibonacciMessage {
         }
     }
 
-    static public class FirstResult {
-        public final int n;
-
-        public FirstResult( int n) {
-            this.n = n;
-        }
-    }
-    static public class SecondResult {
-        public final int n;
-
-        public SecondResult( int n) {
-            this.n = n;
-        }
-    }
-
     static public class FinalResult {
         public final int n;
 
