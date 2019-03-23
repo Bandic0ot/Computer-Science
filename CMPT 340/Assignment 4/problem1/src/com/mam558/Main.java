@@ -18,7 +18,7 @@ public class Main {
     public static void main(String[] args) {
 
         // Read in command line arguments
-        final int fibonacciGoal = 5;
+        final int fibonacciGoal = 7;
 
         System.out.println("Finding Fibonacci Number: " + fibonacciGoal);
 

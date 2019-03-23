@@ -20,18 +20,19 @@ public class ClientActor extends AbstractActor {
 
     public void preStart(){
         ActorRef fibActor = getContext().getSystem().actorOf(FibonacciActor.props());
-        fibActor.tell(new FibonacciMessage.Result(n), self());
+        fibActor.tell(new FibonacciMessage.Fibonacci(n), self());
     }
 
     public Receive createReceive() {
         return receiveBuilder()
-                .match(FibonacciMessage.FinalResult.class, msg -> {
+                .match(FibonacciMessage.JobDone.class, msg -> {
                     this.answer(msg);
                 })
                 .build();
     }
 
-    public void answer(FibonacciMessage.FinalResult msg) {
+    public void answer(FibonacciMessage.JobDone msg) {
         log.info("Answer: {} ", msg.n);
+        this.getContext().getSystem().terminate();
     }
 }
